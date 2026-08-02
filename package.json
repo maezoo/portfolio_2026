@@ -1,0 +1,12 @@
+{
+  "name": "publisher-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "sass": "sass --watch assets/scss/style.scss assets/css/style.css",
+    "sass:build": "sass assets/scss/style.scss assets/css/style.css --style=compressed"
+  },
+  "devDependencies": {
+    "sass": "^1.77.8"
+  }
+}
