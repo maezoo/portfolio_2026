@@ -1,152 +1,352 @@
 <!doctype html>
 <html lang="ko">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="기획부터 UI 디자인, 퍼블리싱, CMS 적용과 유지보수까지 수행하는 웹퍼블리셔 포트폴리오">
-    <title>Web Publisher Portfolio</title>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Web Publisher to Product Designer portfolio">
+<title>Portfolio — Product Designer Transition</title>
+<style>
+:root{
+  --bg:#090a0d;
+  --panel:#111318;
+  --panel2:#171a20;
+  --text:#f5f7fb;
+  --muted:#9399a6;
+  --line:#252933;
+  --accent:#8fb3ff;
+  --accent2:#d4ddff;
+  --max:1480px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Noto Sans KR",sans-serif;line-height:1.55;letter-spacing:-.03em;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+img{max-width:100%;display:block}
+.wrap{width:min(calc(100% - 48px),var(--max));margin:auto}
+
+/* header */
+.header{position:fixed;left:0;right:0;top:0;z-index:50;background:rgba(9,10,13,.74);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.07)}
+.header-in{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:24px;font-size:13px;color:#b7bcc7}
+.nav a:hover{color:#fff}
+.menu{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;color:#fff;background:transparent;cursor:pointer}
+
+/* common */
+.section{padding:140px 0;border-top:1px solid var(--line)}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.h2{font-size:clamp(42px,6vw,92px);line-height:.98;letter-spacing:-.075em;margin:0;font-weight:800}
+.desc{max-width:700px;color:var(--muted);font-size:17px;word-break:keep-all}
+.grid-head{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:end;margin-bottom:72px}
+.fade{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.fade.on{opacity:1;transform:none}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:flex-end;padding:150px 0 70px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:44vw;height:44vw;min-width:420px;min-height:420px;right:-12vw;top:12vh;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(143,179,255,.25),rgba(143,179,255,.06) 38%,transparent 68%);filter:blur(2px);pointer-events:none}
+.hero-meta{display:flex;justify-content:space-between;gap:20px;color:#6f7582;text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:800;margin-bottom:34px}
+.hero-grid{display:grid;grid-template-columns:1.28fr .72fr;gap:70px;align-items:end}
+.hero-title{margin:0;font-size:clamp(68px,10vw,160px);line-height:.82;letter-spacing:-.09em;font-weight:900;position:relative;z-index:1}
+.hero-title .dim{color:#555b67}
+.hero-title .accent{color:var(--accent)}
+.hero-copy{font-size:19px;color:#b7bcc7;max-width:500px;word-break:keep-all}
+.hero-copy strong{color:#fff}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.tag{border:1px solid var(--line);border-radius:999px;padding:9px 12px;color:#c8ccd5;font-size:12px;background:rgba(255,255,255,.02)}
+.scroll{display:flex;align-items:center;gap:12px;margin-top:50px;color:#6f7582;font-size:12px;text-transform:uppercase;letter-spacing:.09em}
+.scroll span{width:66px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
+
+/* statement */
+.statement{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:28px 24px 30px 0}
+.stat+.stat{border-left:1px solid var(--line);padding-left:26px}
+.stat b{display:block;font-size:clamp(38px,5vw,68px);letter-spacing:-.07em;line-height:1}
+.stat small{display:block;color:#777e8b;margin-top:9px;font-size:12px}
+
+/* projects */
+.project{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;padding:86px 0;border-top:1px solid var(--line)}
+.project:first-child{border-top:0;padding-top:0}
+.project:nth-child(even){grid-template-columns:1.1fr .9fr}
+.project:nth-child(even) .visual{order:2}
+.visual{min-height:620px;border-radius:28px;background:linear-gradient(135deg,#171b23,#0f1116);border:1px solid #20242e;overflow:hidden;position:relative;padding:26px}
+.visual::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 15%,rgba(143,179,255,.22),transparent 34%);pointer-events:none}
+.browser{position:relative;height:100%;min-height:568px;border-radius:18px;background:#eef1f6;overflow:hidden;box-shadow:0 32px 70px rgba(0,0,0,.35)}
+.browser-top{height:38px;background:#d9dde5;display:flex;align-items:center;gap:6px;padding:0 12px}
+.browser-top i{width:8px;height:8px;border-radius:50%;background:#aab0bb}
+.browser-body{height:calc(100% - 38px);padding:34px;color:#111;background:linear-gradient(#fafbfc,#eef1f6);display:flex;flex-direction:column}
+.mock-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#7a8290}
+.mock-title{font-size:clamp(30px,4vw,52px);font-weight:800;line-height:1.03;letter-spacing:-.06em;margin:20px 0;max-width:88%}
+.mock-line{height:8px;border-radius:9px;background:#d2d6de;margin-top:8px}
+.mock-line.w1{width:76%}.mock-line.w2{width:58%}.mock-line.w3{width:66%}
+.mock-cards{margin-top:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.mock-card{height:160px;border-radius:14px;background:#dfe3ea;padding:16px;display:flex;align-items:flex-end;color:#747c88;font-size:11px;font-weight:700}
+.project-no{font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);font-weight:800;margin-bottom:18px}
+.project h3{font-size:clamp(44px,5vw,78px);line-height:1;letter-spacing:-.07em;margin:0 0 24px}
+.project p{color:#a8aeba;font-size:16px;word-break:keep-all}
+.case{padding:22px 0;border-top:1px solid var(--line)}
+.case h4{margin:0 0 10px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6f7683}
+.case p,.case li{font-size:14px;color:#c0c5cf}
+.case ul{padding-left:18px;margin:0}
+.flow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.flow span{font-size:11px;padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:#12151a;color:#c9ced7}
+.flow b{color:#515866;font-size:11px}
+
+/* capabilities */
+.cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cap{min-height:320px;border:1px solid var(--line);border-radius:22px;padding:24px;background:linear-gradient(180deg,#111318,#0d0f13);display:flex;flex-direction:column;justify-content:space-between}
+.cap small{color:#68707d;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
+.cap h3{font-size:26px;line-height:1.1;margin:0 0 12px}
+.cap p{font-size:14px;color:#9097a4;margin:0}
+.cap.accent{background:linear-gradient(160deg,#9fbaff,#7298ef);color:#07101f;border-color:transparent}
+.cap.accent small,.cap.accent p{color:rgba(7,16,31,.68)}
+
+/* archive */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.filter{border:1px solid var(--line);background:transparent;color:#adb3bf;border-radius:999px;padding:9px 13px;font-size:12px;cursor:pointer}
+.filter.on,.filter:hover{background:#fff;color:#0b0c0f;border-color:#fff}
+.archive{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.work{min-height:250px;border:1px solid var(--line);border-radius:18px;background:#0e1014;padding:20px;display:flex;flex-direction:column;justify-content:space-between;transition:.25s}
+.work:hover{transform:translateY(-4px);border-color:#3a4150}
+.work.hide{display:none}
+.work small{color:#69717e;text-transform:uppercase;letter-spacing:.1em;font-size:10px;font-weight:800}
+.work h3{font-size:22px;margin:0;line-height:1.15}
+.work p{font-size:12px;color:#7f8794;margin:0}
+
+/* background */
+.timeline{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:180px 1fr;gap:32px;padding:26px 0;border-bottom:1px solid var(--line)}
+.row .label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#68707d;font-weight:800}
+.row h3{margin:0 0 6px;font-size:22px}
+.row p{margin:0;color:#9299a5;font-size:14px}
+
+/* CTA */
+.cta{padding:130px 0 70px}
+.cta-box{border:1px solid var(--line);border-radius:30px;padding:60px;background:linear-gradient(145deg,#11141a,#0a0c10);position:relative;overflow:hidden}
+.cta-box::before{content:"FLOW";position:absolute;right:-10px;bottom:-58px;font-size:clamp(110px,18vw,260px);font-weight:900;line-height:1;color:rgba(255,255,255,.025);letter-spacing:-.08em}
+.cta h2{font-size:clamp(48px,7vw,108px);line-height:.94;letter-spacing:-.08em;margin:0;max-width:1100px;position:relative}
+.cta h2 em{font-style:normal;color:var(--accent)}
+.cta-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:34px;position:relative}
+.cta-links a{border:1px solid #333844;border-radius:999px;padding:11px 15px;font-size:12px;color:#c8cdd7}
+.cta-links a:hover{background:#fff;color:#111;border-color:#fff}
+footer{padding:24px 0 44px;color:#626a76;font-size:11px}
+.footer-in{display:flex;justify-content:space-between;gap:20px}
+
+@media(max-width:1080px){
+  .hero-grid,.grid-head,.project,.project:nth-child(even){grid-template-columns:1fr}
+  .project:nth-child(even) .visual{order:initial}
+  .cap-grid,.archive{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:720px){
+  .wrap{width:min(calc(100% - 28px),var(--max))}
+  .header-in{height:64px}
+  .menu{display:block}
+  .nav{position:fixed;left:14px;right:14px;top:74px;display:flex;flex-direction:column;align-items:stretch;background:#111318;border:1px solid var(--line);border-radius:18px;padding:18px;opacity:0;transform:translateY(-8px);pointer-events:none;transition:.2s}
+  .nav.open{opacity:1;transform:none;pointer-events:auto}
+  .hero{min-height:auto;padding-top:130px}
+  .hero-title{font-size:58px}
+  .hero-meta{flex-direction:column;gap:6px}
+  .section{padding:92px 0}
+  .h2{font-size:42px}
+  .statement{grid-template-columns:1fr}
+  .stat+.stat{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .visual{min-height:440px;padding:15px;border-radius:22px}
+  .browser{min-height:408px}
+  .browser-body{padding:22px}
+  .mock-title{font-size:30px}
+  .mock-cards{grid-template-columns:1fr}
+  .mock-card{height:90px}
+  .cap-grid,.archive{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;gap:7px}
+  .cta-box{padding:34px 22px}
+  .footer-in{flex-direction:column}
+}
+</style>
 </head>
+<body>
+<header class="header">
+  <div class="wrap header-in">
+    <a class="logo" href="#top">Portfolio / Flow</a>
+    <nav class="nav" id="nav" aria-label="주요 메뉴">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Capabilities</a>
+      <a href="#archive">Archive</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu" id="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  </div>
+</header>
 
-<body><a class="skip-link" href="#main">본문 바로가기</a>
-    <header class="site-header">
-        <div class="header-inner"><a class="logo" href="index.html" aria-label="포트폴리오 홈"><span
-                    class="logo-mark">P</span><span>PORTFOLIO<b>.</b></span></a>
-            <nav class="gnb" aria-label="주요 메뉴">
-                <ul>
-                    <li><a href="index.html" aria-current="page">Home</a></li>
-                    <li><a href="about/index.html">About</a></li>
-                    <li><a href="projects/index.html">Projects</a></li>
-                    <li><a href="blog-skin/index.html">Blog Skin</a></li>
-                    <li><a href="personal-projects/index.html">Personal Projects</a></li>
-                    <li><a href="contact/index.html">Contact</a></li>
-                </ul>
-            </nav><button class="menu-toggle" type="button" aria-label="메뉴 열기"
-                aria-expanded="false"><span></span></button>
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-meta"><span>Web Publisher → Product Designer</span><span>2026 Portfolio</span></div>
+    <div class="hero-grid">
+      <h1 class="hero-title">FLOW<br><span class="dim">INTO</span><br><span class="accent">PRODUCT.</span></h1>
+      <div>
+        <p class="hero-copy">화면을 만드는 데서 멈추지 않고, <strong>정보의 구조와 사용자의 흐름</strong>을 설계합니다. Figma와 실제 웹 구현 경험을 연결해 제품을 이해하는 Product Designer로 전환하고 있습니다.</p>
+        <div class="hero-tags">
+          <span class="tag">Figma</span><span class="tag">UX / UI</span><span class="tag">HTML / SCSS / JS</span><span class="tag">Responsive</span><span class="tag">Git / GitHub</span><span class="tag">AI-assisted Workflow</span>
         </div>
-    </header>
-    <main id="main">
-        <section class="hero">
-            <div class="container hero-grid">
-                <div class="hero-copy reveal"><span class="eyebrow">Web Publisher Portfolio</span>
-                    <h1 class="display">From idea<br>to <span class="text-blue">interface.</span></h1>
-                    <p class="lead">기획, UI 디자인, 퍼블리싱, CMS 적용과 유지보수까지. 실제 서비스의 완성도를 만드는 전 과정형 웹퍼블리셔입니다.</p>
-                </div>
-                <div class="hero-meta">
-                    <div class="meta-card reveal" data-delay="1"><strong>6+</strong><span>End-to-end capabilities</span>
-                    </div>
-                    <div class="meta-card reveal" data-delay="2"><strong>100%</strong><span>Responsive publishing</span>
-                    </div>
-                    <div class="meta-card reveal" data-delay="2"><strong>CMS</strong><span>Template customization</span>
-                    </div>
-                    <div class="meta-card reveal" data-delay="3"><strong>AI</strong><span>Workflow acceleration</span>
-                    </div>
-                </div>
-            </div><span class="scroll-cue">Scroll</span>
-        </section>
-        <section class="section section--white">
-            <div class="container">
-                <div class="section-head reveal">
-                    <div><span class="eyebrow">Selected Work</span>
-                        <h2 class="title-lg">실무 프로젝트</h2>
-                    </div>
-                    <p>기업 홈페이지 리뉴얼을 중심으로 정보 구조, UI, 반응형 퍼블리싱과 CMS 적용까지 담당했습니다.</p>
-                </div>
-                <div class="project-grid">
-                    <article class="project-card reveal" data-category="corporate"><a href="project-detail/index.html">
-                            <div class="project-thumb"><img src="assets/images/project-1.svg" alt="기업 홈페이지 리뉴얼 화면 예시">
-                            </div>
-                            <div class="project-info">
-                                <div class="project-top">
-                                    <h3>기업 홈페이지 리뉴얼</h3><span class="arrow" aria-hidden="true">↗</span>
-                                </div>
-                                <p>B2B 기업의 신뢰도와 전문성을 강화한 반응형 웹사이트</p>
-                                <div class="tags"><span class="tag">Planning</span><span class="tag">UI
-                                        Design</span><span class="tag">HTML/SCSS</span><span class="tag">CMS</span>
-                                </div>
-                            </div>
-                        </a></article>
-                    <article class="project-card reveal" data-category="corporate"><a href="project-detail/index.html">
-                            <div class="project-thumb"><img src="assets/images/project-2.svg" alt="세무회계 홈페이지 화면 예시">
-                            </div>
-                            <div class="project-info">
-                                <div class="project-top">
-                                    <h3>세무회계 홈페이지</h3><span class="arrow" aria-hidden="true">↗</span>
-                                </div>
-                                <p>복잡한 서비스를 명확하게 전달하는 정보 중심 UI</p>
-                                <div class="tags"><span class="tag">Planning</span><span class="tag">UI
-                                        Design</span><span class="tag">HTML/SCSS</span><span class="tag">CMS</span>
-                                </div>
-                            </div>
-                        </a></article>
-                    <article class="project-card reveal" data-category="corporate"><a href="project-detail/index.html">
-                            <div class="project-thumb"><img src="assets/images/project-3.svg" alt="금속시설물 기업 화면 예시">
-                            </div>
-                            <div class="project-info">
-                                <div class="project-top">
-                                    <h3>금속시설물 기업</h3><span class="arrow" aria-hidden="true">↗</span>
-                                </div>
-                                <p>제품과 기술력을 균형 있게 보여주는 기업 사이트</p>
-                                <div class="tags"><span class="tag">Planning</span><span class="tag">UI
-                                        Design</span><span class="tag">HTML/SCSS</span><span class="tag">CMS</span>
-                                </div>
-                            </div>
-                        </a></article>
-                </div>
-            </div>
-        </section>
-        <section class="section">
-            <div class="container">
-                <div class="section-head reveal">
-                    <div><span class="eyebrow">Capabilities</span>
-                        <h2 class="title-lg">하나의 프로젝트를<br>끝까지 연결합니다.</h2>
-                    </div>
-                </div>
-                <div class="capability-list">
-                    <div class="capability-item reveal"><span class="num">01</span>
-                        <h3>Planning & UI</h3>
-                        <p>콘텐츠 우선순위와 사용자 흐름을 정리하고, 목적에 맞는 화면 구조와 비주얼을 설계합니다.</p>
-                    </div>
-                    <div class="capability-item reveal"><span class="num">02</span>
-                        <h3>Publishing</h3>
-                        <p>시맨틱 HTML, SCSS, JavaScript를 기반으로 반응형 인터페이스와 재사용 가능한 UI를 구현합니다.</p>
-                    </div>
-                    <div class="capability-item reveal"><span class="num">03</span>
-                        <h3>CMS & Maintenance</h3>
-                        <p>PHP 기반 CMS 템플릿을 커스터마이징하고 운영 과정에서 발생하는 개선과 유지보수까지 대응합니다.</p>
-                    </div>
-                    <div class="capability-item reveal"><span class="num">04</span>
-                        <h3>AI Workflow</h3>
-                        <p>Gemini와 ChatGPT를 리서치, 카피 검토, 코드 보조에 활용해 작업 속도와 결과물의 품질을 높입니다.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section section--white">
-            <div class="container">
-                <div class="cta-panel reveal"><span class="eyebrow">Contact</span>
-                    <h2 class="title-xl">함께 만들 다음 화면을<br>기다리고 있습니다.</h2>
-                    <p>실무에 바로 투입될 수 있는 퍼블리싱 역량과, 디자인부터 운영까지 연결하는 넓은 시야를 갖추고 있습니다.</p><a class="button button--light"
-                        href="contact/index.html">Contact me ↗</a>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-inner">
-            <div><a class="logo" href="index.html"><span class="logo-mark">P</span><span>PORTFOLIO<b>.</b></span></a>
-                <p>Planning · UI Design · Publishing · CMS · Maintenance</p>
-                <p>© <span data-year></span> Web Publisher Portfolio.</p>
-            </div>
-            <nav class="footer-nav" aria-label="푸터 메뉴"><a href="about/index.html">About</a><a
-                    href="projects/index.html">Projects</a><a href="contact/index.html">Contact</a></nav>
-        </div>
-    </footer>
-    <script src="assets/js/common.js"></script>
-    <script src="assets/js/home.js"></script>
+      </div>
+    </div>
+    <div class="scroll"><span></span>Scroll to explore</div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;border-top:0">
+  <div class="wrap">
+    <div class="statement fade">
+      <div class="stat"><b>12+</b><small>Website Renewal</small></div>
+      <div class="stat"><b>15+</b><small>Blog Skin Final Works</small></div>
+      <div class="stat"><b>1Y 4M</b><small>Hands-on Web Experience</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="grid-head fade">
+      <div><div class="kicker">Selected Projects</div><h2 class="h2">대표작은<br>깊게.</h2></div>
+      <p class="desc">실무 리뉴얼 2개와 Product Design 개인 프로젝트 1개를 메인 케이스로 구성합니다. 완성 화면보다 문제를 어떻게 정리했고 왜 그렇게 설계했는지가 먼저 보이도록 합니다.</p>
+    </div>
+
+    <div class="project fade">
+      <div class="visual">
+        <div class="browser"><div class="browser-top"><i></i><i></i><i></i></div><div class="browser-body">
+          <span class="mock-label">Real Work / UX Redesign</span><div class="mock-title">Before → Structure → After</div>
+          <div class="mock-line w1"></div><div class="mock-line w2"></div><div class="mock-line w3"></div>
+          <div class="mock-cards"><div class="mock-card">BEFORE 이미지 교체</div><div class="mock-card">AFTER 이미지 교체</div></div>
+        </div></div>
+      </div>
+      <div>
+        <div class="project-no">01 / Real Work</div><h3>Website UX Redesign</h3>
+        <p>자료가 충분하지 않은 고객 프로젝트에서 기존 사이트와 업종을 분석하고, 콘텐츠 구조와 화면 우선순위를 직접 정리한 뒤 Figma UI와 반응형 구현까지 연결한 프로젝트.</p>
+        <div class="case"><h4>Problem</h4><ul><li>콘텐츠와 메뉴의 우선순위가 불명확</li><li>모바일에서 긴 정보 탐색이 어려움</li><li>고객 제공 자료가 부족해 구조 정리부터 필요</li></ul></div>
+        <div class="case"><h4>Approach</h4><p>업체 내부 기준이 아니라 사용자가 찾는 목적 기준으로 메뉴와 섹션을 다시 묶었습니다.</p><div class="flow"><span>Search</span><b>→</b><span>Landing</span><b>→</b><span>Service</span><b>→</b><span>Detail</span><b>→</b><span>Contact</span></div></div>
+        <div class="case"><h4>Role</h4><p>정보 정리 · 레이아웃 · Figma UI · Responsive Publishing · CMS · 수정 대응 · 오픈</p></div>
+      </div>
+    </div>
+
+    <div class="project fade">
+      <div class="visual">
+        <div class="browser"><div class="browser-top"><i></i><i></i><i></i></div><div class="browser-body">
+          <span class="mock-label">Real Work / Information Architecture</span><div class="mock-title">Complex information, clearer flow.</div>
+          <div class="mock-line w1"></div><div class="mock-line w3"></div>
+          <div class="mock-cards"><div class="mock-card">IA / Sitemap 교체</div><div class="mock-card">Mobile UI 교체</div></div>
+        </div></div>
+      </div>
+      <div>
+        <div class="project-no">02 / Real Work</div><h3>Information Architecture</h3>
+        <p>정보량이 많은 사이트에서 메뉴와 콘텐츠 그룹을 다시 정리하고, 핵심 행동까지의 탐색 단계를 줄인 프로젝트.</p>
+        <div class="case"><h4>As-Is</h4><p>내부 분류 중심 메뉴, 반복되는 정보, 불명확한 CTA.</p></div>
+        <div class="case"><h4>To-Be</h4><p>사용자 목적 중심 그룹화, 핵심 서비스 우선 배치, 모바일 흐름 단순화.</p></div>
+        <div class="case"><h4>Implementation</h4><p>컴포넌트 단위로 UI를 구성하고 PC·태블릿·모바일 환경에서 유지되는 구조로 구현.</p></div>
+      </div>
+    </div>
+
+    <div class="project fade">
+      <div class="visual">
+        <div class="browser"><div class="browser-top"><i></i><i></i><i></i></div><div class="browser-body">
+          <span class="mock-label">Personal / Product Case Study</span><div class="mock-title">Problem → Prototype → Test</div>
+          <div class="mock-line w2"></div><div class="mock-line w1"></div>
+          <div class="mock-cards"><div class="mock-card">Research / Insight</div><div class="mock-card">Prototype / Test</div></div>
+        </div></div>
+      </div>
+      <div>
+        <div class="project-no">03 / Product Case Study</div><h3>From Problem to Prototype</h3>
+        <p>리서치, 문제 정의, 프로토타입, 사용성 테스트 경험을 보완하기 위한 개인 프로젝트. UI 결과보다 설계가 테스트 후 어떻게 바뀌었는지를 핵심으로 보여줍니다.</p>
+        <div class="case"><h4>Process</h4><div class="flow"><span>Research</span><b>→</b><span>Insight</span><b>→</b><span>Problem</span><b>→</b><span>Flow</span><b>→</b><span>Prototype</span><b>→</b><span>Test</span></div></div>
+        <div class="case"><h4>Goal</h4><p>“왜 이 화면인가”를 설명하고 사용자 반응을 근거로 설계를 수정하는 경험을 증명.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="grid-head fade"><div><div class="kicker">How I Work</div><h2 class="h2">넓게 할 수 있고,<br>점점 더 빠르게.</h2></div><p class="desc">처음에는 대부분 손코딩으로 작업했고, 이후 AI와 Git을 업무에 도입해 반복 작업과 수정 시간을 줄였습니다. 확보한 시간은 구조와 UX를 고민하는 데 사용합니다.</p></div>
+    <div class="cap-grid">
+      <div class="cap fade"><small>01 / Structure</small><div><h3>Structure First</h3><p>화면을 만들기 전 정보의 우선순위와 사용자 흐름부터 정리합니다.</p></div></div>
+      <div class="cap fade"><small>02 / Figma</small><div><h3>Figma-centered UI</h3><p>블로그 스킨과 웹 시안을 주로 Figma에서 제작합니다. 고급 프로토타이핑은 현재 보완 중입니다.</p></div></div>
+      <div class="cap fade"><small>03 / Build</small><div><h3>Understand the Build</h3><p>HTML, SCSS, JavaScript, jQuery, CMS 경험으로 구현 가능성을 고려합니다.</p></div></div>
+      <div class="cap accent fade"><small>04 / Workflow</small><div><h3>AI + Git</h3><p>AI를 코드 작성·디버깅 보조에 활용하고 Git 커밋으로 변경 이력을 관리해 업무 시간을 줄였습니다.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="archive">
+  <div class="wrap">
+    <div class="grid-head fade"><div><div class="kicker">Archive</div><h2 class="h2">대표작은 깊게,<br>나머지는 넓게.</h2></div><p class="desc">이전 포트폴리오의 클론코딩, 리디자인, 상세페이지 같은 작업도 버리지 않습니다. 다만 Product Designer라는 중심을 흐리지 않도록 보조 작업 아카이브로 분리합니다.</p></div>
+    <div class="filters fade"><button class="filter on" data-filter="all">All</button><button class="filter" data-filter="web">Web</button><button class="filter" data-filter="ui">UI</button><button class="filter" data-filter="front">Front-end</button><button class="filter" data-filter="visual">Visual</button><button class="filter" data-filter="content">Content</button></div>
+    <div class="archive">
+      <div class="work fade" data-type="web"><small>Real Work</small><h3>12+ Website Renewal</h3><p>기업 홈페이지 리뉴얼 · 반응형 · CMS</p></div>
+      <div class="work fade" data-type="ui"><small>Figma</small><h3>15+ Blog Skin</h3><p>복수 시안 · 모바일 별도 제작</p></div>
+      <div class="work fade" data-type="front"><small>Front-end</small><h3>Clone Coding</h3><p>SPC / Creamhouse 등 대표작 선별</p></div>
+      <div class="work fade" data-type="ui"><small>UI Redesign</small><h3>Selected Redesign</h3><p>E-commerce / Lifestyle / Automotive</p></div>
+      <div class="work fade" data-type="visual"><small>Visual</small><h3>Detail / Banner</h3><p>상세페이지 · 배너 · 이미지 편집</p></div>
+      <div class="work fade" data-type="content"><small>Operation</small><h3>500± Posts / Year</h3><p>키워드 콘텐츠 · 예약 발행 · 운영</p></div>
+      <div class="work fade" data-type="web"><small>Maintenance</small><h3>CMS & Bug Response</h3><p>수정 요청 · 오류 확인 · 고객 대응</p></div>
+      <div class="work fade" data-type="front"><small>Workflow</small><h3>Git-based Production</h3><p>AI 보조 개발 · 커밋 기반 변경 관리</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="grid-head fade"><div><div class="kicker">Background</div><h2 class="h2">Design → Web → Product</h2></div><p class="desc">패션디자인을 전공했고 여러 진로를 탐색한 뒤 웹 분야에서 구조를 만들고 직접 구현하는 일이 잘 맞는다는 것을 발견했습니다. 현재는 실무 웹 경험을 Product Design으로 확장하고 있습니다.</p></div>
+    <div class="timeline fade">
+      <div class="row"><div class="label">Education</div><div><h3>Fashion Design Major</h3><p>시각 디자인과 조형 감각을 기반으로 시작한 디자인 배경.</p></div></div>
+      <div class="row"><div class="label">Career</div><div><h3>Web Publisher · 1Y 4M</h3><p>웹 리뉴얼, Figma UI, 블로그 스킨, 반응형 구현, CMS, 유지보수, 고객 대응, 콘텐츠 운영.</p></div></div>
+      <div class="row"><div class="label">Certification</div><div><h3>웹디자인개발기능사 필기 합격 · 2026</h3><p>웹표준·디자인·개발 기초 지식을 체계적으로 보완.</p></div></div>
+      <div class="row"><div class="label">Current Focus</div><div><h3>Product Design Transition</h3><p>Figma 프로토타입 · 사용자 리서치 · 사용성 테스트 경험을 집중적으로 보완 중.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact"><div class="wrap"><div class="cta-box fade"><div class="kicker">Next</div><h2>Make the flow<br><em>clearer.</em></h2><div class="cta-links"><a href="mailto:your@email.com">Email</a><a href="#" data-placeholder="GitHub 주소를 연결하세요">GitHub</a><a href="#" data-placeholder="이력서 링크를 연결하세요">Resume</a></div></div></div></section>
+</main>
+<footer><div class="wrap footer-in"><span>© 2026 Portfolio</span><span>Built with HTML / CSS / JavaScript</span></div></footer>
+
+<script>
+(function(){
+  const nav=document.getElementById('nav');
+  const menuBtn=document.getElementById('menuBtn');
+  if(menuBtn&&nav){
+    menuBtn.addEventListener('click',function(){
+      const open=nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded',String(open));
+    });
+    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');});});
+  }
+
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('on');observer.unobserve(entry.target);}});
+    },{threshold:.08});
+    document.querySelectorAll('.fade').forEach(function(el){observer.observe(el);});
+  }else{
+    document.querySelectorAll('.fade').forEach(function(el){el.classList.add('on');});
+  }
+
+  const buttons=document.querySelectorAll('.filter');
+  const works=document.querySelectorAll('.work');
+  buttons.forEach(function(button){
+    button.addEventListener('click',function(){
+      buttons.forEach(function(b){b.classList.remove('on');});
+      button.classList.add('on');
+      const f=button.getAttribute('data-filter');
+      works.forEach(function(card){
+        card.classList.toggle('hide',!(f==='all'||card.getAttribute('data-type')===f));
+      });
+    });
+  });
+
+  document.querySelectorAll('[data-placeholder]').forEach(function(link){
+    link.addEventListener('click',function(e){e.preventDefault();alert(link.getAttribute('data-placeholder'));});
+  });
+})();
+</script>
 </body>
-
 </html>
