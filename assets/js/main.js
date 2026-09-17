@@ -54,28 +54,4 @@
     });
   });
 
-  if(!motionDisabled){
-    const parallaxItems=document.querySelectorAll('[data-parallax]');
-    const heroTitle=document.querySelector('.hero-title');
-    let ticking=false;
-
-    function updateParallax(){
-      const y=window.scrollY;
-      parallaxItems.forEach(function(item){
-        const speed=parseFloat(item.getAttribute('data-parallax'))||0;
-        item.style.transform='translate3d(0,'+(y*speed)+'px,0)';
-      });
-      if(heroTitle){
-        heroTitle.style.transform='translate3d(0,'+(Math.min(y,700)*0.035)+'px,0)';
-      }
-      ticking=false;
-    }
-
-    window.addEventListener('scroll',function(){
-      if(!ticking){
-        window.requestAnimationFrame(updateParallax);
-        ticking=true;
-      }
-    },{passive:true});
-  }
 })();
