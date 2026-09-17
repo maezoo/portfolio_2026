@@ -54,7 +54,7 @@
     });
   });
 
-  function initPortfolioSwiper(selector){
+  function initPortfolioSwiper(selector,options){
     const element=document.querySelector(selector);
     if(!element||typeof window.Swiper==='undefined') return;
     const controls=element.nextElementSibling;
@@ -69,7 +69,7 @@
       progress.style.transform='scaleX('+(current/total)+')';
     }
 
-    new window.Swiper(element,{
+    const swiper=new window.Swiper(element,Object.assign({
       slidesPerView:'auto',
       spaceBetween:24,
       speed:motionDisabled?0:600,
@@ -81,10 +81,50 @@
         nextEl:controls.querySelector('[data-slider-next]')
       },
       on:{init:render,slideChange:render}
-    });
+    },options||{}));
+
+    return {swiper:swiper,render:render};
   }
 
-  initPortfolioSwiper('.project-swiper');
+  const projectSlider=initPortfolioSwiper('.project-swiper',{
+    breakpoints:{
+      0:{allowTouchMove:true,spaceBetween:14},
+      961:{allowTouchMove:false,spaceBetween:32}
+    }
+  });
   initPortfolioSwiper('.value-swiper');
+
+  if(projectSlider){
+    const projectSection=document.querySelector('.projects-section');
+    const projectStage=document.querySelector('.projects-sticky');
+    const desktop=window.matchMedia('(min-width: 961px)');
+    let scrollFrame=0;
+
+    function syncProjectsToScroll(){
+      scrollFrame=0;
+      if(!desktop.matches||!projectSection||!projectStage) return;
+      const header=document.querySelector('.header');
+      const headerHeight=header?header.offsetHeight:0;
+      const start=projectSection.offsetTop-headerHeight;
+      const travel=Math.max(1,projectSection.offsetHeight-projectStage.offsetHeight);
+      const progress=Math.max(0,Math.min(1,(window.scrollY-start)/travel));
+      projectSlider.swiper.setProgress(progress,0);
+      projectSlider.swiper.updateActiveIndex();
+      projectSlider.swiper.updateSlidesClasses();
+      projectSlider.render(projectSlider.swiper);
+    }
+
+    function requestProjectSync(){
+      if(!scrollFrame) scrollFrame=window.requestAnimationFrame(syncProjectsToScroll);
+    }
+
+    window.addEventListener('scroll',requestProjectSync,{passive:true});
+    window.addEventListener('resize',requestProjectSync);
+    desktop.addEventListener('change',function(){
+      projectSlider.swiper.update();
+      requestProjectSync();
+    });
+    syncProjectsToScroll();
+  }
 
 })();
