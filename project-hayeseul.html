@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="정리되지 않은 정보 구조를 다시 설계하고 반응형 웹으로 구현한 하예슬아뜰리에 리뉴얼 사례">
+<title>하예슬아뜰리에 Case Study — 진연희</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="wrap header-in">
+    <a class="logo" href="index.html"><strong>진연희</strong><span>Portfolio 2026</span></a>
+    <nav class="nav" id="nav" aria-label="상세 페이지 메뉴"><a href="#context">Context</a><a href="#decision">Decision</a><a href="#result">Result</a><a href="index.html#projects">All Work</a></nav>
+    <button class="menu" id="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+<main class="case-page">
+  <section class="case-hero">
+    <div class="wrap case-hero-grid">
+      <div class="fade"><a class="back-link" href="index.html#projects">← Selected Work</a><div class="kicker">01 · Website Renewal</div><h1>하예슬아뜰리에<br>Website Renewal</h1></div>
+      <div class="case-hero-copy fade"><p>정리되지 않은 자료와 메뉴에서 출발해, 방문자가 필요한 정보를 먼저 찾도록 구조를 다시 설계하고 반응형 웹으로 구현했습니다.</p><dl><div><dt>Project</dt><dd>Website Renewal</dd></div><div><dt>Role</dt><dd>Planning · UI · Publishing · CMS</dd></div><div><dt>Experience</dt><dd>Real Work</dd></div></dl></div>
+    </div>
+  </section>
+  <section class="wrap case-cover fade">
+    <div class="project-visual visual-blue">
+      <div class="visual-caption"><span>01</span><small>Website Renewal</small></div>
+      <div class="device desktop-device"><div class="device-bar"><i></i><i></i><i></i></div><div class="site-mock"><div class="site-nav">HAYESEUL <span>About&nbsp;&nbsp; Class&nbsp;&nbsp; Works</span></div><div class="site-title"><small>ART & CREATIVE STUDIO</small><b>일상의 감각을<br>깨우는 아틀리에</b><i></i></div><div class="site-grid"><span></span><span></span><span></span></div></div></div>
+      <div class="device mobile-device"><div class="mobile-notch"></div><div class="mobile-content"><small>HAYESEUL</small><b>Creative<br>atelier</b><i></i><span></span><span></span></div></div>
+    </div>
+  </section>
+  <section class="case-story" id="context">
+    <div class="wrap story-wrap">
+      <article class="story-row fade"><div class="story-label"><span>01</span><h2>Context</h2></div><div class="story-copy"><h3>화면을 만들기 전에,<br>자료를 다시 이해해야 했습니다.</h3><p>제공된 자료만으로 바로 화면을 만들기 어려웠고 기존 메뉴도 방문자보다 내부 운영 기준에 가까웠습니다. 요청받은 구성을 그대로 옮기기보다 기존 사이트와 업종을 다시 확인하고, 어떤 정보를 누구에게 먼저 보여줄지 정리하는 과정이 필요했습니다.</p></div></article>
+      <article class="story-row fade"><div class="story-label"><span>02</span><h2>Problem</h2></div><div class="story-copy"><h3>정보는 있었지만<br>찾는 순서가 보이지 않았습니다.</h3><div class="problem-list"><div><b>불분명한 우선순위</b><p>메뉴와 콘텐츠가 같은 비중으로 나열되어 핵심 정보가 드러나지 않았습니다.</p></div><div><b>끊기는 모바일 탐색</b><p>작은 화면에서 원하는 내용과 문의 동선까지 이동하기 어려웠습니다.</p></div><div><b>정리되지 않은 자료</b><p>기존 자료를 목적과 맥락에 맞게 다시 분류해야 했습니다.</p></div></div></div></article>
+      <article class="story-row story-highlight fade" id="decision"><div class="story-label"><span>03</span><h2>My Decision</h2></div><div class="story-copy"><h3>내부의 분류가 아니라<br>방문 목적을 기준으로 나눴습니다.</h3><p>전달받은 메뉴를 그대로 사용하지 않았습니다. 방문자가 먼저 찾을 내용과 사이트에서 이어져야 할 행동을 기준으로 메뉴를 다시 나누고, 중요한 정보와 문의 동선을 앞쪽에 배치했습니다.</p><div class="decision-flow"><span>기존 사이트·업종 확인</span><i>→</i><span>방문 목적별 분류</span><i>→</i><span>핵심 정보 우선 배치</span></div></div></article>
+      <article class="story-row fade"><div class="story-label"><span>04</span><h2>Design → Build</h2></div><div class="story-copy"><h3>설계가 실제 환경에서도<br>같은 의도로 작동하도록.</h3><p>PC와 모바일 UI를 함께 정리한 뒤 반응형으로 직접 구현하고 CMS에 적용했습니다. 실제 콘텐츠 길이, 관리 방식, 화면 크기 변화까지 고려해 운영자가 내용을 바꾸어도 구조가 무너지지 않도록 구성했습니다.</p><div class="build-grid"><div><small>DESIGN</small><b>정보 위계와 반응형 UI</b><p>화면 크기가 달라져도 핵심 콘텐츠의 우선순위가 유지되도록 설계했습니다.</p></div><div><small>BUILD</small><b>Publishing & CMS</b><p>직접 구현하고 CMS에 연결해 설계 의도와 실제 결과의 간격을 확인했습니다.</p></div></div></div></article>
+      <article class="story-row fade" id="result"><div class="story-label"><span>05</span><h2>After Launch</h2></div><div class="story-copy"><h3>오픈한 화면을<br>다시 설계의 근거로 삼았습니다.</h3><p>실제 콘텐츠가 들어간 뒤 발생한 줄바꿈과 모바일 가독성 문제를 확인해 세부 화면을 보완했습니다. 화면을 넘기는 것으로 끝내지 않고 운영 과정에서 드러난 문제를 다시 디자인에 반영했습니다.</p></div></article>
+      <article class="story-row fade"><div class="story-label"><span>06</span><h2>Improve</h2></div><div class="story-copy"><h3>다음 수정이 쉬운 구조도<br>디자인의 일부였습니다.</h3><p>반복 수정이 필요한 영역을 컴포넌트 기준으로 정리해 이후 운영의 부담을 줄였습니다. 이 경험을 통해 좋은 화면은 오픈 순간뿐 아니라 실제로 관리되는 동안에도 안정적으로 작동해야 한다는 기준을 갖게 됐습니다.</p><div class="takeaway"><small>TAKEAWAY</small><strong>화면을 설계할 때, 구현과 운영에서 생길 일을 함께 생각합니다.</strong></div></div></article>
+    </div>
+  </section>
+  <nav class="next-project"><div class="wrap"><span>Next Case Study</span><a href="project-service.html"><b>서비스 정보 구조 Renewal</b><i>→</i></a></div></nav>
+</main>
+<footer><div class="wrap footer-in"><span>© 2026 Jin Yeonhee</span><a href="index.html">Back to Home ↑</a></div></footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
