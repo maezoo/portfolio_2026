@@ -54,73 +54,37 @@
     });
   });
 
-  document.querySelectorAll('[data-slider-track]').forEach(function(track){
-    const items=Array.from(track.children);
-    const controls=track.nextElementSibling;
-    if(!items.length||!controls||!controls.hasAttribute('data-slider-controls')) return;
-
+  function initPortfolioSwiper(selector){
+    const element=document.querySelector(selector);
+    if(!element||typeof window.Swiper==='undefined') return;
+    const controls=element.nextElementSibling;
+    if(!controls||!controls.hasAttribute('data-slider-controls')) return;
     const currentLabel=controls.querySelector('[data-slider-current]');
     const progress=controls.querySelector('[data-slider-progress]');
-    const prev=controls.querySelector('[data-slider-prev]');
-    const next=controls.querySelector('[data-slider-next]');
-    let current=0;
-    let frame=0;
-    let dragging=false;
-    let startX=0;
-    let startScroll=0;
+    const total=element.querySelectorAll('.swiper-slide').length;
 
-    function nearestIndex(){
-      let found=0;
-      let distance=Infinity;
-      items.forEach(function(item,index){
-        const itemLeft=item.offsetLeft-track.offsetLeft;
-        const nextDistance=Math.abs(track.scrollLeft-itemLeft);
-        if(nextDistance<distance){distance=nextDistance;found=index;}
-      });
-      return found;
+    function render(swiper){
+      const current=swiper.activeIndex+1;
+      currentLabel.textContent=String(current).padStart(2,'0');
+      progress.style.transform='scaleX('+(current/total)+')';
     }
 
-    function update(){
-      current=nearestIndex();
-      currentLabel.textContent=String(current+1).padStart(2,'0');
-      progress.style.transform='scaleX('+((current+1)/items.length)+')';
-      prev.disabled=current===0;
-      next.disabled=current===items.length-1;
-      frame=0;
-    }
-
-    function goTo(index){
-      const target=Math.max(0,Math.min(index,items.length-1));
-      track.scrollTo({left:items[target].offsetLeft-track.offsetLeft,behavior:motionDisabled?'auto':'smooth'});
-    }
-
-    track.addEventListener('scroll',function(){
-      if(!frame) frame=window.requestAnimationFrame(update);
-    },{passive:true});
-    prev.addEventListener('click',function(){goTo(current-1);});
-    next.addEventListener('click',function(){goTo(current+1);});
-    track.addEventListener('keydown',function(event){
-      if(event.key==='ArrowLeft'){event.preventDefault();goTo(current-1);}
-      if(event.key==='ArrowRight'){event.preventDefault();goTo(current+1);}
+    new window.Swiper(element,{
+      slidesPerView:'auto',
+      spaceBetween:24,
+      speed:motionDisabled?0:600,
+      grabCursor:true,
+      watchOverflow:true,
+      keyboard:{enabled:true,onlyInViewport:true},
+      navigation:{
+        prevEl:controls.querySelector('[data-slider-prev]'),
+        nextEl:controls.querySelector('[data-slider-next]')
+      },
+      on:{init:render,slideChange:render}
     });
-    track.addEventListener('pointerdown',function(event){
-      if(event.pointerType!=='mouse') return;
-      dragging=true;startX=event.clientX;startScroll=track.scrollLeft;
-      track.classList.add('is-dragging');track.setPointerCapture(event.pointerId);
-    });
-    track.addEventListener('pointermove',function(event){
-      if(!dragging) return;
-      track.scrollLeft=startScroll-(event.clientX-startX);
-    });
-    function endDrag(event){
-      if(!dragging) return;
-      dragging=false;track.classList.remove('is-dragging');
-      if(track.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
-      current=nearestIndex();goTo(current);
-    }
-    track.addEventListener('pointerup',endDrag);
-    track.addEventListener('pointercancel',endDrag);
-    update();
-  });
+  }
+
+  initPortfolioSwiper('.project-swiper');
+  initPortfolioSwiper('.value-swiper');
 
 })();
