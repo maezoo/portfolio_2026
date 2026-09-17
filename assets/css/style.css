@@ -19,11 +19,3 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.fade{opacity:1!important;transform:none!important}}
 .hero h1{word-break:keep-all}
 .phone-wire .wire-button{display:block;width:100%;height:19px;background:#6574e8;border-radius:6px;margin-top:18px}
-.nav a.active{color:var(--blue)}
-.section-head h1{font-size:clamp(36px,4.4vw,56px);line-height:1.18;letter-spacing:-.06em;margin:0}
-.project-content h2{font-size:clamp(35px,4vw,52px);line-height:1.15;letter-spacing:-.06em;margin:0 0 22px}
-.case h3{margin:0 0 14px;color:#536170;font-size:11px;letter-spacing:.06em}.case-focus h3{color:#526be3}
-.about-block h2{font-size:11px;letter-spacing:.11em;color:#526be3;margin:0 0 50px}
-.contact-box h1{font-size:clamp(30px,4vw,47px);line-height:1.25;letter-spacing:-.055em;margin:0}
-.contact-page{min-height:calc(100vh - 164px)}.contact-page .contact{padding-top:112px}
-@media(max-width:680px){.section-head h1{font-size:35px}.project-content h2{font-size:33px}.about-block h2{margin-bottom:28px}.contact-page .contact{padding-top:78px}}
