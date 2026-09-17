@@ -88,8 +88,8 @@
 
   const projectSlider=initPortfolioSwiper('.project-swiper',{
     breakpoints:{
-      0:{allowTouchMove:true,spaceBetween:14},
-      961:{allowTouchMove:false,spaceBetween:32}
+      0:{allowTouchMove:true,spaceBetween:24},
+      961:{allowTouchMove:false,spaceBetween:64}
     }
   });
   initPortfolioSwiper('.value-swiper');
@@ -97,7 +97,7 @@
   if(projectSlider){
     const projectSection=document.querySelector('.projects-section');
     const projectStage=document.querySelector('.projects-sticky');
-    const desktop=window.matchMedia('(min-width: 961px)');
+    const desktop=window.matchMedia('(min-width: 961px) and (min-height: 841px)');
     let scrollFrame=0;
 
     function syncProjectsToScroll(){
