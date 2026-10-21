@@ -64,9 +64,10 @@
 
     const slides=Array.from(track.querySelectorAll(".feature"));
 
-    // Project 01: staggered entrance when its slide becomes visible.
-    // Each element reveals once; reduced-motion users see everything immediately.
+    // Project 01: reveal only after the gallery's first slide reaches its stage.
     const creafit=track.querySelector(".showcase-creafit");
+    let revealCreafit=function(){};
+    let checkCreafitEntry=function(){};
     if(creafit){
       const elements=[
         creafit.querySelector(".showcase-index"),
@@ -78,21 +79,31 @@
         creafit.querySelector(".creafit-mobile-device"),
         creafit.querySelector(".creafit-project-links")
       ].filter(Boolean);
-      const reveal=function(){elements.forEach(function(el){el.classList.add("is-entered");});};
-      if(!reducedMotion&&"IntersectionObserver" in window){
+      let revealed=false;
+      let entryTimer=0;
+      revealCreafit=function(){
+        if(revealed)return;
+        revealed=true;
+        window.clearTimeout(entryTimer);
+        elements.forEach(function(el){el.classList.add("is-entered");});
+      };
+      if(!reducedMotion){
         elements.forEach(function(el,index){
           el.classList.add("creafit-entry");
-          el.style.setProperty("--creafit-delay",([0,90,175,255,345,300,470,590][index])+"ms");
+          el.style.setProperty("--creafit-delay",([0,130,245,355,470,330,560,710][index])+"ms");
         });
-        const projectObserver=new IntersectionObserver(function(entries){
-          if(entries.some(function(entry){return entry.isIntersecting;})){
-            reveal();
-            projectObserver.disconnect();
-          }
-        },{threshold:0.22});
-        projectObserver.observe(creafit);
+        checkCreafitEntry=function(pinnedMode,stageStart){
+          if(revealed||entryTimer)return;
+          const rect=creafit.getBoundingClientRect();
+          const header=document.querySelector(".site-header");
+          const headerHeight=header?header.getBoundingClientRect().height:0;
+          const ready=pinnedMode
+            ? window.scrollY>=stageStart+Math.min(100,window.innerHeight*.12)
+            : rect.top<=window.innerHeight*.55&&rect.bottom>headerHeight+120;
+          if(ready)entryTimer=window.setTimeout(revealCreafit,160);
+        };
       }else{
-        reveal();
+        revealCreafit();
       }
     }
     const desktop=window.matchMedia("(min-width: 1025px) and (min-height: 700px)");
@@ -114,6 +125,7 @@
 
     function render(){
       frame=0;
+      checkCreafitEntry(pinned,start);
       if(pinned){
         const shift=clamp(window.scrollY-start,0,travel);
         track.style.transform="translate3d("+(-shift)+"px,0,0)";
