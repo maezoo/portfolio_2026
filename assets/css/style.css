@@ -782,3 +782,109 @@ button,a{-webkit-tap-highlight-color:transparent}
   .selected-scroll .showcase-creafit .agency-site-hero h4{font-size:clamp(23px,6.6vw,37px)}
   .selected-scroll .showcase-creafit .agency-phone-inner b{font-size:10px}
 }
+
+
+/* PROJECT 01 — portfolio-focused information and realistic device framing */
+.selected-scroll .showcase-creafit .showcase-layout{grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr);gap:clamp(25px,3.2vw,52px)}
+.selected-scroll .showcase-creafit .showcase-index{font-size:12px;letter-spacing:.08em}
+.selected-scroll .showcase-creafit .showcase-index span{font-size:11px;color:#748096;letter-spacing:.08em;margin-left:7px}
+.selected-scroll .showcase-creafit .showcase-title{font-size:clamp(40px,4.05vw,62px);line-height:1.19;margin:clamp(16px,2vw,29px) 0 14px}
+.selected-scroll .showcase-creafit .creafit-project-name{font-size:12px;letter-spacing:.12em;color:#3155ed;font-weight:800;margin:0 0 22px}
+.selected-scroll .showcase-creafit .showcase-description{max-width:490px;font-size:clamp(12px,1.04vw,15px);line-height:1.8;margin:0 0 24px;word-break:keep-all}
+.selected-scroll .showcase-creafit .creafit-project-meta{max-width:475px;border-top:1px solid rgba(35,48,72,.2);margin:0}
+.selected-scroll .showcase-creafit .creafit-project-meta>div{display:grid;grid-template-columns:108px minmax(0,1fr);gap:16px;align-items:start;padding:12px 0;border-bottom:1px solid rgba(35,48,72,.17)}
+.selected-scroll .showcase-creafit .creafit-project-meta dt{font-size:10px;font-weight:800;letter-spacing:.08em;color:#3155ed}
+.selected-scroll .showcase-creafit .creafit-project-meta dd{margin:0;font-size:12px;line-height:1.55;color:#303c50;word-break:keep-all}
+.selected-scroll .showcase-creafit .showcase-link{margin-top:24px;max-width:295px;padding:12px 3px}
+.selected-scroll .showcase-creafit .showcase-preview{min-height:0}
+.selected-scroll .showcase-creafit .agency-browser{width:94%;height:79%;border-radius:10px 10px 5px 5px;box-shadow:0 25px 65px rgba(24,39,83,.16),0 3px 13px rgba(24,39,83,.08);transform:rotate(-1deg)}
+.selected-scroll .showcase-creafit .showcase-browser-bar{height:37px;padding:0 12px;background:#fcfdff;border-bottom:1px solid #e8ebf2}
+.selected-scroll .showcase-creafit .browser-dots i{width:8px;height:8px}
+.selected-scroll .showcase-creafit .browser-dots i:nth-child(1){background:#f4a6a2}
+.selected-scroll .showcase-creafit .browser-dots i:nth-child(2){background:#f1d89e}
+.selected-scroll .showcase-creafit .browser-dots i:nth-child(3){background:#a9d9b8}
+.selected-scroll .showcase-creafit .creafit-browser-url{color:#8490a4;font-size:10px;background:#f3f5fa;border-radius:4px;text-align:center;padding:5px 10px;width:min(52%,265px);letter-spacing:0}
+.selected-scroll .showcase-creafit .creafit-browser-url span{color:#9eabc0}
+.selected-scroll .showcase-creafit .creafit-browser-more{font-size:19px;color:#97a1b0;line-height:1}
+.selected-scroll .showcase-creafit .agency-website{height:calc(100% - 37px);padding:clamp(19px,2.2vw,32px);display:flex;flex-direction:column}
+.selected-scroll .showcase-creafit .agency-site-nav strong{font-size:clamp(16px,1.6vw,23px);flex:0 0 auto}
+.selected-scroll .showcase-creafit .creafit-desktop-nav{font-size:clamp(6px,.62vw,9px);font-weight:700;letter-spacing:.08em;color:#c0c9e1}
+.selected-scroll .showcase-creafit .creafit-desktop-contact{font-size:clamp(6px,.59vw,9px);font-weight:800;letter-spacing:.06em;border:1px solid #7886b2;padding:9px 12px}
+.selected-scroll .showcase-creafit .agency-site-hero{flex:1;height:auto;max-width:none;padding:0;justify-content:center}
+.selected-scroll .showcase-creafit .creafit-screen-kicker{font-size:clamp(7px,.7vw,10px);letter-spacing:.17em;color:#aabbe9;font-weight:800;margin-bottom:15px}
+.selected-scroll .showcase-creafit .agency-site-hero h4{font-size:clamp(28px,3.15vw,49px);line-height:1.22;position:relative;z-index:2}
+.selected-scroll .showcase-creafit .agency-site-hero>p{font-size:clamp(8px,.82vw,12px);margin:17px 0 19px;color:#c7d0e7}
+.selected-scroll .showcase-creafit .creafit-screen-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;align-self:flex-start;font-size:clamp(7px,.76vw,10px);font-weight:800;letter-spacing:.06em;color:#fff;border-bottom:1px solid #a0b2e6;padding:0 0 8px}
+.selected-scroll .showcase-creafit .creafit-screen-cta b{font-size:16px;font-weight:400}
+.selected-scroll .showcase-creafit .creafit-screen-footer{position:relative;z-index:2;display:flex;justify-content:space-between;gap:10px;border-top:1px solid rgba(232,236,255,.2);padding-top:13px}
+.selected-scroll .showcase-creafit .creafit-screen-footer span{font-size:clamp(6px,.65vw,9px);font-weight:700;letter-spacing:.035em;color:#b4c1e2;white-space:nowrap}
+.selected-scroll .showcase-creafit .agency-phone{width:23%;height:58%;max-width:180px;bottom:9%;right:1%;border:6px solid #212632;border-radius:23px;background:#131b36;box-shadow:0 23px 42px rgba(16,29,62,.31);transform:rotate(3deg)}
+.selected-scroll .showcase-creafit .creafit-phone-status{height:22px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;background:#1a2140;color:#dce6ff;font-size:7px;font-weight:800}
+.selected-scroll .showcase-creafit .creafit-phone-status i{width:32%;height:8px;border-radius:0 0 10px 10px;background:#212632;position:absolute;top:0;left:34%}
+.selected-scroll .showcase-creafit .creafit-phone-signal{font-size:8px;letter-spacing:0}
+.selected-scroll .showcase-creafit .agency-phone-inner{height:calc(100% - 34px);padding:12px 10px 9px}
+.selected-scroll .showcase-creafit .creafit-mobile-head{display:flex;align-items:center;justify-content:space-between}
+.selected-scroll .showcase-creafit .creafit-mobile-head strong{font-size:clamp(8px,.93vw,14px);letter-spacing:-.055em}
+.selected-scroll .showcase-creafit .creafit-mobile-head strong span{color:#9fb3fb}
+.selected-scroll .showcase-creafit .creafit-mobile-menu{display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+.selected-scroll .showcase-creafit .creafit-mobile-menu i{display:block;width:13px;height:1px;background:#fff}
+.selected-scroll .showcase-creafit .creafit-mobile-menu i:last-child{width:9px}
+.selected-scroll .showcase-creafit .creafit-mobile-content{display:flex;flex-direction:column;justify-content:center;flex:1}
+.selected-scroll .showcase-creafit .creafit-mobile-content small{font-size:clamp(4px,.51vw,7px);letter-spacing:.07em;color:#9eb5e6}
+.selected-scroll .showcase-creafit .creafit-mobile-content b{font-size:clamp(12px,1.45vw,21px);line-height:1.35;letter-spacing:-.075em;margin:12px 0}
+.selected-scroll .showcase-creafit .creafit-mobile-content>span{font-size:clamp(5px,.55vw,8px);color:#b8c8eb;line-height:1.4}
+.selected-scroll .showcase-creafit .creafit-mobile-content em{align-self:flex-start;font-style:normal;font-size:clamp(5px,.52vw,8px);letter-spacing:.05em;border-bottom:1px solid #879ad0;margin-top:18px;padding-bottom:6px}
+.selected-scroll .showcase-creafit .creafit-mobile-foot{display:flex;gap:6px;font-size:7px;color:#c7d6f8}
+.selected-scroll .showcase-creafit .creafit-phone-home{height:12px;position:relative;background:#1a2140}
+.selected-scroll .showcase-creafit .creafit-phone-home:before{content:"";position:absolute;top:3px;left:36%;width:28%;height:3px;border-radius:4px;background:#cbd6ee}
+@media(max-height:860px) and (min-width:1025px){
+  .selected-scroll .showcase-creafit .showcase-title{font-size:clamp(37px,3.6vw,54px);margin:16px 0 10px}
+  .selected-scroll .showcase-creafit .creafit-project-name{margin-bottom:14px}
+  .selected-scroll .showcase-creafit .showcase-description{margin-bottom:17px;line-height:1.65}
+  .selected-scroll .showcase-creafit .creafit-project-meta>div{padding:9px 0}
+  .selected-scroll .showcase-creafit .showcase-link{margin-top:14px;padding:9px 3px}
+}
+@media(max-width:820px){
+  .selected-scroll .showcase-creafit .showcase-layout{grid-template-columns:1fr;gap:30px}
+  .selected-scroll .showcase-creafit .showcase-title{font-size:clamp(42px,8vw,62px)}
+  .selected-scroll .showcase-creafit .showcase-description{font-size:14px}
+  .selected-scroll .showcase-creafit .creafit-project-meta dd{font-size:12px}
+  .selected-scroll .showcase-creafit .showcase-preview{min-height:420px}
+  .selected-scroll .showcase-creafit .agency-site-hero h4{font-size:clamp(29px,5vw,45px)}
+  .selected-scroll .showcase-creafit .agency-phone{height:59%}
+  .selected-scroll .showcase-creafit .creafit-mobile-content b{font-size:clamp(12px,2.3vw,18px)}
+}
+@media(max-width:560px){
+  .selected-scroll .showcase-creafit .showcase-layout{gap:22px}
+  .selected-scroll .showcase-creafit .showcase-index{font-size:11px}
+  .selected-scroll .showcase-creafit .showcase-title{font-size:clamp(38px,10vw,52px);margin:18px 0 10px}
+  .selected-scroll .showcase-creafit .creafit-project-name{font-size:10px;margin-bottom:14px}
+  .selected-scroll .showcase-creafit .showcase-description{font-size:12px;margin-bottom:15px}
+  .selected-scroll .showcase-creafit .creafit-project-meta>div{grid-template-columns:95px minmax(0,1fr);gap:9px;padding:9px 0}
+  .selected-scroll .showcase-creafit .creafit-project-meta dt{font-size:9px}
+  .selected-scroll .showcase-creafit .creafit-project-meta dd{font-size:10px}
+  .selected-scroll .showcase-creafit .showcase-link{margin-top:17px}
+  .selected-scroll .showcase-creafit .showcase-preview{height:330px;min-height:330px}
+  .selected-scroll .showcase-creafit .agency-browser{height:78%;width:92%}
+  .selected-scroll .showcase-creafit .showcase-browser-bar{height:25px;padding:0 8px}
+  .selected-scroll .showcase-creafit .browser-dots i{width:5px;height:5px}
+  .selected-scroll .showcase-creafit .creafit-browser-url{font-size:7px;padding:4px 5px}
+  .selected-scroll .showcase-creafit .agency-website{height:calc(100% - 25px);padding:14px}
+  .selected-scroll .showcase-creafit .agency-site-nav strong{font-size:14px}
+  .selected-scroll .showcase-creafit .creafit-desktop-nav{display:none}
+  .selected-scroll .showcase-creafit .creafit-desktop-contact{font-size:6px;padding:5px 6px}
+  .selected-scroll .showcase-creafit .creafit-screen-kicker{font-size:6px;margin-bottom:10px}
+  .selected-scroll .showcase-creafit .agency-site-hero h4{font-size:clamp(23px,5.7vw,32px)}
+  .selected-scroll .showcase-creafit .agency-site-hero>p{font-size:7px;margin:10px 0}
+  .selected-scroll .showcase-creafit .creafit-screen-cta{font-size:7px}
+  .selected-scroll .showcase-creafit .creafit-screen-footer span{font-size:5px}
+  .selected-scroll .showcase-creafit .agency-phone{border-width:4px;border-radius:17px;right:0;bottom:9%;height:55%;width:24%}
+  .selected-scroll .showcase-creafit .creafit-phone-status{padding:0 7px;height:16px;font-size:5px}
+  .selected-scroll .showcase-creafit .agency-phone-inner{height:calc(100% - 24px);padding:8px 6px}
+  .selected-scroll .showcase-creafit .creafit-mobile-head strong{font-size:8px}
+  .selected-scroll .showcase-creafit .creafit-mobile-content small{font-size:4px}
+  .selected-scroll .showcase-creafit .creafit-mobile-content b{font-size:10px;margin:7px 0}
+  .selected-scroll .showcase-creafit .creafit-mobile-content>span{font-size:5px}
+  .selected-scroll .showcase-creafit .creafit-mobile-content em{font-size:5px;margin-top:9px}
+  .selected-scroll .showcase-creafit .creafit-phone-home{height:8px}
+}
