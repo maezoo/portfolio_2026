@@ -978,20 +978,23 @@ button,a{-webkit-tap-highlight-color:transparent}
 .selected-scroll .showcase-creafit .creafit-mobile-screen{flex:1;min-height:0;overflow:hidden;background:#050505}
 .selected-scroll .showcase-creafit .creafit-mobile-device .creafit-phone-home{flex:0 0 4%;height:4%;background:#111}
 .selected-scroll .showcase-creafit .creafit-mobile-device .creafit-phone-home:before{top:3px;background:#fff}
-/* PROJECT 01 — editorial before/after split navigation */
-.selected-scroll .showcase-creafit .creafit-project-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;max-width:485px;margin-top:24px;border:1px solid rgba(64,85,116,.2);border-radius:13px;overflow:hidden;background:rgba(255,255,255,.72)}
-.selected-scroll .showcase-creafit .creafit-compare-link{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;min-height:85px;padding:16px 17px;border:0;border-radius:0;background:transparent;box-shadow:none;text-decoration:none;color:#5b687c;transition:background-color .25s ease,color .25s ease}
-.selected-scroll .showcase-creafit .creafit-compare-link+.creafit-compare-link{border-left:1px solid rgba(64,85,116,.18)}
-.selected-scroll .showcase-creafit .creafit-compare-copy{display:flex;flex-direction:column;gap:9px;min-width:0}
-.selected-scroll .showcase-creafit .creafit-compare-copy small{display:block;font-size:11px;line-height:1;font-weight:750;letter-spacing:.04em;color:#91a0b5}
-.selected-scroll .showcase-creafit .creafit-compare-copy strong{font-size:15px;line-height:1.25;letter-spacing:-.045em;font-weight:750;white-space:nowrap;color:inherit}
-.selected-scroll .showcase-creafit .creafit-compare-arrow{display:grid;place-items:center;flex:0 0 23px;width:23px;height:23px;background:transparent;border-radius:0;color:inherit}
-.selected-scroll .showcase-creafit .creafit-compare-arrow svg{display:block;width:18px;height:18px;transition:transform .25s ease}
-.selected-scroll .showcase-creafit .creafit-compare-link--after{background:rgba(49,85,237,.055);color:#253f9f}
+/* PROJECT 01 — editorial before/after navigation */
+.selected-scroll .showcase-creafit .creafit-project-links{display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);align-items:center;gap:9px;max-width:485px;margin-top:24px;border-top:1px solid rgba(47,60,81,.34);border-bottom:1px solid rgba(47,60,81,.21);border-radius:0;overflow:visible;background:transparent}
+.selected-scroll .showcase-creafit .creafit-compare-link{position:relative;display:flex;justify-content:space-between;align-items:center;gap:6px;min-width:0;min-height:79px;padding:14px 2px;background:transparent;border:0;border-radius:0;box-shadow:none;text-decoration:none;color:#697386;transition:color .22s ease}
+.selected-scroll .showcase-creafit .creafit-compare-link:after{content:"";position:absolute;bottom:-1px;left:0;right:100%;height:2px;background:#3155ed;transition:right .3s cubic-bezier(.2,.7,.2,1)}
+.selected-scroll .showcase-creafit .creafit-compare-link--after{color:#26364f}
+.selected-scroll .showcase-creafit .creafit-compare-copy{display:flex;flex-direction:column;gap:8px;min-width:0}
+.selected-scroll .showcase-creafit .creafit-compare-copy small{font-size:10px;line-height:1;font-weight:800;letter-spacing:.14em;color:#919dae}
 .selected-scroll .showcase-creafit .creafit-compare-link--after .creafit-compare-copy small{color:#3155ed}
-.selected-scroll .showcase-creafit .creafit-compare-link:hover{background:rgba(49,85,237,.11);color:#2448d3;transform:none;box-shadow:none}
+.selected-scroll .showcase-creafit .creafit-compare-copy strong{font-size:15px;line-height:1.3;font-weight:750;letter-spacing:-.05em;white-space:nowrap;color:inherit}
+.selected-scroll .showcase-creafit .creafit-compare-flow{display:grid;place-items:center;color:#a1abb9;pointer-events:none}
+.selected-scroll .showcase-creafit .creafit-compare-flow svg{width:32px;height:15px}
+.selected-scroll .showcase-creafit .creafit-compare-arrow{flex:0 0 20px;width:20px;height:20px;display:grid;place-items:center;color:inherit;background:transparent}
+.selected-scroll .showcase-creafit .creafit-compare-arrow svg{width:17px;height:17px;transition:transform .22s ease}
+.selected-scroll .showcase-creafit .creafit-compare-link:hover{color:#3155ed;transform:none;box-shadow:none;background:transparent}
+.selected-scroll .showcase-creafit .creafit-compare-link:hover:after{right:0}
 .selected-scroll .showcase-creafit .creafit-compare-link:hover .creafit-compare-arrow svg{transform:translate(3px,-3px)}
-.selected-scroll .showcase-creafit .creafit-compare-link:focus-visible{outline:3px solid #3155ed;outline-offset:-4px;position:relative;z-index:2}
+.selected-scroll .showcase-creafit .creafit-compare-link:focus-visible{outline:2px solid #3155ed;outline-offset:3px}
 @media(max-height:860px) and (min-width:1025px){
  .selected-scroll .showcase-creafit .creafit-desktop-device{width:min(94%,calc(100% - 16px))}
  .selected-scroll .showcase-creafit .showcase-description{margin-bottom:11px}
@@ -1009,12 +1012,13 @@ button,a{-webkit-tap-highlight-color:transparent}
  .selected-scroll .showcase-creafit .creafit-device-address{font-size:6px;padding:3px 7px}
  .selected-scroll .showcase-creafit .creafit-device-dots i{width:5px;height:5px}
  .selected-scroll .showcase-creafit .creafit-mobile-device{width:clamp(82px,23vw,108px);bottom:8%;right:-1%;border-width:4px;border-radius:16px}
- .selected-scroll .showcase-creafit .creafit-project-links{gap:8px;margin-top:17px}
- .selected-scroll .showcase-creafit .creafit-compare-link{padding:10px;gap:4px;min-height:67px}
+ .selected-scroll .showcase-creafit .creafit-project-links{gap:4px;grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);margin-top:17px}
+ .selected-scroll .showcase-creafit .creafit-compare-link{padding:11px 1px;gap:3px;min-height:65px}
  .selected-scroll .showcase-creafit .creafit-compare-copy small{font-size:10px}
  .selected-scroll .showcase-creafit .creafit-compare-copy strong{font-size:12px}
- .selected-scroll .showcase-creafit .creafit-compare-arrow{width:19px;height:19px;flex-basis:19px}
- .selected-scroll .showcase-creafit .creafit-compare-arrow svg{width:15px;height:15px}
+ .selected-scroll .showcase-creafit .creafit-compare-arrow{width:16px;height:16px;flex-basis:16px}
+ .selected-scroll .showcase-creafit .creafit-compare-arrow svg{width:14px;height:14px}
+ .selected-scroll .showcase-creafit .creafit-compare-flow svg{width:20px}
 }
 
 
