@@ -63,6 +63,38 @@
     if(!section||!runway||!pin||!track||!current||!progressBar||!previous||!next)return;
 
     const slides=Array.from(track.querySelectorAll(".feature"));
+
+    // Project 01: staggered entrance when its slide becomes visible.
+    // Each element reveals once; reduced-motion users see everything immediately.
+    const creafit=track.querySelector(".showcase-creafit");
+    if(creafit){
+      const elements=[
+        creafit.querySelector(".showcase-index"),
+        creafit.querySelector(".showcase-title"),
+        creafit.querySelector(".creafit-project-name"),
+        creafit.querySelector(".showcase-description"),
+        creafit.querySelector(".creafit-project-meta"),
+        creafit.querySelector(".creafit-project-links"),
+        creafit.querySelector(".creafit-desktop-device"),
+        creafit.querySelector(".creafit-mobile-device")
+      ].filter(Boolean);
+      const reveal=function(){elements.forEach(function(el){el.classList.add("is-entered");});};
+      if(!reducedMotion&&"IntersectionObserver" in window){
+        elements.forEach(function(el,index){
+          el.classList.add("creafit-entry");
+          el.style.setProperty("--creafit-delay",(index<6?index*105:(index===6?230:390))+"ms");
+        });
+        const projectObserver=new IntersectionObserver(function(entries){
+          if(entries.some(function(entry){return entry.isIntersecting;})){
+            reveal();
+            projectObserver.disconnect();
+          }
+        },{threshold:0.22});
+        projectObserver.observe(creafit);
+      }else{
+        reveal();
+      }
+    }
     const desktop=window.matchMedia("(min-width: 1025px) and (min-height: 700px)");
     let pinned=false;
     let travel=0;
