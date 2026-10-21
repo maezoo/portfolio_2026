@@ -1019,11 +1019,11 @@ button,a{-webkit-tap-highlight-color:transparent}
 
 
 @media(prefers-reduced-motion:no-preference){
- .selected-scroll .showcase-creafit .creafit-entry{transition:opacity .72s cubic-bezier(.2,.7,.2,1),transform .72s cubic-bezier(.2,.7,.2,1);transition-delay:var(--creafit-delay,0ms)}
- .selected-scroll .showcase-creafit .creafit-entry:not(.is-entered){opacity:0;transform:translate3d(0,22px,0)}
+ .selected-scroll .showcase-creafit .creafit-entry{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--creafit-delay,0ms)}
+ .selected-scroll .showcase-creafit .creafit-entry:not(.is-entered){opacity:0;transform:translate3d(0,36px,0)}
  .selected-scroll .showcase-creafit .creafit-entry.is-entered{opacity:1;transform:translate3d(0,0,0)}
- .selected-scroll .showcase-creafit .creafit-desktop-device.creafit-entry:not(.is-entered){transform:translate3d(0,26px,0) rotate(-1deg)}
+ .selected-scroll .showcase-creafit .creafit-desktop-device.creafit-entry:not(.is-entered){transform:translate3d(0,46px,0) rotate(-1deg)}
  .selected-scroll .showcase-creafit .creafit-desktop-device.creafit-entry.is-entered{transform:translate3d(0,0,0) rotate(-1deg)}
- .selected-scroll .showcase-creafit .creafit-mobile-device.creafit-entry:not(.is-entered){transform:translate3d(0,30px,0) rotate(3deg)}
+ .selected-scroll .showcase-creafit .creafit-mobile-device.creafit-entry:not(.is-entered){transform:translate3d(0,56px,0) rotate(3deg)}
  .selected-scroll .showcase-creafit .creafit-mobile-device.creafit-entry.is-entered{transform:translate3d(0,0,0) rotate(3deg)}
 }
