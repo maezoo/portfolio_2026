@@ -650,3 +650,96 @@ button,a{-webkit-tap-highlight-color:transparent}
 .selected-scroll .showcase-links .showcase-link{max-width:100%}
 .selected-scroll .showcase-secondary-link{display:inline-block;padding:12px 0}
 }
+
+
+/* Selected Projects: full-viewport backgrounds and left-aligned BNJ art */
+/* Each .showcase-project is itself 100vw wide inside .selected-track.
+   Apply the background there instead of to the right/left preview panels. */
+.selected-scroll .showcase-creafit{
+  background:radial-gradient(circle at 73% 45%,#e9eeff 0%,#f3f5fa 48%,#f7f8fa 100%);
+}
+.selected-scroll .showcase-donggam{
+  background:#f5f1f2;
+}
+.selected-scroll .showcase-preview--creafit,
+.selected-scroll .showcase-preview--donggam{
+  background:transparent;
+}
+
+/* PROJECT 03: expand the former .bnj-visual-stage backdrop to the
+   full slide while keeping the project copy within .container. */
+.selected-scroll .showcase-bnj{
+  background:radial-gradient(circle at 65% 35%,#3d5362 0%,transparent 44%),
+             linear-gradient(130deg,#121e27,#243745);
+  color:#fff;
+}
+.selected-scroll .showcase-preview--bnj,
+.selected-scroll .bnj-visual-stage{
+  background:transparent;
+}
+.selected-scroll .bnj-visual-stage:before{
+  display:none;
+}
+.selected-scroll .showcase-bnj .showcase-topline,
+.selected-scroll .showcase-bnj .showcase-footline{
+  border-color:rgba(225,236,241,.23);
+  color:#b8c8d1;
+}
+.selected-scroll .showcase-bnj .showcase-topline span:first-child{
+  color:#e7eff4;
+}
+.selected-scroll .showcase-bnj .showcase-eyebrow,
+.selected-scroll .showcase-bnj .showcase-description{
+  color:#c0d0d9;
+}
+.selected-scroll .showcase-bnj .showcase-subtitle{
+  color:#f1f5f7;
+}
+.selected-scroll .showcase-bnj .showcase-product-tags span{
+  color:#dce7ed;
+  border-color:rgba(225,236,241,.32);
+}
+.selected-scroll .showcase-bnj .showcase-link{
+  color:#fff;
+  border-color:#a7bfcb;
+}
+.selected-scroll .showcase-bnj .showcase-link:hover{
+  color:#9fd0eb;
+}
+.selected-scroll .bnj-stage-text{
+  left:0;
+}
+.selected-scroll .bnj-structure{
+  left:-12%;
+  right:auto;
+  top:9%;
+  width:105%;
+  height:106%;
+}
+.selected-scroll .bnj-stage-corner{
+  left:0;
+  bottom:4%;
+}
+.selected-scroll .bnj-image-note{
+  left:0;
+  right:auto;
+  bottom:11%;
+}
+@media(max-width:820px){
+  .selected-scroll .bnj-structure{
+    left:-7%;
+    right:auto;
+    top:10%;
+    width:108%;
+    height:105%;
+  }
+}
+@media(max-width:560px){
+  .selected-scroll .bnj-structure{
+    left:-9%;
+    right:auto;
+    top:15%;
+    width:116%;
+    height:98%;
+  }
+}
