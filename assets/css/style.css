@@ -953,3 +953,41 @@ button,a{-webkit-tap-highlight-color:transparent}
   .selected-scroll .showcase-creafit .creafit-project-meta dd{font-size:12px}
   .selected-scroll .showcase-creafit .showcase-link{margin-top:21px}
 }
+
+
+/* Project 01 - Creafit identity and device proportions; other slides untouched */
+.selected-scroll .showcase-creafit{--creafit-orange:#f36b21;--creafit-black:#171717}
+.selected-scroll .showcase-creafit .agency-browser{background:#fff}
+.selected-scroll .showcase-creafit .agency-website{background:#171717;color:#fff}
+.selected-scroll .showcase-creafit .agency-website:after{border-color:rgba(243,107,33,.16);box-shadow:0 0 0 38px rgba(243,107,33,.06),0 0 0 88px rgba(243,107,33,.035)}
+.selected-scroll .showcase-creafit .agency-site-nav strong span,
+.selected-scroll .showcase-creafit .agency-site-hero h4 em{color:var(--creafit-orange)}
+.selected-scroll .showcase-creafit .creafit-desktop-nav,
+.selected-scroll .showcase-creafit .agency-site-hero>p{color:#d1d1d1}
+.selected-scroll .showcase-creafit .creafit-desktop-contact{border-color:var(--creafit-orange);color:#fff}
+.selected-scroll .showcase-creafit .creafit-screen-kicker{color:var(--creafit-orange)}
+.selected-scroll .showcase-creafit .creafit-screen-cta{border-color:var(--creafit-orange)}
+.selected-scroll .showcase-creafit .creafit-screen-cta b{color:var(--creafit-orange)}
+.selected-scroll .showcase-creafit .creafit-screen-footer{border-top-color:rgba(255,255,255,.22)}
+.selected-scroll .showcase-creafit .creafit-screen-footer span{color:#d4d4d4}
+.selected-scroll .showcase-creafit .agency-art-mark{color:rgba(243,107,33,.065)}
+.selected-scroll .showcase-creafit .agency-phone{width:clamp(112px,12.5vw,172px);height:auto;max-width:none;aspect-ratio:9 / 19.5;bottom:12%;right:0;border-color:#232323;background:#171717;overflow:hidden}
+.selected-scroll .showcase-creafit .creafit-phone-status{height:8%;background:#171717;color:#fff}
+.selected-scroll .showcase-creafit .creafit-phone-status i{background:#232323}
+.selected-scroll .showcase-creafit .agency-phone-inner{height:87%;background:#171717;color:#fff}
+.selected-scroll .showcase-creafit .creafit-mobile-head strong span{color:var(--creafit-orange)}
+.selected-scroll .showcase-creafit .creafit-mobile-content small{color:var(--creafit-orange)}
+.selected-scroll .showcase-creafit .creafit-mobile-content>span{color:#d1d1d1}
+.selected-scroll .showcase-creafit .creafit-mobile-content em{border-bottom-color:var(--creafit-orange);color:#fff}
+.selected-scroll .showcase-creafit .creafit-mobile-foot{color:var(--creafit-orange)}
+.selected-scroll .showcase-creafit .creafit-phone-home{height:5%;background:#171717}
+.selected-scroll .showcase-creafit .creafit-phone-home:before{background:#fff}
+@media(max-width:820px){
+  .selected-scroll .showcase-creafit .agency-phone{width:clamp(102px,20vw,154px);height:auto;bottom:8%}
+}
+@media(max-width:560px){
+  .selected-scroll .showcase-creafit .agency-phone{width:clamp(83px,23vw,112px);height:auto;bottom:11%;border-width:4px}
+  .selected-scroll .showcase-creafit .creafit-phone-status{height:8%}
+  .selected-scroll .showcase-creafit .agency-phone-inner{height:87%}
+  .selected-scroll .showcase-creafit .creafit-phone-home{height:5%}
+}
