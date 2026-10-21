@@ -47,7 +47,7 @@
     </div>
   </section>
 
-  <section class="selected section" id="projects" aria-labelledby="selectedTitle">
+  <section class="selected section selected-scroll" id="projects" aria-labelledby="selectedTitle">
     <div class="container">
       <div class="section-intro reveal">
         <div><span class="section-kicker"><i>01</i> SELECTED PROJECTS</span><h2 id="selectedTitle">작업의 결과와<br><em>그 뒤의 판단.</em></h2></div>
@@ -55,6 +55,9 @@
       </div>
     </div>
 
+    <div class="selected-runway" id="selectedRunway">
+      <div class="selected-pin" id="selectedPin">
+        <div class="selected-track" id="selectedTrack" aria-label="대표 프로젝트 3개">
     <article class="feature feature-01" aria-labelledby="project01Title">
       <div class="container">
         <div class="feature-label reveal"><span>01 / WEBSITE RENEWAL</span><span>REAL WORK · PLANNING / UI / PUBLISHING / CMS</span></div>
@@ -112,6 +115,22 @@
         </div>
       </div>
     </article>
+        </div>
+        <div class="selected-controls">
+          <div class="container selected-controls-inner">
+            <span class="selected-controls-hint">SCROLL TO EXPLORE <span aria-hidden="true">→</span></span>
+            <div class="selected-progress" aria-label="프로젝트 위치">
+              <span class="selected-current" id="selectedCurrent" aria-live="off">01</span><span class="selected-total">/ 03</span>
+              <span class="selected-progress-line" aria-hidden="true"><i id="selectedProgressBar"></i></span>
+            </div>
+            <div class="selected-nav">
+              <button type="button" id="selectedPrev" aria-label="이전 프로젝트" aria-controls="selectedTrack">←</button>
+              <button type="button" id="selectedNext" aria-label="다음 프로젝트" aria-controls="selectedTrack">→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="approach section" id="process" aria-labelledby="approachTitle">
