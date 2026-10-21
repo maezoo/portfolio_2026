@@ -90,17 +90,19 @@
       if(!reducedMotion){
         elements.forEach(function(el,index){
           el.classList.add("creafit-entry");
-          el.style.setProperty("--creafit-delay",([0,130,245,355,470,330,560,710][index])+"ms");
+          el.style.setProperty("--creafit-delay",([0,65,115,165,225,125,260,325][index])+"ms");
         });
         checkCreafitEntry=function(pinnedMode,stageStart){
-          if(revealed||entryTimer)return;
-          const rect=creafit.getBoundingClientRect();
+          if(revealed)return;
           const header=document.querySelector(".site-header");
           const headerHeight=header?header.getBoundingClientRect().height:0;
+          const stageRect=pin.getBoundingClientRect();
+          const slideRect=creafit.getBoundingClientRect();
+          // Start on Project 01 itself, not partway through the horizontal track.
           const ready=pinnedMode
-            ? window.scrollY>=stageStart+Math.min(100,window.innerHeight*.12)
-            : rect.top<=window.innerHeight*.55&&rect.bottom>headerHeight+120;
-          if(ready)entryTimer=window.setTimeout(revealCreafit,160);
+            ? window.scrollY>=stageStart-8&&stageRect.top<=headerHeight+25
+            : slideRect.top<=window.innerHeight*.78&&slideRect.bottom>headerHeight+80;
+          if(ready)revealCreafit();
         };
       }else{
         revealCreafit();
