@@ -1041,3 +1041,107 @@ button,a{-webkit-tap-highlight-color:transparent}
 @media(prefers-reduced-motion:no-preference){
  .selected-scroll .showcase-creafit .creafit-entry{transition-duration:.48s}
 }
+
+
+/* PROJECT 02 — Donggam UX redesign: actual source-informed showcase */
+.selected-scroll .showcase-donggam{--dg-wine:#751631;--dg-ink:#191f28}
+.selected-scroll .showcase-donggam .showcase-layout--donggam{grid-template-columns:minmax(0,.79fr) minmax(0,1.21fr);gap:clamp(30px,4vw,68px);align-items:center}
+.selected-scroll .showcase-donggam .showcase-copy--donggam{order:0;position:relative;z-index:3}
+.selected-scroll .showcase-donggam .showcase-preview--donggam{order:1;position:relative;min-height:400px;display:flex;align-items:center;justify-content:flex-end;background:transparent;overflow:visible}
+.selected-scroll .showcase-donggam .showcase-eyebrow{color:var(--dg-wine);font-size:12px;font-weight:800;letter-spacing:.06em}
+.selected-scroll .showcase-donggam .showcase-eyebrow span{color:#ad8893;margin:0 4px}
+.selected-scroll .showcase-donggam .showcase-title{font-size:clamp(43px,4.5vw,68px);line-height:1.14;letter-spacing:-.075em;margin:24px 0 14px;color:var(--dg-ink)}
+.selected-scroll .showcase-donggam .wine-dot{color:var(--dg-wine)}
+.selected-scroll .showcase-donggam .donggam-project-name{font-size:15px;font-weight:750;color:var(--dg-wine);margin:0 0 21px}
+.selected-scroll .showcase-donggam .showcase-description{font-size:clamp(14px,1.02vw,16px);line-height:1.75;max-width:465px;margin:0 0 20px;color:#53606f}
+.selected-scroll .showcase-donggam .donggam-project-focus{display:flex;gap:7px;flex-wrap:wrap;max-width:480px;margin:0 0 18px}
+.selected-scroll .showcase-donggam .donggam-project-focus span{display:inline-flex;align-items:center;border:1px solid #dfcfd4;background:rgba(255,255,255,.54);border-radius:5px;color:#633447;padding:7px 10px;font-size:11px;font-weight:720;line-height:1.3}
+.selected-scroll .showcase-donggam .donggam-project-meta{max-width:490px;border-top:1px solid #d8cdd1;margin:0;padding:12px 0 0}
+.selected-scroll .showcase-donggam .donggam-project-meta div{display:grid;grid-template-columns:75px minmax(0,1fr);gap:12px;margin-bottom:9px}
+.selected-scroll .showcase-donggam .donggam-project-meta dt{font-size:11px;color:#8b6e78;font-weight:800}
+.selected-scroll .showcase-donggam .donggam-project-meta dd{margin:0;font-size:12px;color:#3d4755;font-weight:650;line-height:1.5}
+.selected-scroll .showcase-donggam .donggam-project-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:20px}
+.selected-scroll .showcase-donggam .donggam-project-actions a{display:inline-flex;align-items:center;justify-content:space-between;gap:23px;min-height:44px;padding:11px 16px;border-radius:7px;font-size:12px;font-weight:800;text-decoration:none;transition:transform .2s,background .2s,color .2s,border-color .2s}
+.selected-scroll .showcase-donggam .donggam-primary-action{color:#fff;background:var(--dg-wine);border:1px solid var(--dg-wine)}
+.selected-scroll .showcase-donggam .donggam-secondary-action{color:#653547;background:transparent;border:1px solid #bea6ae}
+.selected-scroll .showcase-donggam .donggam-project-actions a:hover{transform:translateY(-2px)}
+.selected-scroll .showcase-donggam .donggam-primary-action:hover{background:#4d0b1e}
+.selected-scroll .showcase-donggam .donggam-secondary-action:hover{background:#fff}
+.selected-scroll .showcase-donggam .donggam-stage-halo{position:absolute;inset:13% -7% 4% 14%;background:radial-gradient(ellipse at center,rgba(117,22,49,.13),rgba(117,22,49,0) 65%);pointer-events:none}
+.selected-scroll .showcase-donggam .donggam-browser{position:relative;width:95%;height:auto;aspect-ratio:18/14;max-height:575px;border-radius:11px;overflow:hidden;z-index:1;transform:rotate(-1.25deg);box-shadow:0 35px 80px rgba(69,25,44,.17),0 7px 22px rgba(69,25,44,.07);border:1px solid rgba(92,42,58,.16)}
+.selected-scroll .showcase-donggam .donggam-website{height:calc(100% - 29px);background:#fbf8f9;color:#191f28}
+.selected-scroll .showcase-donggam .donggam-site-nav{height:13%;min-height:37px;padding:0 3.2%;background:#fff;border-bottom:1px solid #e8e2e4}
+.selected-scroll .showcase-donggam .donggam-site-nav strong{font-size:clamp(11px,1.07vw,17px);color:#751631}
+.selected-scroll .showcase-donggam .donggam-site-nav strong span{color:#292027;font-size:.73em}
+.selected-scroll .showcase-donggam .donggam-site-nav small{font-size:clamp(5px,.56vw,8px);color:#424046}
+.selected-scroll .showcase-donggam .donggam-site-nav b{font-size:clamp(5px,.56vw,8px);padding:8px 10px}
+.selected-scroll .showcase-donggam .donggam-site-hero{height:68%;display:grid;grid-template-columns:1.03fr .97fr;background:#fbf8f9}
+.selected-scroll .showcase-donggam .donggam-site-copy{padding:clamp(16px,2vw,34px);align-items:flex-start;justify-content:center}
+.selected-scroll .showcase-donggam .donggam-site-copy>small{color:#751631;font-size:clamp(6px,.62vw,9px)}
+.selected-scroll .showcase-donggam .donggam-site-copy h4{font-size:clamp(22px,2.22vw,36px);font-weight:830;line-height:1.25;margin:14px 0;color:#191f28}
+.selected-scroll .showcase-donggam .donggam-site-copy h4 em{color:#751631}
+.selected-scroll .showcase-donggam .donggam-site-copy p{font-size:clamp(7px,.67vw,10px);line-height:1.6;color:#71747b}
+.selected-scroll .showcase-donggam .donggam-site-copy>span{font-size:clamp(7px,.65vw,10px);color:#751631}
+.selected-scroll .showcase-donggam .donggam-visual{background:#ded3d7;display:block;overflow:hidden}
+.selected-scroll .showcase-donggam .donggam-visual img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.74) contrast(.98)}
+.selected-scroll .showcase-donggam .donggam-service-row{height:19%;padding:10px 3%;gap:8px;align-items:start;background:#fff}
+.selected-scroll .showcase-donggam .donggam-service-row span{font-size:clamp(6px,.62vw,9px);line-height:1.35;white-space:normal;border-top:1px solid #e4dadd}
+.selected-scroll .showcase-donggam .donggam-mobile-mock{position:absolute;z-index:2;right:-3%;bottom:3%;width:25%;max-width:167px;aspect-ratio:9/19.5;border:6px solid #26262d;border-radius:24px;background:#fff;overflow:hidden;box-shadow:0 22px 42px rgba(31,21,27,.26);transform:rotate(3deg)}
+.selected-scroll .showcase-donggam .donggam-mobile-island{position:absolute;top:5px;left:50%;width:30%;height:9px;border-radius:99px;background:#26262d;transform:translateX(-50%);z-index:2}
+.selected-scroll .showcase-donggam .donggam-mobile-content{display:flex;flex-direction:column;height:100%;padding:22% 10% 9%;background:#fff;color:#191f28}
+.selected-scroll .showcase-donggam .donggam-mobile-content>small{font-size:clamp(5px,.52vw,8px);font-weight:800;color:#751631;margin-bottom:17%}
+.selected-scroll .showcase-donggam .donggam-mobile-kicker{font-size:clamp(6px,.65vw,9px);color:#751631;font-weight:800;margin-bottom:7%}
+.selected-scroll .showcase-donggam .donggam-mobile-content>strong{font-size:clamp(10px,.99vw,15px);letter-spacing:-.055em;line-height:1.35;margin-bottom:15%}
+.selected-scroll .showcase-donggam .donggam-mobile-option{display:flex;align-items:center;justify-content:space-between;gap:3px;margin-bottom:7%;padding:9% 6%;border:1px solid #e7e1e3;border-radius:4px;font-size:clamp(5px,.56vw,8px);font-weight:750}
+.selected-scroll .showcase-donggam .donggam-mobile-option span{color:#751631}
+.selected-scroll .showcase-donggam .donggam-mobile-next{margin-top:auto;padding:10% 5%;text-align:center;background:#751631;color:#fff;font-size:clamp(6px,.6vw,9px);font-weight:800;border-radius:4px}
+.selected-scroll .showcase-donggam .donggam-ux-note{position:absolute;z-index:3;left:0;right:auto;bottom:4%;display:flex;flex-direction:column;gap:7px;padding:14px 18px;background:#fff;color:#191f28;border:1px solid #e4d5da;box-shadow:0 12px 27px rgba(69,25,44,.09);border-radius:6px}
+.selected-scroll .showcase-donggam .donggam-ux-note span{font-size:9px;font-weight:850;letter-spacing:.12em;color:#751631}
+.selected-scroll .showcase-donggam .donggam-ux-note strong{font-size:12px;line-height:1.3;white-space:nowrap;letter-spacing:-.04em;color:#26303c}
+.selected-scroll .showcase-donggam .donggam-ux-note i{font-style:normal;color:#a78992;margin:0 4px}
+@media(max-width:1200px) and (min-width:1025px){
+ .selected-scroll .showcase-donggam .showcase-title{font-size:clamp(39px,4.1vw,55px)}
+ .selected-scroll .showcase-donggam .donggam-project-focus span{font-size:10px;padding:6px 8px}
+ .selected-scroll .showcase-donggam .donggam-mobile-mock{right:-1%}
+}
+@media(max-height:850px) and (min-width:1025px){
+ .selected-scroll .showcase-donggam .showcase-layout{padding:13px 0}
+ .selected-scroll .showcase-donggam .showcase-title{font-size:clamp(38px,3.6vw,57px);margin:12px 0 10px}
+ .selected-scroll .showcase-donggam .donggam-project-name{margin-bottom:11px;font-size:13px}
+ .selected-scroll .showcase-donggam .showcase-description{font-size:13px;line-height:1.62;margin-bottom:13px}
+ .selected-scroll .showcase-donggam .donggam-project-focus{margin-bottom:11px}
+ .selected-scroll .showcase-donggam .donggam-project-focus span{padding:5px 8px}
+ .selected-scroll .showcase-donggam .donggam-project-meta{padding-top:9px}
+ .selected-scroll .showcase-donggam .donggam-project-meta div{margin-bottom:5px}
+ .selected-scroll .showcase-donggam .donggam-project-actions{margin-top:11px}
+ .selected-scroll .showcase-donggam .donggam-browser{max-height:460px}
+}
+@media(max-width:1024px),(max-height:699px){
+ .selected-scroll .showcase-donggam .showcase-layout--donggam{display:flex;flex-direction:column;gap:22px}
+ .selected-scroll .showcase-donggam .showcase-copy--donggam{order:0;width:100%}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam{order:1;width:min(100%,660px);height:auto;min-height:320px;aspect-ratio:1.45/1;align-self:center}
+ .selected-scroll .showcase-donggam .donggam-browser{height:auto;max-height:none;aspect-ratio:18/13;width:93%}
+ .selected-scroll .showcase-donggam .donggam-site-copy h4{font-size:clamp(21px,3.2vw,34px)}
+ .selected-scroll .showcase-donggam .donggam-mobile-mock{max-width:145px}
+}
+@media(max-width:560px){
+ .selected-scroll .showcase-donggam .showcase-title{font-size:clamp(38px,10vw,50px);margin:16px 0 10px}
+ .selected-scroll .showcase-donggam .showcase-description{font-size:14px;line-height:1.7}
+ .selected-scroll .showcase-donggam .donggam-project-focus{gap:6px}
+ .selected-scroll .showcase-donggam .donggam-project-focus span{font-size:10px}
+ .selected-scroll .showcase-donggam .donggam-project-meta div{grid-template-columns:68px minmax(0,1fr)}
+ .selected-scroll .showcase-donggam .donggam-project-actions a{font-size:11px;padding:10px 12px;gap:13px}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam{min-height:250px;aspect-ratio:1.36/1}
+ .selected-scroll .showcase-donggam .donggam-browser{width:97%;aspect-ratio:18/13}
+ .selected-scroll .showcase-donggam .donggam-site-nav{min-height:27px}
+ .selected-scroll .showcase-donggam .donggam-site-nav small{display:none}
+ .selected-scroll .showcase-donggam .donggam-site-copy{padding:9px}
+ .selected-scroll .showcase-donggam .donggam-site-copy h4{font-size:clamp(14px,4.3vw,20px);margin:7px 0}
+ .selected-scroll .showcase-donggam .donggam-site-copy p{display:none}
+ .selected-scroll .showcase-donggam .donggam-service-row{padding:5px 2%}
+ .selected-scroll .showcase-donggam .donggam-mobile-mock{width:27%;border-width:4px;border-radius:16px;right:-2%;bottom:2%}
+ .selected-scroll .showcase-donggam .donggam-mobile-content>strong{font-size:9px}
+ .selected-scroll .showcase-donggam .donggam-mobile-option{font-size:5px}
+ .selected-scroll .showcase-donggam .donggam-ux-note{bottom:0;padding:8px 10px;gap:3px}
+ .selected-scroll .showcase-donggam .donggam-ux-note strong{font-size:9px}
+}
