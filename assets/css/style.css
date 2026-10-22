@@ -1232,3 +1232,18 @@ button,a{-webkit-tap-highlight-color:transparent}
  .selected-scroll .showcase-donggam .donggam-project-meta dt{font-size:12px}
  .selected-scroll .showcase-donggam .donggam-project-meta dd{font-size:12px}
 }
+
+
+/* Project 02: case study is a single secondary editorial CTA, not a third comparison button. */
+.selected-scroll .showcase-donggam .donggam-case-study-link{display:inline-flex;align-items:center;justify-content:space-between;gap:26px;width:min(100%,290px);padding:12px 0 10px;margin-top:9px;border-bottom:1px solid rgba(117,22,49,.4);color:#751631;text-decoration:none;transition:color .2s,border-color .2s}
+.selected-scroll .showcase-donggam .donggam-case-study-link>span{display:flex;flex-direction:column;gap:3px}
+.selected-scroll .showcase-donggam .donggam-case-study-link small{font-size:9px;font-weight:750;letter-spacing:.12em;color:#9a7b85}
+.selected-scroll .showcase-donggam .donggam-case-study-link strong{font-size:13px;font-weight:800;letter-spacing:-.03em}
+.selected-scroll .showcase-donggam .donggam-case-study-link svg{width:17px;height:17px;flex:none;transition:transform .2s}
+.selected-scroll .showcase-donggam .donggam-case-study-link:hover{color:#4d0b1e;border-color:#751631}
+.selected-scroll .showcase-donggam .donggam-case-study-link:hover svg{transform:translate(2px,-2px)}
+.selected-scroll .showcase-donggam .donggam-case-study-link:focus-visible{outline:3px solid #751631;outline-offset:3px}
+@media(max-width:560px){
+ .selected-scroll .showcase-donggam .donggam-case-study-link{margin-top:6px;padding:10px 0}
+ .selected-scroll .showcase-donggam .donggam-case-study-link strong{font-size:12px}
+}
