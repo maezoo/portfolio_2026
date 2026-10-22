@@ -1035,3 +1035,9 @@ button,a{-webkit-tap-highlight-color:transparent}
 @media(prefers-reduced-motion:no-preference){
  .selected-scroll .showcase-creafit .creafit-entry{transition-duration:.55s}
 }
+
+/* Project 01: the scroll position owns the reveal; no time-based transition. */
+@media(prefers-reduced-motion:no-preference){
+ .selected-scroll .showcase-creafit .creafit-scroll-reveal{transition:none!important;will-change:opacity,transform}
+ .selected-scroll .showcase-creafit .creafit-scroll-reveal.is-entered{will-change:auto}
+}
