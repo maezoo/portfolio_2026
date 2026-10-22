@@ -1212,3 +1212,23 @@ button,a{-webkit-tap-highlight-color:transparent}
  .selected-scroll .showcase-donggam .donggam-mobile-mock.donggam-entry:not(.is-entered){transform:translate3d(0,56px,0) rotate(3deg)}
  .selected-scroll .showcase-donggam .donggam-mobile-mock.donggam-entry.is-entered{transform:translate3d(0,0,0) rotate(3deg)}
 }
+
+
+/* Project 02 metadata: mirror Project 01 rows, typography, and spacing. */
+.selected-scroll .showcase-donggam .donggam-project-meta{max-width:485px;border-top:1px solid rgba(35,48,72,.21);padding:0;margin:0}
+.selected-scroll .showcase-donggam .donggam-project-meta>div{display:grid;grid-template-columns:88px minmax(0,1fr);gap:20px;align-items:start;margin:0;padding:15px 0;border-bottom:1px solid rgba(35,48,72,.12)}
+.selected-scroll .showcase-donggam .donggam-project-meta dt{font-size:13px;font-weight:700;letter-spacing:-.045em;color:#374256}
+.selected-scroll .showcase-donggam .donggam-project-meta dd{margin:0;font-size:14px;font-weight:400;line-height:1.65;letter-spacing:-.035em;color:#445167;word-break:keep-all}
+.selected-scroll .showcase-donggam .donggam-compare-link--pending{cursor:default;opacity:.78}
+.selected-scroll .showcase-donggam .donggam-compare-link--pending:hover{transform:none;background:#751631}
+.selected-scroll .showcase-donggam .donggam-compare-link--pending:hover svg{transform:none}
+.selected-scroll .showcase-donggam .donggam-source-link{display:inline-flex;margin-top:12px;color:#78616b;text-decoration:underline;text-underline-offset:3px;font-size:11px;font-weight:650}
+.selected-scroll .showcase-donggam .donggam-source-link:hover{color:#751631}
+@media(max-height:850px) and (min-width:1025px){
+ .selected-scroll .showcase-donggam .donggam-project-meta>div{padding:11px 0;margin:0}
+}
+@media(max-width:560px){
+ .selected-scroll .showcase-donggam .donggam-project-meta>div{grid-template-columns:75px minmax(0,1fr);gap:10px;padding:11px 0;margin:0}
+ .selected-scroll .showcase-donggam .donggam-project-meta dt{font-size:12px}
+ .selected-scroll .showcase-donggam .donggam-project-meta dd{font-size:12px}
+}
