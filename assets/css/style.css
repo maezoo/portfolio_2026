@@ -1021,3 +1021,17 @@ button,a{-webkit-tap-highlight-color:transparent}
  .selected-scroll .showcase-creafit .creafit-mobile-device.creafit-entry:not(.is-entered){transform:translate3d(0,56px,0) rotate(3deg)}
  .selected-scroll .showcase-creafit .creafit-mobile-device.creafit-entry.is-entered{transform:translate3d(0,0,0) rotate(3deg)}
 }
+
+/* Project 01: subtle editorial labels inside the two actions */
+.selected-scroll .showcase-creafit .creafit-compare-link{min-height:56px;padding:9px 16px}
+.selected-scroll .showcase-creafit .creafit-compare-label{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.selected-scroll .showcase-creafit .creafit-compare-label small{font-size:9px;font-weight:800;line-height:1;letter-spacing:.12em;opacity:.67}
+.selected-scroll .showcase-creafit .creafit-compare-label strong{font-size:13px;font-weight:750;line-height:1.3;letter-spacing:-.04em}
+@media(max-width:560px){
+ .selected-scroll .showcase-creafit .creafit-compare-link{min-height:49px;padding:8px 10px}
+ .selected-scroll .showcase-creafit .creafit-compare-label small{font-size:8px}
+ .selected-scroll .showcase-creafit .creafit-compare-label strong{font-size:11px}
+}
+@media(prefers-reduced-motion:no-preference){
+ .selected-scroll .showcase-creafit .creafit-entry{transition-duration:.30s}
+}
