@@ -116,11 +116,12 @@
         donggam.querySelector(".donggam-project-meta"),
         donggam.querySelector(".donggam-browser"),
         donggam.querySelector(".donggam-mobile-mock"),
-        donggam.querySelector(".donggam-project-links")
+        donggam.querySelector(".donggam-project-links"),
+        donggam.querySelector(".donggam-case-study-card")
       ].filter(Boolean);
       let dgStarted=false;
       if(!reducedMotion){
-        const dgDelays=[0,95,160,225,295,165,350,430];
+        const dgDelays=[0,95,160,225,295,165,350,430,575];
         dgElements.forEach(function(el,i){
           el.classList.add("donggam-entry");
           el.style.setProperty("--donggam-delay",dgDelays[i]+"ms");
