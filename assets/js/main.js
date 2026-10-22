@@ -98,10 +98,18 @@
           const headerHeight=header?header.getBoundingClientRect().height:0;
           const stageRect=pin.getBoundingClientRect();
           const slideRect=creafit.getBoundingClientRect();
-          // Start on Project 01 itself, not partway through the horizontal track.
+          const viewportBottom=window.innerHeight;
+          const visibleTop=Math.max(stageRect.top,headerHeight);
+          const visibleBottom=Math.min(stageRect.bottom,viewportBottom);
+          const visibleHeight=Math.max(0,visibleBottom-visibleTop);
+          const stageVisibility=visibleHeight/Math.max(1,Math.min(stageRect.height,viewportBottom-headerHeight));
+          const slideVisible=Math.max(0,Math.min(slideRect.bottom,viewportBottom)-Math.max(slideRect.top,headerHeight));
+          const slideVisibility=slideVisible/Math.max(1,Math.min(slideRect.height,viewportBottom-headerHeight));
+          // Reveal while Project 01 is entering (35% visible), before the pin
+          // starts translating toward the second project.
           const ready=pinnedMode
-            ? window.scrollY>=stageStart-8&&stageRect.top<=headerHeight+25
-            : slideRect.top<=window.innerHeight*.78&&slideRect.bottom>headerHeight+80;
+            ? stageVisibility>=.35&&window.scrollY<=stageStart+8
+            : slideVisibility>=.35;
           if(ready)revealCreafit();
         };
       }else{
