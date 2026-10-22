@@ -1200,3 +1200,15 @@ button,a{-webkit-tap-highlight-color:transparent}
  .selected-scroll .showcase-donggam .showcase-preview--donggam{min-height:250px;aspect-ratio:1.36/1}
  .selected-scroll .showcase-donggam .donggam-browser{width:97%;aspect-ratio:18/13}
 }
+
+
+/* PROJECT 02 — staged entrance consistent with Project 01 */
+@media(prefers-reduced-motion:no-preference){
+ .selected-scroll .showcase-donggam .donggam-entry{transition:opacity .48s cubic-bezier(.2,.7,.2,1),transform .48s cubic-bezier(.2,.7,.2,1);transition-delay:var(--donggam-delay,0ms)}
+ .selected-scroll .showcase-donggam .donggam-entry:not(.is-entered){opacity:0;transform:translate3d(0,36px,0)}
+ .selected-scroll .showcase-donggam .donggam-entry.is-entered{opacity:1;transform:translate3d(0,0,0)}
+ .selected-scroll .showcase-donggam .donggam-browser.donggam-entry:not(.is-entered){transform:translate3d(0,46px,0) rotate(-1deg)}
+ .selected-scroll .showcase-donggam .donggam-browser.donggam-entry.is-entered{transform:translate3d(0,0,0) rotate(-1deg)}
+ .selected-scroll .showcase-donggam .donggam-mobile-mock.donggam-entry:not(.is-entered){transform:translate3d(0,56px,0) rotate(3deg)}
+ .selected-scroll .showcase-donggam .donggam-mobile-mock.donggam-entry.is-entered{transform:translate3d(0,0,0) rotate(3deg)}
+}
