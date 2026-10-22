@@ -1247,3 +1247,26 @@ button,a{-webkit-tap-highlight-color:transparent}
  .selected-scroll .showcase-donggam .donggam-case-study-link{margin-top:6px;padding:10px 0}
  .selected-scroll .showcase-donggam .donggam-case-study-link strong{font-size:12px}
 }
+
+
+/* PROJECT 02 — prominent floating case study card on the PC preview */
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card{position:absolute;z-index:4;left:0;bottom:5%;display:flex;align-items:center;justify-content:space-between;gap:22px;width:clamp(225px,21vw,285px);min-height:112px;padding:20px 22px;margin:0;border:1px solid rgba(255,255,255,.22);border-radius:12px;background:#751631;color:#fff;box-shadow:0 18px 48px rgba(69,13,32,.26);text-decoration:none;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card>span{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card small{color:#e8b5c6;font-size:10px;letter-spacing:.13em;font-weight:800}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card strong{color:#fff;font-size:clamp(20px,1.75vw,25px);font-weight:820;letter-spacing:-.045em;line-height:1.1}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card em{font-style:normal;color:#f0dce3;font-size:12px;font-weight:550;letter-spacing:-.025em}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card svg{width:23px;height:23px;flex:none;align-self:center;transition:transform .25s ease}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:hover{background:#5e1028;box-shadow:0 23px 54px rgba(69,13,32,.32);transform:translateY(-5px)}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:hover svg{transform:translate(3px,-3px)}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:focus-visible{outline:3px solid #b56681;outline-offset:4px}
+@media(max-width:1024px),(max-height:699px){
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card{left:0;bottom:0;width:clamp(205px,36vw,270px);min-height:94px;padding:15px 17px}
+}
+@media(max-width:560px){
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card{left:0;bottom:0;width:190px;min-height:80px;padding:12px 14px;gap:10px;border-radius:9px}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card>span{gap:5px}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card strong{font-size:17px}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card small{font-size:8px}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card em{font-size:10px}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card svg{width:18px;height:18px}
+}
