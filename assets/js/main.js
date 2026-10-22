@@ -64,10 +64,10 @@
 
     const slides=Array.from(track.querySelectorAll(".feature"));
 
-    // Project 01: reveal only after the gallery's first slide reaches its stage.
+    // Project 01: scrub the entrance between 35% and 90% stage visibility.
+    // Finish before horizontal movement toward Project 02.
     const creafit=track.querySelector(".showcase-creafit");
-    let revealCreafit=function(){};
-    let checkCreafitEntry=function(){};
+    let updateCreafitEntry=function(){};
     if(creafit){
       const elements=[
         creafit.querySelector(".showcase-index"),
@@ -79,41 +79,44 @@
         creafit.querySelector(".creafit-mobile-device"),
         creafit.querySelector(".creafit-project-links")
       ].filter(Boolean);
-      let revealed=false;
-      let entryTimer=0;
-      revealCreafit=function(){
-        if(revealed)return;
-        revealed=true;
-        window.clearTimeout(entryTimer);
-        elements.forEach(function(el){el.classList.add("is-entered");});
-      };
-      if(!reducedMotion){
-        elements.forEach(function(el,index){
-          el.classList.add("creafit-entry");
-          el.style.setProperty("--creafit-delay",([0,20,40,60,80,30,95,110][index])+"ms");
+      let entryProgress=0;
+      const offsets=[0,.06,.11,.16,.23,.20,.33,.42];
+      const finish=function(){
+        entryProgress=1;
+        elements.forEach(function(el){
+          el.classList.add("is-entered");
+          el.style.removeProperty("opacity");
+          el.style.removeProperty("transform");
         });
-        checkCreafitEntry=function(pinnedMode,stageStart){
-          if(revealed)return;
-          const header=document.querySelector(".site-header");
-          const headerHeight=header?header.getBoundingClientRect().height:0;
-          const stageRect=pin.getBoundingClientRect();
-          const slideRect=creafit.getBoundingClientRect();
-          const viewportBottom=window.innerHeight;
-          const visibleTop=Math.max(stageRect.top,headerHeight);
-          const visibleBottom=Math.min(stageRect.bottom,viewportBottom);
-          const visibleHeight=Math.max(0,visibleBottom-visibleTop);
-          const stageVisibility=visibleHeight/Math.max(1,Math.min(stageRect.height,viewportBottom-headerHeight));
-          const slideVisible=Math.max(0,Math.min(slideRect.bottom,viewportBottom)-Math.max(slideRect.top,headerHeight));
-          const slideVisibility=slideVisible/Math.max(1,Math.min(slideRect.height,viewportBottom-headerHeight));
-          // Reveal while Project 01 is entering (35% visible), before the pin
-          // starts translating toward the second project.
-          const ready=pinnedMode
-            ? stageVisibility>=.35&&window.scrollY<=stageStart+8
-            : slideVisibility>=.35;
-          if(ready)revealCreafit();
-        };
+      };
+      if(reducedMotion){
+        finish();
       }else{
-        revealCreafit();
+        elements.forEach(function(el){
+          el.classList.add("creafit-entry","creafit-scroll-reveal");
+        });
+        updateCreafitEntry=function(pinnedMode,stageStart){
+          if(entryProgress>=1)return;
+          const header=document.querySelector(".site-header");
+          const topLimit=header?header.getBoundingClientRect().height:0;
+          const bounds=(pinnedMode?pin:creafit).getBoundingClientRect();
+          const visible=Math.max(0,Math.min(bounds.bottom,window.innerHeight)-Math.max(bounds.top,topLimit));
+          const available=Math.max(1,Math.min(bounds.height,window.innerHeight-topLimit));
+          const fraction=visible/available;
+          // A direct jump into a pinned slide should never leave it hidden.
+          const raw=(pinnedMode&&window.scrollY>=stageStart)?1:Math.max(0,Math.min(1,(fraction-.35)/.55));
+          entryProgress=Math.max(entryProgress,raw);
+          if(entryProgress>=1){finish();return;}
+          elements.forEach(function(el,index){
+            const offset=offsets[index]||0;
+            const t=Math.max(0,Math.min(1,(entryProgress-offset)/(.53-offset)));
+            const eased=1-Math.pow(1-t,2);
+            const distance=el.classList.contains("creafit-mobile-device")?46:el.classList.contains("creafit-desktop-device")?38:26;
+            const rotation=el.classList.contains("creafit-mobile-device")?" rotate(3deg)":el.classList.contains("creafit-desktop-device")?" rotate(-1deg)":"";
+            el.style.opacity=String(eased);
+            el.style.transform="translate3d(0,"+((1-eased)*distance).toFixed(2)+"px,0)"+rotation;
+          });
+        };
       }
     }
     const desktop=window.matchMedia("(min-width: 1025px) and (min-height: 700px)");
@@ -135,7 +138,7 @@
 
     function render(){
       frame=0;
-      checkCreafitEntry(pinned,start);
+      updateCreafitEntry(pinned,start);
       if(pinned){
         const shift=clamp(window.scrollY-start,0,travel);
         track.style.transform="translate3d("+(-shift)+"px,0,0)";
