@@ -90,7 +90,7 @@
       if(!reducedMotion){
         elements.forEach(function(el,index){
           el.classList.add("creafit-entry");
-          el.style.setProperty("--creafit-delay",([0,65,115,165,225,125,260,325][index])+"ms");
+          el.style.setProperty("--creafit-delay",([0,35,70,100,135,60,150,180][index])+"ms");
         });
         checkCreafitEntry=function(pinnedMode,stageStart){
           if(revealed)return;
