@@ -104,6 +104,45 @@
         };
       }
     }
+    // Project 02: independently reveal after the second slide is 35% visible.
+    const donggam=track.querySelector(".showcase-donggam");
+    let updateDonggamEntry=function(){};
+    if(donggam){
+      const dgElements=[
+        donggam.querySelector(".showcase-index"),
+        donggam.querySelector(".showcase-title"),
+        donggam.querySelector(".donggam-project-name"),
+        donggam.querySelector(".showcase-description"),
+        donggam.querySelector(".donggam-project-meta"),
+        donggam.querySelector(".donggam-browser"),
+        donggam.querySelector(".donggam-mobile-mock"),
+        donggam.querySelector(".donggam-project-links")
+      ].filter(Boolean);
+      let dgStarted=false;
+      if(!reducedMotion){
+        const dgDelays=[0,95,160,225,295,165,350,430];
+        dgElements.forEach(function(el,i){
+          el.classList.add("donggam-entry");
+          el.style.setProperty("--donggam-delay",dgDelays[i]+"ms");
+        });
+        updateDonggamEntry=function(pinnedMode){
+          if(dgStarted)return;
+          const rect=donggam.getBoundingClientRect();
+          const header=document.querySelector(".site-header");
+          const topLimit=header?header.getBoundingClientRect().height:0;
+          const verticalVisible=Math.max(0,Math.min(rect.bottom,window.innerHeight)-Math.max(rect.top,topLimit));
+          const horizontalVisible=Math.max(0,Math.min(rect.right,window.innerWidth)-Math.max(rect.left,0));
+          const widthRatio=horizontalVisible/Math.max(1,Math.min(rect.width,window.innerWidth));
+          const heightRatio=verticalVisible/Math.max(1,Math.min(rect.height,window.innerHeight-topLimit));
+          if((pinnedMode?widthRatio>=.35&&heightRatio>=.7:widthRatio>=.35&&heightRatio>=.35)){
+            dgStarted=true;
+            window.requestAnimationFrame(function(){
+              dgElements.forEach(function(el){el.classList.add("is-entered");});
+            });
+          }
+        };
+      }
+    }
     const desktop=window.matchMedia("(min-width: 1025px) and (min-height: 700px)");
     let pinned=false;
     let travel=0;
@@ -124,6 +163,7 @@
     function render(){
       frame=0;
       updateCreafitEntry(pinned,start);
+      updateDonggamEntry(pinned);
       if(pinned){
         const shift=clamp(window.scrollY-start,0,travel);
         track.style.transform="translate3d("+(-shift)+"px,0,0)";
