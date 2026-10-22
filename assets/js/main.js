@@ -109,7 +109,7 @@
           if(entryProgress>=1){finish();return;}
           elements.forEach(function(el,index){
             const offset=offsets[index]||0;
-            const t=Math.max(0,Math.min(1,(entryProgress-offset)/(.53-offset)));
+            const t=Math.max(0,Math.min(1,(entryProgress-offset)/(.95-offset)));
             const eased=1-Math.pow(1-t,2);
             const distance=el.classList.contains("creafit-mobile-device")?46:el.classList.contains("creafit-desktop-device")?38:26;
             const rotation=el.classList.contains("creafit-mobile-device")?" rotate(3deg)":el.classList.contains("creafit-desktop-device")?" rotate(-1deg)":"";
