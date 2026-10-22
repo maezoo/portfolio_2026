@@ -1249,36 +1249,49 @@ button,a{-webkit-tap-highlight-color:transparent}
 }
 
 
-/* PROJECT 02 — restrained ivory CASE STUDY overlay */
-.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card{position:absolute;z-index:4;left:0;bottom:5%;display:flex;align-items:center;justify-content:space-between;gap:16px;width:clamp(210px,19vw,255px);min-height:79px;margin:0;padding:15px 17px;overflow:hidden;isolation:isolate;border:1px solid rgba(117,22,49,.22);border-radius:5px;background:#faf8f7;color:#751631;box-shadow:0 9px 25px rgba(53,30,38,.13);text-decoration:none;cursor:pointer;transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background-color .28s ease}
-.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card>span{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:7px}
-.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card strong{font-size:clamp(16px,1.35vw,20px);font-weight:800;line-height:1.1;letter-spacing:-.045em;color:#751631}
-.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card em{font-size:11px;font-style:normal;font-weight:550;letter-spacing:-.025em;color:#675d62}
-.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card svg{position:relative;z-index:1;width:20px;height:20px;flex:none;color:#751631;transition:transform .28s ease}
-.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card::before{content:"";position:absolute;inset:0;border:1px solid transparent;pointer-events:none}
-.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card::after{content:"";position:absolute;z-index:0;top:0;left:-45%;width:36%;height:2px;background:linear-gradient(90deg,transparent,#9d526c,transparent);pointer-events:none}
-.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:hover,
-.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:focus-visible{background:#fff;border-color:#751631;box-shadow:0 13px 30px rgba(53,30,38,.18);transform:translateY(-3px)}
-.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:hover svg,
-.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:focus-visible svg{transform:translate(3px,-3px)}
-.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:focus-visible{outline:2px solid #751631;outline-offset:3px}
-@media(prefers-reduced-motion:no-preference){
- .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card.donggam-entry:not(.is-entered){opacity:0;transform:translate3d(0,26px,0)}
- .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card.donggam-entry.is-entered{opacity:1;transform:translate3d(0,0,0);transition:opacity .65s ease,transform .65s ease,border-color .28s ease,box-shadow .28s ease,background-color .28s ease;transition-delay:var(--donggam-delay,575ms),var(--donggam-delay,575ms),0ms,0ms,0ms}
- .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card.donggam-entry.is-entered::after{animation:donggamCaseBorder 7s ease-in-out 1.5s infinite}
- .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card.donggam-entry.is-entered:hover,
- .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card.donggam-entry.is-entered:focus-visible{transform:translateY(-3px);transition-delay:0ms}
-}
-@keyframes donggamCaseBorder{0%,12%{left:-45%}28%,100%{left:110%}}
+/* PROJECT 02 — prominent floating case study card on the PC preview */
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card{position:absolute;z-index:4;left:0;bottom:5%;display:flex;align-items:center;justify-content:space-between;gap:22px;width:clamp(225px,21vw,285px);min-height:112px;padding:20px 22px;margin:0;border:1px solid rgba(255,255,255,.22);border-radius:12px;background:#751631;color:#fff;box-shadow:0 18px 48px rgba(69,13,32,.26);text-decoration:none;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card>span{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card small{color:#e8b5c6;font-size:10px;letter-spacing:.13em;font-weight:800}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card strong{color:#fff;font-size:clamp(20px,1.75vw,25px);font-weight:820;letter-spacing:-.045em;line-height:1.1}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card em{font-style:normal;color:#f0dce3;font-size:12px;font-weight:550;letter-spacing:-.025em}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card svg{width:23px;height:23px;flex:none;align-self:center;transition:transform .25s ease}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:hover{background:#5e1028;box-shadow:0 23px 54px rgba(69,13,32,.32);transform:translateY(-5px)}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:hover svg{transform:translate(3px,-3px)}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:focus-visible{outline:3px solid #b56681;outline-offset:4px}
 @media(max-width:1024px),(max-height:699px){
- .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card{left:0;bottom:0;width:clamp(205px,34vw,245px);min-height:74px;padding:13px 15px}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card{left:0;bottom:0;width:clamp(205px,36vw,270px);min-height:94px;padding:15px 17px}
 }
 @media(max-width:560px){
- .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card{left:0;bottom:0;width:183px;min-height:66px;padding:10px 12px}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card{left:0;bottom:0;width:190px;min-height:80px;padding:12px 14px;gap:10px;border-radius:9px}
  .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card>span{gap:5px}
- .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card strong{font-size:16px}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card strong{font-size:17px}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card small{font-size:8px}
  .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card em{font-size:10px}
- .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card svg{width:17px;height:17px}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card svg{width:18px;height:18px}
+}
+
+
+/* PROJECT 02: staged, editorial CASE STUDY card; no permanent floating motion. */
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card{overflow:hidden;isolation:isolate;border-radius:8px;box-shadow:0 15px 38px rgba(69,13,32,.22);background:linear-gradient(115deg,#661329,#751631 68%,#85203e);cursor:pointer;transition:transform .32s cubic-bezier(.2,.7,.2,1),box-shadow .32s ease,background .32s ease}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card::after{content:"";position:absolute;z-index:0;inset:-45% auto -45% -75%;width:42%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);transform:skewX(-18deg);pointer-events:none}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card>span,
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card>svg{position:relative;z-index:1}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card svg{box-sizing:content-box;padding:9px;border:1px solid rgba(255,255,255,.36);border-radius:50%;background:rgba(255,255,255,.06);transition:transform .3s ease,background .3s ease}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:hover,
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:focus-visible{background:linear-gradient(115deg,#79203b,#852141 68%,#95284b);box-shadow:0 21px 45px rgba(69,13,32,.3);transform:translateY(-4px)}
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:hover svg,
+.selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card:focus-visible svg{transform:translate(3px,-3px);background:rgba(255,255,255,.14)}
+@media(prefers-reduced-motion:no-preference){
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card.donggam-entry:not(.is-entered){opacity:0;transform:translate3d(0,35px,0) scale(.965)}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card.donggam-entry.is-entered{opacity:1;transform:translate3d(0,0,0) scale(1);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .32s ease,background .32s ease;transition-delay:var(--donggam-delay,575ms),var(--donggam-delay,575ms),0ms,0ms}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card.donggam-entry.is-entered::after{animation:donggamCaseSheen 6s ease-in-out 1.25s infinite}
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card.donggam-entry.is-entered:hover,
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card.donggam-entry.is-entered:focus-visible{transform:translateY(-4px);transition-delay:0ms}
+}
+@keyframes donggamCaseSheen{0%,9%{left:-75%}29%,100%{left:140%}}
+@media(prefers-reduced-motion:reduce){
+ .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card::after{animation:none!important}
 }
 
 /* PROJECT 02: preserve the requested duty phrase as one line, and show REDESIGN until deployment. */
