@@ -1033,5 +1033,5 @@ button,a{-webkit-tap-highlight-color:transparent}
  .selected-scroll .showcase-creafit .creafit-compare-label strong{font-size:11px}
 }
 @media(prefers-reduced-motion:no-preference){
- .selected-scroll .showcase-creafit .creafit-entry{transition-duration:.30s}
+ .selected-scroll .showcase-creafit .creafit-entry{transition-duration:.55s}
 }
