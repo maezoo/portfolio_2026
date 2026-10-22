@@ -64,8 +64,7 @@
 
     const slides=Array.from(track.querySelectorAll(".feature"));
 
-    // Project 01: scrub the entrance between 35% and 90% stage visibility.
-    // Finish before horizontal movement toward Project 02.
+    // Project 01: stagger from early stage entry; never jump opacity to 1.
     const creafit=track.querySelector(".showcase-creafit");
     let updateCreafitEntry=function(){};
     if(creafit){
@@ -79,43 +78,29 @@
         creafit.querySelector(".creafit-mobile-device"),
         creafit.querySelector(".creafit-project-links")
       ].filter(Boolean);
-      let entryProgress=0;
-      const offsets=[0,.06,.11,.16,.23,.20,.33,.42];
-      const finish=function(){
-        entryProgress=1;
-        elements.forEach(function(el){
-          el.classList.add("is-entered");
-          el.style.removeProperty("opacity");
-          el.style.removeProperty("transform");
-        });
-      };
+      let started=false;
       if(reducedMotion){
-        finish();
+        elements.forEach(function(el){el.classList.add("is-entered");});
       }else{
-        elements.forEach(function(el){
-          el.classList.add("creafit-entry","creafit-scroll-reveal");
+        const delays=[0,95,160,225,295,165,350,430];
+        elements.forEach(function(el,i){
+          el.classList.add("creafit-entry");
+          el.style.setProperty("--creafit-delay",delays[i]+"ms");
         });
         updateCreafitEntry=function(pinnedMode,stageStart){
-          if(entryProgress>=1)return;
+          if(started)return;
           const header=document.querySelector(".site-header");
           const topLimit=header?header.getBoundingClientRect().height:0;
           const bounds=(pinnedMode?pin:creafit).getBoundingClientRect();
+          const viewportHeight=Math.max(1,window.innerHeight-topLimit);
           const visible=Math.max(0,Math.min(bounds.bottom,window.innerHeight)-Math.max(bounds.top,topLimit));
-          const available=Math.max(1,Math.min(bounds.height,window.innerHeight-topLimit));
-          const fraction=visible/available;
-          // A direct jump into a pinned slide should never leave it hidden.
-          const raw=(pinnedMode&&window.scrollY>=stageStart)?1:Math.max(0,Math.min(1,(fraction-.35)/.55));
-          entryProgress=Math.max(entryProgress,raw);
-          if(entryProgress>=1){finish();return;}
-          elements.forEach(function(el,index){
-            const offset=offsets[index]||0;
-            const t=Math.max(0,Math.min(1,(entryProgress-offset)/(.95-offset)));
-            const eased=1-Math.pow(1-t,2);
-            const distance=el.classList.contains("creafit-mobile-device")?46:el.classList.contains("creafit-desktop-device")?38:26;
-            const rotation=el.classList.contains("creafit-mobile-device")?" rotate(3deg)":el.classList.contains("creafit-desktop-device")?" rotate(-1deg)":"";
-            el.style.opacity=String(eased);
-            el.style.transform="translate3d(0,"+((1-eased)*distance).toFixed(2)+"px,0)"+rotation;
-          });
+          const fraction=visible/Math.max(1,Math.min(bounds.height,viewportHeight));
+          if(fraction>=.35||(pinnedMode&&window.scrollY>=stageStart)){
+            started=true;
+            window.requestAnimationFrame(function(){
+              elements.forEach(function(el){el.classList.add("is-entered");});
+            });
+          }
         };
       }
     }
