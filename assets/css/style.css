@@ -1270,3 +1270,10 @@ button,a{-webkit-tap-highlight-color:transparent}
  .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card em{font-size:10px}
  .selected-scroll .showcase-donggam .showcase-preview--donggam .donggam-case-study-card svg{width:18px;height:18px}
 }
+
+
+/* PROJECT 02: preserve the requested duty phrase as one line, and show REDESIGN until deployment. */
+.selected-scroll .showcase-donggam .donggam-duty-nowrap{white-space:nowrap}
+.selected-scroll .showcase-donggam .donggam-compare-link--inactive{opacity:1;cursor:default}
+.selected-scroll .showcase-donggam .donggam-compare-link--inactive:hover{transform:none;background:#751631}
+.selected-scroll .showcase-donggam .donggam-compare-link--inactive:hover svg{transform:none}
