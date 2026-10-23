@@ -67,12 +67,12 @@
       items.forEach((item,index)=>{
         const targetX=bounds.left+item.offsetLeft+item.offsetWidth/2;
         const targetY=bounds.top+item.offsetTop+item.offsetHeight/2;
-        const start=.045+index*.075,finish=start+.43;
+        const start=.035+index*.062,finish=start+.38;
         const travel=smooth(clamp((progress-start)/(finish-start)));
-        const fade=smooth(clamp((progress-start)/.24));
+        const fade=smooth(clamp((progress-start)/.32));
         item.style.opacity=String(fade);
         item.style.transform="translate3d("+((cx-targetX)*(1-travel))+"px,"+((cy-targetY)*(1-travel))+"px,0)";
-        const reveal=smooth(clamp((progress-(finish-.015))/.11));
+        const reveal=smooth(clamp((progress-(start+.25))/.14));
         details[index].style.opacity=String(reveal);
         details[index].style.transform="translateY("+((1-reveal)*16)+"px)";
         item.classList.toggle("is-floating",reveal>.999&&travel>.999);
