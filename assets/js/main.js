@@ -31,89 +31,20 @@
     animated.forEach(function(element){element.classList.add("visible");});
   }
 
-  // Approach only: continuous scroll-linked expansion with eased progress and delayed descriptions.
-  (function initFloatingPrinciples(){
-    const section=document.getElementById("principles");
-    if(!section)return;
-    const runway=section.querySelector(".principles-runway");
-    const stage=section.querySelector(".principles-stage");
-    const canvas=section.querySelector(".principles-canvas");
-    const heading=section.querySelector(".principles-heading");
-    const items=Array.from(section.querySelectorAll(".principles-item"));
-    const mobile=window.matchMedia("(max-width: 760px)");
-    const clamp=n=>Math.max(0,Math.min(1,n));
-    const smooth=t=>t*t*(3-2*t);
-    let current=0,target=0,frame=0,wasMobile=null,mobileObserver=null;
-    const details=items.map(el=>el.querySelector(".principles-detail"));
-    function mobileSetup(){
-      items.forEach((el,i)=>{el.style.opacity="1";el.style.transform="none";el.classList.remove("is-floating");details[i].style.opacity="0";details[i].style.transform="translateY(15px)";});
-      if(mobileObserver)mobileObserver.disconnect();
-      if("IntersectionObserver" in window){
-        mobileObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
-          if(entry.isIntersecting){
-            const item=entry.target,index=items.indexOf(item);
-            details[index].style.transition="opacity .65s ease, transform .8s cubic-bezier(.16,1,.3,1)";
-            details[index].style.opacity="1";details[index].style.transform="translateY(0)";
-            item.classList.add("is-floating");
-            mobileObserver.unobserve(item);
-          }
-        }),{threshold:.25});
-        items.forEach(item=>mobileObserver.observe(item));
-      }else details.forEach(el=>{el.style.opacity="1";el.style.transform="none";});
+  // Reveal the existing fixed header after the interactive entry screen.
+  (function initPortalHeader(){
+    const header=document.getElementById("siteHeader");
+    const portal=document.querySelector(".portal-intro");
+    if(!header||!portal)return;
+    function updateHeader(){
+      const show=portal.getBoundingClientRect().bottom<=window.innerHeight*.72;
+      header.classList.toggle("is-visible",show);
+      header.setAttribute("aria-hidden",show?"false":"true");
+      if(!show&&header.contains(document.activeElement))document.activeElement.blur();
     }
-    function paint(progress){
-      const center=heading.getBoundingClientRect(),bounds=canvas.getBoundingClientRect();
-      const cx=center.left+center.width/2,cy=center.top+center.height/2;
-      items.forEach((item,index)=>{
-        const targetX=bounds.left+item.offsetLeft+item.offsetWidth/2;
-        const targetY=bounds.top+item.offsetTop+item.offsetHeight/2;
-        const start=.035+index*.062,finish=start+.38;
-        const travel=smooth(clamp((progress-start)/(finish-start)));
-        const fade=smooth(clamp((progress-start)/.32));
-        item.style.opacity=String(fade);
-        item.style.transform="translate3d("+((cx-targetX)*(1-travel))+"px,"+((cy-targetY)*(1-travel))+"px,0)";
-        const reveal=smooth(clamp((progress-(start+.25))/.14));
-        details[index].style.opacity=String(reveal);
-        details[index].style.transform="translateY("+((1-reveal)*16)+"px)";
-        item.classList.toggle("is-floating",reveal>.999&&travel>.999);
-      });
-    }
-    function animate(){
-      frame=0;
-      current+=(target-current)*.105;
-      if(Math.abs(target-current)<.00035)current=target;
-      paint(current);
-      if(current!==target)frame=requestAnimationFrame(animate);
-    }
-    function update(){
-      if(reducedMotion){
-        items.forEach((item,i)=>{item.style.opacity="1";item.style.transform="none";item.classList.remove("is-floating");details[i].style.opacity="1";details[i].style.transform="none";});
-        return;
-      }
-      if(mobile.matches){
-        if(wasMobile!==true)mobileSetup();
-        wasMobile=true;return;
-      }
-      if(wasMobile!==false){
-        if(mobileObserver)mobileObserver.disconnect();
-        items.forEach((item,i)=>{item.classList.remove("is-floating");details[i].style.transition="none";});
-        current=0;
-      }
-      wasMobile=false;
-      const rect=runway.getBoundingClientRect();
-      // Begin when about 25% of the stage is visible; finish before sticky pinning.
-      const header=document.querySelector(".site-header");
-      const headerHeight=header?header.getBoundingClientRect().height:80;
-      const visibleHeight=Math.max(1,window.innerHeight-headerHeight);
-      const entryStart=window.innerHeight-visibleHeight*.25;
-      const entryEnd=headerHeight;
-      target=clamp((entryStart-rect.top)/Math.max(1,entryStart-entryEnd));
-      if(!frame)frame=requestAnimationFrame(animate);
-    }
-    window.addEventListener("scroll",update,{passive:true});
-    window.addEventListener("resize",update);
-    if(mobile.addEventListener)mobile.addEventListener("change",update);
-    update();
+    window.addEventListener("scroll",updateHeader,{passive:true});
+    window.addEventListener("resize",updateHeader);
+    updateHeader();
   })();
 
   const filters=Array.from(document.querySelectorAll(".archive-filters .filter"));
