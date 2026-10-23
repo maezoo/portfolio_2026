@@ -101,8 +101,13 @@
       }
       wasMobile=false;
       const rect=runway.getBoundingClientRect();
-      const total=Math.max(1,runway.offsetHeight-stage.offsetHeight);
-      target=clamp(-rect.top/total);
+      // Begin when about 25% of the stage is visible; finish before sticky pinning.
+      const header=document.querySelector(".site-header");
+      const headerHeight=header?header.getBoundingClientRect().height:80;
+      const visibleHeight=Math.max(1,window.innerHeight-headerHeight);
+      const entryStart=window.innerHeight-visibleHeight*.25;
+      const entryEnd=headerHeight;
+      target=clamp((entryStart-rect.top)/Math.max(1,entryStart-entryEnd));
       if(!frame)frame=requestAnimationFrame(animate);
     }
     window.addEventListener("scroll",update,{passive:true});
