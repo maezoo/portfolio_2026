@@ -31,6 +31,66 @@
     animated.forEach(function(element){element.classList.add("visible");});
   }
 
+  // Scoped approach animation: each keyword travels out of the title, reveals its detail, then floats.
+  (function initFloatingPrinciples(){
+    const section=document.getElementById("principles");
+    if(!section)return;
+    const runway=section.querySelector(".principles-runway");
+    const stage=section.querySelector(".principles-stage");
+    const heading=section.querySelector(".principles-heading");
+    const items=Array.from(section.querySelectorAll(".principles-item"));
+    const mobile=window.matchMedia("(max-width: 760px)");
+    let ticking=false;
+    let detailsTimers=[];
+    let lastMobile=null;
+    function clamp(n){return Math.max(0,Math.min(1,n));}
+    function ease(t){return 1-Math.pow(1-t,3);}
+    function clearTimers(){detailsTimers.forEach(clearTimeout);detailsTimers=[];}
+    function showDetailsOnMobile(){
+      if(!("IntersectionObserver" in window)){items.forEach(el=>el.classList.add("is-described"));return;}
+      const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-described");observer.unobserve(entry.target);}});},{threshold:.2});
+      items.forEach(el=>observer.observe(el));
+    }
+    function update(){
+      ticking=false;
+      if(reducedMotion){items.forEach(el=>{el.style.opacity="1";el.style.transform="none";el.classList.add("is-described");});return;}
+      if(mobile.matches){
+        if(lastMobile!==true){clearTimers();items.forEach(el=>{el.style.opacity="1";el.style.transform="none";el.classList.remove("is-floating");});showDetailsOnMobile();}
+        lastMobile=true;return;
+      }
+      if(lastMobile!==false){clearTimers();items.forEach(el=>{el.classList.remove("is-described","is-floating");el.style.opacity="0";});}
+      lastMobile=false;
+      const rect=runway.getBoundingClientRect();
+      const total=Math.max(1,runway.offsetHeight-stage.offsetHeight);
+      const progress=clamp(-rect.top/total);
+      const center=heading.getBoundingClientRect();
+      const cx=center.left+center.width/2,cy=center.top+center.height/2;
+      items.forEach((item,index)=>{
+        const box=item.getBoundingClientRect();
+        const finalX=box.left+box.width/2,finalY=box.top+box.height/2;
+        // Remove current transform from measurement by using offset geometry within the stage.
+        const stageBox=stage.getBoundingClientRect();
+        const baseX=stageBox.left+item.offsetLeft+item.offsetWidth/2;
+        const baseY=stageBox.top+item.offsetTop+item.offsetHeight/2;
+        const start=.07+index*.095,finish=start+.22;
+        const t=ease(clamp((progress-start)/(finish-start)));
+        item.style.opacity=String(clamp(t*1.8));
+        item.style.transform="translate3d("+((cx-baseX)*(1-t))+"px,"+((cy-baseY)*(1-t))+"px,0)";
+        if(t>=.999&&!item.classList.contains("is-described")){
+          item.classList.add("is-described");
+        }else if(t<.999){item.classList.remove("is-described","is-floating");}
+        // Floating starts only after the delayed detail has fully appeared.
+        if(progress>=finish+.12&&item.classList.contains("is-described"))item.classList.add("is-floating");
+        else item.classList.remove("is-floating");
+      });
+    }
+    function requestUpdate(){if(!ticking){ticking=true;requestAnimationFrame(update);}}
+    window.addEventListener("scroll",requestUpdate,{passive:true});
+    window.addEventListener("resize",requestUpdate);
+    mobile.addEventListener&&mobile.addEventListener("change",requestUpdate);
+    requestUpdate();
+  })();
+
   const filters=Array.from(document.querySelectorAll(".archive-filters .filter"));
   const archive=Array.from(document.querySelectorAll(".archive-item"));
   filters.forEach(function(button){
