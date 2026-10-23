@@ -1734,3 +1734,14 @@ body{background:var(--paper)}
  .portal-play .portal-link strong,.portal-play .portal-link--ux strong{font-size:clamp(18px,3.4vw,26px)}
 }
 @media(max-width:480px){.portal-play .portal-heading h1{font-size:clamp(30px,8vw,40px)}.portal-play .portal-link strong,.portal-play .portal-link--ux strong{font-size:18px}}
+
+/* Portal headline becomes the graphic focal point; navigation and animation retained. */
+.portal-play .portal-heading{top:39%;left:17%;width:70%}
+.portal-play .portal-heading h1{margin:0;font-size:clamp(52px,6.25vw,96px);line-height:1.21;letter-spacing:-.072em}
+.portal-play .portal-heading h1 em{display:block;padding-left:clamp(18px,4vw,64px);white-space:nowrap}
+.portal-play .portal-footer .portal-work-link{display:inline-flex;gap:18px;align-items:center;color:#272322;font-size:13px;font-weight:800;letter-spacing:.02em;transition:color .25s}
+.portal-play .portal-footer .portal-work-link:hover{color:#d86548}
+.portal-play .portal-footer .portal-work-link span{font-size:19px;font-weight:500}
+@media(max-width:1080px) and (min-width:761px){.portal-play .portal-heading{top:40%;left:16%;width:75%}.portal-play .portal-heading h1{font-size:clamp(46px,5.8vw,75px)}}
+@media(max-width:760px){.portal-play .portal-heading{position:relative;top:auto;left:auto;width:100%}.portal-play .portal-heading h1{font-size:clamp(39px,7.3vw,61px)}.portal-play .portal-heading h1 em{padding-left:clamp(10px,3vw,30px)}}
+@media(max-width:480px){.portal-play .portal-heading h1{font-size:clamp(30px,8.5vw,42px)}.portal-play .portal-footer .portal-work-link{font-size:11px}}
