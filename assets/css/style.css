@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap');
 
 :root{--paper:#f5f3ee;--white:#fff;--ink:#252525;--muted:#77736f;--line:#dedbd5;--blue:#e57855;--night:#181b20;--container:1320px}
@@ -1542,13 +1543,18 @@ body{background:var(--paper)}
 
 /* First-screen typography: crisp Instrument Sans + Pretendard pairing. */
 .portal-intro{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif}
-.portal-heading h1{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;font-weight:600;letter-spacing:-.045em}
+.portal-heading h1{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;font-weight:750;letter-spacing:-.055em}
 .portal-heading h1 em{color:#f47758}
 .portal-heading p{font-weight:400;letter-spacing:-.03em}
 .portal-kicker,.portal-footer{font-family:"Instrument Sans",sans-serif;font-weight:500;letter-spacing:.08em}
-.portal-link strong{font-family:"Instrument Sans",sans-serif;font-weight:600;letter-spacing:-.025em}
-.portal-link--ux strong{font-weight:600}
-.portal-link-tag{font-family:"Instrument Sans",sans-serif;font-size:10px;font-weight:400;font-style:normal;letter-spacing:.08em;line-height:1.4}
-.portal-link-desc{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;font-weight:400;line-height:1.6}
+.portal-link strong{font-family:"Instrument Sans",sans-serif;font-weight:700;letter-spacing:-.035em}
+.portal-link--ux strong{font-weight:800}
+.portal-link-tag{font-family:"Instrument Sans",sans-serif;font-size:10px;font-weight:500;font-style:normal;letter-spacing:.08em;line-height:1.4}
+.portal-link-desc{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;font-weight:500;line-height:1.6}
 .portal-primary{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif}
 @media(hover:hover) and (pointer:fine){.portal-link:hover strong{color:#dd654a}}
+
+/* Soft curved light envelope, not a hard ring or an extra graphic object. */
+.portal-heading{isolation:isolate}
+.portal-heading::before{content:"";position:absolute;z-index:-1;pointer-events:none;left:50%;top:43%;width:112%;height:117%;border-radius:50%;transform:translate(-50%,-50%) rotate(-7deg);background:radial-gradient(ellipse at 50% 52%,rgba(255,252,248,.4) 0%,rgba(255,250,245,.2) 43%,rgba(244,164,136,.13) 61%,rgba(248,212,195,.1) 72%,transparent 83%);filter:blur(14px)}
+@media(max-width:760px){.portal-heading::before{width:112%;height:108%;top:48%;filter:blur(16px)}}
