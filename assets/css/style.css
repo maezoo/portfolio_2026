@@ -1537,3 +1537,20 @@ body{background:var(--paper)}
  .portal-link-desc{color:#6c625c}
 }
 @media(max-width:480px){.portal-heading h1{font-size:clamp(31px,8.3vw,42px)}.portal-link strong,.portal-link--ux strong{font-size:18px}}
+
+
+/* First-screen typography refresh: editorial hierarchy; all other sections unchanged. */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+.portal-intro{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif}
+.portal-heading h1{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;font-weight:700;letter-spacing:-.065em}
+.portal-heading h1 em{color:#f47758}
+.portal-heading p{font-weight:400;letter-spacing:-.03em}
+.portal-kicker,.portal-footer{font-family:Manrope,sans-serif;font-weight:600}
+.portal-link strong{font-family:Manrope,"Pretendard Variable",sans-serif;font-weight:600;letter-spacing:-.055em}
+.portal-link--ux strong{font-weight:700}
+.portal-link-tag{font-family:"Cormorant Garamond",serif;font-size:16px;font-weight:600;font-style:italic;letter-spacing:.015em;text-transform:none;line-height:1}
+.portal-link-desc{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;font-weight:400}
+.portal-primary{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif}
+@media(hover:hover) and (pointer:fine){
+ .portal-link:hover strong{color:#dd654a}
+}
