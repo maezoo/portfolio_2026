@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap');
 
 :root{--paper:#f5f3ee;--white:#fff;--ink:#252525;--muted:#77736f;--line:#dedbd5;--blue:#e57855;--night:#181b20;--container:1320px}
@@ -1358,7 +1359,7 @@ button,a{-webkit-tap-highlight-color:transparent}
  .portal-link{animation:portalArrival .85s cubic-bezier(.16,1,.3,1) both}
  .portal-link:nth-child(1){animation-delay:.13s}.portal-link:nth-child(2){animation-delay:.22s}.portal-link:nth-child(3){animation-delay:.31s}.portal-link:nth-child(4){animation-delay:.4s}.portal-link:nth-child(5){animation-delay:.49s}
 }
-@keyframes portalArrival{from{opacity:0;filter:blur(6px)}to{opacity:1;filter:blur(0)}}
+@keyframes portalArrival{from{opacity:0}to{opacity:1}}
 .principles-section{padding:112px 0 120px;background:#efeee9;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .principles-compact{display:grid;grid-template-columns:minmax(270px,.8fr) minmax(0,1.2fr);gap:clamp(55px,8vw,130px)}
 .principles-heading{padding-top:8px}
@@ -1430,7 +1431,7 @@ button,a{-webkit-tap-highlight-color:transparent}
  .portal-link:nth-child(5){animation-delay:.74s}
 }
 @keyframes portalCenter{from{opacity:0;filter:blur(8px);translate:0 14px}to{opacity:1;filter:blur(0);translate:0 0}}
-@keyframes portalSpread{from{opacity:0;filter:blur(8px);translate:var(--enter-x) var(--enter-y)}to{opacity:1;filter:blur(0);translate:0 0}}
+@keyframes portalSpread{from{opacity:0;translate:var(--enter-x) var(--enter-y)}to{opacity:1;translate:0 0}}
 @media(max-width:1100px){.portal-heading{width:43%}.portal-heading h1{font-size:clamp(37px,4.2vw,60px)}}
 @media(max-width:760px){.portal-heading{width:100%}.portal-heading h1{font-size:clamp(40px,7.7vw,61px)}.portal-link{--enter-x:0px;--enter-y:30px}}
 @media(max-width:480px){.portal-heading h1{font-size:clamp(32px,8.4vw,43px)}}
@@ -1539,18 +1540,15 @@ body{background:var(--paper)}
 @media(max-width:480px){.portal-heading h1{font-size:clamp(31px,8.3vw,42px)}.portal-link strong,.portal-link--ux strong{font-size:18px}}
 
 
-/* First-screen typography refresh: editorial hierarchy; all other sections unchanged. */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+/* First-screen typography: crisp Instrument Sans + Pretendard pairing. */
 .portal-intro{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif}
-.portal-heading h1{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;font-weight:700;letter-spacing:-.065em}
+.portal-heading h1{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;font-weight:600;letter-spacing:-.045em}
 .portal-heading h1 em{color:#f47758}
 .portal-heading p{font-weight:400;letter-spacing:-.03em}
-.portal-kicker,.portal-footer{font-family:Manrope,sans-serif;font-weight:600}
-.portal-link strong{font-family:Manrope,"Pretendard Variable",sans-serif;font-weight:600;letter-spacing:-.055em}
-.portal-link--ux strong{font-weight:700}
-.portal-link-tag{font-family:"Cormorant Garamond",serif;font-size:16px;font-weight:600;font-style:italic;letter-spacing:.015em;text-transform:none;line-height:1}
-.portal-link-desc{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;font-weight:400}
+.portal-kicker,.portal-footer{font-family:"Instrument Sans",sans-serif;font-weight:500;letter-spacing:.08em}
+.portal-link strong{font-family:"Instrument Sans",sans-serif;font-weight:600;letter-spacing:-.025em}
+.portal-link--ux strong{font-weight:600}
+.portal-link-tag{font-family:"Instrument Sans",sans-serif;font-size:10px;font-weight:400;font-style:normal;letter-spacing:.08em;line-height:1.4}
+.portal-link-desc{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;font-weight:400;line-height:1.6}
 .portal-primary{font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif}
-@media(hover:hover) and (pointer:fine){
- .portal-link:hover strong{color:#dd654a}
-}
+@media(hover:hover) and (pointer:fine){.portal-link:hover strong{color:#dd654a}}
