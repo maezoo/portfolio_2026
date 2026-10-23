@@ -1320,7 +1320,7 @@ button,a{-webkit-tap-highlight-color:transparent}
 
 /* CENTER-OUT APPROACH: pinned scroll reveal > delayed details > floating. */
 .principles-section{background:#efeee9;border-bottom:1px solid var(--line);overflow:clip}
-.principles-runway{height:185vh;position:relative}
+.principles-runway{height:145vh;position:relative}
 .principles-stage{height:calc(100vh - 80px);position:sticky;top:80px;overflow:hidden}
 .principles-canvas{height:100%;min-height:600px;position:relative;isolation:isolate}
 .principles-heading{position:absolute;z-index:3;left:50%;top:46%;transform:translate(-50%,-50%);text-align:center;width:min(440px,44%);pointer-events:none}
