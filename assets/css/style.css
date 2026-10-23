@@ -1405,3 +1405,33 @@ button,a{-webkit-tap-highlight-color:transparent}
  .principles-heading h2{font-size:52px}
 }
 @media(prefers-reduced-motion:reduce){.portal-link{animation:none!important;transition:none}.site-header{transition:none}}
+
+/* Intro refinement: centre-origin stagger, fluid atmospheric backdrop, one-line headline. */
+.portal-intro{position:relative;isolation:isolate}
+.portal-intro::before,.portal-intro::after{content:"";position:absolute;inset:-30%;pointer-events:none;z-index:-1}
+.portal-intro::before{background:radial-gradient(ellipse 35% 33% at 28% 42%,rgba(86,116,247,.19),transparent 75%),radial-gradient(ellipse 31% 35% at 75% 59%,rgba(152,173,251,.21),transparent 76%),radial-gradient(ellipse 28% 29% at 52% 24%,rgba(255,255,255,.82),transparent 74%);animation:portalAtmosphere 18s ease-in-out infinite alternate}
+.portal-intro::after{inset:0;opacity:.24;background-image:linear-gradient(rgba(49,85,237,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(49,85,237,.055) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at center,transparent 12%,#000 100%)}
+@keyframes portalAtmosphere{0%{transform:translate3d(-2%,1%,0) scale(1)}50%{transform:translate3d(3%,-2%,0) scale(1.06)}100%{transform:translate3d(-1%,3%,0) scale(1.02)}}
+.portal-heading{width:min(590px,47%)}
+.portal-heading h1{font-size:clamp(39px,4.4vw,67px)}
+.portal-heading h1 em{display:inline-block;white-space:nowrap}
+.portal-link--ux{--enter-x:32vw;--enter-y:30vh}
+.portal-link--web{--enter-x:-32vw;--enter-y:29vh}
+.portal-link--publishing{--enter-x:32vw;--enter-y:-7vh}
+.portal-link--about{--enter-x:-32vw;--enter-y:-7vh}
+.portal-link--approach{--enter-x:0px;--enter-y:-31vh}
+@media(prefers-reduced-motion:no-preference){
+ .portal-heading{animation:portalCenter .8s cubic-bezier(.16,1,.3,1) both}
+ .portal-link{animation:portalSpread 1.25s cubic-bezier(.16,1,.3,1) both}
+ .portal-link:nth-child(1){animation-delay:.26s}
+ .portal-link:nth-child(2){animation-delay:.38s}
+ .portal-link:nth-child(3){animation-delay:.5s}
+ .portal-link:nth-child(4){animation-delay:.62s}
+ .portal-link:nth-child(5){animation-delay:.74s}
+}
+@keyframes portalCenter{from{opacity:0;filter:blur(8px);translate:0 14px}to{opacity:1;filter:blur(0);translate:0 0}}
+@keyframes portalSpread{from{opacity:0;filter:blur(8px);translate:var(--enter-x) var(--enter-y)}to{opacity:1;filter:blur(0);translate:0 0}}
+@media(max-width:1100px){.portal-heading{width:43%}.portal-heading h1{font-size:clamp(37px,4.2vw,60px)}}
+@media(max-width:760px){.portal-heading{width:100%}.portal-heading h1{font-size:clamp(40px,7.7vw,61px)}.portal-link{--enter-x:0px;--enter-y:30px}}
+@media(max-width:480px){.portal-heading h1{font-size:clamp(32px,8.4vw,43px)}}
+@media(prefers-reduced-motion:reduce){.portal-intro::before{animation:none}}
