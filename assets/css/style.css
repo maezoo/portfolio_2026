@@ -1556,3 +1556,69 @@ body{background:var(--paper)}
 
 /* Intro menu description size. */
 .portal-link-desc{font-size:14px}
+
+
+/* PERSONAL INDEX — structure-led editorial introduction. Overrides old portal visual rules only. */
+.portal-index{background:#f5f3ee;overflow:hidden;border-color:#d8d3cc}
+.portal-index:before,.portal-index:after{display:none!important}
+.portal-index .portal-inner{min-height:100svh;padding:34px 0 58px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr);grid-template-rows:auto 1fr auto;column-gap:clamp(50px,6.5vw,120px);align-items:stretch;isolation:isolate}
+.portal-index-top{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d4cdc5;padding:0 0 16px;font:700 11px/1.4 "Instrument Sans",sans-serif;letter-spacing:.1em}
+.portal-index-top b{font-weight:500;color:#a19b93;margin-left:10px}
+.portal-index .portal-heading{grid-column:1;grid-row:2;position:relative;z-index:3;width:100%;max-width:none;transform:none;text-align:left;align-self:center;animation:none;margin:0;padding:55px 0 60px}
+.portal-index .portal-kicker{display:inline-flex;align-items:center;gap:8px;letter-spacing:.14em;font:600 11px/1.4 "Instrument Sans",sans-serif;color:#78716a}
+.portal-index .portal-kicker i{width:8px;height:8px;margin:0;background:#f47758}
+.portal-index .portal-heading h1{margin:32px 0 25px;font:750 clamp(43px,4.35vw,70px)/1.28 "Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;letter-spacing:-.065em;color:#252525;white-space:nowrap;text-wrap:initial}
+.portal-index .portal-heading h1 em{font-style:normal;color:#f47758;white-space:nowrap}
+.portal-stop{color:#f47758}
+.portal-index .portal-heading p{max-width:440px;margin:0 0 40px;text-align:left;color:#5a5651;font:500 15px/1.8 "Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;letter-spacing:-.035em}
+.portal-index .portal-primary{border:0;border-bottom:2px solid #252525;padding:0 1px 11px;gap:48px;font:700 15px/1.4 "Instrument Sans",sans-serif;letter-spacing:0}
+.portal-index .portal-primary:hover{border-color:#f47758}
+.portal-heading-index{display:block;margin-top:76px;color:#aaa198;font:500 10px/1.5 "Instrument Sans",sans-serif;letter-spacing:.13em}
+.portal-index .portal-navigation{grid-column:2;grid-row:2;position:relative;inset:auto;display:grid;grid-template-columns:1fr;align-content:center;gap:0;pointer-events:auto;z-index:2;padding:35px 0}
+.portal-index .portal-link,.portal-index .portal-link--ux,.portal-index .portal-link--web,.portal-index .portal-link--publishing,.portal-index .portal-link--about,.portal-index .portal-link--approach{position:relative;inset:auto;top:auto;bottom:auto;left:auto;right:auto;transform:none;translate:0 0;width:100%;min-width:0;max-width:none;padding:16px 36px 16px 4px;display:grid;grid-template-columns:60px minmax(0,1fr) auto;align-items:center;column-gap:15px;row-gap:6px;border:0;border-bottom:1px solid #d4cdc5;border-radius:0;background:none;backdrop-filter:none;transition:padding .3s ease,background-color .3s ease}
+.portal-index .portal-link:first-child{border-top:1px solid #d4cdc5}
+.portal-index .portal-link:before,.portal-index .portal-link:after{display:none!important}
+.portal-index .portal-link-tag{grid-column:1;grid-row:1;align-self:center;font:500 10px/1.4 "Instrument Sans",sans-serif;color:#898078;letter-spacing:.025em;margin:0}
+.portal-index .portal-link strong,.portal-index .portal-link--ux strong{grid-column:2;grid-row:1;font:700 clamp(23px,2.35vw,35px)/1.16 "Instrument Sans",sans-serif;letter-spacing:-.045em;color:#242424;white-space:nowrap}
+.portal-index .portal-link--ux strong{font-weight:800}
+.portal-index .portal-link-arrow{grid-column:3;grid-row:1;align-self:center;margin:0;color:#f47758;font-size:22px}
+.portal-index .portal-link-desc{grid-column:2/4;grid-row:2;max-height:0;opacity:0;overflow:hidden;margin:0;color:#625c55;font:500 14px/1.6 "Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;transition:opacity .25s,max-height .3s ease,margin .3s ease}
+.portal-index .portal-footer{grid-column:1/-1;grid-row:3;position:relative;bottom:auto;left:auto;right:auto;border-top:1px solid #d4cdc5;padding-top:17px;color:#8a8179;font:600 10px/1.5 "Instrument Sans",sans-serif;letter-spacing:.13em}
+.portal-index .portal-footer a:hover{color:#d76447}
+@media(hover:hover) and (pointer:fine){
+ .portal-index .portal-link:hover{transform:none;padding-left:14px;background:rgba(244,119,88,.045)}
+ .portal-index .portal-link:hover strong{color:#d76548}
+ .portal-index .portal-link:hover .portal-link-desc{opacity:1;max-height:36px;margin-top:2px}
+}
+.portal-index .portal-link:focus-visible .portal-link-desc{opacity:1;max-height:36px;margin-top:2px}
+@media(prefers-reduced-motion:no-preference){
+ .portal-index .portal-heading{animation:indexHeadline .8s cubic-bezier(.16,1,.3,1) both}
+ .portal-index .portal-link{animation:indexAssemble .95s cubic-bezier(.16,1,.3,1) both}
+ .portal-index .portal-link:nth-child(1){--in-y:110px;animation-delay:.2s}
+ .portal-index .portal-link:nth-child(2){--in-y:55px;animation-delay:.32s}
+ .portal-index .portal-link:nth-child(3){--in-y:0px;animation-delay:.44s}
+ .portal-index .portal-link:nth-child(4){--in-y:-55px;animation-delay:.56s}
+ .portal-index .portal-link:nth-child(5){--in-y:-110px;animation-delay:.68s}
+}
+@keyframes indexHeadline{from{opacity:0;translate:0 20px}to{opacity:1;translate:0 0}}
+@keyframes indexAssemble{from{opacity:0;translate:-80px var(--in-y,0px)}to{opacity:1;translate:0 0}}
+@media(max-width:1150px){
+ .portal-index .portal-inner{column-gap:34px;grid-template-columns:minmax(0,1fr) minmax(330px,.85fr)}
+ .portal-index .portal-heading h1{font-size:clamp(37px,4.2vw,55px)}
+ .portal-index .portal-link strong,.portal-index .portal-link--ux strong{font-size:clamp(22px,2.4vw,30px)}
+ .portal-index .portal-link{grid-template-columns:50px minmax(0,1fr) auto}
+}
+@media(max-width:760px){
+ .portal-index .portal-inner{display:block;min-height:100svh;padding:27px 0 45px}
+ .portal-index-top{gap:18px;font-size:9px}
+ .portal-index .portal-heading{padding:75px 0 45px;margin:0}
+ .portal-index .portal-heading h1{font-size:clamp(37px,7.1vw,59px);white-space:normal;margin:22px 0}
+ .portal-index .portal-heading p{font-size:14px;margin-bottom:28px}
+ .portal-heading-index{display:none}
+ .portal-index .portal-navigation{padding:0 0 45px}
+ .portal-index .portal-link,.portal-index .portal-link--ux,.portal-index .portal-link--web,.portal-index .portal-link--publishing,.portal-index .portal-link--about,.portal-index .portal-link--approach{padding:16px 8px 16px 2px;grid-template-columns:44px minmax(0,1fr) auto}
+ .portal-index .portal-link strong,.portal-index .portal-link--ux strong{font-size:clamp(21px,4vw,29px)}
+ .portal-index .portal-link-desc{opacity:1;max-height:none;overflow:visible;margin-top:3px;font-size:13px}
+ .portal-index .portal-link-tag{font-size:9px}
+}
+@media(max-width:480px){.portal-index .portal-heading h1{font-size:clamp(31px,8.7vw,43px)}.portal-index .portal-heading{padding:56px 0 35px}.portal-index .portal-link strong,.portal-index .portal-link--ux strong{font-size:21px}.portal-index-top{font-size:8px}}
