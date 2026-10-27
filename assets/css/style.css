@@ -1894,3 +1894,13 @@ body{background:var(--paper)}
 .vision-hero.has-gsap-motion .vision-blob:hover{transform:none}
 .vision-hero.has-gsap-motion .vision-blob:focus-visible{outline:3px solid #fff}
 @media(prefers-reduced-motion:reduce){.vision-hero .vision-blob{translate:none!important}}
+
+/* Focused kinetic headline: one strong reading sequence, no layout shift. */
+.vision-hero .vision-editorial h1{font-size:clamp(66px,7.5vw,136px);line-height:1.12}
+.vision-hero .vision-headline-first,.vision-hero .vision-headline-ending{display:inline-block}
+.vision-hero .vision-headline-highlight{display:inline}
+.vision-hero .vision-headline-highlight>span{display:inline-block}
+.vision-hero .vision-headline-highlight .vision-character-space{width:.26em}
+@media(max-width:1050px){.vision-hero .vision-editorial h1{font-size:clamp(56px,7.4vw,88px)}}
+@media(max-width:760px){.vision-hero .vision-editorial h1{font-size:clamp(43px,9.3vw,74px)}}
+@media(max-width:450px){.vision-hero .vision-editorial h1{font-size:clamp(40px,10.4vw,55px)}}
