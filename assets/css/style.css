@@ -1884,3 +1884,6 @@ body{background:var(--paper)}
 @media(min-width:761px) and (min-height:1441px){
   .vision-hero .vision-shell{min-height:1440px}
 }
+
+/* Hero shell spacing — final requested inset. */
+.vision-hero .vision-shell{padding:40px 0 60px}
