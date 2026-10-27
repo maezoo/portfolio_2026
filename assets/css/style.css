@@ -1869,3 +1869,11 @@ body{background:var(--paper)}
 /* Current hero copy-to-card spacing. Keep guidance close to the paragraph. */
 .vision-hero .vision-editorial{padding-bottom:clamp(48px,7vh,84px)}
 @media(max-width:760px){.vision-hero .vision-editorial{padding-bottom:48px}}
+
+/* Tall desktops: distribute remaining height between intro and organic cards. */
+@media(min-width:761px) and (min-height:800px){
+  .vision-hero .vision-shell{min-height:100svh}
+  .vision-hero .vision-editorial{padding-bottom:clamp(30px,4vh,52px)}
+  .vision-hero .vision-strengths{margin-top:auto}
+  .vision-hero .vision-scroll{margin-top:clamp(18px,3vh,30px)}
+}
