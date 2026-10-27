@@ -29,7 +29,14 @@
 <main>
   <section class="portal-intro portal-play vision-hero" id="top" aria-labelledby="portalTitle">
     <div class="vision-shell">
-      <div class="vision-top"><span class="vision-index"><i aria-hidden="true"></i> PORTFOLIO / 2026</span></div>
+      <div class="vision-top"><span class="vision-index"><i aria-hidden="true"></i> PORTFOLIO / 2026</span><button type="button" class="vision-menu-toggle" id="visionMenuToggle" aria-expanded="false" aria-controls="visionMenu">MENU <span aria-hidden="true">☰</span></button></div>
+      <nav class="vision-menu" id="visionMenu" aria-label="첫 화면 메뉴" hidden>
+        <a href="#projects">Work <span>03</span></a>
+        <a href="#process">Approach</a>
+        <a href="#archive">Archive</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
       <div class="vision-editorial">
         
         <h1 id="portalTitle">좋은 화면은<br><em>좋은 질문</em>에서 시작됩니다<span class="vision-stop">.</span></h1>
@@ -46,7 +53,7 @@
           <button type="button" class="vision-blob vision-blob--five" data-strength="execution" aria-controls="strengthPanel" aria-expanded="false"><small>05 / EXECUTION</small><strong>실행</strong><span aria-hidden="true">↗</span></button>
         </div>
       </div>
-
+      <a class="vision-scroll" href="#projects" aria-label="다음 프로젝트 섹션으로 이동">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a>
     </div>
     <div class="strength-overlay" id="strengthOverlay" hidden>
       <section class="strength-panel" id="strengthPanel" aria-labelledby="strengthTitle" aria-modal="true" role="dialog" tabindex="-1">
