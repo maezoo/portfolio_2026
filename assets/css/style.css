@@ -2246,3 +2246,20 @@ body{background:var(--paper)}
 .vision-hero .strength-step{border:1px solid #d1c7bf;border-radius:24px;padding:10px 18px;min-height:42px;background:transparent;color:#312b28;font-size:14px;font-weight:700;cursor:pointer}
 .vision-hero .strength-step:hover,.vision-hero .strength-step:focus-visible{background:#f6e4dc;border-color:#e58b70}
 .vision-hero .strength-count{font-size:12px;letter-spacing:.12em;color:#726862}
+
+/* Strength dialog: make each slide identity and evidence immediately readable. */
+.vision-hero .strength-panel{--strength-accent:#f47758}
+.vision-hero .strength-panel[data-strength="question"]{--strength-accent:#318368}
+.vision-hero .strength-panel[data-strength="structure"]{--strength-accent:#716159}
+.vision-hero .strength-panel[data-strength="usability"]{--strength-accent:#9a6e19}
+.vision-hero .strength-panel[data-strength="design"]{--strength-accent:#8460a1}
+.vision-hero .strength-panel[data-strength="execution"]{--strength-accent:#bb5b47}
+.vision-hero .strength-keyword{font-size:clamp(44px,5.6vw,72px);font-weight:800;line-height:1.12;letter-spacing:-.075em;color:var(--strength-accent);margin:24px 0 4px}
+.vision-hero .strength-panel h2{margin:8px 0 18px;font-size:clamp(25px,3.2vw,37px);line-height:1.28}
+.vision-hero .strength-panel-bottom{margin-top:26px;padding-top:18px}
+.vision-hero #strengthProof{font-size:clamp(15px,1.4vw,18px);font-weight:650;line-height:1.6;letter-spacing:-.02em;color:#4d4641;word-break:keep-all}
+@media(max-width:760px){
+.vision-hero .strength-keyword{font-size:clamp(42px,12vw,60px);margin-top:18px}
+.vision-hero .strength-panel h2{font-size:clamp(23px,6.4vw,30px)}
+.vision-hero #strengthProof{font-size:15px}
+}
