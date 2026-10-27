@@ -2273,3 +2273,10 @@ body{background:var(--paper)}
 .vision-hero .strength-proof-tags{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
 .vision-hero .strength-proof-tag{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:#eee8e2;color:#514942;font-size:clamp(13px,1.1vw,15px);font-weight:600;line-height:1.4;white-space:nowrap}
 @media(max-width:760px){.vision-hero .vision-strength-head>span{font-size:12px}.vision-hero .strength-proof-tag{font-size:13px;padding:7px 10px}}
+
+/* First-screen information hierarchy: guide follows intro; no redundant projects CTA. */
+.vision-hero .vision-strength-guide{display:flex;align-items:center;gap:10px;margin:clamp(21px,3vh,34px) 0 0;color:#e2dcd5;font-size:clamp(13px,1.12vw,16px);font-weight:600;letter-spacing:-.02em}
+.vision-hero .vision-strength-guide span{color:#f47758;font-size:22px}
+.vision-hero .vision-strengths{margin-top:clamp(34px,5vh,65px)}
+.vision-hero .vision-objects{margin-top:0}
+@media(max-width:760px){.vision-hero .vision-strength-guide{font-size:14px;margin-top:22px}.vision-hero .vision-strengths{margin-top:30px}}
