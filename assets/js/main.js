@@ -252,8 +252,12 @@
     const overlay=document.getElementById("strengthOverlay");
     const panel=document.getElementById("strengthPanel");
     const close=document.getElementById("strengthClose");
+    const prev=document.getElementById("strengthPrev");
+    const next=document.getElementById("strengthNext");
+    const count=document.getElementById("strengthCount");
+    let activeIndex=0;
     const cards=Array.from(document.querySelectorAll(".portal-play [data-strength]"));
-    if(!overlay||!panel||!close||!cards.length)return;
+    if(!overlay||!panel||!close||!prev||!next||!count||!cards.length)return;
     const content={
       question:{label:"01 / QUESTION",title:"당연한 것에도 질문합니다.",description:"요청받은 화면을 바로 만드는 대신, 왜 필요한지 먼저 생각합니다.\n문제의 원인과 사용자의 목적을 구분하고 더 나은 해결 방법을 고민합니다.",proof:"관찰 · 문제 정의 · 개선 가설"},
       structure:{label:"02 / STRUCTURE",title:"복잡한 것을 명확하게 정리합니다.",description:"정보가 많을수록 무엇을 먼저 보여주어야 할지 고민합니다.\n메뉴 구조와 콘텐츠의 우선순위를 정리하고 사용자가 자연스럽게 목적에 도달하는 흐름을 설계합니다.",proof:"정보구조(IA) · 콘텐츠 설계 · 사용자 흐름"},
@@ -268,28 +272,35 @@
       cards.forEach(function(card){card.setAttribute("aria-expanded","false");});
       if(trigger)trigger.focus();
     }
-    cards.forEach(function(card){
-      card.addEventListener("click",function(){
-        const data=content[card.dataset.strength];
-        if(!data)return;
-        trigger=card;
-        document.getElementById("strengthLabel").textContent=data.label;
-        document.getElementById("strengthTitle").textContent=data.title;
-        document.getElementById("strengthDescription").textContent=data.description;
-        document.getElementById("strengthProof").textContent=data.proof;
-        cards.forEach(function(item){item.setAttribute("aria-expanded",String(item===card));});
-        overlay.hidden=false;
-        panel.focus();
-      });
+    function show(index){
+      activeIndex=(index+cards.length)%cards.length;
+      const card=cards[activeIndex];
+      const data=content[card.dataset.strength];
+      document.getElementById("strengthLabel").textContent=data.label;
+      document.getElementById("strengthTitle").textContent=data.title;
+      document.getElementById("strengthDescription").textContent=data.description;
+      document.getElementById("strengthProof").textContent=data.proof;
+      count.textContent=String(activeIndex+1).padStart(2,"0")+" / "+String(cards.length).padStart(2,"0");
+      cards.forEach(function(item){item.setAttribute("aria-expanded",String(item===card));});
+      overlay.hidden=false;
+    }
+    cards.forEach(function(card,index){
+      card.addEventListener("click",function(){trigger=card;show(index);close.focus();});
     });
+    prev.addEventListener("click",function(){show(activeIndex-1);});
+    next.addEventListener("click",function(){show(activeIndex+1);});
     close.addEventListener("click",dismiss);
     overlay.addEventListener("click",function(event){if(event.target===overlay)dismiss();});
     document.addEventListener("keydown",function(event){
       if(overlay.hidden)return;
       if(event.key==="Escape")dismiss();
+      if(event.key==="ArrowRight")show(activeIndex+1);
+      if(event.key==="ArrowLeft")show(activeIndex-1);
       if(event.key==="Tab"){
-        event.preventDefault();
-        close.focus();
+        const focusable=[close,prev,next];
+        const i=focusable.indexOf(document.activeElement);
+        if(event.shiftKey&&i===0){event.preventDefault();next.focus();}
+        else if(!event.shiftKey&&i===2){event.preventDefault();close.focus();}
       }
     });
   })();
