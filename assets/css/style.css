@@ -1871,9 +1871,16 @@ body{background:var(--paper)}
 @media(max-width:760px){.vision-hero .vision-editorial{padding-bottom:48px}}
 
 /* Tall desktops: distribute remaining height between intro and organic cards. */
+/* Hero composition is calibrated within a 2540 x 1440 viewport. */
+@media(min-width:761px){
+  .vision-hero{display:flex;justify-content:center;align-items:center}
+  .vision-hero .vision-shell{width:min(calc(100% - 100px),1530px);min-height:min(100svh,1440px)}
+}
 @media(min-width:761px) and (min-height:800px){
-  .vision-hero .vision-shell{min-height:100svh}
   .vision-hero .vision-editorial{padding-bottom:clamp(30px,4vh,52px)}
   .vision-hero .vision-strengths{margin-top:auto}
   .vision-hero .vision-scroll{margin-top:clamp(18px,3vh,30px)}
+}
+@media(min-width:761px) and (min-height:1441px){
+  .vision-hero .vision-shell{min-height:1440px}
 }
