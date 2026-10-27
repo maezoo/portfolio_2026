@@ -2067,3 +2067,68 @@ body{background:var(--paper)}
  .hero-rebuilt .hero-bottomline{font-size:9px}
 }
 @media(prefers-reduced-motion:reduce){.hero-rebuilt .hero-story,.hero-rebuilt .hero-tag{animation:none}}
+
+
+/* Hero composition v3: large central statement with overlapping organic color tags. */
+@media(min-width:851px){
+.hero-rebuilt .hero-shell{min-height:100svh;padding:24px clamp(32px,5vw,90px) 24px}
+.hero-rebuilt .hero-stage{display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:0;padding:clamp(42px,6vh,76px) 0 0}
+.hero-rebuilt .hero-story{text-align:center}
+.hero-rebuilt .hero-eyebrow{justify-content:center}
+.hero-rebuilt .hero-story h1{font-size:clamp(68px,7.6vw,128px);line-height:1.12;letter-spacing:-.085em;margin:22px 0 21px;white-space:normal}
+.hero-rebuilt .hero-story-bottom{justify-content:center;margin:0}
+.hero-rebuilt .hero-summary{max-width:850px;margin:0 auto;text-align:center;font-size:clamp(17px,1.5vw,22px);line-height:1.65}
+.hero-rebuilt .hero-explore{width:min(100%,1300px);align-self:center;margin:clamp(35px,5vh,58px) auto 0}
+.hero-rebuilt .hero-explore-top{margin-bottom:15px}
+.hero-rebuilt .hero-tags{position:relative;display:block;width:100%;height:clamp(260px,33vh,370px);min-height:0;isolation:isolate}
+.hero-rebuilt .hero-tag{position:absolute;display:flex;width:27%;height:75%;min-height:0;padding:clamp(17px,1.8vw,28px);justify-content:space-around;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.hero-rebuilt .hero-tag strong{font-size:clamp(22px,2.05vw,34px)}
+.hero-rebuilt .hero-tag--question{left:0;top:15%;z-index:2;transform:rotate(-6deg)}
+.hero-rebuilt .hero-tag--structure{left:18.3%;top:0;z-index:3;transform:rotate(5deg)}
+.hero-rebuilt .hero-tag--usability{left:37.2%;top:17%;z-index:4;transform:rotate(-4deg)}
+.hero-rebuilt .hero-tag--design{left:55.5%;top:0;z-index:3;transform:rotate(5deg)}
+.hero-rebuilt .hero-tag--execution{left:73%;top:15%;z-index:2;transform:rotate(-5deg)}
+.hero-rebuilt .hero-tag:hover{z-index:8;transform:translateY(-16px) rotate(0deg) scale(1.05)}
+.hero-rebuilt .hero-explore-hint{text-align:center;margin:12px 0 0}
+.hero-rebuilt .hero-bottomline{margin-top:clamp(22px,3vh,36px);align-items:center}
+.hero-rebuilt .hero-work{margin:0;padding-bottom:8px}
+.hero-rebuilt .hero-work-label{font-size:clamp(20px,2vw,29px)}
+}
+@media(min-width:851px) and (max-width:1200px){
+.hero-rebuilt .hero-story h1{font-size:clamp(64px,7.5vw,90px)}
+.hero-rebuilt .hero-tag{width:28.5%}
+.hero-rebuilt .hero-tag--structure{left:17.5%}.hero-rebuilt .hero-tag--usability{left:36%}.hero-rebuilt .hero-tag--design{left:54%}.hero-rebuilt .hero-tag--execution{left:71.5%}
+.hero-rebuilt .hero-tag strong{font-size:clamp(20px,2.2vw,29px)}
+}
+@media(max-width:850px){
+.hero-rebuilt .hero-story h1{text-align:left}
+.hero-rebuilt .hero-story-bottom{display:block;margin-bottom:0}
+.hero-rebuilt .hero-summary{max-width:600px}
+.hero-rebuilt .hero-explore{margin-top:38px}
+.hero-rebuilt .hero-bottomline{gap:20px}
+.hero-rebuilt .hero-work-label{font-size:18px}
+}
+@media(min-width:541px) and (max-width:850px){
+.hero-rebuilt .hero-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:0;min-height:0}
+.hero-rebuilt .hero-tag{flex:0 0 34%;height:185px;margin:0 -11px -18px;transform:rotate(-3deg)}
+.hero-rebuilt .hero-tag:nth-child(even){transform:rotate(4deg)}
+.hero-rebuilt .hero-tag:before{transform:rotate(var(--tag-rotate))}
+.hero-rebuilt .hero-tag:hover{z-index:8;transform:translateY(-10px)}
+}
+@media(max-width:540px){
+.hero-rebuilt .hero-stage{padding-top:54px}
+.hero-rebuilt .hero-story h1{font-size:clamp(45px,10.7vw,65px);line-height:1.16}
+.hero-rebuilt .hero-story-bottom{margin-bottom:0}
+.hero-rebuilt .hero-explore{margin-top:37px}
+.hero-rebuilt .hero-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:0;min-height:0}
+.hero-rebuilt .hero-tag,.hero-rebuilt .hero-tag--execution{flex:0 0 52%;width:52%;height:158px;min-height:0;margin:0 -2% -14px;transform:rotate(-4deg)}
+.hero-rebuilt .hero-tag:nth-child(even){transform:rotate(5deg)}
+.hero-rebuilt .hero-tag:last-child{margin-top:-7px;flex-basis:62%}
+.hero-rebuilt .hero-tag strong{font-size:clamp(19px,5vw,25px)}
+.hero-rebuilt .hero-bottomline{margin-top:26px}
+.hero-rebuilt .hero-work-label{font-size:17px}
+}
+@media(prefers-reduced-motion:no-preference){
+.hero-rebuilt .hero-tag{animation-name:heroTagAppear}
+@keyframes heroTagAppear{from{opacity:0;translate:0 40px;scale:.92}to{opacity:1;translate:0 0;scale:1}}
+}
