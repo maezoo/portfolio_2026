@@ -2263,3 +2263,13 @@ body{background:var(--paper)}
 .vision-hero .strength-panel h2{font-size:clamp(23px,6.4vw,30px)}
 .vision-hero #strengthProof{font-size:15px}
 }
+
+/* Concise hero strengths; instruction belongs directly above the tags. */
+.vision-hero .vision-strength-head{justify-content:center;margin-bottom:14px}
+.vision-hero .vision-strength-head>span{display:flex;align-items:center;gap:8px;color:#c9c2bc;font-size:clamp(12px,1.1vw,14px);font-weight:600;letter-spacing:-.01em}
+.vision-hero .vision-strength-head>span span{color:#f47758;font-size:18px}
+.vision-hero .strength-panel h2{max-width:100%;font-size:clamp(24px,3vw,34px);line-height:1.32;word-break:keep-all}
+.vision-hero .strength-panel p{font-size:clamp(15px,1.4vw,17px);line-height:1.65;white-space:normal;word-break:keep-all}
+.vision-hero .strength-proof-tags{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.vision-hero .strength-proof-tag{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:#eee8e2;color:#514942;font-size:clamp(13px,1.1vw,15px);font-weight:600;line-height:1.4;white-space:nowrap}
+@media(max-width:760px){.vision-hero .vision-strength-head>span{font-size:12px}.vision-hero .strength-proof-tag{font-size:13px;padding:7px 10px}}
