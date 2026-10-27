@@ -27,34 +27,38 @@
 </header>
 
 <main>
-  <section class="portal-intro portal-play" id="top" aria-labelledby="portalTitle">
-    <div class="container portal-inner">
-      <div class="play-meta"><span>PORTFOLIO — 2026</span></div>
-      <div class="play-composition" aria-hidden="true"><span class="play-loop"></span></div>
-      <div class="portal-heading">
-        <h1 id="portalTitle">화면을 넘어,<br><em>경험을 설계합니다.</em></h1>
-        <p class="portal-heading-mini">UX <span>/</span> UI <span>/</span> WEB</p>
+  <section class="portal-intro portal-play hero-rebuilt" id="top" aria-labelledby="portalTitle">
+    <div class="hero-shell">
+      <div class="hero-topline"><span class="hero-edition"><span class="hero-edition-mark" aria-hidden="true"></span> PORTFOLIO / 2026</span><span class="hero-location">DESIGN THINKING <i>×</i> EXECUTION</span></div>
+      <div class="hero-stage">
+        <div class="hero-story">
+          <span class="hero-eyebrow"><span class="hero-eyebrow-line"></span> UX · UI · WEB EXPERIENCE</span>
+          <h1 id="portalTitle">화면을 넘어,<br><em>경험을</em><br>설계합니다<span class="hero-period">.</span></h1>
+          <div class="hero-story-bottom">
+            <p class="hero-summary">문제를 질문하고,<br>복잡한 것을 구조화해<br><strong>실제로 작동하는 경험</strong>으로 만듭니다.</p>
+            <a class="hero-work" href="#projects"><span class="hero-work-label">SELECTED WORK <small>03 PROJECTS</small></span><span class="hero-work-icon" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="hero-explore">
+          <div class="hero-explore-top"><span>WHAT I BRING TO DESIGN</span><span>EXPLORE MY STRENGTHS <span aria-hidden="true">↘</span></span></div>
+          <div class="hero-tags" aria-label="나의 강점">
+            <button type="button" class="hero-tag hero-tag--question" data-strength="question" aria-controls="strengthPanel" aria-expanded="false"><small>01 / QUESTION</small><strong>질문하는<br>시선</strong><span class="hero-tag-arrow" aria-hidden="true">↗</span></button>
+            <button type="button" class="hero-tag hero-tag--structure" data-strength="structure" aria-controls="strengthPanel" aria-expanded="false"><small>02 / STRUCTURE</small><strong>구조를<br>만드는 힘</strong><span class="hero-tag-arrow" aria-hidden="true">↗</span></button>
+            <button type="button" class="hero-tag hero-tag--usability" data-strength="usability" aria-controls="strengthPanel" aria-expanded="false"><small>03 / USABILITY</small><strong>사용자<br>중심의 판단</strong><span class="hero-tag-arrow" aria-hidden="true">↗</span></button>
+            <button type="button" class="hero-tag hero-tag--design" data-strength="design" aria-controls="strengthPanel" aria-expanded="false"><small>04 / UI DESIGN</small><strong>명확한<br>시각적 전달</strong><span class="hero-tag-arrow" aria-hidden="true">↗</span></button>
+            <button type="button" class="hero-tag hero-tag--execution" data-strength="execution" aria-controls="strengthPanel" aria-expanded="false"><small>05 / EXECUTION</small><strong>끝까지<br>구현하는 힘</strong><span class="hero-tag-arrow" aria-hidden="true">↗</span></button>
+          </div>
+          <p class="hero-explore-hint">각 컬러 태그를 선택해 강점을 살펴보세요 <span aria-hidden="true">↗</span></p>
+        </div>
       </div>
-      <p class="portal-identity">문제를 질문하고, 구조를 설계하며, 생각을 실제 경험으로 연결합니다.</p>
-      <a class="portal-featured-link" href="#projects" aria-label="대표 프로젝트 보기"><span class="portal-featured-overline">FEATURED PROJECTS / 03</span><span class="portal-featured-name">SELECTED WORK <span aria-hidden="true">↗</span></span></a>
-      
-      
-      <nav class="portal-navigation" aria-label="나의 강점 탐색">
-        <button type="button" class="portal-link portal-link--ux" data-strength="question" aria-controls="strengthPanel" aria-expanded="false"><span class="portal-link-tag">01 / QUESTION</span><strong>WHY FIRST<span class="strength-dot">.</span></strong><span class="portal-link-desc">당연한 것에도 질문합니다</span><span class="portal-link-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" class="portal-link portal-link--web" data-strength="structure" aria-controls="strengthPanel" aria-expanded="false"><span class="portal-link-tag">02 / STRUCTURE</span><strong>MAKE IT CLEAR<span class="strength-dot">.</span></strong><span class="portal-link-desc">복잡한 정보를 명확한 흐름으로</span><span class="portal-link-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" class="portal-link portal-link--publishing" data-strength="usability" aria-controls="strengthPanel" aria-expanded="false"><span class="portal-link-tag">03 / USABILITY</span><strong>FOR PEOPLE<span class="strength-dot">.</span></strong><span class="portal-link-desc">만드는 사람이 아닌 사용하는 사람의 관점</span><span class="portal-link-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" class="portal-link portal-link--about" data-strength="design" aria-controls="strengthPanel" aria-expanded="false"><span class="portal-link-tag">04 / UI DESIGN</span><strong>MAKE IT WORK<span class="strength-dot">.</span></strong><span class="portal-link-desc">정보를 이해하기 쉬운 화면으로</span><span class="portal-link-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" class="portal-link portal-link--approach" data-strength="execution" aria-controls="strengthPanel" aria-expanded="false"><span class="portal-link-tag">05 / EXECUTION</span><strong>BEYOND MOCKUPS<span class="strength-dot">.</span></strong><span class="portal-link-desc">설계부터 구현과 운영까지</span><span class="portal-link-arrow" aria-hidden="true">↗</span></button>
-      </nav>
-      <div class="strength-overlay" id="strengthOverlay" hidden>
-        <section class="strength-panel" id="strengthPanel" aria-labelledby="strengthTitle" aria-modal="true" role="dialog" tabindex="-1">
-          <div class="strength-panel-top"><span id="strengthLabel">MY STRENGTH / 01</span><button type="button" class="strength-close" id="strengthClose" aria-label="강점 설명 닫기">×</button></div>
-          <h2 id="strengthTitle"></h2>
-          <p id="strengthDescription"></p>
-          <div class="strength-panel-bottom"><span id="strengthProof"></span><span class="strength-panel-mark" aria-hidden="true">↗</span></div>
-        </section>
-      </div>
-      <div class="portal-footer"><span>PORTFOLIO / 2026</span><a href="#projects">SCROLL TO WORK ↓</a></div>
+      <div class="hero-bottomline"><span>THINK BEYOND THE SCREEN.</span><a href="#projects">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
+    </div>
+    <div class="strength-overlay" id="strengthOverlay" hidden>
+      <section class="strength-panel" id="strengthPanel" aria-labelledby="strengthTitle" aria-modal="true" role="dialog" tabindex="-1">
+        <div class="strength-panel-top"><span id="strengthLabel">MY STRENGTH / 01</span><button type="button" class="strength-close" id="strengthClose" aria-label="강점 설명 닫기">×</button></div>
+        <h2 id="strengthTitle"></h2><p id="strengthDescription"></p>
+        <div class="strength-panel-bottom"><span id="strengthProof"></span><span class="strength-panel-mark" aria-hidden="true">↗</span></div>
+      </section>
     </div>
   </section>
 
