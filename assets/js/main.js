@@ -290,6 +290,7 @@
     function dismiss(){
       if(overlay.hidden)return;
       overlay.hidden=true;
+      document.dispatchEvent(new CustomEvent("hero:strength-close"));
       cards.forEach(function(card){card.setAttribute("aria-expanded","false");});
       if(trigger)trigger.focus();
     }
@@ -309,6 +310,7 @@
       count.textContent=String(activeIndex+1).padStart(2,"0")+" / "+String(cards.length).padStart(2,"0");
       cards.forEach(function(item){item.setAttribute("aria-expanded",String(item===card));});
       overlay.hidden=false;
+      document.dispatchEvent(new CustomEvent("hero:strength-show",{detail:{index:activeIndex,card:card}}));
     }
     cards.forEach(function(card,index){
       card.addEventListener("click",function(){trigger=card;show(index);close.focus();});
@@ -328,6 +330,71 @@
         if(event.shiftKey&&i===0){event.preventDefault();next.focus();}
         else if(!event.shiftKey&&i===2){event.preventDefault();close.focus();}
       }
+    });
+  })();
+
+  // Coordinated hero motion: entry, ambient float, cursor proximity and modal transitions.
+  (function initHeroMotion(){
+    const hero=document.querySelector(".vision-hero");
+    const g=window.gsap;
+    if(!hero||!g||reducedMotion)return;
+    const title=hero.querySelector(".vision-editorial h1");
+    const lead=hero.querySelector(".vision-lead");
+    const hint=hero.querySelector(".vision-strength-guide");
+    const cards=Array.from(hero.querySelectorAll(".vision-blob"));
+    const overlay=hero.querySelector("#strengthOverlay");
+    const panel=hero.querySelector("#strengthPanel");
+    if(!title||!lead||!hint||!cards.length||!overlay||!panel)return;
+    hero.classList.add("has-gsap-motion");
+    const timeline=g.timeline({defaults:{ease:"power3.out"}});
+    timeline.from(title,{y:30,opacity:0,duration:.78},0)
+      .from(lead,{y:16,opacity:0,duration:.52},.33)
+      .from(hint,{y:10,opacity:0,duration:.42},.52)
+      .from(cards,{y:25,opacity:0,stagger:.085,duration:.66,clearProps:"opacity",onComplete:function(){cards.forEach(function(card){card.style.translate="";});}},.48);
+    const floatTweens=[];
+    cards.forEach(function(card,i){
+      const float=g.to(card,{"--float-y":i%2? "-5px":"6px",duration:3.5+i*.41,ease:"sine.inOut",repeat:-1,yoyo:true,paused:true});
+      floatTweens.push(float);
+    });
+    timeline.call(function(){floatTweens.forEach(function(t){t.play();});},null,1.25);
+    const hoverFine=window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+    if(hoverFine){
+      cards.forEach(function(card,i){
+        card.addEventListener("pointermove",function(e){
+          if(!overlay.hidden)return;
+          const rect=card.getBoundingClientRect();
+          const dx=(e.clientX-(rect.left+rect.width/2))/rect.width;
+          const dy=(e.clientY-(rect.top+rect.height/2))/rect.height;
+          floatTweens[i].pause();
+          g.to(card,{"--float-y":"0px",x:dx*9,y:dy*8,rotation:dx*2,duration:.3,ease:"power2.out",overwrite:"auto"});
+        });
+        card.addEventListener("pointerleave",function(){
+          g.to(card,{x:0,y:0,rotation:0,duration:.55,ease:"power3.out",overwrite:"auto",onComplete:function(){if(overlay.hidden)floatTweens[i].resume();}});
+        });
+      });
+    }
+    let contentTween=null;
+    document.addEventListener("hero:strength-show",function(event){
+      const first=overlay.dataset.motionOpen!=="true";
+      overlay.dataset.motionOpen="true";
+      floatTweens.forEach(function(t){t.pause();});
+      g.killTweensOf([overlay,panel]);
+      if(contentTween)contentTween.kill();
+      if(first){
+        g.fromTo(overlay,{opacity:0},{opacity:1,duration:.26,ease:"power2.out"});
+        g.fromTo(panel,{y:22,scale:.97,opacity:0},{y:0,scale:1,opacity:1,duration:.4,ease:"power3.out"});
+      }else{
+        const content=panel.querySelectorAll("#strengthKeyword,#strengthTitle,#strengthDescription,#strengthProof");
+        contentTween=g.fromTo(content,{y:10,opacity:.35},{y:0,opacity:1,stagger:.045,duration:.3,ease:"power2.out"});
+      }
+    });
+    document.addEventListener("hero:strength-close",function(){
+      delete overlay.dataset.motionOpen;
+      g.set([overlay,panel],{clearProps:"opacity,transform"});
+      cards.forEach(function(card,i){
+        g.to(card,{x:0,y:0,rotation:0,duration:.35,overwrite:"auto"});
+        floatTweens[i].resume();
+      });
     });
   })();
 })();
