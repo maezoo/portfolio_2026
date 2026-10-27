@@ -1904,3 +1904,77 @@ body{background:var(--paper)}
 @media(max-width:1050px){.vision-hero .vision-editorial h1{font-size:clamp(56px,7.4vw,88px)}}
 @media(max-width:760px){.vision-hero .vision-editorial h1{font-size:clamp(43px,9.3vw,74px)}}
 @media(max-width:450px){.vision-hero .vision-editorial h1{font-size:clamp(40px,10.4vw,55px)}}
+
+
+/* POSTER HERO — reference-led typography, layered interactive objects. */
+.portal-play.vision-hero{background:#063927;color:#ff826f;overflow:hidden;display:block;min-height:100svh}
+.vision-hero:before{background:radial-gradient(ellipse at 48% 46%,rgba(11,78,51,.72),transparent 72%)}
+.vision-hero .vision-shell{position:relative;display:block;min-height:min(100svh,1440px);max-width:2540px;width:min(calc(100% - 72px),2540px);margin:0 auto;padding:40px 0 60px}
+.vision-hero .vision-top{position:relative;z-index:45;color:#e9ddc9}
+.vision-hero .vision-index{color:#f2e9d9;font-size:13px}
+.vision-hero .vision-menu-toggle{color:#f7efe4;border-color:rgba(255,255,255,.7)}
+.vision-hero .vision-editorial{position:relative;z-index:1;padding:0;margin:clamp(35px,5vh,75px) 0 0}
+.vision-hero .vision-editorial h1{max-width:none;margin:0;color:#ff826f;font-size:clamp(100px,11.65vw,296px);font-weight:900;letter-spacing:-.105em;line-height:.94;word-break:keep-all}
+.vision-hero .vision-headline-first{display:block;white-space:nowrap}
+.vision-hero .vision-headline-highlight{display:block;font-style:normal;white-space:nowrap;margin:0 0 0 13%;line-height:.96;color:#ff826f}
+.vision-hero .vision-headline-highlight>span{display:inline-block}
+.vision-hero .vision-headline-highlight .vision-character-space{width:.28em}
+.vision-hero .vision-headline-ending{display:block;white-space:nowrap;margin-left:24%;color:#ff826f}
+.vision-hero .vision-stop{color:#ff826f}
+.vision-hero .vision-lead{position:relative;z-index:9;max-width:570px;margin:clamp(26px,4vh,54px) 0 0 2.5%;font-size:clamp(16px,1.1vw,21px);line-height:1.65;font-weight:550;color:#e5dfd3}
+.vision-hero .vision-strength-guide{position:relative;z-index:9;margin:12px 0 0 2.5%;color:#f2e9d9;font-size:clamp(14px,1vw,17px)}
+.vision-hero .vision-strength-guide span{color:#ff826f}
+.vision-hero .vision-strengths{position:absolute;inset:0;z-index:8;pointer-events:none;width:100%;margin:0}
+.vision-hero .vision-objects{position:absolute;inset:0;width:100%;height:100%;max-width:none;margin:0;pointer-events:none;isolation:isolate}
+.vision-hero .vision-blob{position:absolute;pointer-events:auto;width:clamp(140px,12vw,270px);height:clamp(130px,12vw,250px);padding:clamp(15px,1.5vw,30px);z-index:1;transform:none}
+.vision-hero .vision-blob small{font-size:clamp(11px,.8vw,14px)}
+.vision-hero .vision-blob strong{font-size:clamp(29px,2.9vw,60px)}
+.vision-hero .vision-blob:before{inset:0}
+.vision-hero .vision-blob--one{left:2%;top:30%;width:15%;height:23%;z-index:5;padding-left:clamp(24px,3vw,58px)}
+.vision-hero .vision-blob--two{left:18%;top:49%;width:13%;height:22%;z-index:4}
+.vision-hero .vision-blob--three{left:42%;top:35%;width:15%;height:26%;z-index:6}
+.vision-hero .vision-blob--four{left:70%;top:17%;width:14%;height:25%;z-index:5}
+.vision-hero .vision-blob--five{left:79%;top:67%;width:15%;height:23%;z-index:4}
+.vision-hero .vision-scroll{position:absolute;bottom:32px;right:0;z-index:11;margin:0;color:#f2e9d9;border-color:rgba(255,255,255,.5)}
+.vision-hero .vision-scroll span{color:#ff826f}
+.vision-hero .vision-menu{z-index:50}
+@media(min-width:761px) and (min-height:1441px){.vision-hero .vision-shell{min-height:1440px}}
+@media(max-width:1200px){
+.vision-hero .vision-editorial{margin-top:8vh}
+.vision-hero .vision-editorial h1{font-size:clamp(85px,11.5vw,140px)}
+.vision-hero .vision-blob--one{top:31%}
+.vision-hero .vision-blob--two{top:55%}
+.vision-hero .vision-blob--three{top:39%}
+.vision-hero .vision-blob--four{top:21%}
+.vision-hero .vision-blob--five{top:64%}
+}
+@media(max-width:760px){
+.portal-play.vision-hero{overflow:hidden}
+.vision-hero .vision-shell{width:min(calc(100% - 36px),640px);min-height:100svh;padding:24px 0 65px}
+.vision-hero .vision-editorial{margin-top:clamp(65px,11vh,115px);padding:0}
+.vision-hero .vision-editorial h1{font-size:clamp(51px,11.2vw,87px);line-height:1.06}
+.vision-hero .vision-headline-highlight{margin-left:3%}
+.vision-hero .vision-headline-ending{margin-left:5%}
+.vision-hero .vision-lead{margin:clamp(26px,5vh,52px) 0 0 0;font-size:15px;max-width:460px}
+.vision-hero .vision-strength-guide{margin:12px 0 0;font-size:14px}
+.vision-hero .vision-strengths{position:relative;inset:auto;margin-top:34px}
+.vision-hero .vision-objects{position:relative;inset:auto;width:100%;height:440px;max-width:570px}
+.vision-hero .vision-blob{width:38%;height:150px;padding:17px}
+.vision-hero .vision-blob strong{font-size:clamp(27px,5.3vw,36px)}
+.vision-hero .vision-blob--one{left:0;top:4%;padding-left:28px}
+.vision-hero .vision-blob--two{left:33%;top:1%}
+.vision-hero .vision-blob--three{left:65%;top:8%}
+.vision-hero .vision-blob--four{left:14%;top:48%}
+.vision-hero .vision-blob--five{left:53%;top:51%}
+.vision-hero .vision-scroll{bottom:20px}
+}
+@media(max-width:450px){
+.vision-hero .vision-editorial h1{font-size:clamp(41px,10.5vw,50px)}
+.vision-hero .vision-objects{height:480px}
+.vision-hero .vision-blob{width:48%;height:150px}
+.vision-hero .vision-blob--one{left:0;top:0}
+.vision-hero .vision-blob--two{left:48%;top:7%}
+.vision-hero .vision-blob--three{left:1%;top:34%}
+.vision-hero .vision-blob--four{left:50%;top:40%}
+.vision-hero .vision-blob--five{left:23%;top:69%}
+}
