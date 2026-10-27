@@ -252,15 +252,20 @@
     const toggle=document.getElementById("visionMenuToggle");
     const menu=document.getElementById("visionMenu");
     if(!toggle||!menu)return;
+    menu.hidden=false;
+    menu.inert=true;
+    menu.setAttribute("aria-hidden","true");
     function setOpen(open){
-      menu.hidden=!open;
+      menu.classList.toggle("is-open",open);
+      menu.inert=!open;
+      menu.setAttribute("aria-hidden",String(!open));
       toggle.setAttribute("aria-expanded",String(open));
       toggle.innerHTML=open?'CLOSE <span aria-hidden="true">×</span>':'MENU <span aria-hidden="true">☰</span>';
     }
-    toggle.addEventListener("click",function(){setOpen(menu.hidden);});
+    toggle.addEventListener("click",function(){setOpen(!menu.classList.contains("is-open"));});
     menu.querySelectorAll("a").forEach(function(link){link.addEventListener("click",function(){setOpen(false);});});
-    document.addEventListener("keydown",function(event){if(event.key==="Escape"&&!menu.hidden){setOpen(false);toggle.focus();}});
-    document.addEventListener("click",function(event){if(!menu.hidden&&!menu.contains(event.target)&&!toggle.contains(event.target))setOpen(false);});
+    document.addEventListener("keydown",function(event){if(event.key==="Escape"&&menu.classList.contains("is-open")){setOpen(false);toggle.focus();}});
+    document.addEventListener("click",function(event){if(menu.classList.contains("is-open")&&!menu.contains(event.target)&&!toggle.contains(event.target))setOpen(false);});
   })();
 
   // First-screen strengths: keep project sections and navigation behavior unchanged.
