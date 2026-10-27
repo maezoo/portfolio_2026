@@ -2297,3 +2297,14 @@ body{background:var(--paper)}
 .vision-hero .vision-scroll:hover{color:#fff;border-color:#f47758}
 .vision-hero .vision-blob--one{padding-left:clamp(24px,2.8vw,43px)}
 @media(max-width:760px){.vision-hero .vision-menu{top:69px;right:19px}.vision-hero .vision-blob--one{padding-left:25px}.vision-hero .vision-scroll{margin-top:16px}}
+
+/* Refined opening navigation — typography-led floating panel. */
+.vision-hero .vision-menu{top:clamp(70px,6vw,92px);right:max(28px,calc((100vw - 1530px)/2));width:min(390px,calc(100vw - 38px));padding:28px 30px 22px;border:1px solid rgba(255,255,255,.17);border-radius:8px;background:rgba(30,32,35,.97);box-shadow:0 24px 75px rgba(0,0,0,.38);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.vision-hero .vision-menu-caption{display:block;margin-bottom:15px;color:#f47758;font:700 10px/1.4 "Instrument Sans",sans-serif;letter-spacing:.22em}
+.vision-hero .vision-menu a{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 2px 16px;border-bottom:1px solid rgba(255,255,255,.17);color:#f5f0e9;font-size:clamp(23px,2.3vw,31px);font-weight:680;line-height:1.2;letter-spacing:-.035em;transition:color .2s,padding-left .2s}
+.vision-hero .vision-menu a:last-child{border-bottom:0}
+.vision-hero .vision-menu a:hover,.vision-hero .vision-menu a:focus-visible{color:#f47758;padding-left:8px}
+.vision-hero .vision-menu a .vision-menu-arrow{font-size:19px;font-weight:400;color:#9b9690;transition:transform .2s,color .2s}
+.vision-hero .vision-menu a:hover .vision-menu-arrow,.vision-hero .vision-menu a:focus-visible .vision-menu-arrow{transform:translate(3px,-3px);color:#f47758}
+.vision-hero .vision-blob--one{padding-left:clamp(39px,4vw,62px)}
+@media(max-width:760px){.vision-hero .vision-menu{top:72px;right:19px;padding:22px 24px 18px}.vision-hero .vision-blob--one{padding-left:37px}}
