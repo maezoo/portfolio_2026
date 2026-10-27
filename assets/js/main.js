@@ -352,27 +352,33 @@
       .from(hint,{y:10,opacity:0,duration:.42},.52)
       .from(cards,{y:25,opacity:0,stagger:.085,duration:.66,clearProps:"opacity",onComplete:function(){cards.forEach(function(card){card.style.translate="";});}},.48);
     const floatTweens=[];
+    const hoverFine=window.matchMedia("(hover:hover) and (pointer:fine)").matches;
     cards.forEach(function(card,i){
-      const float=g.to(card,{"--float-y":i%2? "-5px":"6px",duration:3.5+i*.41,ease:"sine.inOut",repeat:-1,yoyo:true,paused:true});
+      // Animate the GPU-friendly transform, rather than a CSS custom property.
+      const float=g.fromTo(card,{y:0},{y:i%2?-5:6,duration:3.5+i*.41,ease:"sine.inOut",repeat:-1,yoyo:true,paused:true});
       floatTweens.push(float);
+      if(!hoverFine)return;
+      const moveX=g.quickTo(card,"x",{duration:.32,ease:"power2.out"});
+      const moveY=g.quickTo(card,"y",{duration:.32,ease:"power2.out"});
+      const rotate=g.quickTo(card,"rotation",{duration:.35,ease:"power2.out"});
+      card.addEventListener("pointerenter",function(){
+        float.pause();
+        g.killTweensOf(card,"y");
+      });
+      card.addEventListener("pointermove",function(e){
+        if(!overlay.hidden)return;
+        const rect=card.getBoundingClientRect();
+        const dx=(e.clientX-(rect.left+rect.width/2))/rect.width;
+        const dy=(e.clientY-(rect.top+rect.height/2))/rect.height;
+        moveX(dx*8);moveY(dy*7);rotate(dx*2);
+      });
+      card.addEventListener("pointerleave",function(){
+        g.to(card,{x:0,y:0,rotation:0,duration:.55,ease:"power2.out",overwrite:"auto",onComplete:function(){
+          if(overlay.hidden)float.restart();
+        }});
+      });
     });
     timeline.call(function(){floatTweens.forEach(function(t){t.play();});},null,1.25);
-    const hoverFine=window.matchMedia("(hover:hover) and (pointer:fine)").matches;
-    if(hoverFine){
-      cards.forEach(function(card,i){
-        card.addEventListener("pointermove",function(e){
-          if(!overlay.hidden)return;
-          const rect=card.getBoundingClientRect();
-          const dx=(e.clientX-(rect.left+rect.width/2))/rect.width;
-          const dy=(e.clientY-(rect.top+rect.height/2))/rect.height;
-          floatTweens[i].pause();
-          g.to(card,{"--float-y":"0px",x:dx*9,y:dy*8,rotation:dx*2,duration:.3,ease:"power2.out",overwrite:"auto"});
-        });
-        card.addEventListener("pointerleave",function(){
-          g.to(card,{x:0,y:0,rotation:0,duration:.55,ease:"power3.out",overwrite:"auto",onComplete:function(){if(overlay.hidden)floatTweens[i].resume();}});
-        });
-      });
-    }
     let contentTween=null;
     document.addEventListener("hero:strength-show",function(event){
       const first=overlay.dataset.motionOpen!=="true";
@@ -392,8 +398,7 @@
       delete overlay.dataset.motionOpen;
       g.set([overlay,panel],{clearProps:"opacity,transform"});
       cards.forEach(function(card,i){
-        g.to(card,{x:0,y:0,rotation:0,duration:.35,overwrite:"auto"});
-        floatTweens[i].resume();
+        g.to(card,{x:0,y:0,rotation:0,duration:.35,overwrite:"auto",onComplete:function(){floatTweens[i].restart();}});
       });
     });
   })();
