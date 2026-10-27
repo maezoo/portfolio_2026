@@ -2321,3 +2321,21 @@ body{background:var(--paper)}
 .vision-hero .vision-menu .vision-menu-contact .vision-menu-arrow{color:#fff}
 .vision-hero .vision-menu .vision-menu-contact:hover,.vision-hero .vision-menu .vision-menu-contact:focus-visible{background:#f47758;color:#202326;padding-left:14px}
 @media(max-width:760px){.vision-hero .vision-menu{top:calc(100% + 8px);right:0;width:min(300px,calc(100vw - 38px))}}
+
+/* First viewport compact spacing and smooth navigation interaction. */
+.vision-hero .vision-editorial{padding-top:clamp(18px,3.5vh,45px);padding-bottom:clamp(12px,2vh,24px)}
+.vision-hero .vision-strength-guide{margin-top:10px;font-size:clamp(15px,1.2vw,17px)}
+.vision-hero .vision-strengths{margin-top:clamp(10px,2vh,24px)}
+.vision-hero .vision-scroll{margin-top:8px;font-size:13px}
+.vision-hero .vision-index{font-size:13px}
+.vision-hero .vision-menu-toggle{font-size:14px}
+.vision-hero .vision-menu{display:block!important;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);transition:opacity .26s ease,transform .26s cubic-bezier(.2,.8,.2,1),visibility .26s;will-change:opacity,transform}
+.vision-hero .vision-menu.is-open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.vision-hero .vision-menu a{font-size:19px}
+@media(max-width:760px){
+.vision-hero .vision-editorial{padding:clamp(28px,6vh,50px) 0 22px}
+.vision-hero .vision-strength-guide{margin-top:10px;font-size:15px}
+.vision-hero .vision-strengths{margin-top:12px}
+.vision-hero .vision-scroll{margin-top:8px;font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){.vision-hero .vision-menu{transition:none;transform:none}}
