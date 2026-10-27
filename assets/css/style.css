@@ -1889,7 +1889,7 @@ body{background:var(--paper)}
 .vision-hero .vision-shell{padding:40px 0 60px}
 
 /* Motion layer does not change the existing organic tag geometry. */
-.vision-hero.has-gsap-motion .vision-blob{animation:none;translate:0 var(--float-y,0px)}
+.vision-hero.has-gsap-motion .vision-blob{animation:none;translate:none;transition:none;will-change:transform}
 .vision-hero.has-gsap-motion .vision-editorial{animation:none}
 .vision-hero.has-gsap-motion .vision-blob:hover{transform:none}
 .vision-hero.has-gsap-motion .vision-blob:focus-visible{outline:3px solid #fff}
