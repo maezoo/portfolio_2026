@@ -1887,3 +1887,10 @@ body{background:var(--paper)}
 
 /* Hero shell spacing — final requested inset. */
 .vision-hero .vision-shell{padding:40px 0 60px}
+
+/* Motion layer does not change the existing organic tag geometry. */
+.vision-hero.has-gsap-motion .vision-blob{animation:none;translate:0 var(--float-y,0px)}
+.vision-hero.has-gsap-motion .vision-editorial{animation:none}
+.vision-hero.has-gsap-motion .vision-blob:hover{transform:none}
+.vision-hero.has-gsap-motion .vision-blob:focus-visible{outline:3px solid #fff}
+@media(prefers-reduced-motion:reduce){.vision-hero .vision-blob{translate:none!important}}
