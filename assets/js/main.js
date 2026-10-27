@@ -247,6 +247,22 @@
     measure();
   })();
 
+  // Minimal menu for the opening screen; later sections retain their existing header.
+  (function initVisionMenu(){
+    const toggle=document.getElementById("visionMenuToggle");
+    const menu=document.getElementById("visionMenu");
+    if(!toggle||!menu)return;
+    function setOpen(open){
+      menu.hidden=!open;
+      toggle.setAttribute("aria-expanded",String(open));
+      toggle.innerHTML=open?'CLOSE <span aria-hidden="true">×</span>':'MENU <span aria-hidden="true">☰</span>';
+    }
+    toggle.addEventListener("click",function(){setOpen(menu.hidden);});
+    menu.querySelectorAll("a").forEach(function(link){link.addEventListener("click",function(){setOpen(false);});});
+    document.addEventListener("keydown",function(event){if(event.key==="Escape"&&!menu.hidden){setOpen(false);toggle.focus();}});
+    document.addEventListener("click",function(event){if(!menu.hidden&&!menu.contains(event.target)&&!toggle.contains(event.target))setOpen(false);});
+  })();
+
   // First-screen strengths: keep project sections and navigation behavior unchanged.
   (function initStrengthCards(){
     const overlay=document.getElementById("strengthOverlay");
