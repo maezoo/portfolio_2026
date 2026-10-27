@@ -276,6 +276,9 @@
       activeIndex=(index+cards.length)%cards.length;
       const card=cards[activeIndex];
       const data=content[card.dataset.strength];
+      const keyword={question:"질문",structure:"구조",usability:"사용성",design:"시각화",execution:"실행"};
+      document.getElementById("strengthKeyword").textContent=keyword[card.dataset.strength]||"";
+      panel.dataset.strength=card.dataset.strength;
       document.getElementById("strengthLabel").textContent=data.label;
       document.getElementById("strengthTitle").textContent=data.title;
       document.getElementById("strengthDescription").textContent=data.description;
