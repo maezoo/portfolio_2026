@@ -259,11 +259,11 @@
     const cards=Array.from(document.querySelectorAll(".portal-play [data-strength]"));
     if(!overlay||!panel||!close||!prev||!next||!count||!cards.length)return;
     const content={
-      question:{label:"01 / QUESTION",title:"당연한 것에도 질문합니다.",description:"요청받은 화면을 바로 만드는 대신, 왜 필요한지 먼저 생각합니다.\n문제의 원인과 사용자의 목적을 구분하고 더 나은 해결 방법을 고민합니다.",proof:"관찰 · 문제 정의 · 개선 가설"},
-      structure:{label:"02 / STRUCTURE",title:"복잡한 것을 명확하게 정리합니다.",description:"정보가 많을수록 무엇을 먼저 보여주어야 할지 고민합니다.\n메뉴 구조와 콘텐츠의 우선순위를 정리하고 사용자가 자연스럽게 목적에 도달하는 흐름을 설계합니다.",proof:"정보구조(IA) · 콘텐츠 설계 · 사용자 흐름"},
-      usability:{label:"03 / USABILITY",title:"사용자의 관점에서 다시 봅니다.",description:"만드는 사람에게 익숙한 화면이 사용자에게도 쉬운 것은 아닙니다.\n모바일 접근성과 정보의 가독성, 다음 행동을 찾는 과정에서 생기는 불편을 살핍니다.",proof:"탐색 경험 · 가독성 · 상담 동선"},
-      design:{label:"04 / UI DESIGN",title:"이해하기 쉬운 화면으로 표현합니다.",description:"정보의 중요도와 목적을 고려해 화면의 위계를 설계합니다.\n웹사이트 UI뿐 아니라 블로그 스킨과 이미지 디자인에서도 정보가 분명하게 전달되도록 구성합니다.",proof:"UI 디자인 · 반응형 레이아웃 · 비주얼 구성"},
-      execution:{label:"05 / EXECUTION",title:"생각을 실제 작동하는 경험으로 만듭니다.",description:"설계한 화면을 직접 구현하고, 실제 환경에서 사용하면서 생기는 제약도 고려합니다.\n퍼블리싱과 CMS 운영, 유지보수 경험을 바탕으로 디자인과 실행 사이의 간격을 줄입니다.",proof:"HTML · CSS · JavaScript · CMS · 운영 개선"}
+      question:{label:"01 / QUESTION",title:"당연한 것에도 이유를 묻습니다.",description:"요청의 목적과 문제의 원인을 먼저 살핍니다.",proof:["문제 정의","관찰","개선 가설"]},
+      structure:{label:"02 / STRUCTURE",title:"복잡한 정보를 명확한 흐름으로.",description:"정보의 우선순위를 정하고 탐색 구조를 설계합니다.",proof:["정보구조(IA)","콘텐츠 설계","사용자 흐름"]},
+      usability:{label:"03 / USABILITY",title:"만드는 사람보다 사용하는 사람의 관점으로.",description:"사용자가 겪는 불편과 행동의 흐름을 살핍니다.",proof:["탐색 경험","가독성","상담 동선"]},
+      design:{label:"04 / UI DESIGN",title:"중요한 정보가 먼저 보이도록.",description:"정보의 위계와 목적에 맞춰 UI를 구성합니다.",proof:["UI 디자인","반응형 레이아웃","비주얼 구성"]},
+      execution:{label:"05 / EXECUTION",title:"설계를 실제 작동하는 경험으로.",description:"구현과 운영의 제약까지 고려하며 완성합니다.",proof:["퍼블리싱","CMS","운영 개선"]}
     };
     let trigger=null;
     function dismiss(){
@@ -282,7 +282,9 @@
       document.getElementById("strengthLabel").textContent=data.label;
       document.getElementById("strengthTitle").textContent=data.title;
       document.getElementById("strengthDescription").textContent=data.description;
-      document.getElementById("strengthProof").textContent=data.proof;
+      const proof=document.getElementById("strengthProof");
+      proof.replaceChildren();
+      data.proof.forEach(function(term){const tag=document.createElement("span");tag.className="strength-proof-tag";tag.textContent=term;proof.appendChild(tag);});
       count.textContent=String(activeIndex+1).padStart(2,"0")+" / "+String(cards.length).padStart(2,"0");
       cards.forEach(function(item){item.setAttribute("aria-expanded",String(item===card));});
       overlay.hidden=false;
