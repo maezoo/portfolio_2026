@@ -1887,3 +1887,20 @@ body{background:var(--paper)}
 
 /* Hero shell spacing — final requested inset. */
 .vision-hero .vision-shell{padding:40px 0 60px}
+
+/* Unified organic strength composition — desktop only. */
+@media(min-width:1061px){
+  .vision-hero .vision-objects{width:100%;max-width:1180px;height:clamp(280px,29vh,390px);margin:0 auto;isolation:isolate}
+  .vision-hero .vision-blob{--r:0deg;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:left;padding:26px 30px 27px;transform:none;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  .vision-hero .vision-blob:before{inset:0;border-radius:var(--shape);transform:rotate(var(--r));transition:transform .35s ease,filter .35s ease}
+  .vision-hero .vision-blob small{position:relative;z-index:1;font-size:clamp(12px,.9vw,14px);line-height:1.35;letter-spacing:.04em}
+  .vision-hero .vision-blob strong{position:relative;z-index:1;font-size:clamp(32px,2.5vw,48px);line-height:1.08;letter-spacing:-.05em}
+  .vision-hero .vision-blob>span{right:24px;bottom:19px;font-size:22px}
+  .vision-hero .vision-blob--one{left:1%;top:23%;width:21%;height:62%;z-index:2;--r:-4deg;--c:#bfe4d7;--shape:58% 42% 44% 56% / 46% 58% 42% 54%;padding-left:clamp(36px,3vw,45px)}
+  .vision-hero .vision-blob--two{left:21%;top:6%;width:23%;height:66%;z-index:3;--r:4deg;--c:#ddd5cf;--shape:24% 31% 22% 33% / 28% 24% 30% 22%}
+  .vision-hero .vision-blob--three{left:39%;top:25%;width:24%;height:69%;z-index:5;--r:-3deg;--c:#f2d88d;--shape:49% 26% 52% 24% / 40% 27% 45% 34%}
+  .vision-hero .vision-blob--four{left:60%;top:7%;width:22%;height:65%;z-index:4;--r:4deg;--c:#dfcfeb;--shape:24% 33% 22% 35% / 30% 21% 30% 23%}
+  .vision-hero .vision-blob--five{left:79%;top:24%;width:20%;height:62%;z-index:2;--r:-4deg;--c:#f3c2b2;--shape:50% 29% 50% 24% / 39% 27% 44% 35%}
+  .vision-hero .vision-blob:hover{z-index:10;transform:translateY(-8px)}
+  .vision-hero .vision-blob:hover:before{filter:saturate(1.06);transform:rotate(0deg) scale(1.02)}
+}
