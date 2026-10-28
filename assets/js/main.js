@@ -247,138 +247,45 @@
     measure();
   })();
 
-  // First-section menu; the remaining navigation and sections are untouched.
-  (function initDiagonalMenu(){
-    const button=document.getElementById("diagonalMenuToggle");
-    const menu=document.getElementById("diagonalMenu");
+  // Editorial hero menu; later sections continue to use the existing header.
+  (function initEditorialMenu(){
+    const button=document.getElementById("editorialMenuToggle"),menu=document.getElementById("editorialMenu");
     if(!button||!menu)return;
-    menu.hidden=false;
-    menu.inert=true;
-    menu.setAttribute("aria-hidden","true");
-    function openMenu(open){
-      menu.classList.toggle("is-open",open);
-      menu.inert=!open;
-      menu.setAttribute("aria-hidden",String(!open));
-      button.setAttribute("aria-expanded",String(open));
+    menu.hidden=false;menu.inert=true;menu.setAttribute("aria-hidden","true");
+    function setOpen(open){
+      menu.classList.toggle("is-open",open);menu.inert=!open;
+      menu.setAttribute("aria-hidden",String(!open));button.setAttribute("aria-expanded",String(open));
       button.innerHTML=open?'CLOSE <span aria-hidden="true">×</span>':'MENU <span aria-hidden="true">☰</span>';
     }
-    button.addEventListener("click",()=>openMenu(!menu.classList.contains("is-open")));
-    menu.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>openMenu(false)));
-    document.addEventListener("click",event=>{
-      if(menu.classList.contains("is-open")&&!menu.contains(event.target)&&!button.contains(event.target))openMenu(false);
-    });
-    document.addEventListener("keydown",event=>{
-      if(event.key==="Escape"&&menu.classList.contains("is-open")){openMenu(false);button.focus();}
-    });
+    button.addEventListener("click",()=>setOpen(!menu.classList.contains("is-open")));
+    menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));
+    document.addEventListener("keydown",e=>{if(e.key==="Escape"&&menu.classList.contains("is-open")){setOpen(false);button.focus();}});
+    document.addEventListener("click",e=>{if(menu.classList.contains("is-open")&&!menu.contains(e.target)&&!button.contains(e.target))setOpen(false);});
   })();
 
-  // Whole-viewport diagonal sheets unfold in order while the split widens.
-  (function initDiagonalPages(){
-    const hero=document.querySelector(".diagonal-hero");
-    if(!hero)return;
-    const stage=hero.querySelector(".diagonal-stage");
-    const left=hero.querySelector(".diagonal-left");
-    const sheets=Array.from(hero.querySelectorAll(".diagonal-sheet"));
-    const jumps=Array.from(hero.querySelectorAll("[data-diagonal-go]"));
-    const desktop=window.matchMedia("(min-width:1100px) and (min-height:760px)");
-    if(!stage||!left||sheets.length!==5||jumps.length!==5)return;
-    const clamp=(v,lo,hi)=>Math.min(hi,Math.max(lo,v));
-    const ease=t=>t*t*(3-2*t);
-    let distance=0,enabled=false,frame=0,active=-1;
-
-    function selectCard(index){
-      if(active===index)return;
-      active=index;
-      jumps.forEach((button,i)=>button.setAttribute("aria-current",String(i===index)));
-    }
+  // Restrained scroll-driven letterspacing composition, no pinning or cards.
+  (function initEditorialMovement(){
+    const hero=document.querySelector(".editorial-cover");if(!hero||reducedMotion)return;
+    const lines=Array.from(hero.querySelectorAll(".editorial-cover__line"));
+    if(lines.length!==3)return;
+    const clamp=(x,a,b)=>Math.min(b,Math.max(a,x));
+    let frame=0;
     function render(){
       frame=0;
-      if(!enabled)return;
-      const progress=clamp(-hero.getBoundingClientRect().top/Math.max(1,distance),0,1);
-      const raw=progress*(sheets.length-1);
-      const base=Math.min(sheets.length-2,Math.floor(raw));
-      const step=clamp(raw-base,0,1);
-      // Deliberately preserve a readable interval at either end of each card.
-      const unfold=ease(clamp((step-.13)/.73,0,1));
-      const index=unfold>=.56?base+1:base;
-      selectCard(index);
-
-      // The right-hand diagonal paper progressively takes ownership of the viewport.
-      const growth=ease(clamp(progress/.85,0,1));
-      // Keep the diagonal proportion restrained while using its new width.
-      const topCut=64-17*growth;
-      const bottomCut=46-17*growth;
-      const contentLeft=65.5-17*growth;
-      hero.style.setProperty("--diagonal-top",topCut.toFixed(2)+"%");
-      hero.style.setProperty("--diagonal-bottom",bottomCut.toFixed(2)+"%");
-      hero.style.setProperty("--diagonal-content-left",contentLeft.toFixed(2)+"%");
-      hero.style.setProperty("--diagonal-title-boost",(22*growth).toFixed(2)+"px");
-      left.style.opacity=String(1-ease(clamp((progress-.20)/.55,0,1)));
-
-      sheets.forEach((sheet,i)=>{
-        const behind=i<base;
-        const incoming=i===base+1;
-        const shown=i===base;
-        const reveal=behind||shown?100:(incoming?34+66*unfold:0);
-        const alpha=behind||shown?1:(incoming?unfold:0);
-        sheet.style.clipPath="polygon(0 0,"+reveal+"% 0,"+reveal+"% 100%,0 100%)";
-        sheet.style.transform=incoming?
-          "translate3d("+((1-unfold)*48).toFixed(1)+"px,"+(-(1-unfold)*12).toFixed(1)+"px,0) scale("+(0.985+0.015*unfold).toFixed(4)+")":
-          "none";
-        sheet.style.visibility=(behind||shown||incoming)?"visible":"hidden";
-        sheet.style.setProperty("--diagonal-copy-alpha",String(incoming?ease(clamp((unfold-.38)/.48,0,1)):1));
-        sheet.setAttribute("aria-hidden",String(i!==index));
-      });
+      const rect=hero.getBoundingClientRect(),progress=clamp(-rect.top/Math.max(rect.height,1),0,1);
+      [-20,29,-25].forEach((amount,i)=>lines[i].style.setProperty("--cover-shift",(amount*progress).toFixed(2)+"px"));
     }
-    function requestRender(){if(!frame)frame=requestAnimationFrame(render);}
-    function measure(){
-      enabled=desktop.matches&&!reducedMotion;
-      hero.classList.toggle("is-pinned",enabled);
-      if(enabled){
-        distance=Math.round(clamp(window.innerHeight*2.1,1450,2600));
-        hero.style.height=(window.innerHeight+distance)+"px";
-        stage.style.height=window.innerHeight+"px";
-        active=-1;
-        render();
-      }else{
-        hero.style.removeProperty("height");
-        stage.style.removeProperty("height");
-        left.style.removeProperty("opacity");
-        for(const property of ["--diagonal-top","--diagonal-bottom","--diagonal-content-left","--diagonal-title-boost"])hero.style.removeProperty(property);
-        sheets.forEach(sheet=>{
-          for(const property of ["clip-path","transform","visibility","--diagonal-copy-alpha"])sheet.style.removeProperty(property);
-          sheet.removeAttribute("aria-hidden");
-        });
-        active=-1;
-        selectCard(0);
-      }
-    }
-    function goTo(index){
-      index=clamp(index,0,sheets.length-1);
-      if(!enabled){sheets[index].scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"center"});return;}
-      const start=window.scrollY+hero.getBoundingClientRect().top;
-      window.scrollTo({top:start+distance*index/(sheets.length-1),behavior:"smooth"});
-    }
-    jumps.forEach((button,i)=>button.addEventListener("click",()=>goTo(i)));
-    window.addEventListener("scroll",requestRender,{passive:true});
-    window.addEventListener("resize",measure);
-    if(desktop.addEventListener)desktop.addEventListener("change",measure);
-    measure();
-  })();
-
-  // Small intro reveal. Scrolling remains fully user-controlled.
-  (function initDiagonalEntry(){
-    const hero=document.querySelector(".diagonal-hero");
-    const g=window.gsap;
-    if(!hero||!g||reducedMotion)return;
-    const lines=hero.querySelectorAll(".diagonal-line");
-    const discipline=hero.querySelector(".diagonal-discipline");
-    const intro=hero.querySelector(".diagonal-intro");
-    if(lines.length!==3||!discipline||!intro)return;
+    function schedule(){if(!frame)frame=requestAnimationFrame(render);}
+    window.addEventListener("scroll",schedule,{passive:true});
+    window.addEventListener("resize",schedule);
+    render();
+    const g=window.gsap;if(!g)return;
+    const spans=hero.querySelectorAll(".editorial-cover__line>span"),label=hero.querySelector(".editorial-cover__fields"),bottom=hero.querySelector(".editorial-cover__bottom");
+    if(spans.length!==3||!label||!bottom)return;
     g.timeline({defaults:{ease:"power3.out"}})
-      .from(discipline,{y:12,opacity:0,duration:.5},0)
-      .from(lines,{y:24,opacity:0,stagger:.12,duration:.66},.08)
-      .from(intro,{y:14,opacity:0,duration:.55},.48);
+      .from(label,{opacity:0,y:12,duration:.55},0)
+      .from(spans,{opacity:0,y:32,stagger:.14,duration:.78},.12)
+      .from(bottom,{opacity:0,y:15,duration:.57},.58);
   })();
 
 })();
