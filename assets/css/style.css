@@ -1359,7 +1359,8 @@ body{background:var(--paper)}
 .diagonal-hero{
   --diagonal-top:64%;
   --diagonal-bottom:46%;
-  --diagonal-progress:0%;
+  --diagonal-content-left:65.5%;
+  --diagonal-title-boost:0px;
   --diagonal-accent:#f47758;
   position:relative;
   isolation:isolate;
@@ -1406,7 +1407,8 @@ body{background:var(--paper)}
   font-size:12px;
   font-weight:700;
   letter-spacing:.115em;
-  white-space:nowrap;
+  max-width:min(900px,55vw);
+  white-space:normal;
 }
 .diagonal-hero .diagonal-discipline span{color:var(--diagonal-accent)}
 .diagonal-hero .diagonal-left h1{
@@ -1441,18 +1443,9 @@ body{background:var(--paper)}
 .diagonal-hero .diagonal-dot{color:var(--diagonal-accent)}
 .diagonal-hero .diagonal-intro{
   max-width:500px;
-  margin-top:clamp(58px,9vh,110px);
+  margin-top:clamp(37px,6vh,77px);
   padding-left:17px;
   border-left:2px solid var(--diagonal-accent);
-}
-.diagonal-hero .diagonal-intro>span{
-  display:block;
-  margin-bottom:13px;
-  font-family:"Instrument Sans",sans-serif;
-  color:var(--diagonal-accent);
-  font-size:12px;
-  font-weight:780;
-  letter-spacing:.12em;
 }
 .diagonal-hero .diagonal-intro p{
   margin:0;
@@ -1488,12 +1481,12 @@ body{background:var(--paper)}
   position:absolute;
   top:clamp(144px,19vh,230px);
   bottom:clamp(130px,15vh,210px);
-  left:62%;
+  left:var(--diagonal-content-left);
   right:clamp(44px,6vw,145px);
   display:flex;
   flex-direction:column;
   min-width:0;
-  max-width:760px;
+  max-width:980px;
 }
 .diagonal-hero .diagonal-sheet-meta{
   display:flex;
@@ -1517,17 +1510,9 @@ body{background:var(--paper)}
   justify-content:center;
   padding:18px 0 24px;
 }
-.diagonal-hero .diagonal-sheet-field{
-  margin:0 0 14px;
-  color:#7d5d50;
-  font-family:"Instrument Sans",sans-serif;
-  font-size:12px;
-  font-weight:750;
-  letter-spacing:.08em;
-}
 .diagonal-hero .diagonal-sheet-main h2{
   margin:0;
-  font-size:clamp(65px,6.2vw,116px);
+  font-size:clamp(65px,calc(6.2vw + var(--diagonal-title-boost)),136px);
   font-weight:850;
   line-height:1.05;
   letter-spacing:-.095em;
@@ -1536,7 +1521,7 @@ body{background:var(--paper)}
 .diagonal-hero .diagonal-sheet-period{color:#cc7358}
 .diagonal-hero .diagonal-sheet-claim{
   margin:clamp(19px,3vh,32px) 0 0;
-  font-size:clamp(20px,1.6vw,29px);
+  font-size:clamp(22px,1.7vw,31px);
   font-weight:700;
   letter-spacing:-.055em;
   line-height:1.5;
@@ -1545,15 +1530,6 @@ body{background:var(--paper)}
 .diagonal-hero .diagonal-sheet-practice{
   padding:18px 0 16px;
   border-top:1px solid rgba(36,39,39,.3);
-}
-.diagonal-hero .diagonal-sheet-practice span{
-  display:block;
-  margin-bottom:8px;
-  color:#9f6551;
-  font-family:"Instrument Sans",sans-serif;
-  font-size:11px;
-  font-weight:780;
-  letter-spacing:.095em;
 }
 .diagonal-hero .diagonal-sheet-practice p{
   max-width:48ch;
@@ -1660,47 +1636,24 @@ body{background:var(--paper)}
 .diagonal-hero .diagonal-navigation{
   position:absolute;
   z-index:31;
-  left:62%;
+  left:var(--diagonal-content-left);
   right:clamp(44px,6vw,145px);
   bottom:clamp(28px,3.7vh,56px);
   color:#333635;
 }
-.diagonal-hero .diagonal-navigation-label{
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:20px;
-  margin-bottom:12px;
-  font-family:"Instrument Sans",sans-serif;
-  font-size:12px;
-  font-weight:750;
-  letter-spacing:.095em;
+.diagonal-hero .diagonal-navigation{display:flex;align-items:stretch;justify-content:space-between;gap:7px}
+.diagonal-hero .diagonal-navigation button{
+  flex:1;min-width:0;min-height:52px;padding:9px 4px;
+  border:0;border-top:1px solid rgba(37,40,39,.25);
+  background:transparent;color:#7e7973;
+  font-family:"Instrument Sans",sans-serif;font-size:15px;font-weight:600;letter-spacing:.055em;
+  cursor:pointer;transition:border-color .2s,color .2s
 }
-.diagonal-hero .diagonal-position{color:#777671;font-size:13px;font-weight:500}
-.diagonal-hero .diagonal-position b{color:#c36a50;font-size:23px;font-weight:760}
-.diagonal-hero .diagonal-nav{display:flex;gap:5px;justify-content:space-between}
-.diagonal-hero .diagonal-nav button{
-  flex:1;
-  min-width:0;
-  min-height:45px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:7px;
-  padding:7px 3px;
-  border:0;
-  border-top:1px solid rgba(37,40,39,.25);
-  background:transparent;
-  color:#777772;
-  font:inherit;
-  font-size:13px;
-  cursor:pointer;
-  transition:border-color .2s,color .2s;
+.diagonal-hero .diagonal-navigation button[aria-current="true"]{
+  color:#b95f48;border-top:2px solid #c86c52;font-weight:800
 }
-.diagonal-hero .diagonal-nav button span:first-child{font-family:"Instrument Sans",sans-serif;font-size:11px}
-.diagonal-hero .diagonal-nav button[aria-current="true"]{color:#262929;border-top-color:#c86c52;font-weight:720}
-.diagonal-hero .diagonal-nav button:hover,.diagonal-hero .diagonal-nav button:focus-visible{color:#c86c52}
-.diagonal-hero .diagonal-hint{margin:4px 0 0;color:#7e7b75;font-size:12px;line-height:1.5}
+.diagonal-hero .diagonal-navigation button:hover,
+.diagonal-hero .diagonal-navigation button:focus-visible{color:#b95f48}
 
 /* Pin only on sufficiently wide and tall screens; flat fallback stays readable. */
 .diagonal-hero.is-pinned .diagonal-stage{position:sticky;top:0;height:100svh;min-height:0;overflow:clip}
@@ -1755,10 +1708,10 @@ body{background:var(--paper)}
   .diagonal-hero.is-pinned .diagonal-line--impact{font-size:clamp(89px,9.2vw,139px)}
   .diagonal-hero.is-pinned .diagonal-line--last{font-size:clamp(58px,6vw,87px)}
   .diagonal-hero.is-pinned .diagonal-discipline{font-size:11px;gap:8px}
-  .diagonal-hero.is-pinned .diagonal-intro{margin-top:58px}
-  .diagonal-hero.is-pinned .diagonal-sheet-inner{left:62%;right:4vw}
-  .diagonal-hero.is-pinned .diagonal-navigation{left:62%;right:4vw}
-  .diagonal-hero.is-pinned .diagonal-sheet-main h2{font-size:clamp(65px,6vw,86px)}
+  .diagonal-hero.is-pinned .diagonal-intro{margin-top:48px}
+  .diagonal-hero.is-pinned .diagonal-sheet-inner{right:4vw}
+  .diagonal-hero.is-pinned .diagonal-navigation{right:4vw}
+  .diagonal-hero.is-pinned .diagonal-sheet-main h2{font-size:clamp(65px,calc(6vw + var(--diagonal-title-boost)),118px)}
   .diagonal-hero.is-pinned .diagonal-sheet-claim{font-size:clamp(20px,1.7vw,24px)}
   .diagonal-hero.is-pinned .diagonal-sheet-practice p{font-size:15px}
   .diagonal-hero.is-pinned .diagonal-intro p{font-size:16px}
@@ -1799,5 +1752,5 @@ body{background:var(--paper)}
 }
 @media(prefers-reduced-motion:reduce){
   .diagonal-hero .diagonal-menu{transition:none}
-  .diagonal-hero .diagonal-nav button{transition:none}
+  .diagonal-hero .diagonal-navigation button{transition:none}
 }
