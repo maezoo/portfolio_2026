@@ -280,9 +280,8 @@
     const left=hero.querySelector(".diagonal-left");
     const sheets=Array.from(hero.querySelectorAll(".diagonal-sheet"));
     const jumps=Array.from(hero.querySelectorAll("[data-diagonal-go]"));
-    const current=hero.querySelector("#diagonalCurrent");
     const desktop=window.matchMedia("(min-width:1100px) and (min-height:760px)");
-    if(!stage||!left||sheets.length!==5||jumps.length!==5||!current)return;
+    if(!stage||!left||sheets.length!==5||jumps.length!==5)return;
     const clamp=(v,lo,hi)=>Math.min(hi,Math.max(lo,v));
     const ease=t=>t*t*(3-2*t);
     let distance=0,enabled=false,frame=0,active=-1;
@@ -290,7 +289,6 @@
     function selectCard(index){
       if(active===index)return;
       active=index;
-      current.textContent=String(index+1).padStart(2,"0");
       jumps.forEach((button,i)=>button.setAttribute("aria-current",String(i===index)));
     }
     function render(){
@@ -306,13 +304,16 @@
       selectCard(index);
 
       // The right-hand diagonal paper progressively takes ownership of the viewport.
-      const growth=ease(clamp(progress/.77,0,1));
-      const topCut=64-36*growth;
-      const bottomCut=46-36*growth;
+      const growth=ease(clamp(progress/.85,0,1));
+      // Keep the diagonal proportion restrained while using its new width.
+      const topCut=64-17*growth;
+      const bottomCut=46-17*growth;
+      const contentLeft=65.5-17*growth;
       hero.style.setProperty("--diagonal-top",topCut.toFixed(2)+"%");
       hero.style.setProperty("--diagonal-bottom",bottomCut.toFixed(2)+"%");
-      left.style.opacity=String(1-ease(clamp((progress-.20)/.49,0,1)));
-      hero.style.setProperty("--diagonal-progress",(progress*100).toFixed(2)+"%");
+      hero.style.setProperty("--diagonal-content-left",contentLeft.toFixed(2)+"%");
+      hero.style.setProperty("--diagonal-title-boost",(22*growth).toFixed(2)+"px");
+      left.style.opacity=String(1-ease(clamp((progress-.20)/.55,0,1)));
 
       sheets.forEach((sheet,i)=>{
         const behind=i<base;
@@ -343,7 +344,7 @@
         hero.style.removeProperty("height");
         stage.style.removeProperty("height");
         left.style.removeProperty("opacity");
-        for(const property of ["--diagonal-top","--diagonal-bottom","--diagonal-progress"])hero.style.removeProperty(property);
+        for(const property of ["--diagonal-top","--diagonal-bottom","--diagonal-content-left","--diagonal-title-boost"])hero.style.removeProperty(property);
         sheets.forEach(sheet=>{
           for(const property of ["clip-path","transform","visibility","--diagonal-copy-alpha"])sheet.style.removeProperty(property);
           sheet.removeAttribute("aria-hidden");
