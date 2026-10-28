@@ -247,45 +247,48 @@
     measure();
   })();
 
-  // Editorial hero menu; later sections continue to use the existing header.
+  // Editorial cover menu; the existing main header is unchanged.
   (function initEditorialMenu(){
-    const button=document.getElementById("editorialMenuToggle"),menu=document.getElementById("editorialMenu");
-    if(!button||!menu)return;
-    menu.hidden=false;menu.inert=true;menu.setAttribute("aria-hidden","true");
+    const toggle=document.getElementById("editorialMenuToggle");
+    const menu=document.getElementById("editorialMenu");
+    if(!toggle||!menu)return;
+    menu.hidden=false;
+    menu.inert=true;
+    menu.setAttribute("aria-hidden","true");
     function setOpen(open){
-      menu.classList.toggle("is-open",open);menu.inert=!open;
-      menu.setAttribute("aria-hidden",String(!open));button.setAttribute("aria-expanded",String(open));
-      button.innerHTML=open?'CLOSE <span aria-hidden="true">×</span>':'MENU <span aria-hidden="true">☰</span>';
+      menu.classList.toggle("is-open",open);
+      menu.inert=!open;
+      menu.setAttribute("aria-hidden",String(!open));
+      toggle.setAttribute("aria-expanded",String(open));
+      toggle.innerHTML=open?'CLOSE <span aria-hidden="true">×</span>':'MENU <span aria-hidden="true">+</span>';
     }
-    button.addEventListener("click",()=>setOpen(!menu.classList.contains("is-open")));
-    menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));
-    document.addEventListener("keydown",e=>{if(e.key==="Escape"&&menu.classList.contains("is-open")){setOpen(false);button.focus();}});
-    document.addEventListener("click",e=>{if(menu.classList.contains("is-open")&&!menu.contains(e.target)&&!button.contains(e.target))setOpen(false);});
+    toggle.addEventListener("click",()=>setOpen(!menu.classList.contains("is-open")));
+    menu.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>setOpen(false)));
+    document.addEventListener("click",event=>{
+      if(menu.classList.contains("is-open")&&!menu.contains(event.target)&&!toggle.contains(event.target))setOpen(false);
+    });
+    document.addEventListener("keydown",event=>{
+      if(event.key==="Escape"&&menu.classList.contains("is-open")){setOpen(false);toggle.focus();}
+    });
   })();
 
-  // Restrained scroll-driven letterspacing composition, no pinning or cards.
-  (function initEditorialMovement(){
-    const hero=document.querySelector(".editorial-cover");if(!hero||reducedMotion)return;
-    const lines=Array.from(hero.querySelectorAll(".editorial-cover__line"));
-    if(lines.length!==3)return;
-    const clamp=(x,a,b)=>Math.min(b,Math.max(a,x));
-    let frame=0;
-    function render(){
-      frame=0;
-      const rect=hero.getBoundingClientRect(),progress=clamp(-rect.top/Math.max(rect.height,1),0,1);
-      [-20,29,-25].forEach((amount,i)=>lines[i].style.setProperty("--cover-shift",(amount*progress).toFixed(2)+"px"));
-    }
-    function schedule(){if(!frame)frame=requestAnimationFrame(render);}
-    window.addEventListener("scroll",schedule,{passive:true});
-    window.addEventListener("resize",schedule);
-    render();
-    const g=window.gsap;if(!g)return;
-    const spans=hero.querySelectorAll(".editorial-cover__line>span"),label=hero.querySelector(".editorial-cover__fields"),bottom=hero.querySelector(".editorial-cover__bottom");
-    if(spans.length!==3||!label||!bottom)return;
+  // One short entrance only. The cover does not pin or intercept scrolling.
+  (function initEditorialEntrance(){
+    const hero=document.querySelector(".editorial-cover");
+    const g=window.gsap;
+    if(!hero||!g||reducedMotion)return;
+    const line1=hero.querySelector(".editorial-cover__lead");
+    const focus=hero.querySelector(".editorial-cover__focus");
+    const line3=hero.querySelector(".editorial-cover__ending");
+    const metadata=hero.querySelector(".editorial-cover__discipline");
+    const note=hero.querySelector(".editorial-cover__bottom");
+    if(!line1||!focus||!line3||!metadata||!note)return;
     g.timeline({defaults:{ease:"power3.out"}})
-      .from(label,{opacity:0,y:12,duration:.55},0)
-      .from(spans,{opacity:0,y:32,stagger:.14,duration:.78},.12)
-      .from(bottom,{opacity:0,y:15,duration:.57},.58);
+      .from(metadata,{y:10,opacity:0,duration:.55},0)
+      .from(line1,{y:14,opacity:0,duration:.58},.12)
+      .from(focus,{y:21,opacity:0,duration:.79},.2)
+      .from(line3,{y:15,opacity:0,duration:.6},.45)
+      .from(note,{y:10,opacity:0,duration:.52},.65);
   })();
 
 })();
