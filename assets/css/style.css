@@ -1352,339 +1352,187 @@ body{background:var(--paper)}
 
 
 
-/* FIRST SECTION / EDITORIAL DEPTH STAGE
-   All hero selectors are scoped to .poster-hero; other sections are unaffected. */
+
+/* FIRST SECTION ONLY — Professional editorial portfolio / depth notes */
 .poster-hero{
-  --poster-ink:#1c1e21;
+  --poster-accent:#f47758;
   position:relative;
+  display:block;
   isolation:isolate;
   overflow:clip;
-  display:block;
-  color:#f6f0e9;
-  background:var(--poster-ink);
+  color:#f1ede8;
+  background:#1b1e20;
 }
 .poster-hero .poster-shell{
   position:relative;
   isolation:isolate;
-  width:min(calc(100% - 96px),1720px);
+  width:min(calc(100% - 112px),1650px);
   min-height:100svh;
   margin:0 auto;
-  padding:clamp(25px,3.4vh,48px) 0 35px;
+  padding:34px 0 42px;
 }
-.poster-hero .poster-ambient,.poster-hero .poster-grain{
-  position:absolute;
-  inset:0 -8vw;
-  z-index:-1;
-  pointer-events:none;
-  overflow:hidden;
-}
-.poster-hero .poster-light{
-  position:absolute;
-  width:120%;
-  height:112%;
-  right:-41%;
-  top:-15%;
-  border-radius:50%;
-  filter:blur(100px);
-  opacity:0;
-  transform:translateZ(0);
-}
-.poster-hero .poster-light--question{background:radial-gradient(ellipse,rgba(117,205,166,.29) 0%,rgba(117,205,166,.1) 35%,transparent 68%)}
-.poster-hero .poster-light--structure{background:radial-gradient(ellipse,rgba(218,180,138,.27) 0%,rgba(218,180,138,.09) 35%,transparent 68%)}
-.poster-hero .poster-light--usability{background:radial-gradient(ellipse,rgba(245,197,91,.26) 0%,rgba(245,197,91,.10) 35%,transparent 70%)}
-.poster-hero .poster-light--design{background:radial-gradient(ellipse,rgba(183,153,223,.29) 0%,rgba(183,153,223,.10) 36%,transparent 69%)}
-.poster-hero .poster-light--execution{background:radial-gradient(ellipse,rgba(247,148,111,.28) 0%,rgba(247,148,111,.09) 36%,transparent 69%)}
-.poster-hero .poster-grain{
-  z-index:0;
-  opacity:.06;
-  background-size:170px 170px;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
-}
-.poster-hero .poster-top{
-  position:relative;
-  z-index:40;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-.poster-hero .poster-index{display:inline-flex;align-items:center;gap:12px;color:#e8e2da;font-family:"Instrument Sans",sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em}
-.poster-hero .poster-index i{width:7px;height:7px;border-radius:50%;background:#f47758}
+.poster-hero .poster-ambient,.poster-hero .poster-grain{position:absolute;inset:0 -9vw;z-index:-1;pointer-events:none;overflow:hidden}
+.poster-hero .poster-light{position:absolute;width:110%;height:100%;right:-36%;top:-8%;border-radius:50%;filter:blur(110px);opacity:0;transform:translateZ(0)}
+.poster-hero .poster-light--question{background:radial-gradient(ellipse,rgba(175,162,148,.23),transparent 67%)}
+.poster-hero .poster-light--structure{background:radial-gradient(ellipse,rgba(183,159,132,.23),transparent 67%)}
+.poster-hero .poster-light--usability{background:radial-gradient(ellipse,rgba(153,163,154,.22),transparent 67%)}
+.poster-hero .poster-light--design{background:radial-gradient(ellipse,rgba(157,143,165,.2),transparent 67%)}
+.poster-hero .poster-light--execution{background:radial-gradient(ellipse,rgba(214,136,111,.2),transparent 67%)}
+.poster-hero .poster-grain{z-index:0;opacity:.04;background-size:200px 200px;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
+.poster-hero .poster-top{position:relative;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.poster-hero .poster-index{display:inline-flex;align-items:center;gap:10px;color:#dedbd6;font-family:"Instrument Sans",sans-serif;font-weight:650;font-size:12px;letter-spacing:.12em}
+.poster-hero .poster-index i{width:6px;height:6px;border-radius:50%;background:var(--poster-accent)}
 .poster-hero .poster-menu-wrap{position:relative;z-index:50}
-.poster-hero .poster-menu-toggle{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:35px;
-  min-width:112px;
-  min-height:44px;
-  padding:11px 15px;
-  border:1px solid rgba(242,234,226,.54);
-  border-radius:0;
-  color:#f6f0e9;
-  background:transparent;
-  font-family:"Instrument Sans",sans-serif;
-  font-size:14px;
-  font-weight:750;
-  letter-spacing:.05em;
-  cursor:pointer;
-}
-.poster-hero .poster-menu-toggle[aria-expanded="true"]{color:#1c1e21;background:#f5eee5;border-color:#f5eee5}
-.poster-hero .poster-menu{
-  display:block!important;
-  position:absolute;
-  top:calc(100% + 8px);
-  right:0;
-  width:min(330px,calc(100vw - 38px));
-  padding:12px 20px 20px;
-  border:1px solid #d9d6d1;
-  background:#f5f3ef;
-  color:#1c1e21;
-  box-shadow:0 18px 38px rgba(0,0,0,.22);
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-  transform:translateY(-8px);
-  transition:opacity .2s,visibility .2s,transform .2s;
-}
+.poster-hero .poster-menu-toggle{display:flex;align-items:center;justify-content:space-between;gap:32px;min-height:44px;min-width:110px;padding:10px 14px;border:1px solid rgba(244,238,232,.45);border-radius:0;background:transparent;color:#f4efea;font-family:"Instrument Sans",sans-serif;font-size:13px;font-weight:750;letter-spacing:.05em;cursor:pointer}
+.poster-hero .poster-menu-toggle[aria-expanded="true"]{background:#f2eee9;color:#252729}
+.poster-hero .poster-menu{display:block!important;position:absolute;top:calc(100% + 9px);right:0;width:min(330px,calc(100vw - 38px));padding:12px 20px 20px;border:1px solid #d6d2cc;background:#f5f3ef;color:#242628;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);box-shadow:0 20px 38px rgba(0,0,0,.2);transition:opacity .22s,transform .22s,visibility .22s}
 .poster-hero .poster-menu.is-open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
-.poster-hero .poster-menu a{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 4px;border-bottom:1px solid #dad5ce;font-size:18px;font-weight:720;letter-spacing:-.03em;transition:color .2s}
-.poster-hero .poster-menu a:hover,.poster-hero .poster-menu a:focus-visible{color:#e06c4d}
+.poster-hero .poster-menu a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 4px;border-bottom:1px solid #d9d5d0;font-size:17px;font-weight:700;letter-spacing:-.035em;transition:color .18s}
 .poster-hero .poster-menu a span{font-size:17px;font-weight:500}
-.poster-hero .poster-menu .poster-menu-contact{margin-top:11px;padding:13px 14px;border-bottom:0;color:white;background:#242628}
-.poster-hero .poster-menu .poster-menu-contact:hover{background:#f47758;color:#1c1e21}
-
-/* The headline is the background composition, not a separate column. */
-.poster-hero .poster-typography{
-  position:relative;
-  z-index:2;
-  margin:clamp(90px,13vh,185px) 0 0;
-  pointer-events:none;
-}
-.poster-hero .poster-typography h1{
-  max-width:none;
-  margin:0;
-  color:#f5ede5;
-  font-weight:850;
-  letter-spacing:-.089em;
-  line-height:1;
-  word-break:keep-all;
-}
+.poster-hero .poster-menu a:hover,.poster-hero .poster-menu a:focus-visible{color:#db694d}
+.poster-hero .poster-menu .poster-menu-contact{margin-top:12px;padding:13px 14px;background:#232527;color:#fff;border-bottom:0}
+.poster-hero .poster-menu .poster-menu-contact:hover{color:#222;background:var(--poster-accent)}
+.poster-hero .poster-typography{position:relative;z-index:2;margin-top:clamp(76px,12vh,166px);pointer-events:none}
+.poster-hero .poster-discipline{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 clamp(24px,4vh,50px);color:#b7b3af;font-family:"Instrument Sans",sans-serif;font-size:12px;font-weight:650;letter-spacing:.11em}
+.poster-hero .poster-discipline span{color:var(--poster-accent)}
+.poster-hero .poster-typography h1{margin:0;max-width:none;line-height:1.03;font-weight:850;letter-spacing:-.08em;word-break:keep-all;color:#f3eee9}
 .poster-hero .poster-line{display:block;white-space:nowrap}
-.poster-hero .poster-line--first{font-size:clamp(73px,7.7vw,147px)}
-.poster-hero .poster-line--impact{
-  margin-top:clamp(3px,1vh,12px);
-  font-size:clamp(119px,12.7vw,242px);
-  font-weight:900;
-  letter-spacing:-.105em;
-  color:#f47758;
-}
-.poster-hero .poster-line--ending{
-  margin-top:clamp(4px,.7vh,10px);
-  font-size:clamp(65px,6.6vw,131px);
-}
-.poster-hero .poster-line--ending span{color:#f47758}
+.poster-hero .poster-line--first{font-size:clamp(66px,6.35vw,112px)}
+.poster-hero .poster-line--impact{margin-top:clamp(7px,1.2vh,16px);font-size:clamp(102px,10vw,184px);font-weight:900;letter-spacing:-.105em;color:var(--poster-accent)}
+.poster-hero .poster-impact-tail{display:inline-block;margin-left:.05em;font-size:.47em;font-weight:750;letter-spacing:-.08em;vertical-align:baseline;color:#f2ece5}
+.poster-hero .poster-line--ending{margin-top:clamp(2px,.5vh,8px);font-size:clamp(64px,6.25vw,110px)}
+.poster-hero .poster-period{color:var(--poster-accent)}
+.poster-hero .poster-intro{position:relative;z-index:14;max-width:455px;margin:clamp(42px,6vh,90px) 0 30px}
+.poster-hero .poster-intro-index{display:block;margin-bottom:14px;font-family:"Instrument Sans",sans-serif;font-size:12px;letter-spacing:.12em;font-weight:750;color:var(--poster-accent)}
+.poster-hero .poster-intro p{margin:0;color:#e5e0da;font-size:clamp(15px,1.1vw,18px);line-height:1.8;letter-spacing:-.024em;word-break:keep-all}
 
-/* Copy is anchored away from moving cards. */
-.poster-hero .poster-intro{
-  position:relative;
-  z-index:12;
-  max-width:490px;
-  margin:clamp(45px,7vh,95px) 0 clamp(35px,5vh,70px);
-}
-.poster-hero .poster-intro p{
-  margin:0;
-  color:#e5dfd8;
-  font-size:clamp(16px,1.12vw,19px);
-  line-height:1.78;
-  letter-spacing:-.02em;
-  word-break:keep-all;
-}
-
-/* Shared stage for the approaching cards. */
-.poster-hero .poster-feature{position:relative;z-index:10;max-width:640px;margin-left:auto}
-.poster-hero .poster-cards{
-  position:relative;
-  display:grid;
-  gap:16px;
-  perspective:1200px;
-  perspective-origin:55% 46%;
-  transform-style:preserve-3d;
-}
+/* Work notes: neutral editorial surfaces and evidence, not promotional cards. */
+.poster-hero .poster-feature{position:relative;z-index:11;max-width:520px;margin-left:auto}
+.poster-hero .poster-cards{position:relative;display:grid;gap:17px;perspective:1400px;perspective-origin:50% 48%;transform-style:preserve-3d}
 .poster-hero .poster-card{
   position:relative;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
-  gap:15px;
   min-width:0;
-  min-height:360px;
-  padding:clamp(27px,2.6vw,43px);
-  color:#222526;
-  background:var(--card-bg);
-  border:1px solid rgba(255,255,255,.22);
-  border-radius:14px;
-  box-shadow:0 28px 70px rgba(0,0,0,.2);
+  min-height:415px;
+  padding:clamp(25px,2.4vw,36px);
+  color:#27292a;
+  background:var(--card-paper);
+  border:1px solid #d3d0c9;
+  border-radius:7px;
+  box-shadow:0 22px 60px rgba(0,0,0,.23);
   backface-visibility:hidden;
-  transform-origin:center center;
+  transform-origin:50% 50%;
 }
-.poster-hero .poster-card--question{--card-bg:#bae4d1}
-.poster-hero .poster-card--structure{--card-bg:#e1d6c9}
-.poster-hero .poster-card--usability{--card-bg:#f0d78e}
-.poster-hero .poster-card--design{--card-bg:#d9cdea}
-.poster-hero .poster-card--execution{--card-bg:#f0baa9}
-.poster-hero .poster-card-head{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-family:"Instrument Sans",sans-serif;
-  font-size:13px;
-  letter-spacing:.08em;
-  font-weight:750;
-}
-.poster-hero .poster-card-main{flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:0}
-.poster-hero .poster-card-main h2{margin:0 0 14px;font-size:clamp(61px,5.3vw,98px);font-weight:850;line-height:1.03;letter-spacing:-.09em}
-.poster-hero .poster-card-statement{margin:0;font-size:clamp(19px,1.4vw,25px);font-weight:750;line-height:1.45;letter-spacing:-.04em;word-break:keep-all}
-.poster-hero .poster-card-copy{max-width:37ch;margin:9px 0 0;font-size:clamp(15px,1.02vw,18px);font-weight:500;line-height:1.55;letter-spacing:-.025em;word-break:keep-all}
-.poster-hero .poster-card-tags{display:flex;flex-wrap:wrap;gap:7px;padding-top:16px;border-top:1px solid rgba(35,38,39,.22)}
-.poster-hero .poster-card-tags span{display:inline-flex;align-items:center;min-height:28px;padding:6px 9px;border:1px solid rgba(35,38,39,.26);border-radius:3px;font-size:13px;font-weight:650;line-height:1.2}
-.poster-hero .poster-controls{position:relative;z-index:10;margin-top:28px}
-.poster-hero .poster-controls-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;color:#d6d1cd;font-size:14px;font-weight:650}
-.poster-hero .poster-count{color:#b9b3ac;font-family:"Instrument Sans",sans-serif;font-size:16px;font-weight:500;letter-spacing:.02em}
-.poster-hero .poster-count b{color:#f47758;font-size:22px;font-weight:760}
-.poster-hero .poster-pagination{position:relative;display:flex;align-items:stretch;gap:4px;justify-content:space-between}
-.poster-hero .poster-pagination:before{content:"";position:absolute;top:0;left:0;width:var(--poster-progress,0%);height:1px;background:#f47758;pointer-events:none}
-.poster-hero .poster-pagination button{min-width:0;flex:1;display:flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:8px 4px;border:0;border-top:1px solid rgba(236,230,224,.24);background:transparent;color:#b4b1ad;font:inherit;font-size:13px;cursor:pointer;transition:color .22s,border-color .22s}
+.poster-hero .poster-card--question{--card-paper:#eeebe4}
+.poster-hero .poster-card--structure{--card-paper:#e9e5de}
+.poster-hero .poster-card--usability{--card-paper:#e5e8e2}
+.poster-hero .poster-card--design{--card-paper:#e8e4e8}
+.poster-hero .poster-card--execution{--card-paper:#eee5e0}
+.poster-hero .poster-card:before{content:"";position:absolute;top:0;left:0;width:38%;height:3px;background:var(--poster-accent)}
+.poster-hero .poster-card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:14px;border-bottom:1px solid rgba(38,40,41,.23);color:#3d3e3d;font-family:"Instrument Sans",sans-serif;font-size:11px;font-weight:750;letter-spacing:.08em}
+.poster-hero .poster-card-head b{color:#bb674f;font-weight:800}
+.poster-hero .poster-card-field{max-width:55%;text-align:right;opacity:.7;font-size:10px;letter-spacing:.035em}
+.poster-hero .poster-card-main{display:flex;flex-direction:column;justify-content:center;flex:1;min-height:0;margin:18px 0 12px}
+.poster-hero .poster-card-number{display:block;margin-bottom:7px;font-family:"Instrument Sans",sans-serif;font-size:12px;font-weight:750;letter-spacing:.08em;color:#b96d55}
+.poster-hero .poster-card-main h2{margin:0;font-size:clamp(58px,5vw,88px);line-height:1.06;font-weight:850;letter-spacing:-.09em;color:#222628}
+.poster-hero .poster-card-statement{max-width:22ch;margin:15px 0 0;font-size:clamp(19px,1.45vw,24px);font-weight:730;line-height:1.48;letter-spacing:-.047em;word-break:keep-all}
+.poster-hero .poster-card-note{padding:13px 0 12px;border-top:1px solid rgba(38,40,41,.23)}
+.poster-hero .poster-card-note-label{display:block;margin-bottom:6px;font-family:"Instrument Sans",sans-serif;font-size:10px;font-weight:800;letter-spacing:.09em;color:#af6149}
+.poster-hero .poster-card-note p{max-width:44ch;margin:0;color:#404343;font-size:clamp(14px,.96vw,16px);font-weight:500;line-height:1.55;word-break:keep-all}
+.poster-hero .poster-card-foot{padding-top:10px;border-top:1px solid rgba(38,40,41,.14);color:#636362;font-size:12px;font-weight:600;letter-spacing:-.02em;line-height:1.5}
+.poster-hero.is-pinned .poster-card-head,
+.poster-hero.is-pinned .poster-card-main,
+.poster-hero.is-pinned .poster-card-note,
+.poster-hero.is-pinned .poster-card-foot{opacity:var(--poster-copy-alpha,1)}
+.poster-hero .poster-controls{position:relative;z-index:12;margin-top:21px}
+.poster-hero .poster-controls-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:11px;color:#eee7e0;font-family:"Instrument Sans",sans-serif;font-size:13px;font-weight:750;letter-spacing:.07em}
+.poster-hero .poster-count{color:#aba8a5;font-size:13px;font-weight:500}
+.poster-hero .poster-count b{color:var(--poster-accent);font-size:21px;font-weight:750}
+.poster-hero .poster-pagination{display:flex;align-items:stretch;gap:4px;position:relative}
+.poster-hero .poster-pagination button{flex:1;min-width:0;min-height:43px;display:flex;align-items:center;justify-content:center;gap:5px;padding:7px 3px;border:0;border-top:1px solid rgba(241,232,225,.32);background:transparent;color:#a9a7a3;font:inherit;font-size:12px;cursor:pointer;transition:color .2s,border-color .2s}
 .poster-hero .poster-pagination button span{font-family:"Instrument Sans",sans-serif;font-size:11px}
-.poster-hero .poster-pagination button b{font-weight:670}
-.poster-hero .poster-pagination button[aria-current="true"]{border-color:#f47758;color:#fff0e5}
-.poster-hero .poster-pagination button:hover,.poster-hero .poster-pagination button:focus-visible{color:#f47758}
-.poster-hero .poster-hint{margin:7px 0 0;color:#bab4ae;font-size:13px;line-height:1.5}
-.poster-hero .poster-hint-mobile{display:none}
-.poster-hero .poster-project-link{
-  position:relative;
-  z-index:15;
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:25px;
-  width:max-content;
-  margin:32px 0 0 auto;
-  padding-bottom:10px;
-  border-bottom:1px solid rgba(244,119,88,.7);
-  font-family:"Instrument Sans",sans-serif;
-  font-size:14px;
-  font-weight:760;
-  letter-spacing:.04em;
-  color:#eee5df;
-}
-.poster-hero .poster-project-link span{font-size:21px;line-height:1;color:#f47758}
-.poster-hero .poster-project-link:hover{color:#f47758}
+.poster-hero .poster-pagination button b{font-weight:650}
+.poster-hero .poster-pagination button[aria-current="true"]{color:#f4eeea;border-color:var(--poster-accent)}
+.poster-hero .poster-pagination button:hover,.poster-hero .poster-pagination button:focus-visible{color:var(--poster-accent)}
+.poster-hero .poster-hint{margin:8px 0 0;color:#a9a5a1;font-size:12px;line-height:1.5}
 
-/* On desktop, text and cards share the entire pinned viewport. */
+/* Desktop: typography and papers share a stage with deliberate partial overlap. */
 .poster-hero.is-pinned .poster-shell{position:sticky;top:0;height:100svh;min-height:0}
-.poster-hero.is-pinned .poster-typography{
-  position:absolute;
-  top:clamp(95px,13vh,180px);
-  left:0;
-  right:0;
-  margin:0;
-}
-.poster-hero.is-pinned .poster-intro{
-  position:absolute;
-  left:0;
-  bottom:clamp(73px,10vh,145px);
-  margin:0;
-}
+.poster-hero.is-pinned .poster-typography{position:absolute;top:clamp(106px,12vh,160px);left:0;right:0;margin:0}
 .poster-hero.is-pinned .poster-feature{
   position:absolute;
-  top:clamp(265px,36vh,520px);
-  left:50.5%;
-  width:clamp(430px,35vw,590px);
+  top:clamp(280px,37vh,480px);
+  left:clamp(49%,51vw,55%);
+  width:clamp(415px,33vw,510px);
   max-width:none;
   margin:0;
 }
-.poster-hero.is-pinned .poster-cards{display:block;height:clamp(330px,37vh,530px)}
-.poster-hero.is-pinned .poster-card{
-  position:absolute;
-  inset:0;
-  display:flex;
-  width:100%;
-  height:100%;
-  min-height:0;
-  margin:0;
-  box-shadow:0 24px 65px rgba(0,0,0,.20);
-  will-change:transform,opacity;
+.poster-hero.is-pinned .poster-cards{display:block;height:clamp(395px,45vh,490px)}
+.poster-hero.is-pinned .poster-card{position:absolute;inset:0;min-height:0;width:100%;height:100%;margin:0;will-change:transform,opacity}
+.poster-hero.is-pinned .poster-intro{position:absolute;bottom:clamp(73px,10vh,125px);left:0;margin:0}
+@media(min-width:1100px) and (max-height:940px){
+  .poster-hero.is-pinned .poster-typography{top:clamp(98px,11.5vh,126px)}
+  .poster-hero .poster-discipline{margin-bottom:clamp(18px,2.5vh,27px)}
+  .poster-hero .poster-line--first{font-size:clamp(63px,5.8vw,95px)}
+  .poster-hero .poster-line--impact{font-size:clamp(98px,9.3vw,158px)}
+  .poster-hero .poster-line--ending{font-size:clamp(60px,5.8vw,95px)}
+  .poster-hero.is-pinned .poster-feature{top:clamp(290px,38vh,395px);width:clamp(415px,32vw,485px)}
+  .poster-hero.is-pinned .poster-cards{height:clamp(392px,45vh,440px)}
+  .poster-hero .poster-card{padding:clamp(24px,2vw,31px)}
+  .poster-hero .poster-card-main h2{font-size:clamp(56px,4.6vw,76px)}
+  .poster-hero .poster-card-statement{font-size:clamp(18px,1.5vw,22px);margin-top:12px}
+  .poster-hero .poster-card-note p{font-size:14px}
+  .poster-hero .poster-card-foot{font-size:11px}
+  .poster-hero.is-pinned .poster-intro{bottom:clamp(55px,9vh,92px)}
+  .poster-hero .poster-controls{margin-top:14px}
 }
-.poster-hero.is-pinned .poster-card-main,
-.poster-hero.is-pinned .poster-card-tags{opacity:var(--poster-copy-alpha,1)}
-.poster-hero.is-pinned .poster-project-link{
-  position:absolute;
-  right:0;
-  bottom:clamp(20px,3vh,50px);
-  margin:0;
-}
-@media(min-width:1100px) and (max-height:950px){
-  .poster-hero.is-pinned .poster-typography{top:clamp(95px,12vh,120px)}
-  .poster-hero .poster-line--first{font-size:clamp(70px,7vw,126px)}
-  .poster-hero .poster-line--impact{font-size:clamp(112px,12vw,200px)}
-  .poster-hero .poster-line--ending{font-size:clamp(60px,6.3vw,112px)}
-  .poster-hero.is-pinned .poster-feature{top:clamp(265px,35vh,340px)}
-  .poster-hero.is-pinned .poster-cards{height:clamp(330px,39vh,375px)}
-  .poster-hero.is-pinned .poster-intro{bottom:clamp(75px,10vh,110px)}
-  .poster-hero .poster-card{padding:clamp(25px,2.3vw,33px)}
-  .poster-hero .poster-card-main h2{font-size:clamp(58px,5vw,79px)}
-  .poster-hero .poster-card-statement{font-size:clamp(18px,1.3vw,23px)}
-  .poster-hero .poster-card-copy{font-size:15px}
-  .poster-hero .poster-card-tags{padding-top:12px}
-  .poster-hero .poster-card-tags span{font-size:12px;padding:5px 8px}
-  .poster-hero .poster-controls{margin-top:19px}
-}
-@media(min-width:1100px) and (max-width:1399px){
+@media(min-width:1100px) and (max-width:1350px){
   .poster-hero .poster-shell{width:calc(100% - 80px)}
-  .poster-hero .poster-line--first{font-size:clamp(70px,7.3vw,110px)}
-  .poster-hero .poster-line--impact{font-size:clamp(110px,12vw,163px)}
-  .poster-hero .poster-line--ending{font-size:clamp(60px,6.3vw,88px)}
-  .poster-hero.is-pinned .poster-feature{left:49%;width:clamp(420px,35vw,500px)}
-  .poster-hero .poster-intro{max-width:430px}
-  .poster-hero .poster-intro p{font-size:16px}
+  .poster-hero .poster-line--first{font-size:clamp(61px,6vw,80px)}
+  .poster-hero .poster-line--impact{font-size:clamp(91px,9vw,122px)}
+  .poster-hero .poster-line--ending{font-size:clamp(55px,5.7vw,78px)}
+  .poster-hero.is-pinned .poster-feature{left:49%;width:clamp(405px,35vw,470px)}
+  .poster-hero .poster-intro{max-width:405px}
+  .poster-hero .poster-intro p{font-size:15px}
 }
+
+/* Smaller viewports: no pinning, no hidden content, clear sequential reading. */
 @media(max-width:1099px), (max-height:759px){
-  .poster-hero{height:auto!important;overflow:clip}
-  .poster-hero .poster-shell{height:auto!important;min-height:0;width:min(calc(100% - 48px),760px);padding:24px 0 44px}
-  .poster-hero .poster-typography{position:relative;margin-top:clamp(70px,10vw,110px)}
-  .poster-hero .poster-line--first{font-size:clamp(48px,7.5vw,82px)}
-  .poster-hero .poster-line--impact{font-size:clamp(70px,11.2vw,123px)}
-  .poster-hero .poster-line--ending{font-size:clamp(43px,7.2vw,80px)}
-  .poster-hero .poster-intro{margin:30px 0 48px}
+  .poster-hero{height:auto!important}
+  .poster-hero .poster-shell{height:auto!important;min-height:0;width:min(calc(100% - 48px),770px);padding:23px 0 45px}
+  .poster-hero .poster-typography{margin-top:clamp(65px,10vw,105px)}
+  .poster-hero .poster-discipline{margin-bottom:24px;font-size:11px;gap:7px}
+  .poster-hero .poster-line--first{font-size:clamp(46px,8vw,80px)}
+  .poster-hero .poster-line--impact{font-size:clamp(68px,11.1vw,121px)}
+  .poster-hero .poster-line--ending{font-size:clamp(43px,7.6vw,77px)}
+  .poster-hero .poster-intro{margin:34px 0 45px}
   .poster-hero .poster-feature{width:100%;max-width:none}
-  .poster-hero .poster-cards{display:grid;gap:18px;perspective:none;transform-style:flat}
-  .poster-hero .poster-card{height:auto;min-height:350px;padding:30px;border-radius:16px}
-  .poster-hero .poster-card-main h2{font-size:clamp(56px,8vw,76px)}
-  .poster-hero .poster-card-statement{font-size:clamp(20px,2.7vw,24px)}
-  .poster-hero .poster-card-copy{font-size:16px}
+  .poster-hero .poster-cards{display:grid;gap:16px;perspective:none;transform-style:flat}
+  .poster-hero .poster-card{min-height:390px;padding:32px}
+  .poster-hero .poster-card-main h2{font-size:clamp(56px,8vw,78px)}
+  .poster-hero .poster-card-statement{font-size:clamp(19px,2.9vw,23px)}
+  .poster-hero .poster-card-note p{font-size:15px}
   .poster-hero .poster-controls{display:none}
-  .poster-hero .poster-project-link{margin-top:30px}
-  .poster-hero .poster-hint-desktop{display:none}
-  .poster-hero .poster-hint-mobile{display:inline}
 }
 @media(max-width:520px){
   .poster-hero .poster-shell{width:calc(100% - 34px)}
-  .poster-hero .poster-typography{margin-top:72px}
-  .poster-hero .poster-line--first{font-size:clamp(40px,9.5vw,54px)}
-  .poster-hero .poster-line--impact{font-size:clamp(58px,13.5vw,78px)}
-  .poster-hero .poster-line--ending{font-size:clamp(35px,8.3vw,50px)}
-  .poster-hero .poster-intro{margin:30px 0 42px}
+  .poster-hero .poster-typography{margin-top:64px}
+  .poster-hero .poster-line--first{font-size:clamp(39px,9.5vw,54px)}
+  .poster-hero .poster-line--impact{font-size:clamp(59px,13.1vw,78px)}
+  .poster-hero .poster-impact-tail{font-size:.42em}
+  .poster-hero .poster-line--ending{font-size:clamp(38px,8.8vw,50px)}
+  .poster-hero .poster-intro{margin:26px 0 38px}
   .poster-hero .poster-intro-break{display:none}
   .poster-hero .poster-intro p{font-size:15px}
-  .poster-hero .poster-card{padding:25px;min-height:350px}
+  .poster-hero .poster-card{padding:24px;min-height:390px}
   .poster-hero .poster-card-main h2{font-size:60px}
   .poster-hero .poster-card-statement{font-size:20px}
-  .poster-hero .poster-card-copy{font-size:15px}
-  .poster-hero .poster-card-head{font-size:11px}
-  .poster-hero .poster-card-tags span{font-size:12px;padding:5px 8px}
+  .poster-hero .poster-card-note p{font-size:14px}
+  .poster-hero .poster-card-field{font-size:9px}
+  .poster-hero .poster-card-foot{font-size:11px}
 }
 @media(prefers-reduced-motion:reduce){
-  .poster-hero .poster-light{filter:blur(70px)}
+  .poster-hero .poster-light{filter:blur(72px)}
   .poster-hero .poster-menu{transition:none}
 }
