@@ -272,7 +272,7 @@
     });
   })();
 
-  // Card and ambient color dissolve in place; the next section retains normal scrolling.
+  // First-section 3D depth stack. Cards approach from behind as the user scrolls.
   (function initPosterCards(){
     const hero=document.querySelector(".poster-hero");
     if(!hero)return;
@@ -284,7 +284,7 @@
     const desktop=window.matchMedia("(min-width:1100px) and (min-height:760px)");
     if(!shell||cards.length!==5||glows.length!==5||buttons.length!==5||!counter)return;
     const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
-    const ease=x=>x*x*(3-2*x);
+    const ease=t=>t*t*(3-2*t);
     let enabled=false,distance=0,active=-1,raf=0;
     function updateCurrent(i){
       if(active===i)return;
@@ -298,18 +298,35 @@
       const progress=clamp(-hero.getBoundingClientRect().top/Math.max(1,distance),0,1);
       const raw=progress*(cards.length-1);
       const base=Math.min(cards.length-2,Math.floor(raw));
-      const t=clamp(raw-base,0,1);
-      const blend=ease(clamp((t-.37)/.53,0,1));
-      updateCurrent(blend>=.5?base+1:base);
+      const phase=clamp(raw-base,0,1);
+      // A quiet interval around each readable card, without snapping the page.
+      const cursor=base+ease(clamp((phase-.16)/.68,0,1));
+      const selected=clamp(Math.round(cursor),0,cards.length-1);
+      updateCurrent(selected);
       hero.style.setProperty("--poster-progress",(progress*100)+"%");
       cards.forEach((card,i)=>{
-        const a=i===base?1-blend:i===base+1?blend:0;
-        card.style.opacity=String(a);
-        card.style.visibility=a<.015?"hidden":"visible";
-        card.style.transform="translate3d(0,"+((1-a)*10)+"px,0)";
-        card.style.zIndex=String(i===base+1?2:1);
-        card.setAttribute("aria-hidden",String(i!==active));
-        glows[i].style.opacity=String(a*.8);
+        const relative=i-cursor;
+        const incoming=Math.max(0,relative);
+        const leaving=Math.max(0,-relative);
+        const upcoming=Math.min(incoming,4);
+        const exited=Math.min(leaving,1);
+        // Z is real 3D depth, not a two-dimensional scale imitation.
+        const x=relative>=0?upcoming*53:-(exited*250+Math.max(0,leaving-1)*40);
+        const y=relative>=0?-upcoming*38:exited*40;
+        const z=relative>=0?32-incoming*245:32-exited*255;
+        const tilt=relative>=0?-3.5+upcoming*(i%2?9:-8): -3.5-exited*13;
+        const swivel=relative>=0?Math.min(incoming,3)*-5:exited*11;
+        const alpha=relative>=0?Math.max(.65,1-incoming*.07):Math.max(0,1-leaving*1.25);
+        const contentOpacity=clamp(1-incoming*1.35,0,1);
+        card.style.transform="translate3d("+x+"px,"+y+"px,"+z+"px) rotateY("+swivel+"deg) rotateZ("+tilt+"deg)";
+        card.style.opacity=String(alpha);
+        card.style.visibility=alpha<.018?"hidden":"visible";
+        card.style.zIndex=String(100-Math.round(Math.abs(relative)*10)+(relative>=0?1:0));
+        card.style.setProperty("--poster-copy-alpha",String(contentOpacity));
+        card.style.setProperty("--poster-shadow-alpha",String(clamp(1-incoming*.22-leaving*.55,.18,1)));
+        card.setAttribute("aria-hidden",String(i!==selected));
+        // Keep inactive cards decorative, not fake interactive buttons.
+        glows[i].style.opacity=String(Math.max(0,1-Math.abs(relative))*.75);
       });
     }
     function requestRender(){if(!raf)raf=requestAnimationFrame(render);}
@@ -317,7 +334,7 @@
       enabled=desktop.matches&&!reducedMotion;
       hero.classList.toggle("is-pinned",enabled);
       if(enabled){
-        distance=Math.round(clamp(window.innerHeight*1.08,620,1450));
+        distance=Math.round(clamp(window.innerHeight*1.28,800,1840));
         hero.style.height=(window.innerHeight+distance)+"px";
         shell.style.height=window.innerHeight+"px";
         active=-1;
@@ -327,7 +344,7 @@
         shell.style.removeProperty("height");
         hero.style.removeProperty("--poster-progress");
         cards.forEach(card=>{
-          for(const prop of ["opacity","visibility","transform","z-index"])card.style.removeProperty(prop);
+          for(const prop of ["opacity","visibility","transform","z-index","--poster-copy-alpha","--poster-shadow-alpha"])card.style.removeProperty(prop);
           card.removeAttribute("aria-hidden");
         });
         glows.forEach(glow=>glow.style.removeProperty("opacity"));
