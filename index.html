@@ -28,7 +28,7 @@
 </header>
 
 <main>
-  <section class="portal-intro portal-play vision-hero" id="top" aria-labelledby="portalTitle">
+  <section class="portal-intro portal-play vision-hero vision-stack-hero" id="top" aria-labelledby="portalTitle">
     <div class="vision-shell">
       <div class="vision-top"><span class="vision-index"><i aria-hidden="true"></i> PORTFOLIO / 2026</span><div class="vision-menu-wrap"><button type="button" class="vision-menu-toggle" id="visionMenuToggle" aria-expanded="false" aria-controls="visionMenu">MENU <span aria-hidden="true">☰</span></button></div>
       <nav class="vision-menu" id="visionMenu" aria-label="첫 화면 메뉴" hidden>
@@ -40,29 +40,76 @@
         <a class="vision-menu-contact" href="#contact"><span>Contact</span><span class="vision-menu-arrow" aria-hidden="true">↗</span></a>
       </nav></div>
       <div class="vision-editorial">
-        
         <h1 id="portalTitle"><span class="vision-headline-first">좋은 화면은</span><br><em class="vision-headline-highlight" aria-label="좋은 질문"><span aria-hidden="true">좋</span><span aria-hidden="true">은</span><span aria-hidden="true" class="vision-character-space"> </span><span aria-hidden="true">질</span><span aria-hidden="true">문</span></em><span class="vision-headline-ending">에서 시작됩니다<span class="vision-stop">.</span></span></h1>
         <p class="vision-lead">요구사항을 그대로 구현하는 데서 멈추지 않습니다. 문제를 이해하고, 정보를 구조화하고, 사용자가 경험하는 순간까지 설계합니다.</p>
-        <p class="vision-strength-guide">다섯 가지 강점을 눌러 살펴보세요 <span aria-hidden="true">↘</span></p>
+        <p class="vision-strength-guide">스크롤하거나 강점을 선택해 살펴보세요 <span aria-hidden="true">↘</span></p>
       </div>
-      <div class="vision-strengths">
-        
-        <div class="vision-objects" aria-label="나의 다섯 가지 강점">
-          <button type="button" class="vision-blob vision-blob--one" data-strength="question" aria-controls="strengthPanel" aria-expanded="false"><small>01 / QUESTION</small><strong>질문</strong><span aria-hidden="true">↗</span></button>
-          <button type="button" class="vision-blob vision-blob--two" data-strength="structure" aria-controls="strengthPanel" aria-expanded="false"><small>02 / STRUCTURE</small><strong>구조</strong><span aria-hidden="true">↗</span></button>
-          <button type="button" class="vision-blob vision-blob--three" data-strength="usability" aria-controls="strengthPanel" aria-expanded="false"><small>03 / USABILITY</small><strong>사용성</strong><span aria-hidden="true">↗</span></button>
-          <button type="button" class="vision-blob vision-blob--four" data-strength="design" aria-controls="strengthPanel" aria-expanded="false"><small>04 / UI DESIGN</small><strong>시각화</strong><span aria-hidden="true">↗</span></button>
-          <button type="button" class="vision-blob vision-blob--five" data-strength="execution" aria-controls="strengthPanel" aria-expanded="false"><small>05 / EXECUTION</small><strong>실행</strong><span aria-hidden="true">↗</span></button>
+      <div class="vision-strengths" id="strengths">
+        <div class="vision-stack-navigation">
+          <p class="vision-stack-label">다섯 가지 강점</p>
+          <p class="vision-stack-position"><span id="visionStackNumber">01</span><small> / 05</small></p>
+          <div class="vision-stack-jump" aria-label="강점 바로 선택">
+            <button type="button" data-stack-target="0" aria-label="질문 카드 보기" aria-current="true"><span>01</span><strong>질문</strong></button>
+            <button type="button" data-stack-target="1" aria-label="구조 카드 보기" aria-current="false"><span>02</span><strong>구조</strong></button>
+            <button type="button" data-stack-target="2" aria-label="사용성 카드 보기" aria-current="false"><span>03</span><strong>사용성</strong></button>
+            <button type="button" data-stack-target="3" aria-label="시각화 카드 보기" aria-current="false"><span>04</span><strong>시각화</strong></button>
+            <button type="button" data-stack-target="4" aria-label="실행 카드 보기" aria-current="false"><span>05</span><strong>실행</strong></button>
+          </div>
+        </div>
+        <div class="vision-objects" aria-label="나의 다섯 가지 강점 카드">
+          <button type="button" class="vision-stack-card vision-stack-card--question" data-stack-index="0" aria-label="질문: 당연한 것에도 이유를 묻습니다.">
+            <span class="vision-card-index">01 / QUESTION</span>
+            <span class="vision-card-content">
+              <strong class="vision-card-keyword">질문</strong>
+              <span class="vision-card-statement">당연한 것에도 이유를 묻습니다.</span>
+              <span class="vision-card-description">요청의 목적과 문제의 원인을 먼저 살핍니다.</span>
+            </span>
+            <span class="vision-card-tags"><span>문제 정의</span><span>관찰</span><span>개선 가설</span></span>
+            <span class="vision-card-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button type="button" class="vision-stack-card vision-stack-card--structure" data-stack-index="1" aria-label="구조: 복잡한 정보를 명확한 흐름으로.">
+            <span class="vision-card-index">02 / STRUCTURE</span>
+            <span class="vision-card-content">
+              <strong class="vision-card-keyword">구조</strong>
+              <span class="vision-card-statement">복잡한 정보를 명확한 흐름으로.</span>
+              <span class="vision-card-description">정보의 우선순위를 정하고 탐색 구조를 설계합니다.</span>
+            </span>
+            <span class="vision-card-tags"><span>정보구조(IA)</span><span>콘텐츠 설계</span><span>사용자 흐름</span></span>
+            <span class="vision-card-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button type="button" class="vision-stack-card vision-stack-card--usability" data-stack-index="2" aria-label="사용성: 만드는 사람보다 사용하는 사람의 관점으로.">
+            <span class="vision-card-index">03 / USABILITY</span>
+            <span class="vision-card-content">
+              <strong class="vision-card-keyword">사용성</strong>
+              <span class="vision-card-statement">만드는 사람보다 사용하는 사람의 관점으로.</span>
+              <span class="vision-card-description">사용자가 겪는 불편과 행동의 흐름을 살핍니다.</span>
+            </span>
+            <span class="vision-card-tags"><span>탐색 경험</span><span>가독성</span><span>상담 동선</span></span>
+            <span class="vision-card-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button type="button" class="vision-stack-card vision-stack-card--design" data-stack-index="3" aria-label="시각화: 중요한 정보가 먼저 보이도록.">
+            <span class="vision-card-index">04 / UI DESIGN</span>
+            <span class="vision-card-content">
+              <strong class="vision-card-keyword">시각화</strong>
+              <span class="vision-card-statement">중요한 정보가 먼저 보이도록.</span>
+              <span class="vision-card-description">정보의 위계와 목적에 맞춰 UI를 구성합니다.</span>
+            </span>
+            <span class="vision-card-tags"><span>UI 디자인</span><span>반응형 레이아웃</span><span>비주얼 구성</span></span>
+            <span class="vision-card-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button type="button" class="vision-stack-card vision-stack-card--execution" data-stack-index="4" aria-label="실행: 설계를 실제 작동하는 경험으로.">
+            <span class="vision-card-index">05 / EXECUTION</span>
+            <span class="vision-card-content">
+              <strong class="vision-card-keyword">실행</strong>
+              <span class="vision-card-statement">설계를 실제 작동하는 경험으로.</span>
+              <span class="vision-card-description">구현과 운영의 제약까지 고려하며 완성합니다.</span>
+            </span>
+            <span class="vision-card-tags"><span>퍼블리싱</span><span>CMS</span><span>운영 개선</span></span>
+            <span class="vision-card-arrow" aria-hidden="true">↗</span>
+          </button>
         </div>
       </div>
-      <a class="vision-scroll" href="#projects" aria-label="다음 프로젝트 섹션으로 이동">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a>
-    </div>
-    <div class="strength-overlay" id="strengthOverlay" hidden>
-      <section class="strength-panel" id="strengthPanel" aria-labelledby="strengthTitle" aria-modal="true" role="dialog" tabindex="-1">
-        <div class="strength-panel-top"><span id="strengthLabel">MY STRENGTH / 01</span><button type="button" class="strength-close" id="strengthClose" aria-label="강점 설명 닫기">×</button></div>
-        <div class="strength-keyword" id="strengthKeyword" aria-hidden="true"></div><h2 id="strengthTitle"></h2><p id="strengthDescription"></p>
-        <div class="strength-panel-bottom"><div id="strengthProof" class="strength-proof-tags"></div></div><div class="strength-controls"><button type="button" id="strengthPrev" class="strength-step">← 이전</button><span id="strengthCount" class="strength-count" aria-live="polite">01 / 05</span><button type="button" id="strengthNext" class="strength-step">다음 →</button></div>
-      </section>
+      <a class="vision-scroll" href="#projects" aria-label="대표 프로젝트 섹션으로 바로 이동">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a>
     </div>
   </section>
 
