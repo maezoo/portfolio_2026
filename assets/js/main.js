@@ -272,7 +272,7 @@
     });
   })();
 
-  // First-section 3D depth stack. Cards approach from behind as the user scrolls.
+  // First section only: restrained depth transitions between working notes.
   (function initPosterCards(){
     const hero=document.querySelector(".poster-hero");
     if(!hero)return;
@@ -283,50 +283,46 @@
     const counter=hero.querySelector("#posterCurrent");
     const desktop=window.matchMedia("(min-width:1100px) and (min-height:760px)");
     if(!shell||cards.length!==5||glows.length!==5||buttons.length!==5||!counter)return;
-    const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+    const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
     const ease=t=>t*t*(3-2*t);
-    let enabled=false,distance=0,active=-1,raf=0;
-    function updateCurrent(i){
-      if(active===i)return;
-      active=i;
-      counter.textContent=String(i+1).padStart(2,"0");
-      buttons.forEach((button,j)=>button.setAttribute("aria-current",String(i===j)));
+    let active=-1,enabled=false,distance=0,raf=0;
+
+    function updateCurrent(index){
+      if(active===index)return;
+      active=index;
+      counter.textContent=String(index+1).padStart(2,"0");
+      buttons.forEach((button,i)=>button.setAttribute("aria-current",String(index===i)));
     }
     function render(){
       raf=0;
       if(!enabled)return;
-      const progress=clamp(-hero.getBoundingClientRect().top/Math.max(1,distance),0,1);
+      const progress=clamp(-hero.getBoundingClientRect().top/Math.max(distance,1),0,1);
       const raw=progress*(cards.length-1);
       const base=Math.min(cards.length-2,Math.floor(raw));
-      const phase=clamp(raw-base,0,1);
-      // A quiet interval around each readable card, without snapping the page.
-      const cursor=base+ease(clamp((phase-.16)/.68,0,1));
+      const local=clamp(raw-base,0,1);
+      // Hold readable cards briefly; interpolate only during the middle of each step.
+      const cursor=base+ease(clamp((local-.2)/.62,0,1));
       const selected=clamp(Math.round(cursor),0,cards.length-1);
       updateCurrent(selected);
       hero.style.setProperty("--poster-progress",(progress*100)+"%");
       cards.forEach((card,i)=>{
         const relative=i-cursor;
-        const incoming=Math.max(0,relative);
-        const leaving=Math.max(0,-relative);
-        const upcoming=Math.min(incoming,4);
-        const exited=Math.min(leaving,1);
-        // Z is real 3D depth, not a two-dimensional scale imitation.
-        const x=relative>=0?upcoming*53:-(exited*250+Math.max(0,leaving-1)*40);
-        const y=relative>=0?-upcoming*38:exited*40;
-        const z=relative>=0?32-incoming*245:32-exited*255;
-        const tilt=relative>=0?-3.5+upcoming*(i%2?9:-8): -3.5-exited*13;
-        const swivel=relative>=0?Math.min(incoming,3)*-5:exited*11;
-        const alpha=relative>=0?Math.max(.65,1-incoming*.07):Math.max(0,1-leaving*1.25);
-        const contentOpacity=clamp(1-incoming*1.35,0,1);
-        card.style.transform="translate3d("+x+"px,"+y+"px,"+z+"px) rotateY("+swivel+"deg) rotateZ("+tilt+"deg)";
+        const behind=clamp(relative,0,4);
+        const passed=clamp(-relative,0,1);
+        // A slim stack of documents: restrained 3D depth and slight alternating tilt.
+        const x=relative>=0?behind*29:-passed*115;
+        const y=relative>=0?-behind*19:passed*27;
+        const z=relative>=0?-behind*103:-passed*130;
+        const tilt=relative>=0?-1.5+(i%2?1:-1)*Math.min(behind,4)*1.8:-1.5-passed*5;
+        const alpha=relative>=0?1-passed:1-passed;
+        const copyAlpha=clamp(1-behind*1.35,0,1);
+        card.style.transform="translate3d("+x+"px,"+y+"px,"+z+"px) rotateZ("+tilt+"deg)";
         card.style.opacity=String(alpha);
-        card.style.visibility=alpha<.018?"hidden":"visible";
-        card.style.zIndex=String(100-Math.round(Math.abs(relative)*10)+(relative>=0?1:0));
-        card.style.setProperty("--poster-copy-alpha",String(contentOpacity));
-        card.style.setProperty("--poster-shadow-alpha",String(clamp(1-incoming*.22-leaving*.55,.18,1)));
+        card.style.visibility=alpha<.012?"hidden":"visible";
+        card.style.zIndex=String(100-Math.round(Math.abs(relative)*10));
+        card.style.setProperty("--poster-copy-alpha",String(copyAlpha));
         card.setAttribute("aria-hidden",String(i!==selected));
-        // Keep inactive cards decorative, not fake interactive buttons.
-        glows[i].style.opacity=String(Math.max(0,1-Math.abs(relative))*.75);
+        glows[i].style.opacity=String(Math.max(0,1-Math.abs(relative))*.52);
       });
     }
     function requestRender(){if(!raf)raf=requestAnimationFrame(render);}
@@ -334,7 +330,7 @@
       enabled=desktop.matches&&!reducedMotion;
       hero.classList.toggle("is-pinned",enabled);
       if(enabled){
-        distance=Math.round(clamp(window.innerHeight*1.28,800,1840));
+        distance=Math.round(clamp(window.innerHeight*1.65,1050,2000));
         hero.style.height=(window.innerHeight+distance)+"px";
         shell.style.height=window.innerHeight+"px";
         active=-1;
@@ -344,7 +340,7 @@
         shell.style.removeProperty("height");
         hero.style.removeProperty("--poster-progress");
         cards.forEach(card=>{
-          for(const prop of ["opacity","visibility","transform","z-index","--poster-copy-alpha","--poster-shadow-alpha"])card.style.removeProperty(prop);
+          for(const prop of ["opacity","visibility","transform","z-index","--poster-copy-alpha"])card.style.removeProperty(prop);
           card.removeAttribute("aria-hidden");
         });
         glows.forEach(glow=>glow.style.removeProperty("opacity"));
@@ -354,10 +350,7 @@
     }
     function goTo(i){
       i=clamp(i,0,cards.length-1);
-      if(!enabled){
-        cards[i].scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"center"});
-        return;
-      }
+      if(!enabled){cards[i].scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"center"});return;}
       const y=window.scrollY+hero.getBoundingClientRect().top;
       window.scrollTo({top:y+distance*i/(cards.length-1),behavior:"smooth"});
     }
@@ -368,19 +361,19 @@
     measure();
   })();
 
-  // One-time typography entrance; no floating or autoplay animation.
+  // One-time typographic entrance; all later transitions are user-driven.
   (function initPosterEntrance(){
     const hero=document.querySelector(".poster-hero");
     const g=window.gsap;
     if(!hero||!g||reducedMotion)return;
-    const lines=hero.querySelectorAll(".poster-line");
+    const heading=hero.querySelectorAll(".poster-line");
     const intro=hero.querySelector(".poster-intro");
     const feature=hero.querySelector(".poster-feature");
-    if(lines.length!==3||!intro||!feature)return;
+    if(heading.length!==3||!intro||!feature)return;
     g.timeline({defaults:{ease:"power3.out"}})
-      .from(lines,{opacity:0,y:30,stagger:.13,duration:.65},0)
-      .from(intro,{opacity:0,y:12,duration:.55},.56)
-      .from(feature,{opacity:0,y:20,duration:.68},.38);
+      .from(heading,{opacity:0,y:20,stagger:.12,duration:.58},0)
+      .from(intro,{opacity:0,y:12,duration:.47},.45)
+      .from(feature,{opacity:0,y:14,duration:.58},.33);
   })();
 
 })();
