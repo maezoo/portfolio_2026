@@ -268,7 +268,7 @@
     document.addEventListener("click",function(event){if(menu.classList.contains("is-open")&&!menu.contains(event.target)&&!toggle.contains(event.target))setOpen(false);});
   })();
 
-  // First section only: a scroll-driven, readable strength stack.
+  // First section only: scroll-driven strength cards with explicit navigation.
   (function initStrengthStack(){
     const hero=document.querySelector(".vision-stack-hero");
     if(!hero)return;
@@ -276,10 +276,11 @@
     const cards=Array.from(hero.querySelectorAll(".vision-stack-card"));
     const jumps=Array.from(hero.querySelectorAll("[data-stack-target]"));
     const indicator=hero.querySelector("#visionStackNumber");
+    const next=hero.querySelector("#visionStackNext");
     const jumpMedia=window.matchMedia("(min-width:901px) and (min-height:740px)");
     const g=window.gsap;
-    if(!shell||!cards.length||!indicator)return;
-    let active=0;
+    if(!shell||!cards.length||!indicator||!next)return;
+    let active=-1;
     let enabled=false;
     let distance=0;
     let frame=0;
@@ -290,14 +291,21 @@
       active=index;
       indicator.textContent=String(index+1).padStart(2,"0");
       jumps.forEach(function(button,i){button.setAttribute("aria-current",String(i===index));});
+      const last=index===cards.length-1;
+      next.firstChild.textContent=last?"프로젝트 보기 ":"다음 강점 ";
+      next.setAttribute("aria-label",last?"대표 프로젝트 섹션으로 이동":"다음 강점 보기");
     }
     function render(){
       frame=0;
       if(!enabled||!g)return;
       const top=hero.getBoundingClientRect().top;
       const progress=clamp(-top/Math.max(1,distance),0,1);
-      const cursor=progress*(cards.length-1);
-      const width=cards[0].getBoundingClientRect().width;
+      // Small ease around each card: brief reading pause without scroll snapping.
+      const raw=progress*(cards.length-1);
+      const segment=Math.min(cards.length-2,Math.floor(raw));
+      const t=clamp(raw-segment,0,1);
+      const cursor=segment+t*t*(3-2*t);
+      const width=cards[0].offsetWidth;
       const selected=clamp(Math.round(cursor),0,cards.length-1);
       setActive(selected);
       cards.forEach(function(card,i){
@@ -315,7 +323,6 @@
           zIndex:cards.length-i,
           force3D:true
         });
-        card.tabIndex=i===selected?0:-1;
         card.setAttribute("aria-hidden",String(i!==selected));
       });
     }
@@ -328,11 +335,18 @@
         distance=Math.round(clamp(window.innerHeight*1.1,580,1440));
         hero.style.height=(stageHeight+distance)+"px";
         shell.style.height=stageHeight+"px";
+        active=-1;
         render();
       }else{
         hero.style.removeProperty("height");
         shell.style.removeProperty("height");
-        cards.forEach(function(card){card.style.removeProperty("transform");card.style.removeProperty("opacity");card.style.removeProperty("z-index");card.removeAttribute("aria-hidden");card.tabIndex=0;});
+        cards.forEach(function(card){
+          card.style.removeProperty("transform");
+          card.style.removeProperty("opacity");
+          card.style.removeProperty("z-index");
+          card.removeAttribute("aria-hidden");
+        });
+        active=-1;
         setActive(0);
       }
     }
@@ -343,12 +357,10 @@
       window.scrollTo({top:heroTop+(distance*index/(cards.length-1)),behavior:"smooth"});
     }
     jumps.forEach(function(button,i){button.addEventListener("click",function(){goTo(i);});});
-    cards.forEach(function(card,i){
-      card.addEventListener("click",function(){
-        if(!enabled)return;
-        if(i!==active)goTo(i);
-        else if(i<cards.length-1)goTo(i+1);
-      });
+    next.addEventListener("click",function(){
+      if(active<cards.length-1){goTo(active+1);return;}
+      const projects=document.getElementById("projects");
+      if(projects)projects.scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"start"});
     });
     window.addEventListener("scroll",requestRender,{passive:true});
     window.addEventListener("resize",measure);
