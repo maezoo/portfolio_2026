@@ -274,39 +274,22 @@
     if(!hero)return;
     const shell=hero.querySelector(".vision-shell");
     const cards=Array.from(hero.querySelectorAll(".vision-stack-card"));
-    const cardParts=cards.map(function(card){
-      return [
-        card.querySelector(".vision-card-keyword"),
-        card.querySelector(".vision-card-statement"),
-        card.querySelector(".vision-card-description"),
-        card.querySelector(".vision-card-tags")
-      ];
-    });
     const jumps=Array.from(hero.querySelectorAll("[data-stack-target]"));
     const indicator=hero.querySelector("#visionStackNumber");
     const jumpMedia=window.matchMedia("(min-width:901px) and (min-height:740px)");
     const g=window.gsap;
     if(!shell||!cards.length||!indicator)return;
-    let active=-1;
+    let active=0;
     let enabled=false;
     let distance=0;
     let frame=0;
     let stageHeight=0;
-    let cardWidth=0;
     function clamp(value,min,max){return Math.max(min,Math.min(max,value));}
     function setActive(index){
       if(index===active)return;
       active=index;
       indicator.textContent=String(index+1).padStart(2,"0");
       jumps.forEach(function(button,i){button.setAttribute("aria-current",String(i===index));});
-      if(enabled){
-        cards.forEach(function(card,i){
-          const current=i===index;
-          card.classList.toggle("is-current",current);
-          card.tabIndex=current?0:-1;
-          card.setAttribute("aria-hidden",String(!current));
-        });
-      }
     }
     function render(){
       frame=0;
@@ -314,35 +297,26 @@
       const top=hero.getBoundingClientRect().top;
       const progress=clamp(-top/Math.max(1,distance),0,1);
       const cursor=progress*(cards.length-1);
+      const width=cards[0].getBoundingClientRect().width;
       const selected=clamp(Math.round(cursor),0,cards.length-1);
       setActive(selected);
       cards.forEach(function(card,i){
         const relative=i-cursor;
         const passed=Math.max(0,-relative);
-        const ahead=Math.max(0,relative);
-        const exit=clamp(passed,0,1);
-        const depth=Math.min(ahead,4);
-        const x=ahead>0?depth*27:-exit*(cardWidth-42)-Math.max(0,passed-1)*32;
-        const y=ahead>0?depth*11:-exit*15;
-        // A restrained 3D page turn: translate, tilt and recede together.
+        const upcoming=Math.max(0,relative);
+        const offset=relative>=0?upcoming*25:-Math.min(passed,1)*(width-35)-Math.max(0,passed-1)*34;
+        const alpha=relative>=0?1:1-Math.min(passed,1)*.72;
         g.set(card,{
-          x:x,
-          y:y,
-          rotation:ahead>0?depth*2:-exit*13,
-          rotationY:ahead>0?-depth*3.5:exit*21,
-          scale:ahead>0?1-depth*.022:1-exit*.075,
-          opacity:ahead>0?1:1-exit*.67,
+          x:offset,
+          y:relative>=0?Math.min(upcoming,4)*9:-Math.min(passed,1)*15,
+          rotation:relative>=0?Math.min(upcoming,4)*1.7:-Math.min(passed,1)*-11,
+          scale:relative>=0?1-Math.min(upcoming,4)*.018:1,
+          opacity:alpha,
           zIndex:cards.length-i,
           force3D:true
         });
-        // Scroll-linked staggered text reveal. No extra autoplay or scroll snap.
-        const reveal=clamp(1-(ahead-.05)/.78,0,1);
-        const delays=[0,.15,.3,.43];
-        cardParts[i].forEach(function(part,j){
-          if(!part)return;
-          const amount=clamp((reveal-delays[j])/(1-delays[j]),0,1);
-          g.set(part,{y:(1-amount)*(j===0?20:13),opacity:amount,force3D:true});
-        });
+        card.tabIndex=i===selected?0:-1;
+        card.setAttribute("aria-hidden",String(i!==selected));
       });
     }
     function requestRender(){if(!frame)frame=requestAnimationFrame(render);}
@@ -354,22 +328,11 @@
         distance=Math.round(clamp(window.innerHeight*1.1,580,1440));
         hero.style.height=(stageHeight+distance)+"px";
         shell.style.height=stageHeight+"px";
-        cardWidth=cards[0].offsetWidth;
-        active=-1;
         render();
       }else{
         hero.style.removeProperty("height");
         shell.style.removeProperty("height");
-        cards.forEach(function(card,i){
-          card.classList.remove("is-current");
-          card.removeAttribute("aria-hidden");
-          card.tabIndex=0;
-          if(g){
-            g.set(card,{clearProps:"transform,opacity,zIndex"});
-            cardParts[i].forEach(function(part){if(part)g.set(part,{clearProps:"transform,opacity"});});
-          }
-        });
-        active=-1;
+        cards.forEach(function(card){card.style.removeProperty("transform");card.style.removeProperty("opacity");card.style.removeProperty("z-index");card.removeAttribute("aria-hidden");card.tabIndex=0;});
         setActive(0);
       }
     }
