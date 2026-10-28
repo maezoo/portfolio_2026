@@ -1988,3 +1988,39 @@ body{background:var(--paper)}
 .vision-stack-hero .vision-card-arrow{right:25px;bottom:25px;font-size:24px}
 }
 @media(prefers-reduced-motion:reduce){.vision-stack-hero .vision-stack-card{transition:none}}
+
+
+/* First-section refinement: descriptive cards, one unambiguous next action. */
+.vision-stack-hero .vision-stack-card{cursor:default}
+.vision-stack-hero .vision-card-statement{margin-top:3px}
+.vision-stack-hero .vision-card-description{max-width:44ch;line-height:1.57}
+.vision-stack-hero .vision-card-tags{padding-right:0}
+.vision-stack-hero .vision-card-arrow{display:none}
+.vision-stack-hero .vision-stack-next{
+  display:none;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  margin-top:24px;
+  padding:12px 0 11px;
+  min-width:162px;
+  border:0;
+  border-bottom:1px solid rgba(244,119,88,.68);
+  background:transparent;
+  color:#f5eae3;
+  font:inherit;
+  font-size:15px;
+  font-weight:700;
+  text-align:left;
+  cursor:pointer;
+  transition:color .2s,border-color .2s;
+}
+.vision-stack-hero.has-card-scroll .vision-stack-next{display:flex}
+.vision-stack-hero .vision-stack-next span{font-size:22px;color:#f47758;line-height:1}
+.vision-stack-hero .vision-stack-next:hover,
+.vision-stack-hero .vision-stack-next:focus-visible{color:#f47758;border-color:#f47758}
+.vision-stack-hero .vision-stack-next:focus-visible{outline:2px solid #f47758;outline-offset:5px}
+@media(min-width:901px) and (max-width:1200px){
+  .vision-stack-hero .vision-card-description{font-size:15px}
+  .vision-stack-hero .vision-card-tags span{font-size:12px;padding:5px 9px}
+}
