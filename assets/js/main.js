@@ -268,145 +268,114 @@
     document.addEventListener("click",function(event){if(menu.classList.contains("is-open")&&!menu.contains(event.target)&&!toggle.contains(event.target))setOpen(false);});
   })();
 
-  // First-screen strengths: keep project sections and navigation behavior unchanged.
-  (function initStrengthCards(){
-    const overlay=document.getElementById("strengthOverlay");
-    const panel=document.getElementById("strengthPanel");
-    const close=document.getElementById("strengthClose");
-    const prev=document.getElementById("strengthPrev");
-    const next=document.getElementById("strengthNext");
-    const count=document.getElementById("strengthCount");
-    let activeIndex=0;
-    const cards=Array.from(document.querySelectorAll(".portal-play [data-strength]"));
-    if(!overlay||!panel||!close||!prev||!next||!count||!cards.length)return;
-    const content={
-      question:{label:"01 / QUESTION",title:"당연한 것에도 이유를 묻습니다.",description:"요청의 목적과 문제의 원인을 먼저 살핍니다.",proof:["문제 정의","관찰","개선 가설"]},
-      structure:{label:"02 / STRUCTURE",title:"복잡한 정보를 명확한 흐름으로.",description:"정보의 우선순위를 정하고 탐색 구조를 설계합니다.",proof:["정보구조(IA)","콘텐츠 설계","사용자 흐름"]},
-      usability:{label:"03 / USABILITY",title:"만드는 사람보다 사용하는 사람의 관점으로.",description:"사용자가 겪는 불편과 행동의 흐름을 살핍니다.",proof:["탐색 경험","가독성","상담 동선"]},
-      design:{label:"04 / UI DESIGN",title:"중요한 정보가 먼저 보이도록.",description:"정보의 위계와 목적에 맞춰 UI를 구성합니다.",proof:["UI 디자인","반응형 레이아웃","비주얼 구성"]},
-      execution:{label:"05 / EXECUTION",title:"설계를 실제 작동하는 경험으로.",description:"구현과 운영의 제약까지 고려하며 완성합니다.",proof:["퍼블리싱","CMS","운영 개선"]}
-    };
-    let trigger=null;
-    function dismiss(){
-      if(overlay.hidden)return;
-      overlay.hidden=true;
-      document.dispatchEvent(new CustomEvent("hero:strength-close"));
-      cards.forEach(function(card){card.setAttribute("aria-expanded","false");});
-      if(trigger)trigger.focus();
+  // First section only: a scroll-driven, readable strength stack.
+  (function initStrengthStack(){
+    const hero=document.querySelector(".vision-stack-hero");
+    if(!hero)return;
+    const shell=hero.querySelector(".vision-shell");
+    const cards=Array.from(hero.querySelectorAll(".vision-stack-card"));
+    const jumps=Array.from(hero.querySelectorAll("[data-stack-target]"));
+    const indicator=hero.querySelector("#visionStackNumber");
+    const jumpMedia=window.matchMedia("(min-width:901px) and (min-height:740px)");
+    const g=window.gsap;
+    if(!shell||!cards.length||!indicator)return;
+    let active=0;
+    let enabled=false;
+    let distance=0;
+    let frame=0;
+    let stageHeight=0;
+    function clamp(value,min,max){return Math.max(min,Math.min(max,value));}
+    function setActive(index){
+      if(index===active)return;
+      active=index;
+      indicator.textContent=String(index+1).padStart(2,"0");
+      jumps.forEach(function(button,i){button.setAttribute("aria-current",String(i===index));});
     }
-    function show(index){
-      activeIndex=(index+cards.length)%cards.length;
-      const card=cards[activeIndex];
-      const data=content[card.dataset.strength];
-      const keyword={question:"질문",structure:"구조",usability:"사용성",design:"시각화",execution:"실행"};
-      document.getElementById("strengthKeyword").textContent=keyword[card.dataset.strength]||"";
-      panel.dataset.strength=card.dataset.strength;
-      document.getElementById("strengthLabel").textContent=data.label;
-      document.getElementById("strengthTitle").textContent=data.title;
-      document.getElementById("strengthDescription").textContent=data.description;
-      const proof=document.getElementById("strengthProof");
-      proof.replaceChildren();
-      data.proof.forEach(function(term){const tag=document.createElement("span");tag.className="strength-proof-tag";tag.textContent=term;proof.appendChild(tag);});
-      count.textContent=String(activeIndex+1).padStart(2,"0")+" / "+String(cards.length).padStart(2,"0");
-      cards.forEach(function(item){item.setAttribute("aria-expanded",String(item===card));});
-      overlay.hidden=false;
-      document.dispatchEvent(new CustomEvent("hero:strength-show",{detail:{index:activeIndex,card:card}}));
+    function render(){
+      frame=0;
+      if(!enabled||!g)return;
+      const top=hero.getBoundingClientRect().top;
+      const progress=clamp(-top/Math.max(1,distance),0,1);
+      const cursor=progress*(cards.length-1);
+      const width=cards[0].getBoundingClientRect().width;
+      const selected=clamp(Math.round(cursor),0,cards.length-1);
+      setActive(selected);
+      cards.forEach(function(card,i){
+        const relative=i-cursor;
+        const passed=Math.max(0,-relative);
+        const upcoming=Math.max(0,relative);
+        const offset=relative>=0?upcoming*25:-Math.min(passed,1)*(width-35)-Math.max(0,passed-1)*34;
+        const alpha=relative>=0?1:1-Math.min(passed,1)*.72;
+        g.set(card,{
+          x:offset,
+          y:relative>=0?Math.min(upcoming,4)*9:-Math.min(passed,1)*15,
+          rotation:relative>=0?Math.min(upcoming,4)*1.7:-Math.min(passed,1)*-11,
+          scale:relative>=0?1-Math.min(upcoming,4)*.018:1,
+          opacity:alpha,
+          zIndex:cards.length-i,
+          force3D:true
+        });
+        card.tabIndex=i===selected?0:-1;
+        card.setAttribute("aria-hidden",String(i!==selected));
+      });
     }
-    cards.forEach(function(card,index){
-      card.addEventListener("click",function(){trigger=card;show(index);close.focus();});
-    });
-    prev.addEventListener("click",function(){show(activeIndex-1);});
-    next.addEventListener("click",function(){show(activeIndex+1);});
-    close.addEventListener("click",dismiss);
-    overlay.addEventListener("click",function(event){if(event.target===overlay)dismiss();});
-    document.addEventListener("keydown",function(event){
-      if(overlay.hidden)return;
-      if(event.key==="Escape")dismiss();
-      if(event.key==="ArrowRight")show(activeIndex+1);
-      if(event.key==="ArrowLeft")show(activeIndex-1);
-      if(event.key==="Tab"){
-        const focusable=[close,prev,next];
-        const i=focusable.indexOf(document.activeElement);
-        if(event.shiftKey&&i===0){event.preventDefault();next.focus();}
-        else if(!event.shiftKey&&i===2){event.preventDefault();close.focus();}
+    function requestRender(){if(!frame)frame=requestAnimationFrame(render);}
+    function measure(){
+      enabled=jumpMedia.matches&&!reducedMotion&&!!g;
+      hero.classList.toggle("has-card-scroll",enabled);
+      if(enabled){
+        stageHeight=Math.min(window.innerHeight,1440);
+        distance=Math.round(clamp(window.innerHeight*1.1,580,1440));
+        hero.style.height=(stageHeight+distance)+"px";
+        shell.style.height=stageHeight+"px";
+        render();
+      }else{
+        hero.style.removeProperty("height");
+        shell.style.removeProperty("height");
+        cards.forEach(function(card){card.style.removeProperty("transform");card.style.removeProperty("opacity");card.style.removeProperty("z-index");card.removeAttribute("aria-hidden");card.tabIndex=0;});
+        setActive(0);
       }
+    }
+    function goTo(index){
+      index=clamp(index,0,cards.length-1);
+      if(!enabled){cards[index].scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"center"});return;}
+      const heroTop=window.scrollY+hero.getBoundingClientRect().top;
+      window.scrollTo({top:heroTop+(distance*index/(cards.length-1)),behavior:"smooth"});
+    }
+    jumps.forEach(function(button,i){button.addEventListener("click",function(){goTo(i);});});
+    cards.forEach(function(card,i){
+      card.addEventListener("click",function(){
+        if(!enabled)return;
+        if(i!==active)goTo(i);
+        else if(i<cards.length-1)goTo(i+1);
+      });
     });
+    window.addEventListener("scroll",requestRender,{passive:true});
+    window.addEventListener("resize",measure);
+    if(jumpMedia.addEventListener)jumpMedia.addEventListener("change",measure);
+    measure();
   })();
 
-  // Coordinated hero motion: entry, ambient float, cursor proximity and modal transitions.
-  (function initHeroMotion(){
-    const hero=document.querySelector(".vision-hero");
+  // One-time headline reveal; the stack itself is driven only by scroll.
+  (function initHeroEntry(){
+    const hero=document.querySelector(".vision-stack-hero");
     const g=window.gsap;
     if(!hero||!g||reducedMotion)return;
     const title=hero.querySelector(".vision-editorial h1");
     const lead=hero.querySelector(".vision-lead");
-    const hint=hero.querySelector(".vision-strength-guide");
-    const cards=Array.from(hero.querySelectorAll(".vision-blob"));
-    const overlay=hero.querySelector("#strengthOverlay");
-    const panel=hero.querySelector("#strengthPanel");
-    if(!title||!lead||!hint||!cards.length||!overlay||!panel)return;
+    const guide=hero.querySelector(".vision-strength-guide");
+    const strengths=hero.querySelector(".vision-strengths");
+    if(!title||!lead||!guide||!strengths)return;
     hero.classList.add("has-gsap-motion");
-    const firstLine=title.querySelector(".vision-headline-first");
-    const highlightLetters=title.querySelectorAll(".vision-headline-highlight > span");
+    const first=title.querySelector(".vision-headline-first");
+    const letters=title.querySelectorAll(".vision-headline-highlight>span");
     const ending=title.querySelector(".vision-headline-ending");
-    g.set([firstLine,ending],{willChange:"transform,opacity"});
-    g.set(highlightLetters,{willChange:"transform,opacity"});
-    const timeline=g.timeline({defaults:{ease:"power3.out"}});
-    timeline.from(firstLine,{y:40,opacity:0,duration:.62},0)
-      .from(highlightLetters,{y:35,opacity:0,stagger:.095,duration:.46},.3)
-      .from(ending,{y:18,opacity:0,duration:.5},.84)
-      .from(lead,{y:15,opacity:0,duration:.52},1.02)
-      .from(hint,{y:10,opacity:0,duration:.42},1.15)
-      .from(cards,{y:27,opacity:0,stagger:.09,duration:.65,clearProps:"opacity"},1.02);
-    const floatTweens=[];
-    const hoverFine=window.matchMedia("(hover:hover) and (pointer:fine)").matches;
-    cards.forEach(function(card,i){
-      // Animate the GPU-friendly transform, rather than a CSS custom property.
-      const float=g.fromTo(card,{y:0},{y:i%2?-5:6,duration:3.5+i*.41,ease:"sine.inOut",repeat:-1,yoyo:true,paused:true});
-      floatTweens.push(float);
-      if(!hoverFine)return;
-      const moveX=g.quickTo(card,"x",{duration:.32,ease:"power2.out"});
-      const moveY=g.quickTo(card,"y",{duration:.32,ease:"power2.out"});
-      const rotate=g.quickTo(card,"rotation",{duration:.35,ease:"power2.out"});
-      card.addEventListener("pointerenter",function(){
-        float.pause();
-        g.killTweensOf(card,"y");
-      });
-      card.addEventListener("pointermove",function(e){
-        if(!overlay.hidden)return;
-        const rect=card.getBoundingClientRect();
-        const dx=(e.clientX-(rect.left+rect.width/2))/rect.width;
-        const dy=(e.clientY-(rect.top+rect.height/2))/rect.height;
-        moveX(dx*8);moveY(dy*7);rotate(dx*2);
-      });
-      card.addEventListener("pointerleave",function(){
-        g.to(card,{x:0,y:0,rotation:0,duration:.55,ease:"power2.out",overwrite:"auto",onComplete:function(){
-          if(overlay.hidden)float.restart();
-        }});
-      });
-    });
-    timeline.call(function(){floatTweens.forEach(function(t){t.play();});},null,1.85);
-    let contentTween=null;
-    document.addEventListener("hero:strength-show",function(event){
-      const first=overlay.dataset.motionOpen!=="true";
-      overlay.dataset.motionOpen="true";
-      floatTweens.forEach(function(t){t.pause();});
-      g.killTweensOf([overlay,panel]);
-      if(contentTween)contentTween.kill();
-      if(first){
-        g.fromTo(overlay,{opacity:0},{opacity:1,duration:.26,ease:"power2.out"});
-        g.fromTo(panel,{y:22,scale:.97,opacity:0},{y:0,scale:1,opacity:1,duration:.4,ease:"power3.out"});
-      }else{
-        const content=panel.querySelectorAll("#strengthKeyword,#strengthTitle,#strengthDescription,#strengthProof");
-        contentTween=g.fromTo(content,{y:10,opacity:.35},{y:0,opacity:1,stagger:.045,duration:.3,ease:"power2.out"});
-      }
-    });
-    document.addEventListener("hero:strength-close",function(){
-      delete overlay.dataset.motionOpen;
-      g.set([overlay,panel],{clearProps:"opacity,transform"});
-      cards.forEach(function(card,i){
-        g.to(card,{x:0,y:0,rotation:0,duration:.35,overwrite:"auto",onComplete:function(){floatTweens[i].restart();}});
-      });
-    });
+    g.timeline({defaults:{ease:"power3.out"}})
+      .from(first,{y:35,opacity:0,duration:.65},0)
+      .from(letters,{y:28,opacity:0,stagger:.08,duration:.45},.25)
+      .from(ending,{y:15,opacity:0,duration:.42},.68)
+      .from(lead,{y:12,opacity:0,duration:.44},.85)
+      .from(guide,{y:9,opacity:0,duration:.35},1.0)
+      .from(strengths,{opacity:0,duration:.52,clearProps:"opacity"},1.05);
   })();
 })();
