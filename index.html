@@ -41,8 +41,8 @@
       </nav></div>
       <div class="vision-editorial">
         <h1 id="portalTitle"><span class="vision-headline-first">좋은 화면은</span><br><em class="vision-headline-highlight" aria-label="좋은 질문"><span aria-hidden="true">좋</span><span aria-hidden="true">은</span><span aria-hidden="true" class="vision-character-space"> </span><span aria-hidden="true">질</span><span aria-hidden="true">문</span></em><span class="vision-headline-ending">에서 시작됩니다<span class="vision-stop">.</span></span></h1>
-        <p class="vision-lead">요구사항을 그대로 구현하는 데서 멈추지 않습니다. 문제를 이해하고, 정보를 구조화하고, 사용자가 경험하는 순간까지 설계합니다.</p>
-        <p class="vision-strength-guide">스크롤하거나 강점을 선택해 살펴보세요 <span aria-hidden="true">↘</span></p>
+        <p class="vision-lead">운영 과정에서 발견한 불편을 정보구조와 화면의 문제로 연결합니다. UI 설계부터 구현·개선까지, 사용자의 다음 행동을 고려합니다.</p>
+        <p class="vision-strength-guide">스크롤하며 다섯 가지 강점을 살펴보세요 <span aria-hidden="true">↘</span></p>
       </div>
       <div class="vision-strengths" id="strengths">
         <div class="vision-stack-navigation">
@@ -55,58 +55,54 @@
             <button type="button" data-stack-target="3" aria-label="시각화 카드 보기" aria-current="false"><span>04</span><strong>시각화</strong></button>
             <button type="button" data-stack-target="4" aria-label="실행 카드 보기" aria-current="false"><span>05</span><strong>실행</strong></button>
           </div>
+          <button type="button" class="vision-stack-next" id="visionStackNext" aria-label="다음 강점 보기">다음 강점 <span aria-hidden="true">→</span></button>
         </div>
         <div class="vision-objects" aria-label="나의 다섯 가지 강점 카드">
-          <button type="button" class="vision-stack-card vision-stack-card--question" data-stack-index="0" aria-label="질문: 당연한 것에도 이유를 묻습니다.">
+          <article class="vision-stack-card vision-stack-card--question" data-stack-index="0" aria-labelledby="visionCardTitle0">
             <span class="vision-card-index">01 / QUESTION</span>
             <span class="vision-card-content">
-              <strong class="vision-card-keyword">질문</strong>
-              <span class="vision-card-statement">당연한 것에도 이유를 묻습니다.</span>
-              <span class="vision-card-description">요청의 목적과 문제의 원인을 먼저 살핍니다.</span>
+              <strong class="vision-card-keyword" id="visionCardTitle0">질문</strong>
+              <span class="vision-card-statement">요청 뒤에 숨은 문제부터 찾습니다.</span>
+              <span class="vision-card-description">반복되는 고객 문의와 사이트 이용 흐름을 살펴 개선의 출발점을 정합니다.</span>
             </span>
-            <span class="vision-card-tags"><span>문제 정의</span><span>관찰</span><span>개선 가설</span></span>
-            <span class="vision-card-arrow" aria-hidden="true">↗</span>
-          </button>
-          <button type="button" class="vision-stack-card vision-stack-card--structure" data-stack-index="1" aria-label="구조: 복잡한 정보를 명확한 흐름으로.">
+            <span class="vision-card-tags"><span>문제 정의</span><span>운영 분석</span><span>개선 가설</span></span>
+          </article>
+          <article class="vision-stack-card vision-stack-card--structure" data-stack-index="1" aria-labelledby="visionCardTitle1">
             <span class="vision-card-index">02 / STRUCTURE</span>
             <span class="vision-card-content">
-              <strong class="vision-card-keyword">구조</strong>
-              <span class="vision-card-statement">복잡한 정보를 명확한 흐름으로.</span>
-              <span class="vision-card-description">정보의 우선순위를 정하고 탐색 구조를 설계합니다.</span>
+              <strong class="vision-card-keyword" id="visionCardTitle1">구조</strong>
+              <span class="vision-card-statement">흩어진 정보를 하나의 탐색 흐름으로.</span>
+              <span class="vision-card-description">동감 행정사 홈페이지의 업무와 해결사례를 분류하고 메뉴 구조를 다시 설계했습니다.</span>
             </span>
-            <span class="vision-card-tags"><span>정보구조(IA)</span><span>콘텐츠 설계</span><span>사용자 흐름</span></span>
-            <span class="vision-card-arrow" aria-hidden="true">↗</span>
-          </button>
-          <button type="button" class="vision-stack-card vision-stack-card--usability" data-stack-index="2" aria-label="사용성: 만드는 사람보다 사용하는 사람의 관점으로.">
+            <span class="vision-card-tags"><span>정보구조(IA)</span><span>메뉴 설계</span><span>콘텐츠 구성</span></span>
+          </article>
+          <article class="vision-stack-card vision-stack-card--usability" data-stack-index="2" aria-labelledby="visionCardTitle2">
             <span class="vision-card-index">03 / USABILITY</span>
             <span class="vision-card-content">
-              <strong class="vision-card-keyword">사용성</strong>
-              <span class="vision-card-statement">만드는 사람보다 사용하는 사람의 관점으로.</span>
-              <span class="vision-card-description">사용자가 겪는 불편과 행동의 흐름을 살핍니다.</span>
+              <strong class="vision-card-keyword" id="visionCardTitle2">사용성</strong>
+              <span class="vision-card-statement">사용자의 다음 행동까지 생각합니다.</span>
+              <span class="vision-card-description">제작 자료를 주고받던 과정을 입력 폼으로 바꿔 필요한 정보를 한 번에 작성하도록 구성했습니다.</span>
             </span>
-            <span class="vision-card-tags"><span>탐색 경험</span><span>가독성</span><span>상담 동선</span></span>
-            <span class="vision-card-arrow" aria-hidden="true">↗</span>
-          </button>
-          <button type="button" class="vision-stack-card vision-stack-card--design" data-stack-index="3" aria-label="시각화: 중요한 정보가 먼저 보이도록.">
+            <span class="vision-card-tags"><span>사용자 흐름</span><span>입력 폼 UX</span><span>탐색 동선</span></span>
+          </article>
+          <article class="vision-stack-card vision-stack-card--design" data-stack-index="3" aria-labelledby="visionCardTitle3">
             <span class="vision-card-index">04 / UI DESIGN</span>
             <span class="vision-card-content">
-              <strong class="vision-card-keyword">시각화</strong>
-              <span class="vision-card-statement">중요한 정보가 먼저 보이도록.</span>
-              <span class="vision-card-description">정보의 위계와 목적에 맞춰 UI를 구성합니다.</span>
+              <strong class="vision-card-keyword" id="visionCardTitle3">시각화</strong>
+              <span class="vision-card-statement">보기 좋은 화면보다 이해되는 화면.</span>
+              <span class="vision-card-description">정보의 우선순위를 타이포그래피와 여백, 반응형 레이아웃에 반영합니다.</span>
             </span>
-            <span class="vision-card-tags"><span>UI 디자인</span><span>반응형 레이아웃</span><span>비주얼 구성</span></span>
-            <span class="vision-card-arrow" aria-hidden="true">↗</span>
-          </button>
-          <button type="button" class="vision-stack-card vision-stack-card--execution" data-stack-index="4" aria-label="실행: 설계를 실제 작동하는 경험으로.">
+            <span class="vision-card-tags"><span>UI 디자인</span><span>정보 위계</span><span>반응형</span></span>
+          </article>
+          <article class="vision-stack-card vision-stack-card--execution" data-stack-index="4" aria-labelledby="visionCardTitle4">
             <span class="vision-card-index">05 / EXECUTION</span>
             <span class="vision-card-content">
-              <strong class="vision-card-keyword">실행</strong>
-              <span class="vision-card-statement">설계를 실제 작동하는 경험으로.</span>
-              <span class="vision-card-description">구현과 운영의 제약까지 고려하며 완성합니다.</span>
+              <strong class="vision-card-keyword" id="visionCardTitle4">실행</strong>
+              <span class="vision-card-statement">설계가 실제 화면에서 작동하도록.</span>
+              <span class="vision-card-description">HTML·CSS·JavaScript로 구현하고 운영 중 발견된 문제까지 개선합니다.</span>
             </span>
-            <span class="vision-card-tags"><span>퍼블리싱</span><span>CMS</span><span>운영 개선</span></span>
-            <span class="vision-card-arrow" aria-hidden="true">↗</span>
-          </button>
+            <span class="vision-card-tags"><span>퍼블리싱</span><span>인터랙션</span><span>유지보수</span></span>
+          </article>
         </div>
       </div>
       <a class="vision-scroll" href="#projects" aria-label="대표 프로젝트 섹션으로 바로 이동">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a>
