@@ -1988,30 +1988,3 @@ body{background:var(--paper)}
 .vision-stack-hero .vision-card-arrow{right:25px;bottom:25px;font-size:24px}
 }
 @media(prefers-reduced-motion:reduce){.vision-stack-hero .vision-stack-card{transition:none}}
-
-
-/* Hero card transitions: paper turn, quiet depth and scroll-linked text reveal.
-   These rules do not affect any portfolio section after the first hero. */
-.vision-stack-hero.has-card-scroll .vision-objects{
-  perspective:1200px;
-  perspective-origin:50% 42%;
-}
-.vision-stack-hero.has-card-scroll .vision-stack-card{
-  transform-origin:18% 85%;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-  transition:box-shadow .28s ease;
-  box-shadow:0 13px 32px rgba(0,0,0,.14);
-}
-.vision-stack-hero.has-card-scroll .vision-stack-card.is-current{
-  box-shadow:0 25px 62px rgba(0,0,0,.27);
-}
-.vision-stack-hero.has-card-scroll .vision-card-keyword,
-.vision-stack-hero.has-card-scroll .vision-card-statement,
-.vision-stack-hero.has-card-scroll .vision-card-description,
-.vision-stack-hero.has-card-scroll .vision-card-tags{
-  will-change:transform,opacity;
-}
-@media(prefers-reduced-motion:reduce){
-  .vision-stack-hero .vision-stack-card{transition:none}
-}
