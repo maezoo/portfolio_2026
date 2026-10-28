@@ -247,10 +247,10 @@
     measure();
   })();
 
-  // Editorial cover menu; the existing main header is unchanged.
+  // First-screen editorial menu. Later sections retain their existing header.
   (function initEditorialMenu(){
-    const toggle=document.getElementById("editorialMenuToggle");
-    const menu=document.getElementById("editorialMenu");
+    const toggle=document.getElementById("edMenuToggle");
+    const menu=document.getElementById("edMenu");
     if(!toggle||!menu)return;
     menu.hidden=false;
     menu.inert=true;
@@ -272,23 +272,21 @@
     });
   })();
 
-  // One short entrance only. The cover does not pin or intercept scrolling.
+  // Brief typographic reveal only: no scroll hijacking or pinned card sequence.
   (function initEditorialEntrance(){
-    const hero=document.querySelector(".editorial-cover");
-    const g=window.gsap;
-    if(!hero||!g||reducedMotion)return;
-    const line1=hero.querySelector(".editorial-cover__lead");
-    const focus=hero.querySelector(".editorial-cover__focus");
-    const line3=hero.querySelector(".editorial-cover__ending");
-    const metadata=hero.querySelector(".editorial-cover__discipline");
-    const note=hero.querySelector(".editorial-cover__bottom");
-    if(!line1||!focus||!line3||!metadata||!note)return;
-    g.timeline({defaults:{ease:"power3.out"}})
-      .from(metadata,{y:10,opacity:0,duration:.55},0)
-      .from(line1,{y:14,opacity:0,duration:.58},.12)
-      .from(focus,{y:21,opacity:0,duration:.79},.2)
-      .from(line3,{y:15,opacity:0,duration:.6},.45)
-      .from(note,{y:10,opacity:0,duration:.52},.65);
+    const hero=document.querySelector(".ed-cover");
+    const gsap=window.gsap;
+    if(!hero||!gsap||reducedMotion)return;
+    const heading=hero.querySelectorAll(".ed-cover__title-line>span");
+    const eyebrow=hero.querySelector(".ed-cover__eyebrow");
+    const sidebar=hero.querySelector(".ed-cover__side-note");
+    const bottom=hero.querySelector(".ed-cover__bottom");
+    if(heading.length!==2||!eyebrow||!sidebar||!bottom)return;
+    gsap.timeline({defaults:{ease:"power3.out"}})
+      .from(eyebrow,{opacity:0,y:10,duration:.5},0)
+      .from(heading,{opacity:0,y:32,stagger:.15,duration:.77},.09)
+      .from(sidebar,{opacity:0,y:12,duration:.55},.45)
+      .from(bottom,{opacity:0,y:11,duration:.5},.65);
   })();
 
 })();
