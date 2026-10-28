@@ -1353,186 +1353,451 @@ body{background:var(--paper)}
 
 
 
-/* FIRST SECTION ONLY — Professional editorial portfolio / depth notes */
-.poster-hero{
-  --poster-accent:#f47758;
-  position:relative;
-  display:block;
-  isolation:isolate;
-  overflow:clip;
-  color:#f1ede8;
-  background:#1b1e20;
-}
-.poster-hero .poster-shell{
-  position:relative;
-  isolation:isolate;
-  width:min(calc(100% - 112px),1650px);
-  min-height:100svh;
-  margin:0 auto;
-  padding:34px 0 42px;
-}
-.poster-hero .poster-ambient,.poster-hero .poster-grain{position:absolute;inset:0 -9vw;z-index:-1;pointer-events:none;overflow:hidden}
-.poster-hero .poster-light{position:absolute;width:110%;height:100%;right:-36%;top:-8%;border-radius:50%;filter:blur(110px);opacity:0;transform:translateZ(0)}
-.poster-hero .poster-light--question{background:radial-gradient(ellipse,rgba(175,162,148,.23),transparent 67%)}
-.poster-hero .poster-light--structure{background:radial-gradient(ellipse,rgba(183,159,132,.23),transparent 67%)}
-.poster-hero .poster-light--usability{background:radial-gradient(ellipse,rgba(153,163,154,.22),transparent 67%)}
-.poster-hero .poster-light--design{background:radial-gradient(ellipse,rgba(157,143,165,.2),transparent 67%)}
-.poster-hero .poster-light--execution{background:radial-gradient(ellipse,rgba(214,136,111,.2),transparent 67%)}
-.poster-hero .poster-grain{z-index:0;opacity:.04;background-size:200px 200px;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
-.poster-hero .poster-top{position:relative;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.poster-hero .poster-index{display:inline-flex;align-items:center;gap:10px;color:#dedbd6;font-family:"Instrument Sans",sans-serif;font-weight:650;font-size:12px;letter-spacing:.12em}
-.poster-hero .poster-index i{width:6px;height:6px;border-radius:50%;background:var(--poster-accent)}
-.poster-hero .poster-menu-wrap{position:relative;z-index:50}
-.poster-hero .poster-menu-toggle{display:flex;align-items:center;justify-content:space-between;gap:32px;min-height:44px;min-width:110px;padding:10px 14px;border:1px solid rgba(244,238,232,.45);border-radius:0;background:transparent;color:#f4efea;font-family:"Instrument Sans",sans-serif;font-size:13px;font-weight:750;letter-spacing:.05em;cursor:pointer}
-.poster-hero .poster-menu-toggle[aria-expanded="true"]{background:#f2eee9;color:#252729}
-.poster-hero .poster-menu{display:block!important;position:absolute;top:calc(100% + 9px);right:0;width:min(330px,calc(100vw - 38px));padding:12px 20px 20px;border:1px solid #d6d2cc;background:#f5f3ef;color:#242628;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);box-shadow:0 20px 38px rgba(0,0,0,.2);transition:opacity .22s,transform .22s,visibility .22s}
-.poster-hero .poster-menu.is-open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
-.poster-hero .poster-menu a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 4px;border-bottom:1px solid #d9d5d0;font-size:17px;font-weight:700;letter-spacing:-.035em;transition:color .18s}
-.poster-hero .poster-menu a span{font-size:17px;font-weight:500}
-.poster-hero .poster-menu a:hover,.poster-hero .poster-menu a:focus-visible{color:#db694d}
-.poster-hero .poster-menu .poster-menu-contact{margin-top:12px;padding:13px 14px;background:#232527;color:#fff;border-bottom:0}
-.poster-hero .poster-menu .poster-menu-contact:hover{color:#222;background:var(--poster-accent)}
-.poster-hero .poster-typography{position:relative;z-index:2;margin-top:clamp(76px,12vh,166px);pointer-events:none}
-.poster-hero .poster-discipline{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 clamp(24px,4vh,50px);color:#b7b3af;font-family:"Instrument Sans",sans-serif;font-size:12px;font-weight:650;letter-spacing:.11em}
-.poster-hero .poster-discipline span{color:var(--poster-accent)}
-.poster-hero .poster-typography h1{margin:0;max-width:none;line-height:1.03;font-weight:850;letter-spacing:-.08em;word-break:keep-all;color:#f3eee9}
-.poster-hero .poster-line{display:block;white-space:nowrap}
-.poster-hero .poster-line--first{font-size:clamp(66px,6.35vw,112px)}
-.poster-hero .poster-line--impact{margin-top:clamp(7px,1.2vh,16px);font-size:clamp(102px,10vw,184px);font-weight:900;letter-spacing:-.105em;color:var(--poster-accent)}
-.poster-hero .poster-impact-tail{display:inline-block;margin-left:.05em;font-size:.47em;font-weight:750;letter-spacing:-.08em;vertical-align:baseline;color:#f2ece5}
-.poster-hero .poster-line--ending{margin-top:clamp(2px,.5vh,8px);font-size:clamp(64px,6.25vw,110px)}
-.poster-hero .poster-period{color:var(--poster-accent)}
-.poster-hero .poster-intro{position:relative;z-index:14;max-width:455px;margin:clamp(42px,6vh,90px) 0 30px}
-.poster-hero .poster-intro-index{display:block;margin-bottom:14px;font-family:"Instrument Sans",sans-serif;font-size:12px;letter-spacing:.12em;font-weight:750;color:var(--poster-accent)}
-.poster-hero .poster-intro p{margin:0;color:#e5e0da;font-size:clamp(15px,1.1vw,18px);line-height:1.8;letter-spacing:-.024em;word-break:keep-all}
 
-/* Work notes: neutral editorial surfaces and evidence, not promotional cards. */
-.poster-hero .poster-feature{position:relative;z-index:11;max-width:520px;margin-left:auto}
-.poster-hero .poster-cards{position:relative;display:grid;gap:17px;perspective:1400px;perspective-origin:50% 48%;transform-style:preserve-3d}
-.poster-hero .poster-card{
+/* FIRST SECTION ONLY: full-bleed diagonal editorial sheets.
+   No floating cards, no unrelated-section selectors. */
+.diagonal-hero{
+  --diagonal-top:64%;
+  --diagonal-bottom:46%;
+  --diagonal-progress:0%;
+  --diagonal-accent:#f47758;
   position:relative;
+  isolation:isolate;
+  display:block;
+  overflow:clip;
+  background:#1b1e21;
+  color:#f2eee9;
+}
+.diagonal-hero .diagonal-stage{
+  position:relative;
+  isolation:isolate;
+  width:100%;
+  min-height:100svh;
+  background:#1b1e21;
+}
+.diagonal-hero .diagonal-grain{
+  position:absolute;
+  z-index:12;
+  inset:0;
+  pointer-events:none;
+  opacity:.045;
+  background-size:200px 200px;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.77' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+.diagonal-hero .diagonal-left{
+  position:relative;
+  z-index:2;
+  width:100%;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:clamp(132px,16vh,210px) 42% clamp(75px,10vh,130px) clamp(36px,5.6vw,112px);
+  pointer-events:none;
+}
+.diagonal-hero .diagonal-discipline{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px;
+  margin:0 0 clamp(36px,5vh,66px);
+  color:#bdb7b0;
+  font-family:"Instrument Sans",sans-serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.115em;
+  white-space:nowrap;
+}
+.diagonal-hero .diagonal-discipline span{color:var(--diagonal-accent)}
+.diagonal-hero .diagonal-left h1{
+  position:relative;
+  margin:0;
+  max-width:none;
+  color:#f4eee9;
+  font-size:inherit;
+  font-weight:850;
+  line-height:1.05;
+  letter-spacing:-.079em;
+  word-break:keep-all;
+}
+.diagonal-hero .diagonal-line{display:block;white-space:nowrap}
+.diagonal-hero .diagonal-line--first{font-size:clamp(60px,6.5vw,124px)}
+.diagonal-hero .diagonal-line--impact{
+  margin:clamp(2px,.8vh,12px) 0;
+  color:var(--diagonal-accent);
+  font-size:clamp(92px,10vw,191px);
+  font-weight:900;
+  letter-spacing:-.105em;
+}
+.diagonal-hero .diagonal-line--impact>span{
+  display:inline-block;
+  margin-left:.09em;
+  color:#f2ece5;
+  font-size:.43em;
+  font-weight:750;
+  letter-spacing:-.07em;
+}
+.diagonal-hero .diagonal-line--last{font-size:clamp(61px,6.2vw,119px)}
+.diagonal-hero .diagonal-dot{color:var(--diagonal-accent)}
+.diagonal-hero .diagonal-intro{
+  max-width:500px;
+  margin-top:clamp(58px,9vh,110px);
+  padding-left:17px;
+  border-left:2px solid var(--diagonal-accent);
+}
+.diagonal-hero .diagonal-intro>span{
+  display:block;
+  margin-bottom:13px;
+  font-family:"Instrument Sans",sans-serif;
+  color:var(--diagonal-accent);
+  font-size:12px;
+  font-weight:780;
+  letter-spacing:.12em;
+}
+.diagonal-hero .diagonal-intro p{
+  margin:0;
+  color:#dfdad4;
+  font-size:clamp(16px,1.08vw,18px);
+  line-height:1.76;
+  letter-spacing:-.025em;
+  word-break:keep-all;
+}
+.diagonal-hero .diagonal-sheets{
+  position:absolute;
+  z-index:5;
+  inset:0;
+  overflow:visible;
+  isolation:isolate;
+  clip-path:polygon(var(--diagonal-top) 0,100% 0,100% 100%,var(--diagonal-bottom) 100%);
+  background:#e9e5dc;
+}
+.diagonal-hero .diagonal-sheet{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  display:block;
+  background:var(--diagonal-paper);
+  color:#272a2a;
+}
+.diagonal-hero .diagonal-sheet--question{--diagonal-paper:#f0ece5}
+.diagonal-hero .diagonal-sheet--structure{--diagonal-paper:#e9e5dd}
+.diagonal-hero .diagonal-sheet--usability{--diagonal-paper:#e4e8e2}
+.diagonal-hero .diagonal-sheet--design{--diagonal-paper:#e9e5e8}
+.diagonal-hero .diagonal-sheet--execution{--diagonal-paper:#eee5df}
+.diagonal-hero .diagonal-sheet-inner{
+  position:absolute;
+  top:clamp(144px,19vh,230px);
+  bottom:clamp(130px,15vh,210px);
+  left:62%;
+  right:clamp(44px,6vw,145px);
   display:flex;
   flex-direction:column;
   min-width:0;
-  min-height:415px;
-  padding:clamp(25px,2.4vw,36px);
-  color:#27292a;
-  background:var(--card-paper);
-  border:1px solid #d3d0c9;
-  border-radius:7px;
-  box-shadow:0 22px 60px rgba(0,0,0,.23);
-  backface-visibility:hidden;
-  transform-origin:50% 50%;
+  max-width:760px;
 }
-.poster-hero .poster-card--question{--card-paper:#eeebe4}
-.poster-hero .poster-card--structure{--card-paper:#e9e5de}
-.poster-hero .poster-card--usability{--card-paper:#e5e8e2}
-.poster-hero .poster-card--design{--card-paper:#e8e4e8}
-.poster-hero .poster-card--execution{--card-paper:#eee5e0}
-.poster-hero .poster-card:before{content:"";position:absolute;top:0;left:0;width:38%;height:3px;background:var(--poster-accent)}
-.poster-hero .poster-card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:14px;border-bottom:1px solid rgba(38,40,41,.23);color:#3d3e3d;font-family:"Instrument Sans",sans-serif;font-size:11px;font-weight:750;letter-spacing:.08em}
-.poster-hero .poster-card-head b{color:#bb674f;font-weight:800}
-.poster-hero .poster-card-field{max-width:55%;text-align:right;opacity:.7;font-size:10px;letter-spacing:.035em}
-.poster-hero .poster-card-main{display:flex;flex-direction:column;justify-content:center;flex:1;min-height:0;margin:18px 0 12px}
-.poster-hero .poster-card-number{display:block;margin-bottom:7px;font-family:"Instrument Sans",sans-serif;font-size:12px;font-weight:750;letter-spacing:.08em;color:#b96d55}
-.poster-hero .poster-card-main h2{margin:0;font-size:clamp(58px,5vw,88px);line-height:1.06;font-weight:850;letter-spacing:-.09em;color:#222628}
-.poster-hero .poster-card-statement{max-width:22ch;margin:15px 0 0;font-size:clamp(19px,1.45vw,24px);font-weight:730;line-height:1.48;letter-spacing:-.047em;word-break:keep-all}
-.poster-hero .poster-card-note{padding:13px 0 12px;border-top:1px solid rgba(38,40,41,.23)}
-.poster-hero .poster-card-note-label{display:block;margin-bottom:6px;font-family:"Instrument Sans",sans-serif;font-size:10px;font-weight:800;letter-spacing:.09em;color:#af6149}
-.poster-hero .poster-card-note p{max-width:44ch;margin:0;color:#404343;font-size:clamp(14px,.96vw,16px);font-weight:500;line-height:1.55;word-break:keep-all}
-.poster-hero .poster-card-foot{padding-top:10px;border-top:1px solid rgba(38,40,41,.14);color:#636362;font-size:12px;font-weight:600;letter-spacing:-.02em;line-height:1.5}
-.poster-hero.is-pinned .poster-card-head,
-.poster-hero.is-pinned .poster-card-main,
-.poster-hero.is-pinned .poster-card-note,
-.poster-hero.is-pinned .poster-card-foot{opacity:var(--poster-copy-alpha,1)}
-.poster-hero .poster-controls{position:relative;z-index:12;margin-top:21px}
-.poster-hero .poster-controls-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:11px;color:#eee7e0;font-family:"Instrument Sans",sans-serif;font-size:13px;font-weight:750;letter-spacing:.07em}
-.poster-hero .poster-count{color:#aba8a5;font-size:13px;font-weight:500}
-.poster-hero .poster-count b{color:var(--poster-accent);font-size:21px;font-weight:750}
-.poster-hero .poster-pagination{display:flex;align-items:stretch;gap:4px;position:relative}
-.poster-hero .poster-pagination button{flex:1;min-width:0;min-height:43px;display:flex;align-items:center;justify-content:center;gap:5px;padding:7px 3px;border:0;border-top:1px solid rgba(241,232,225,.32);background:transparent;color:#a9a7a3;font:inherit;font-size:12px;cursor:pointer;transition:color .2s,border-color .2s}
-.poster-hero .poster-pagination button span{font-family:"Instrument Sans",sans-serif;font-size:11px}
-.poster-hero .poster-pagination button b{font-weight:650}
-.poster-hero .poster-pagination button[aria-current="true"]{color:#f4eeea;border-color:var(--poster-accent)}
-.poster-hero .poster-pagination button:hover,.poster-hero .poster-pagination button:focus-visible{color:var(--poster-accent)}
-.poster-hero .poster-hint{margin:8px 0 0;color:#a9a5a1;font-size:12px;line-height:1.5}
-
-/* Desktop: typography and papers share a stage with deliberate partial overlap. */
-.poster-hero.is-pinned .poster-shell{position:sticky;top:0;height:100svh;min-height:0}
-.poster-hero.is-pinned .poster-typography{position:absolute;top:clamp(106px,12vh,160px);left:0;right:0;margin:0}
-.poster-hero.is-pinned .poster-feature{
-  position:absolute;
-  top:clamp(280px,37vh,480px);
-  left:clamp(49%,51vw,55%);
-  width:clamp(415px,33vw,510px);
-  max-width:none;
+.diagonal-hero .diagonal-sheet-meta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding-bottom:18px;
+  border-bottom:1px solid rgba(36,39,39,.26);
+  font-family:"Instrument Sans",sans-serif;
+  font-size:12px;
+  font-weight:740;
+  letter-spacing:.105em;
+}
+.diagonal-hero .diagonal-sheet-meta span:last-child{font-weight:520;color:#6c6964}
+.diagonal-hero .diagonal-sheet-main{
+  flex:1;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  padding:18px 0 24px;
+}
+.diagonal-hero .diagonal-sheet-field{
+  margin:0 0 14px;
+  color:#7d5d50;
+  font-family:"Instrument Sans",sans-serif;
+  font-size:12px;
+  font-weight:750;
+  letter-spacing:.08em;
+}
+.diagonal-hero .diagonal-sheet-main h2{
   margin:0;
+  font-size:clamp(65px,6.2vw,116px);
+  font-weight:850;
+  line-height:1.05;
+  letter-spacing:-.095em;
+  color:#292b2a;
 }
-.poster-hero.is-pinned .poster-cards{display:block;height:clamp(395px,45vh,490px)}
-.poster-hero.is-pinned .poster-card{position:absolute;inset:0;min-height:0;width:100%;height:100%;margin:0;will-change:transform,opacity}
-.poster-hero.is-pinned .poster-intro{position:absolute;bottom:clamp(73px,10vh,125px);left:0;margin:0}
-@media(min-width:1100px) and (max-height:940px){
-  .poster-hero.is-pinned .poster-typography{top:clamp(98px,11.5vh,126px)}
-  .poster-hero .poster-discipline{margin-bottom:clamp(18px,2.5vh,27px)}
-  .poster-hero .poster-line--first{font-size:clamp(63px,5.8vw,95px)}
-  .poster-hero .poster-line--impact{font-size:clamp(98px,9.3vw,158px)}
-  .poster-hero .poster-line--ending{font-size:clamp(60px,5.8vw,95px)}
-  .poster-hero.is-pinned .poster-feature{top:clamp(290px,38vh,395px);width:clamp(415px,32vw,485px)}
-  .poster-hero.is-pinned .poster-cards{height:clamp(392px,45vh,440px)}
-  .poster-hero .poster-card{padding:clamp(24px,2vw,31px)}
-  .poster-hero .poster-card-main h2{font-size:clamp(56px,4.6vw,76px)}
-  .poster-hero .poster-card-statement{font-size:clamp(18px,1.5vw,22px);margin-top:12px}
-  .poster-hero .poster-card-note p{font-size:14px}
-  .poster-hero .poster-card-foot{font-size:11px}
-  .poster-hero.is-pinned .poster-intro{bottom:clamp(55px,9vh,92px)}
-  .poster-hero .poster-controls{margin-top:14px}
+.diagonal-hero .diagonal-sheet-period{color:#cc7358}
+.diagonal-hero .diagonal-sheet-claim{
+  margin:clamp(19px,3vh,32px) 0 0;
+  font-size:clamp(20px,1.6vw,29px);
+  font-weight:700;
+  letter-spacing:-.055em;
+  line-height:1.5;
+  word-break:keep-all;
 }
-@media(min-width:1100px) and (max-width:1350px){
-  .poster-hero .poster-shell{width:calc(100% - 80px)}
-  .poster-hero .poster-line--first{font-size:clamp(61px,6vw,80px)}
-  .poster-hero .poster-line--impact{font-size:clamp(91px,9vw,122px)}
-  .poster-hero .poster-line--ending{font-size:clamp(55px,5.7vw,78px)}
-  .poster-hero.is-pinned .poster-feature{left:49%;width:clamp(405px,35vw,470px)}
-  .poster-hero .poster-intro{max-width:405px}
-  .poster-hero .poster-intro p{font-size:15px}
+.diagonal-hero .diagonal-sheet-practice{
+  padding:18px 0 16px;
+  border-top:1px solid rgba(36,39,39,.3);
 }
+.diagonal-hero .diagonal-sheet-practice span{
+  display:block;
+  margin-bottom:8px;
+  color:#9f6551;
+  font-family:"Instrument Sans",sans-serif;
+  font-size:11px;
+  font-weight:780;
+  letter-spacing:.095em;
+}
+.diagonal-hero .diagonal-sheet-practice p{
+  max-width:48ch;
+  margin:0;
+  color:#434544;
+  font-size:clamp(15px,1.04vw,18px);
+  font-weight:500;
+  line-height:1.65;
+  letter-spacing:-.035em;
+  word-break:keep-all;
+}
+.diagonal-hero .diagonal-sheet-skills{
+  margin:0;
+  padding-top:13px;
+  border-top:1px solid rgba(36,39,39,.17);
+  color:#777571;
+  font-size:12px;
+  font-weight:570;
+  line-height:1.5;
+}
+.diagonal-hero.is-pinned .diagonal-sheet-inner{opacity:var(--diagonal-copy-alpha,1)}
+.diagonal-hero .diagonal-edge{
+  position:absolute;
+  z-index:9;
+  inset:0;
+  clip-path:polygon(calc(var(--diagonal-top) - .28%) 0,var(--diagonal-top) 0,var(--diagonal-bottom) 100%,calc(var(--diagonal-bottom) - .28%) 100%);
+  background:rgba(244,119,88,.7);
+  pointer-events:none;
+}
+.diagonal-hero .diagonal-top{
+  position:absolute;
+  z-index:40;
+  top:clamp(28px,4vh,52px);
+  left:clamp(36px,5.6vw,112px);
+  right:clamp(40px,5.6vw,112px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.diagonal-hero .diagonal-index{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  color:#efe9e2;
+  font-family:"Instrument Sans",sans-serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+}
+.diagonal-hero .diagonal-index i{width:7px;height:7px;border-radius:50%;background:var(--diagonal-accent)}
+.diagonal-hero .diagonal-menu-wrap{position:relative;z-index:41}
+.diagonal-hero .diagonal-menu-toggle{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:31px;
+  min-width:115px;
+  min-height:44px;
+  padding:10px 14px;
+  border:1px solid rgba(36,39,39,.55);
+  border-radius:0;
+  color:#242729;
+  background:rgba(244,240,233,.32);
+  font-family:"Instrument Sans",sans-serif;
+  font-size:13px;
+  font-weight:750;
+  letter-spacing:.055em;
+  cursor:pointer;
+}
+.diagonal-hero .diagonal-menu-toggle[aria-expanded="true"]{background:#262829;color:#fff;border-color:#262829}
+.diagonal-hero .diagonal-menu{
+  position:absolute;
+  top:calc(100% + 9px);
+  right:0;
+  display:block!important;
+  width:min(330px,calc(100vw - 36px));
+  padding:12px 20px 20px;
+  border:1px solid #d7d2cb;
+  background:#f5f2ed;
+  color:#272929;
+  box-shadow:0 20px 44px rgba(0,0,0,.19);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translateY(-8px);
+  transition:opacity .2s,visibility .2s,transform .2s;
+}
+.diagonal-hero .diagonal-menu.is-open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.diagonal-hero .diagonal-menu a{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding:15px 4px;
+  border-bottom:1px solid #d9d4ce;
+  font-size:17px;
+  font-weight:700;
+}
+.diagonal-hero .diagonal-menu a span{font-weight:450}
+.diagonal-hero .diagonal-menu a:hover,.diagonal-hero .diagonal-menu a:focus-visible{color:#c96950}
+.diagonal-hero .diagonal-menu .diagonal-menu-contact{margin-top:12px;padding:13px 14px;border-bottom:0;background:#292c2d;color:#f7f4f0}
+.diagonal-hero .diagonal-menu .diagonal-menu-contact:hover{background:#f47758;color:#262727}
+.diagonal-hero .diagonal-navigation{
+  position:absolute;
+  z-index:31;
+  left:62%;
+  right:clamp(44px,6vw,145px);
+  bottom:clamp(28px,3.7vh,56px);
+  color:#333635;
+}
+.diagonal-hero .diagonal-navigation-label{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:12px;
+  font-family:"Instrument Sans",sans-serif;
+  font-size:12px;
+  font-weight:750;
+  letter-spacing:.095em;
+}
+.diagonal-hero .diagonal-position{color:#777671;font-size:13px;font-weight:500}
+.diagonal-hero .diagonal-position b{color:#c36a50;font-size:23px;font-weight:760}
+.diagonal-hero .diagonal-nav{display:flex;gap:5px;justify-content:space-between}
+.diagonal-hero .diagonal-nav button{
+  flex:1;
+  min-width:0;
+  min-height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:7px 3px;
+  border:0;
+  border-top:1px solid rgba(37,40,39,.25);
+  background:transparent;
+  color:#777772;
+  font:inherit;
+  font-size:13px;
+  cursor:pointer;
+  transition:border-color .2s,color .2s;
+}
+.diagonal-hero .diagonal-nav button span:first-child{font-family:"Instrument Sans",sans-serif;font-size:11px}
+.diagonal-hero .diagonal-nav button[aria-current="true"]{color:#262929;border-top-color:#c86c52;font-weight:720}
+.diagonal-hero .diagonal-nav button:hover,.diagonal-hero .diagonal-nav button:focus-visible{color:#c86c52}
+.diagonal-hero .diagonal-hint{margin:4px 0 0;color:#7e7b75;font-size:12px;line-height:1.5}
 
-/* Smaller viewports: no pinning, no hidden content, clear sequential reading. */
-@media(max-width:1099px), (max-height:759px){
-  .poster-hero{height:auto!important}
-  .poster-hero .poster-shell{height:auto!important;min-height:0;width:min(calc(100% - 48px),770px);padding:23px 0 45px}
-  .poster-hero .poster-typography{margin-top:clamp(65px,10vw,105px)}
-  .poster-hero .poster-discipline{margin-bottom:24px;font-size:11px;gap:7px}
-  .poster-hero .poster-line--first{font-size:clamp(46px,8vw,80px)}
-  .poster-hero .poster-line--impact{font-size:clamp(68px,11.1vw,121px)}
-  .poster-hero .poster-line--ending{font-size:clamp(43px,7.6vw,77px)}
-  .poster-hero .poster-intro{margin:34px 0 45px}
-  .poster-hero .poster-feature{width:100%;max-width:none}
-  .poster-hero .poster-cards{display:grid;gap:16px;perspective:none;transform-style:flat}
-  .poster-hero .poster-card{min-height:390px;padding:32px}
-  .poster-hero .poster-card-main h2{font-size:clamp(56px,8vw,78px)}
-  .poster-hero .poster-card-statement{font-size:clamp(19px,2.9vw,23px)}
-  .poster-hero .poster-card-note p{font-size:15px}
-  .poster-hero .poster-controls{display:none}
+/* Pin only on sufficiently wide and tall screens; flat fallback stays readable. */
+.diagonal-hero.is-pinned .diagonal-stage{position:sticky;top:0;height:100svh;min-height:0;overflow:clip}
+.diagonal-hero.is-pinned .diagonal-left{height:100%;min-height:0}
+.diagonal-hero:not(.is-pinned) .diagonal-stage{display:flex;flex-direction:column;min-height:0}
+.diagonal-hero:not(.is-pinned) .diagonal-top{top:25px;left:24px;right:24px}
+.diagonal-hero:not(.is-pinned) .diagonal-left{
+  width:100%;
+  min-height:0;
+  padding:130px 24px 52px;
 }
-@media(max-width:520px){
-  .poster-hero .poster-shell{width:calc(100% - 34px)}
-  .poster-hero .poster-typography{margin-top:64px}
-  .poster-hero .poster-line--first{font-size:clamp(39px,9.5vw,54px)}
-  .poster-hero .poster-line--impact{font-size:clamp(59px,13.1vw,78px)}
-  .poster-hero .poster-impact-tail{font-size:.42em}
-  .poster-hero .poster-line--ending{font-size:clamp(38px,8.8vw,50px)}
-  .poster-hero .poster-intro{margin:26px 0 38px}
-  .poster-hero .poster-intro-break{display:none}
-  .poster-hero .poster-intro p{font-size:15px}
-  .poster-hero .poster-card{padding:24px;min-height:390px}
-  .poster-hero .poster-card-main h2{font-size:60px}
-  .poster-hero .poster-card-statement{font-size:20px}
-  .poster-hero .poster-card-note p{font-size:14px}
-  .poster-hero .poster-card-field{font-size:9px}
-  .poster-hero .poster-card-foot{font-size:11px}
+.diagonal-hero:not(.is-pinned) .diagonal-discipline{font-size:11px;gap:8px;margin-bottom:30px}
+.diagonal-hero:not(.is-pinned) .diagonal-line--first{font-size:clamp(42px,7vw,90px)}
+.diagonal-hero:not(.is-pinned) .diagonal-line--impact{font-size:clamp(65px,10.4vw,132px)}
+.diagonal-hero:not(.is-pinned) .diagonal-line--last{font-size:clamp(42px,6.6vw,85px)}
+.diagonal-hero:not(.is-pinned) .diagonal-intro{margin-top:42px}
+.diagonal-hero:not(.is-pinned) .diagonal-sheets{
+  position:relative;
+  inset:auto;
+  display:grid;
+  gap:14px;
+  clip-path:none;
+  isolation:auto;
+  background:transparent;
+}
+.diagonal-hero:not(.is-pinned) .diagonal-sheet{
+  position:relative;
+  inset:auto;
+  overflow:visible;
+  min-height:410px;
+}
+.diagonal-hero:not(.is-pinned) .diagonal-sheet-inner{
+  position:relative;
+  inset:auto;
+  max-width:none;
+  padding:38px 34px 40px;
+  min-height:410px;
+}
+.diagonal-hero:not(.is-pinned) .diagonal-sheet-meta{padding-bottom:13px}
+.diagonal-hero:not(.is-pinned) .diagonal-sheet-main{min-height:165px;padding:25px 0}
+.diagonal-hero:not(.is-pinned) .diagonal-sheet-main h2{font-size:clamp(60px,8vw,90px)}
+.diagonal-hero:not(.is-pinned) .diagonal-sheet-claim{font-size:clamp(19px,3vw,25px)}
+.diagonal-hero:not(.is-pinned) .diagonal-sheet-practice p{font-size:15px}
+.diagonal-hero:not(.is-pinned) .diagonal-edge,
+.diagonal-hero:not(.is-pinned) .diagonal-navigation{display:none}
+.diagonal-hero:not(.is-pinned) .diagonal-menu-toggle{color:#f4eee9;border-color:rgba(245,240,235,.5);background:transparent}
+.diagonal-hero:not(.is-pinned) .diagonal-menu-toggle[aria-expanded="true"]{color:#282a2b;background:#f5eee8}
+
+@media(min-width:1100px) and (max-width:1499px){
+  .diagonal-hero.is-pinned .diagonal-left{padding-left:4.5vw}
+  .diagonal-hero.is-pinned .diagonal-line--first{font-size:clamp(58px,6.2vw,90px)}
+  .diagonal-hero.is-pinned .diagonal-line--impact{font-size:clamp(89px,9.2vw,139px)}
+  .diagonal-hero.is-pinned .diagonal-line--last{font-size:clamp(58px,6vw,87px)}
+  .diagonal-hero.is-pinned .diagonal-discipline{font-size:11px;gap:8px}
+  .diagonal-hero.is-pinned .diagonal-intro{margin-top:58px}
+  .diagonal-hero.is-pinned .diagonal-sheet-inner{left:62%;right:4vw}
+  .diagonal-hero.is-pinned .diagonal-navigation{left:62%;right:4vw}
+  .diagonal-hero.is-pinned .diagonal-sheet-main h2{font-size:clamp(65px,6vw,86px)}
+  .diagonal-hero.is-pinned .diagonal-sheet-claim{font-size:clamp(20px,1.7vw,24px)}
+  .diagonal-hero.is-pinned .diagonal-sheet-practice p{font-size:15px}
+  .diagonal-hero.is-pinned .diagonal-intro p{font-size:16px}
+}
+@media(min-width:1100px) and (max-height:880px){
+  .diagonal-hero.is-pinned .diagonal-left{padding-top:105px;padding-bottom:55px}
+  .diagonal-hero.is-pinned .diagonal-discipline{margin-bottom:26px}
+  .diagonal-hero.is-pinned .diagonal-line--first{font-size:clamp(57px,5.8vw,88px)}
+  .diagonal-hero.is-pinned .diagonal-line--impact{font-size:clamp(84px,8.9vw,134px)}
+  .diagonal-hero.is-pinned .diagonal-line--last{font-size:clamp(55px,5.5vw,84px)}
+  .diagonal-hero.is-pinned .diagonal-intro{margin-top:35px}
+  .diagonal-hero.is-pinned .diagonal-sheet-inner{top:128px;bottom:130px}
+  .diagonal-hero.is-pinned .diagonal-sheet-meta{padding-bottom:12px}
+  .diagonal-hero.is-pinned .diagonal-sheet-main{padding:10px 0 15px}
+  .diagonal-hero.is-pinned .diagonal-sheet-claim{margin-top:15px}
+  .diagonal-hero.is-pinned .diagonal-sheet-practice{padding:10px 0}
+  .diagonal-hero.is-pinned .diagonal-sheet-skills{padding-top:8px}
+  .diagonal-hero.is-pinned .diagonal-navigation{bottom:20px}
+}
+@media(max-width:600px){
+  .diagonal-hero:not(.is-pinned) .diagonal-top{left:18px;right:18px}
+  .diagonal-hero:not(.is-pinned) .diagonal-left{padding:122px 18px 40px}
+  .diagonal-hero:not(.is-pinned) .diagonal-discipline{font-size:10px;gap:6px;white-space:normal}
+  .diagonal-hero:not(.is-pinned) .diagonal-line--first{font-size:clamp(37px,8.5vw,52px)}
+  .diagonal-hero:not(.is-pinned) .diagonal-line--impact{font-size:clamp(56px,12.4vw,80px)}
+  .diagonal-hero:not(.is-pinned) .diagonal-line--impact>span{font-size:.39em}
+  .diagonal-hero:not(.is-pinned) .diagonal-line--last{font-size:clamp(36px,8vw,49px)}
+  .diagonal-hero:not(.is-pinned) .diagonal-intro{margin-top:35px;padding-left:13px}
+  .diagonal-hero:not(.is-pinned) .diagonal-intro p{font-size:15px}
+  .diagonal-hero:not(.is-pinned) .diagonal-break{display:none}
+  .diagonal-hero:not(.is-pinned) .diagonal-sheet{min-height:380px}
+  .diagonal-hero:not(.is-pinned) .diagonal-sheet-inner{padding:28px 23px;min-height:380px}
+  .diagonal-hero:not(.is-pinned) .diagonal-sheet-meta{font-size:11px}
+  .diagonal-hero:not(.is-pinned) .diagonal-sheet-main h2{font-size:68px}
+  .diagonal-hero:not(.is-pinned) .diagonal-sheet-claim{font-size:20px}
+  .diagonal-hero:not(.is-pinned) .diagonal-sheet-practice p{font-size:14px}
+  .diagonal-hero:not(.is-pinned) .diagonal-sheet-skills{font-size:11px}
 }
 @media(prefers-reduced-motion:reduce){
-  .poster-hero .poster-light{filter:blur(72px)}
-  .poster-hero .poster-menu{transition:none}
+  .diagonal-hero .diagonal-menu{transition:none}
+  .diagonal-hero .diagonal-nav button{transition:none}
 }
