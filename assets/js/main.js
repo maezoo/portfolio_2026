@@ -247,133 +247,137 @@
     measure();
   })();
 
-  // Opening menu is isolated from the header used by the other sections.
-  (function initPosterMenu(){
-    const toggle=document.getElementById("posterMenuToggle");
-    const menu=document.getElementById("posterMenu");
-    if(!toggle||!menu)return;
+  // First-section menu; the remaining navigation and sections are untouched.
+  (function initDiagonalMenu(){
+    const button=document.getElementById("diagonalMenuToggle");
+    const menu=document.getElementById("diagonalMenu");
+    if(!button||!menu)return;
     menu.hidden=false;
     menu.inert=true;
     menu.setAttribute("aria-hidden","true");
-    function setOpen(open){
+    function openMenu(open){
       menu.classList.toggle("is-open",open);
       menu.inert=!open;
       menu.setAttribute("aria-hidden",String(!open));
-      toggle.setAttribute("aria-expanded",String(open));
-      toggle.innerHTML=open?'CLOSE <span aria-hidden="true">×</span>':'MENU <span aria-hidden="true">☰</span>';
+      button.setAttribute("aria-expanded",String(open));
+      button.innerHTML=open?'CLOSE <span aria-hidden="true">×</span>':'MENU <span aria-hidden="true">☰</span>';
     }
-    toggle.addEventListener("click",()=>setOpen(!menu.classList.contains("is-open")));
-    menu.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>setOpen(false)));
+    button.addEventListener("click",()=>openMenu(!menu.classList.contains("is-open")));
+    menu.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>openMenu(false)));
     document.addEventListener("click",event=>{
-      if(menu.classList.contains("is-open")&&!menu.contains(event.target)&&!toggle.contains(event.target))setOpen(false);
+      if(menu.classList.contains("is-open")&&!menu.contains(event.target)&&!button.contains(event.target))openMenu(false);
     });
     document.addEventListener("keydown",event=>{
-      if(event.key==="Escape"&&menu.classList.contains("is-open")){setOpen(false);toggle.focus();}
+      if(event.key==="Escape"&&menu.classList.contains("is-open")){openMenu(false);button.focus();}
     });
   })();
 
-  // First section only: restrained depth transitions between working notes.
-  (function initPosterCards(){
-    const hero=document.querySelector(".poster-hero");
+  // Whole-viewport diagonal sheets unfold in order while the split widens.
+  (function initDiagonalPages(){
+    const hero=document.querySelector(".diagonal-hero");
     if(!hero)return;
-    const shell=hero.querySelector(".poster-shell");
-    const cards=Array.from(hero.querySelectorAll(".poster-card"));
-    const glows=Array.from(hero.querySelectorAll(".poster-light"));
-    const buttons=Array.from(hero.querySelectorAll("[data-poster-jump]"));
-    const counter=hero.querySelector("#posterCurrent");
+    const stage=hero.querySelector(".diagonal-stage");
+    const left=hero.querySelector(".diagonal-left");
+    const sheets=Array.from(hero.querySelectorAll(".diagonal-sheet"));
+    const jumps=Array.from(hero.querySelectorAll("[data-diagonal-go]"));
+    const current=hero.querySelector("#diagonalCurrent");
     const desktop=window.matchMedia("(min-width:1100px) and (min-height:760px)");
-    if(!shell||cards.length!==5||glows.length!==5||buttons.length!==5||!counter)return;
-    const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
+    if(!stage||!left||sheets.length!==5||jumps.length!==5||!current)return;
+    const clamp=(v,lo,hi)=>Math.min(hi,Math.max(lo,v));
     const ease=t=>t*t*(3-2*t);
-    let active=-1,enabled=false,distance=0,raf=0;
+    let distance=0,enabled=false,frame=0,active=-1;
 
-    function updateCurrent(index){
+    function selectCard(index){
       if(active===index)return;
       active=index;
-      counter.textContent=String(index+1).padStart(2,"0");
-      buttons.forEach((button,i)=>button.setAttribute("aria-current",String(index===i)));
+      current.textContent=String(index+1).padStart(2,"0");
+      jumps.forEach((button,i)=>button.setAttribute("aria-current",String(i===index)));
     }
     function render(){
-      raf=0;
+      frame=0;
       if(!enabled)return;
-      const progress=clamp(-hero.getBoundingClientRect().top/Math.max(distance,1),0,1);
-      const raw=progress*(cards.length-1);
-      const base=Math.min(cards.length-2,Math.floor(raw));
-      const local=clamp(raw-base,0,1);
-      // Hold readable cards briefly; interpolate only during the middle of each step.
-      const cursor=base+ease(clamp((local-.2)/.62,0,1));
-      const selected=clamp(Math.round(cursor),0,cards.length-1);
-      updateCurrent(selected);
-      hero.style.setProperty("--poster-progress",(progress*100)+"%");
-      cards.forEach((card,i)=>{
-        const relative=i-cursor;
-        const behind=clamp(relative,0,4);
-        const passed=clamp(-relative,0,1);
-        // A slim stack of documents: restrained 3D depth and slight alternating tilt.
-        const x=relative>=0?behind*29:-passed*115;
-        const y=relative>=0?-behind*19:passed*27;
-        const z=relative>=0?-behind*103:-passed*130;
-        const tilt=relative>=0?-1.5+(i%2?1:-1)*Math.min(behind,4)*1.8:-1.5-passed*5;
-        const alpha=relative>=0?1-passed:1-passed;
-        const copyAlpha=clamp(1-behind*1.35,0,1);
-        card.style.transform="translate3d("+x+"px,"+y+"px,"+z+"px) rotateZ("+tilt+"deg)";
-        card.style.opacity=String(alpha);
-        card.style.visibility=alpha<.012?"hidden":"visible";
-        card.style.zIndex=String(100-Math.round(Math.abs(relative)*10));
-        card.style.setProperty("--poster-copy-alpha",String(copyAlpha));
-        card.setAttribute("aria-hidden",String(i!==selected));
-        glows[i].style.opacity=String(Math.max(0,1-Math.abs(relative))*.52);
+      const progress=clamp(-hero.getBoundingClientRect().top/Math.max(1,distance),0,1);
+      const raw=progress*(sheets.length-1);
+      const base=Math.min(sheets.length-2,Math.floor(raw));
+      const step=clamp(raw-base,0,1);
+      // Deliberately preserve a readable interval at either end of each card.
+      const unfold=ease(clamp((step-.13)/.73,0,1));
+      const index=unfold>=.56?base+1:base;
+      selectCard(index);
+
+      // The right-hand diagonal paper progressively takes ownership of the viewport.
+      const growth=ease(clamp(progress/.77,0,1));
+      const topCut=64-36*growth;
+      const bottomCut=46-36*growth;
+      hero.style.setProperty("--diagonal-top",topCut.toFixed(2)+"%");
+      hero.style.setProperty("--diagonal-bottom",bottomCut.toFixed(2)+"%");
+      left.style.opacity=String(1-ease(clamp((progress-.20)/.49,0,1)));
+      hero.style.setProperty("--diagonal-progress",(progress*100).toFixed(2)+"%");
+
+      sheets.forEach((sheet,i)=>{
+        const behind=i<base;
+        const incoming=i===base+1;
+        const shown=i===base;
+        const reveal=behind||shown?100:(incoming?34+66*unfold:0);
+        const alpha=behind||shown?1:(incoming?unfold:0);
+        sheet.style.clipPath="polygon(0 0,"+reveal+"% 0,"+reveal+"% 100%,0 100%)";
+        sheet.style.transform=incoming?
+          "translate3d("+((1-unfold)*48).toFixed(1)+"px,"+(-(1-unfold)*12).toFixed(1)+"px,0) scale("+(0.985+0.015*unfold).toFixed(4)+")":
+          "none";
+        sheet.style.visibility=(behind||shown||incoming)?"visible":"hidden";
+        sheet.style.setProperty("--diagonal-copy-alpha",String(incoming?ease(clamp((unfold-.38)/.48,0,1)):1));
+        sheet.setAttribute("aria-hidden",String(i!==index));
       });
     }
-    function requestRender(){if(!raf)raf=requestAnimationFrame(render);}
+    function requestRender(){if(!frame)frame=requestAnimationFrame(render);}
     function measure(){
       enabled=desktop.matches&&!reducedMotion;
       hero.classList.toggle("is-pinned",enabled);
       if(enabled){
-        distance=Math.round(clamp(window.innerHeight*1.65,1050,2000));
+        distance=Math.round(clamp(window.innerHeight*2.1,1450,2600));
         hero.style.height=(window.innerHeight+distance)+"px";
-        shell.style.height=window.innerHeight+"px";
+        stage.style.height=window.innerHeight+"px";
         active=-1;
         render();
       }else{
         hero.style.removeProperty("height");
-        shell.style.removeProperty("height");
-        hero.style.removeProperty("--poster-progress");
-        cards.forEach(card=>{
-          for(const prop of ["opacity","visibility","transform","z-index","--poster-copy-alpha"])card.style.removeProperty(prop);
-          card.removeAttribute("aria-hidden");
+        stage.style.removeProperty("height");
+        left.style.removeProperty("opacity");
+        for(const property of ["--diagonal-top","--diagonal-bottom","--diagonal-progress"])hero.style.removeProperty(property);
+        sheets.forEach(sheet=>{
+          for(const property of ["clip-path","transform","visibility","--diagonal-copy-alpha"])sheet.style.removeProperty(property);
+          sheet.removeAttribute("aria-hidden");
         });
-        glows.forEach(glow=>glow.style.removeProperty("opacity"));
         active=-1;
-        updateCurrent(0);
+        selectCard(0);
       }
     }
-    function goTo(i){
-      i=clamp(i,0,cards.length-1);
-      if(!enabled){cards[i].scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"center"});return;}
-      const y=window.scrollY+hero.getBoundingClientRect().top;
-      window.scrollTo({top:y+distance*i/(cards.length-1),behavior:"smooth"});
+    function goTo(index){
+      index=clamp(index,0,sheets.length-1);
+      if(!enabled){sheets[index].scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"center"});return;}
+      const start=window.scrollY+hero.getBoundingClientRect().top;
+      window.scrollTo({top:start+distance*index/(sheets.length-1),behavior:"smooth"});
     }
-    buttons.forEach((button,i)=>button.addEventListener("click",()=>goTo(i)));
+    jumps.forEach((button,i)=>button.addEventListener("click",()=>goTo(i)));
     window.addEventListener("scroll",requestRender,{passive:true});
     window.addEventListener("resize",measure);
     if(desktop.addEventListener)desktop.addEventListener("change",measure);
     measure();
   })();
 
-  // One-time typographic entrance; all later transitions are user-driven.
-  (function initPosterEntrance(){
-    const hero=document.querySelector(".poster-hero");
+  // Small intro reveal. Scrolling remains fully user-controlled.
+  (function initDiagonalEntry(){
+    const hero=document.querySelector(".diagonal-hero");
     const g=window.gsap;
     if(!hero||!g||reducedMotion)return;
-    const heading=hero.querySelectorAll(".poster-line");
-    const intro=hero.querySelector(".poster-intro");
-    const feature=hero.querySelector(".poster-feature");
-    if(heading.length!==3||!intro||!feature)return;
+    const lines=hero.querySelectorAll(".diagonal-line");
+    const discipline=hero.querySelector(".diagonal-discipline");
+    const intro=hero.querySelector(".diagonal-intro");
+    if(lines.length!==3||!discipline||!intro)return;
     g.timeline({defaults:{ease:"power3.out"}})
-      .from(heading,{opacity:0,y:20,stagger:.12,duration:.58},0)
-      .from(intro,{opacity:0,y:12,duration:.47},.45)
-      .from(feature,{opacity:0,y:14,duration:.58},.33);
+      .from(discipline,{y:12,opacity:0,duration:.5},0)
+      .from(lines,{y:24,opacity:0,stagger:.12,duration:.66},.08)
+      .from(intro,{y:14,opacity:0,duration:.55},.48);
   })();
 
 })();
