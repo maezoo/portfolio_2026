@@ -247,10 +247,10 @@
     measure();
   })();
 
-  // Minimal menu for the opening screen; later sections retain their existing header.
-  (function initVisionMenu(){
-    const toggle=document.getElementById("visionMenuToggle");
-    const menu=document.getElementById("visionMenu");
+  // Opening menu is isolated from the header used by the other sections.
+  (function initPosterMenu(){
+    const toggle=document.getElementById("posterMenuToggle");
+    const menu=document.getElementById("posterMenu");
     if(!toggle||!menu)return;
     menu.hidden=false;
     menu.inert=true;
@@ -262,70 +262,62 @@
       toggle.setAttribute("aria-expanded",String(open));
       toggle.innerHTML=open?'CLOSE <span aria-hidden="true">×</span>':'MENU <span aria-hidden="true">☰</span>';
     }
-    toggle.addEventListener("click",function(){setOpen(!menu.classList.contains("is-open"));});
-    menu.querySelectorAll("a").forEach(function(link){link.addEventListener("click",function(){setOpen(false);});});
-    document.addEventListener("keydown",function(event){if(event.key==="Escape"&&menu.classList.contains("is-open")){setOpen(false);toggle.focus();}});
-    document.addEventListener("click",function(event){if(menu.classList.contains("is-open")&&!menu.contains(event.target)&&!toggle.contains(event.target))setOpen(false);});
+    toggle.addEventListener("click",()=>setOpen(!menu.classList.contains("is-open")));
+    menu.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>setOpen(false)));
+    document.addEventListener("click",event=>{
+      if(menu.classList.contains("is-open")&&!menu.contains(event.target)&&!toggle.contains(event.target))setOpen(false);
+    });
+    document.addEventListener("keydown",event=>{
+      if(event.key==="Escape"&&menu.classList.contains("is-open")){setOpen(false);toggle.focus();}
+    });
   })();
 
-  // FIRST SECTION ONLY: pinned, single-frame card with scroll-linked color and copy.
-  (function initRefinedHero(){
-    const hero=document.querySelector(".vision-refined");
+  // Card and ambient color dissolve in place; the next section retains normal scrolling.
+  (function initPosterCards(){
+    const hero=document.querySelector(".poster-hero");
     if(!hero)return;
-    const shell=hero.querySelector(".vision-shell");
-    const cards=Array.from(hero.querySelectorAll(".vision-stack-card"));
-    const glows=Array.from(hero.querySelectorAll(".vision-aura"));
-    const jumpButtons=Array.from(hero.querySelectorAll("[data-stack-target]"));
-    const indicator=hero.querySelector("#visionStackNumber");
-    const nextButton=hero.querySelector("#visionStackNext");
-    const projects=document.getElementById("projects");
-    const desktop=window.matchMedia("(min-width:901px) and (min-height:740px)");
-    const gsap=window.gsap;
-    if(!shell||cards.length!==5||glows.length!==5||!indicator||!nextButton)return;
-
-    let active=-1,enabled=false,distance=0,frame=0;
-    const clamp=(value,min,max)=>Math.min(max,Math.max(min,value));
-    const smoothstep=t=>t*t*(3-2*t);
-    function setActive(index){
-      if(index===active)return;
-      active=index;
-      indicator.textContent=String(index+1).padStart(2,"0");
-      jumpButtons.forEach((button,i)=>button.setAttribute("aria-current",String(i===index)));
-      const last=index===cards.length-1;
-      nextButton.firstChild.textContent=last?"프로젝트 보기 ":"다음 강점 ";
-      nextButton.setAttribute("aria-label",last?"대표 프로젝트 섹션으로 이동":"다음 강점 보기");
-      cards.forEach((card,i)=>card.setAttribute("aria-hidden",String(i!==index)));
+    const shell=hero.querySelector(".poster-shell");
+    const cards=Array.from(hero.querySelectorAll(".poster-card"));
+    const glows=Array.from(hero.querySelectorAll(".poster-light"));
+    const buttons=Array.from(hero.querySelectorAll("[data-poster-jump]"));
+    const counter=hero.querySelector("#posterCurrent");
+    const desktop=window.matchMedia("(min-width:1100px) and (min-height:760px)");
+    if(!shell||cards.length!==5||glows.length!==5||buttons.length!==5||!counter)return;
+    const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+    const ease=x=>x*x*(3-2*x);
+    let enabled=false,distance=0,active=-1,raf=0;
+    function updateCurrent(i){
+      if(active===i)return;
+      active=i;
+      counter.textContent=String(i+1).padStart(2,"0");
+      buttons.forEach((button,j)=>button.setAttribute("aria-current",String(i===j)));
     }
     function render(){
-      frame=0;
-      if(!enabled||!gsap)return;
-      const progress=clamp(-hero.getBoundingClientRect().top/Math.max(distance,1),0,1);
+      raf=0;
+      if(!enabled)return;
+      const progress=clamp(-hero.getBoundingClientRect().top/Math.max(1,distance),0,1);
       const raw=progress*(cards.length-1);
       const base=Math.min(cards.length-2,Math.floor(raw));
-      const phase=clamp(raw-base,0,1);
-      // Read first, then gently dissolve into the next card near each interval's end.
-      const blend=smoothstep(clamp((phase-.48)/.44,0,1));
-      const selected=blend>=.5?base+1:base;
-      if(selected!==active)setActive(selected);
+      const t=clamp(raw-base,0,1);
+      const blend=ease(clamp((t-.37)/.53,0,1));
+      updateCurrent(blend>=.5?base+1:base);
+      hero.style.setProperty("--poster-progress",(progress*100)+"%");
       cards.forEach((card,i)=>{
-        const alpha=i===base?1-blend:i===base+1?blend:0;
-        gsap.set(card,{
-          opacity:alpha,
-          y:(1-alpha)*12,
-          visibility:alpha<.015?"hidden":"visible",
-          zIndex:i===base+1?2:1,
-          pointerEvents:"none",
-          force3D:true
-        });
-        gsap.set(glows[i],{opacity:alpha*.82});
+        const a=i===base?1-blend:i===base+1?blend:0;
+        card.style.opacity=String(a);
+        card.style.visibility=a<.015?"hidden":"visible";
+        card.style.transform="translate3d(0,"+((1-a)*10)+"px,0)";
+        card.style.zIndex=String(i===base+1?2:1);
+        card.setAttribute("aria-hidden",String(i!==active));
+        glows[i].style.opacity=String(a*.8);
       });
     }
-    function requestRender(){if(!frame)frame=requestAnimationFrame(render);}
+    function requestRender(){if(!raf)raf=requestAnimationFrame(render);}
     function measure(){
-      enabled=desktop.matches&&!reducedMotion&&!!gsap;
-      hero.classList.toggle("has-card-scroll",enabled);
+      enabled=desktop.matches&&!reducedMotion;
+      hero.classList.toggle("is-pinned",enabled);
       if(enabled){
-        distance=Math.round(clamp(window.innerHeight*1.2,620,1450));
+        distance=Math.round(clamp(window.innerHeight*1.08,620,1450));
         hero.style.height=(window.innerHeight+distance)+"px";
         shell.style.height=window.innerHeight+"px";
         active=-1;
@@ -333,56 +325,45 @@
       }else{
         hero.style.removeProperty("height");
         shell.style.removeProperty("height");
+        hero.style.removeProperty("--poster-progress");
         cards.forEach(card=>{
-          card.style.removeProperty("opacity");
-          card.style.removeProperty("transform");
-          card.style.removeProperty("visibility");
-          card.style.removeProperty("z-index");
-          card.style.removeProperty("pointer-events");
+          for(const prop of ["opacity","visibility","transform","z-index"])card.style.removeProperty(prop);
           card.removeAttribute("aria-hidden");
         });
-        glows.forEach((glow,i)=>{glow.style.opacity=i===0?"0.42":"0";});
+        glows.forEach(glow=>glow.style.removeProperty("opacity"));
         active=-1;
-        indicator.textContent="01";
-        jumpButtons.forEach((button,i)=>button.setAttribute("aria-current",String(i===0)));
+        updateCurrent(0);
       }
     }
-    function goTo(index){
-      index=clamp(index,0,cards.length-1);
-      if(!enabled){cards[index].scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"center"});return;}
-      const top=window.scrollY+hero.getBoundingClientRect().top;
-      window.scrollTo({top:top+distance*index/(cards.length-1),behavior:"smooth"});
+    function goTo(i){
+      i=clamp(i,0,cards.length-1);
+      if(!enabled){
+        cards[i].scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"center"});
+        return;
+      }
+      const y=window.scrollY+hero.getBoundingClientRect().top;
+      window.scrollTo({top:y+distance*i/(cards.length-1),behavior:"smooth"});
     }
-    jumpButtons.forEach((button,i)=>button.addEventListener("click",()=>goTo(i)));
-    nextButton.addEventListener("click",()=>{
-      if(active<cards.length-1){goTo(active+1);return;}
-      if(projects)projects.scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"start"});
-    });
+    buttons.forEach((button,i)=>button.addEventListener("click",()=>goTo(i)));
     window.addEventListener("scroll",requestRender,{passive:true});
     window.addEventListener("resize",measure);
     if(desktop.addEventListener)desktop.addEventListener("change",measure);
     measure();
   })();
 
-  // Restrained first-visit reveal; scroll controls the card transitions afterward.
-  (function initRefinedHeroEntry(){
-    const hero=document.querySelector(".vision-refined");
-    const gsap=window.gsap;
-    if(!hero||!gsap||reducedMotion)return;
-    const first=hero.querySelector(".vision-headline-first");
-    const middle=hero.querySelector(".vision-headline-middle");
-    const ending=hero.querySelector(".vision-headline-ending");
-    const copy=hero.querySelector(".vision-intro-copy");
-    const nav=hero.querySelector(".vision-strengths");
-    const panel=hero.querySelector(".vision-panel-area");
-    if(!first||!middle||!ending||!copy||!nav||!panel)return;
-    gsap.timeline({defaults:{ease:"power3.out"}})
-      .from(first,{y:26,opacity:0,duration:.62},0)
-      .from(middle,{y:26,opacity:0,duration:.62},.13)
-      .from(ending,{y:26,opacity:0,duration:.62},.26)
-      .from(copy,{y:12,opacity:0,duration:.5},.42)
-      .from(nav,{y:10,opacity:0,duration:.45},.56)
-      .from(panel,{y:16,opacity:0,duration:.75},.24);
+  // One-time typography entrance; no floating or autoplay animation.
+  (function initPosterEntrance(){
+    const hero=document.querySelector(".poster-hero");
+    const g=window.gsap;
+    if(!hero||!g||reducedMotion)return;
+    const lines=hero.querySelectorAll(".poster-line");
+    const intro=hero.querySelector(".poster-intro");
+    const feature=hero.querySelector(".poster-feature");
+    if(lines.length!==3||!intro||!feature)return;
+    g.timeline({defaults:{ease:"power3.out"}})
+      .from(lines,{opacity:0,y:30,stagger:.13,duration:.65},0)
+      .from(intro,{opacity:0,y:12,duration:.55},.56)
+      .from(feature,{opacity:0,y:20,duration:.68},.38);
   })();
 
 })();
