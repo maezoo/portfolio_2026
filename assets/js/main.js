@@ -268,126 +268,121 @@
     document.addEventListener("click",function(event){if(menu.classList.contains("is-open")&&!menu.contains(event.target)&&!toggle.contains(event.target))setOpen(false);});
   })();
 
-  // First section only: scroll-driven strength cards with explicit navigation.
-  (function initStrengthStack(){
-    const hero=document.querySelector(".vision-stack-hero");
+  // FIRST SECTION ONLY: pinned, single-frame card with scroll-linked color and copy.
+  (function initRefinedHero(){
+    const hero=document.querySelector(".vision-refined");
     if(!hero)return;
     const shell=hero.querySelector(".vision-shell");
     const cards=Array.from(hero.querySelectorAll(".vision-stack-card"));
-    const jumps=Array.from(hero.querySelectorAll("[data-stack-target]"));
+    const glows=Array.from(hero.querySelectorAll(".vision-aura"));
+    const jumpButtons=Array.from(hero.querySelectorAll("[data-stack-target]"));
     const indicator=hero.querySelector("#visionStackNumber");
-    const next=hero.querySelector("#visionStackNext");
-    const jumpMedia=window.matchMedia("(min-width:901px) and (min-height:740px)");
-    const g=window.gsap;
-    if(!shell||!cards.length||!indicator||!next)return;
-    let active=-1;
-    let enabled=false;
-    let distance=0;
-    let frame=0;
-    let stageHeight=0;
-    function clamp(value,min,max){return Math.max(min,Math.min(max,value));}
+    const nextButton=hero.querySelector("#visionStackNext");
+    const projects=document.getElementById("projects");
+    const desktop=window.matchMedia("(min-width:901px) and (min-height:740px)");
+    const gsap=window.gsap;
+    if(!shell||cards.length!==5||glows.length!==5||!indicator||!nextButton)return;
+
+    let active=-1,enabled=false,distance=0,frame=0;
+    const clamp=(value,min,max)=>Math.min(max,Math.max(min,value));
+    const smoothstep=t=>t*t*(3-2*t);
     function setActive(index){
       if(index===active)return;
       active=index;
       indicator.textContent=String(index+1).padStart(2,"0");
-      jumps.forEach(function(button,i){button.setAttribute("aria-current",String(i===index));});
+      jumpButtons.forEach((button,i)=>button.setAttribute("aria-current",String(i===index)));
       const last=index===cards.length-1;
-      next.firstChild.textContent=last?"프로젝트 보기 ":"다음 강점 ";
-      next.setAttribute("aria-label",last?"대표 프로젝트 섹션으로 이동":"다음 강점 보기");
+      nextButton.firstChild.textContent=last?"프로젝트 보기 ":"다음 강점 ";
+      nextButton.setAttribute("aria-label",last?"대표 프로젝트 섹션으로 이동":"다음 강점 보기");
+      cards.forEach((card,i)=>card.setAttribute("aria-hidden",String(i!==index)));
     }
     function render(){
       frame=0;
-      if(!enabled||!g)return;
-      const top=hero.getBoundingClientRect().top;
-      const progress=clamp(-top/Math.max(1,distance),0,1);
-      // Small ease around each card: brief reading pause without scroll snapping.
+      if(!enabled||!gsap)return;
+      const progress=clamp(-hero.getBoundingClientRect().top/Math.max(distance,1),0,1);
       const raw=progress*(cards.length-1);
-      const segment=Math.min(cards.length-2,Math.floor(raw));
-      const t=clamp(raw-segment,0,1);
-      const cursor=segment+t*t*(3-2*t);
-      const width=cards[0].offsetWidth;
-      const selected=clamp(Math.round(cursor),0,cards.length-1);
-      setActive(selected);
-      cards.forEach(function(card,i){
-        const relative=i-cursor;
-        const passed=Math.max(0,-relative);
-        const upcoming=Math.max(0,relative);
-        const offset=relative>=0?upcoming*25:-Math.min(passed,1)*(width-35)-Math.max(0,passed-1)*34;
-        const alpha=relative>=0?1:1-Math.min(passed,1)*.72;
-        g.set(card,{
-          x:offset,
-          y:relative>=0?Math.min(upcoming,4)*9:-Math.min(passed,1)*15,
-          rotation:relative>=0?Math.min(upcoming,4)*1.7:-Math.min(passed,1)*-11,
-          scale:relative>=0?1-Math.min(upcoming,4)*.018:1,
+      const base=Math.min(cards.length-2,Math.floor(raw));
+      const phase=clamp(raw-base,0,1);
+      // Read first, then gently dissolve into the next card near each interval's end.
+      const blend=smoothstep(clamp((phase-.48)/.44,0,1));
+      const selected=blend>=.5?base+1:base;
+      if(selected!==active)setActive(selected);
+      cards.forEach((card,i)=>{
+        const alpha=i===base?1-blend:i===base+1?blend:0;
+        gsap.set(card,{
           opacity:alpha,
-          zIndex:cards.length-i,
+          y:(1-alpha)*12,
+          visibility:alpha<.015?"hidden":"visible",
+          zIndex:i===base+1?2:1,
+          pointerEvents:"none",
           force3D:true
         });
-        card.setAttribute("aria-hidden",String(i!==selected));
+        gsap.set(glows[i],{opacity:alpha*.82});
       });
     }
     function requestRender(){if(!frame)frame=requestAnimationFrame(render);}
     function measure(){
-      enabled=jumpMedia.matches&&!reducedMotion&&!!g;
+      enabled=desktop.matches&&!reducedMotion&&!!gsap;
       hero.classList.toggle("has-card-scroll",enabled);
       if(enabled){
-        stageHeight=Math.min(window.innerHeight,1440);
-        distance=Math.round(clamp(window.innerHeight*1.1,580,1440));
-        hero.style.height=(stageHeight+distance)+"px";
-        shell.style.height=stageHeight+"px";
+        distance=Math.round(clamp(window.innerHeight*1.2,620,1450));
+        hero.style.height=(window.innerHeight+distance)+"px";
+        shell.style.height=window.innerHeight+"px";
         active=-1;
         render();
       }else{
         hero.style.removeProperty("height");
         shell.style.removeProperty("height");
-        cards.forEach(function(card){
-          card.style.removeProperty("transform");
+        cards.forEach(card=>{
           card.style.removeProperty("opacity");
+          card.style.removeProperty("transform");
+          card.style.removeProperty("visibility");
           card.style.removeProperty("z-index");
+          card.style.removeProperty("pointer-events");
           card.removeAttribute("aria-hidden");
         });
+        glows.forEach((glow,i)=>{glow.style.opacity=i===0?"0.42":"0";});
         active=-1;
-        setActive(0);
+        indicator.textContent="01";
+        jumpButtons.forEach((button,i)=>button.setAttribute("aria-current",String(i===0)));
       }
     }
     function goTo(index){
       index=clamp(index,0,cards.length-1);
       if(!enabled){cards[index].scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"center"});return;}
-      const heroTop=window.scrollY+hero.getBoundingClientRect().top;
-      window.scrollTo({top:heroTop+(distance*index/(cards.length-1)),behavior:"smooth"});
+      const top=window.scrollY+hero.getBoundingClientRect().top;
+      window.scrollTo({top:top+distance*index/(cards.length-1),behavior:"smooth"});
     }
-    jumps.forEach(function(button,i){button.addEventListener("click",function(){goTo(i);});});
-    next.addEventListener("click",function(){
+    jumpButtons.forEach((button,i)=>button.addEventListener("click",()=>goTo(i)));
+    nextButton.addEventListener("click",()=>{
       if(active<cards.length-1){goTo(active+1);return;}
-      const projects=document.getElementById("projects");
       if(projects)projects.scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"start"});
     });
     window.addEventListener("scroll",requestRender,{passive:true});
     window.addEventListener("resize",measure);
-    if(jumpMedia.addEventListener)jumpMedia.addEventListener("change",measure);
+    if(desktop.addEventListener)desktop.addEventListener("change",measure);
     measure();
   })();
 
-  // One-time headline reveal; the stack itself is driven only by scroll.
-  (function initHeroEntry(){
-    const hero=document.querySelector(".vision-stack-hero");
-    const g=window.gsap;
-    if(!hero||!g||reducedMotion)return;
-    const title=hero.querySelector(".vision-editorial h1");
-    const lead=hero.querySelector(".vision-lead");
-    const guide=hero.querySelector(".vision-strength-guide");
-    const strengths=hero.querySelector(".vision-strengths");
-    if(!title||!lead||!guide||!strengths)return;
-    hero.classList.add("has-gsap-motion");
-    const first=title.querySelector(".vision-headline-first");
-    const letters=title.querySelectorAll(".vision-headline-highlight>span");
-    const ending=title.querySelector(".vision-headline-ending");
-    g.timeline({defaults:{ease:"power3.out"}})
-      .from(first,{y:35,opacity:0,duration:.65},0)
-      .from(letters,{y:28,opacity:0,stagger:.08,duration:.45},.25)
-      .from(ending,{y:15,opacity:0,duration:.42},.68)
-      .from(lead,{y:12,opacity:0,duration:.44},.85)
-      .from(guide,{y:9,opacity:0,duration:.35},1.0)
-      .from(strengths,{opacity:0,duration:.52,clearProps:"opacity"},1.05);
+  // Restrained first-visit reveal; scroll controls the card transitions afterward.
+  (function initRefinedHeroEntry(){
+    const hero=document.querySelector(".vision-refined");
+    const gsap=window.gsap;
+    if(!hero||!gsap||reducedMotion)return;
+    const first=hero.querySelector(".vision-headline-first");
+    const middle=hero.querySelector(".vision-headline-middle");
+    const ending=hero.querySelector(".vision-headline-ending");
+    const copy=hero.querySelector(".vision-intro-copy");
+    const nav=hero.querySelector(".vision-strengths");
+    const panel=hero.querySelector(".vision-panel-area");
+    if(!first||!middle||!ending||!copy||!nav||!panel)return;
+    gsap.timeline({defaults:{ease:"power3.out"}})
+      .from(first,{y:26,opacity:0,duration:.62},0)
+      .from(middle,{y:26,opacity:0,duration:.62},.13)
+      .from(ending,{y:26,opacity:0,duration:.62},.26)
+      .from(copy,{y:12,opacity:0,duration:.5},.42)
+      .from(nav,{y:10,opacity:0,duration:.45},.56)
+      .from(panel,{y:16,opacity:0,duration:.75},.24);
   })();
+
 })();
