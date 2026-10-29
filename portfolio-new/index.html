@@ -118,28 +118,28 @@
     .bnj-illustration{position:absolute;right:-8%;bottom:9%;width:88%;max-width:620px;opacity:.68;filter:drop-shadow(0 13px 20px #141e2366);transition:transform .8s var(--ease)}
     .visual-bnj:hover .bnj-illustration{transform:translate(-2%,-3%)}
     .bnj-bottom{font-size:10px;letter-spacing:.09em;color:#c6d0d0;position:relative;z-index:3}
-    /* About / Approach — real evidence and a compact three-step visual comparison. */
-    .about{background:#e9e9e2;padding-block:clamp(76px,7vw,112px)}
-    .about-heading{margin-bottom:clamp(37px,4.8vw,62px)}
-    .about-heading .eyebrow{margin-bottom:clamp(23px,3vw,36px)}
-    .about-title{max-width:1100px;font-size:clamp(43px,5.3vw,73px);line-height:1.18;letter-spacing:-.072em;margin:0;font-weight:700}
-    .about-title em{font-style:normal;color:var(--accent)}
-    /* About is led by editorial typography. The case study is supporting, opt-in evidence. */
-    .about-principles{list-style:none;margin:0 0 clamp(43px,5.3vw,72px);padding:0;border-bottom:1px solid #aab1a9}
-    .about-principle{display:grid;grid-template-columns:54px minmax(0,1.2fr) minmax(0,1fr);gap:clamp(18px,2.5vw,34px);align-items:end;min-width:0;padding:clamp(26px,3.1vw,43px) 0 clamp(28px,3vw,40px);border-top:1px solid #aab1a9}
-    .about-principle-no{align-self:start;padding-top:clamp(7px,1.2vw,14px);font-size:12px;letter-spacing:.07em;font-weight:700;color:#7b837c}
-    .about-principle-word{min-width:0;margin:0;font-size:clamp(54px,7.8vw,110px);font-weight:700;line-height:.95;letter-spacing:-.075em;color:var(--ink)}
-    .about-principle:last-child .about-principle-word{color:var(--accent)}
-    .about-principle p{margin:0 0 4px;font-size:clamp(13px,1.03vw,15px);line-height:1.75;color:#515a52}
-    .about-case-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;gap:22px;padding:clamp(22px,2.5vw,32px) 2px;text-align:left;background:transparent;border:0;border-top:1px solid #939d92;border-bottom:1px solid #939d92;color:var(--ink);cursor:pointer}
+    /* Approach — concise dark editorial layout. The work example remains optional. */
+    .about{background:#202321;color:#f5f3ee;padding-block:clamp(80px,8.4vw,126px)}
+    .about-heading{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:end;gap:clamp(38px,6vw,104px);margin-bottom:clamp(55px,5.8vw,85px)}
+    .about-title{color:#f5f3ee}
+    .about-title span{color:var(--accent)}
+    .about-statement{max-width:640px}
+    .about-statement-lead{margin:0 0 20px;font-size:clamp(24px,2.65vw,38px);line-height:1.38;font-weight:650;letter-spacing:-.052em;word-break:keep-all}
+    .about-statement-detail{margin:0;color:#b7bcb5;font-size:clamp(14px,1.15vw,16px);line-height:1.85;letter-spacing:-.02em;word-break:keep-all}
+    .about-principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.9vw,46px);list-style:none;margin:0;padding:0}
+    .about-principle{min-width:0;border-top:1px solid #596059;padding-top:clamp(22px,2.4vw,34px)}
+    .about-principle-word{margin:0 0 18px;color:#faf9f4;font-size:clamp(27px,3.25vw,45px);line-height:1;letter-spacing:-.072em;font-weight:750}
+    .about-principle-word span{color:var(--accent)}
+    .about-principle p{margin:0;color:#b8beb7;font-size:clamp(13px,1.1vw,15px);line-height:1.75;word-break:keep-all}
+    .about-case-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;gap:25px;margin-top:clamp(38px,4.8vw,68px);padding:clamp(20px,2.5vw,29px) clamp(24px,3.5vw,48px);background:#f0efea;border:0;color:#202321;text-align:left;cursor:pointer;transition:background .2s}
     .about-case-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
-    .about-case-toggle-text{font-size:clamp(20px,2vw,24px);font-weight:700;letter-spacing:-.045em;line-height:1.35;transition:color .2s}
-    .about-case-toggle-icon{flex:none;display:grid;place-items:center;width:46px;height:46px;border:1px solid #858f85;border-radius:50%;font-size:27px;line-height:1;font-weight:400;transition:background .2s,border-color .2s,color .2s}
-    .about-case-toggle:hover .about-case-toggle-text,.about-case-toggle:focus-visible .about-case-toggle-text{color:var(--accent)}
+    .about-case-toggle:hover{background:#fffefa}
+    .about-case-toggle-text{font-size:clamp(20px,2vw,26px);font-weight:700;letter-spacing:-.05em;line-height:1.3}
+    .about-case-toggle-icon{display:grid;flex:none;place-items:center;width:46px;height:46px;border:1px solid #202321;border-radius:50%;font-size:27px;line-height:1;font-weight:400;transition:background .2s,border-color .2s,color .2s}
     .about-case-toggle:hover .about-case-toggle-icon,.about-case-toggle[aria-expanded="true"] .about-case-toggle-icon{background:var(--accent);border-color:var(--accent);color:#fff}
     .about-case-panel{height:0;overflow:hidden;opacity:0;transition:height .36s cubic-bezier(.22,1,.36,1),opacity .3s ease}
     .about-case-panel.is-open{opacity:1}
-    .about-case{padding-top:clamp(18px,2.6vw,34px)}
+    .about-case{margin-top:20px;padding:clamp(20px,3.7vw,50px);background:#f0efea;color:var(--ink)}
     .about-case-head{display:flex;flex-direction:column;align-items:flex-start;gap:9px;padding:24px 0 35px}
     .about-case-kicker{font-size:11px;font-weight:700;letter-spacing:.12em;line-height:1.5;color:#626961}
     .about-case-title{font-size:clamp(24px,2.5vw,28px);font-weight:700;letter-spacing:-.052em;line-height:1.4;margin:0;color:var(--ink)}
@@ -187,28 +187,29 @@
     .about-lightbox-viewer img{display:block;width:auto;max-width:100%;height:auto;margin:0 auto;background:#fff;box-shadow:0 7px 24px #2028201a}
     .about-lightbox-guide{flex:none;margin:0;padding:10px 15px;text-align:center;font-size:10px;color:#666f66;border-top:1px solid var(--line)}
     @media(max-width:1100px){
-      .about-principle{grid-template-columns:42px minmax(0,1fr);gap:9px 22px;align-items:start}
-      .about-principle-no{padding-top:11px}
-      .about-principle-word{font-size:clamp(54px,7.7vw,89px)}
-      .about-principle p{grid-column:2;margin:0;font-size:14px}
+      .about-heading{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:30px}
+      .about-statement-lead{font-size:clamp(23px,2.8vw,30px)}
+      .about-principle-word{font-size:clamp(27px,3.4vw,38px)}
     }
-    @media(max-width:1060px){
+    @media(max-width:900px){
+      .about-heading{grid-template-columns:1fr;gap:28px;margin-bottom:50px}
+      .about-statement{max-width:650px}
+      .about-principles{gap:22px}
       .about-steps{gap:14px}
       .about-step-type{font-size:9px}
     }
     @media(max-width:760px){
-      .section.about{padding-block:74px}
-      .about-heading{margin-bottom:36px}
-      .about-heading .eyebrow{margin-bottom:24px}
-      .about-title{font-size:clamp(40px,8vw,61px)}
-      .about-principles{margin-bottom:44px}
-      .about-principle{grid-template-columns:38px minmax(0,1fr);gap:8px 11px;padding:24px 0 26px}
-      .about-principle-no{font-size:11px;padding-top:7px}
-      .about-principle-word{font-size:clamp(42px,8.8vw,68px)}
-      .about-principle p{grid-column:2;margin:0;font-size:13px;line-height:1.7}
-      .about-case-toggle{padding:20px 0;gap:15px}
-      .about-case-toggle-text{font-size:clamp(19px,4.5vw,22px)}
-      .about-case-toggle-icon{width:40px;height:40px;font-size:24px}
+      .section.about{padding-block:clamp(70px,10vw,82px)}
+      .about-heading{gap:24px;margin-bottom:38px}
+      .about-statement-lead{font-size:clamp(23px,5vw,30px);margin-bottom:14px}
+      .about-statement-detail{font-size:14px;line-height:1.8}
+      .about-principles{grid-template-columns:1fr;gap:0}
+      .about-principle{display:grid;grid-template-columns:140px minmax(0,1fr);align-items:baseline;gap:12px;padding:20px 0}
+      .about-principle-word{font-size:clamp(22px,4.5vw,29px);margin:0}
+      .about-principle p{font-size:13px}
+      .about-case-toggle{margin-top:34px;padding:20px 22px}
+      .about-case-toggle-text{font-size:clamp(20px,4.5vw,24px)}
+      .about-case-toggle-icon{width:42px;height:42px;font-size:25px}
       .about-case-head{padding-bottom:24px}
       .about-steps{grid-template-columns:1fr;max-width:570px;gap:30px}
       .about-step-type{font-size:10px}
@@ -223,9 +224,10 @@
       .about-lightbox-guide{font-size:9px}
     }
     @media(max-width:450px){
-      .about-title{font-size:clamp(38px,9vw,48px)}
-      .about-principle-word{font-size:clamp(40px,9.7vw,46px)}
-      .about-case-toggle-text{line-height:1.4}
+      .about-principle{grid-template-columns:1fr;gap:7px}
+      .about-principle-word{font-size:clamp(25px,7vw,31px)}
+      .about-case-toggle{padding:20px 18px}
+      .about-case-toggle-text{font-size:21px}
       .about-steps{gap:28px}
       .about-step-copy{padding-top:12px}
     }
@@ -645,27 +647,27 @@
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="wrap">
         <div class="about-heading reveal">
-          <span class="eyebrow"><i class="bullet" aria-hidden="true"></i> ABOUT / APPROACH</span>
-          <h2 class="about-title" id="about-title">불편함을 발견하고,<br><em>더 나은 흐름</em>을 만듭니다.</h2>
+          <h2 class="section-title about-title" id="about-title">Approach<span>.</span></h2>
+          <div class="about-statement">
+            <p class="about-statement-lead">무엇을 보여줄지부터,<br>어떻게 사용할지까지 고민합니다.</p>
+            <p class="about-statement-detail">정보의 구조와 화면의 사용성을 함께 설계하고, 실제 구현과 개선까지 연결합니다.</p>
+          </div>
         </div>
 
-        <ol class="about-principles reveal delay-1" aria-label="나의 문제 해결 방식">
+        <ul class="about-principles reveal delay-1" aria-label="일하는 방식의 세 가지 기준">
           <li class="about-principle">
-            <span class="about-principle-no" aria-hidden="true">01 /</span>
-            <h3 class="about-principle-word">QUESTION.</h3>
-            <p>익숙한 방식이라도 불편함이 반복된다면, 그 원인부터 살핍니다.</p>
+            <h3 class="about-principle-word">QUESTION<span>.</span></h3>
+            <p>당연하게 여겨온 방식도 이유를 묻고, 사용자가 겪는 문제를 살핍니다.</p>
           </li>
           <li class="about-principle">
-            <span class="about-principle-no" aria-hidden="true">02 /</span>
-            <h3 class="about-principle-word">STRUCTURE.</h3>
-            <p>필요한 정보를 선별하고, 사용자가 따라갈 순서로 재구성합니다.</p>
+            <h3 class="about-principle-word">STRUCTURE<span>.</span></h3>
+            <p>정보의 우선순위와 사용자가 따라가는 흐름을 함께 설계합니다.</p>
           </li>
           <li class="about-principle">
-            <span class="about-principle-no" aria-hidden="true">03 /</span>
-            <h3 class="about-principle-word">EXECUTION.</h3>
-            <p>설계에 머무르지 않고, 실제 화면으로 구현하고 다듬습니다.</p>
+            <h3 class="about-principle-word">EXECUTION<span>.</span></h3>
+            <p>UI와 인터랙션을 직접 구현하고, 실제 사용 환경에 맞춰 개선합니다.</p>
           </li>
-        </ol>
+        </ul>
 
         <button type="button" class="about-case-toggle" id="about-case-toggle" aria-controls="about-case-panel" aria-expanded="false">
           <span class="about-case-toggle-text">실무 적용 사례 보기</span>
