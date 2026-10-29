@@ -119,41 +119,37 @@
     .visual-bnj:hover .bnj-illustration{transform:translate(-2%,-3%)}
     .bnj-bottom{font-size:10px;letter-spacing:.09em;color:#c6d0d0;position:relative;z-index:3}
 
-    /* Approach — shared paper palette, Selected Work typography and spacing. */
-    .about{background:var(--paper);color:var(--ink);border-top:1px solid var(--line);padding-block:clamp(80px,9vw,140px)}
-    .about-heading{grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:clamp(34px,5vw,90px);align-items:end;margin-bottom:clamp(32px,4vw,55px)}
+    /* Approach: original warm paper palette, consistent with Selected Work. */
+    .about{background:#f5f4f0;color:var(--ink);border-top:1px solid var(--line);padding-block:0 clamp(74px,8vw,112px)}
+    .about-heading{grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:clamp(34px,5vw,90px);align-items:end;margin-bottom:clamp(32px,4vw,52px)}
     .about-title{color:var(--ink)}
     .about-title span{color:var(--accent)}
     .about-statement{min-width:0;max-width:585px;padding-bottom:4px}
     .about-statement-lead{margin:0 0 18px;font-size:clamp(24px,2.5vw,37px);line-height:1.45;font-weight:650;letter-spacing:-.06em;word-break:keep-all}
     .about-statement-detail{margin:0;max-width:475px;color:var(--muted);font-size:clamp(13px,1.08vw,15px);line-height:1.85;letter-spacing:-.02em;word-break:keep-all}
-    /* Ordinary reading order remains available when motion or scripting is off. */
+    /* Readable without JS: principles remain in ordinary document flow. */
     .about-scroll-track{position:relative}
-    .about-scroll-frame{min-width:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .about-principles{display:grid;gap:26px;list-style:none;margin:0;padding:34px 0}
+    .about-scroll-frame{min-width:0}
+    .about-principles{display:grid;gap:26px;list-style:none;margin:0;padding:27px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .about-principle{min-width:0;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center;gap:clamp(20px,4.5vw,84px);padding:18px 0}
     .about-principle:not(:last-child){border-bottom:1px solid var(--line)}
     .about-principle-word{margin:0;color:var(--ink);font-size:clamp(48px,5.8vw,84px);font-weight:700;letter-spacing:-.082em;line-height:1.05;white-space:nowrap}
     .about-principle-word span{color:var(--accent)}
     .about-principle-copy{margin:0;max-width:425px;color:var(--muted);font-size:clamp(17px,1.53vw,22px);font-weight:500;letter-spacing:-.043em;line-height:1.75;word-break:keep-all}
     .about-principle-copy em{color:var(--ink);font-style:normal;font-weight:700}
-    .about-scroll-status{display:none;justify-content:flex-end;align-items:center;padding-top:4px}
+    .about-scroll-status{display:none;align-items:center;justify-content:flex-end;margin-top:10px}
     .about-scroll-count{font-size:11px;font-weight:700;letter-spacing:.09em;color:#959995}
     .about-scroll-count strong{font-weight:700;color:var(--ink)}
-    /* Brief, reversible scroll-linked crossfades. Normal scrolling remains untouched. */
-    html.has-approach-scroll .about-scroll-track{height:clamp(550px,85svh,780px)}
+    /* Entire title + principle stay pinned together; nothing drifts down between slides. */
+    html.has-approach-scroll .about-scroll-track{height:175svh}
     html.has-approach-scroll .about-scroll-frame{
-      position:sticky;
-      top:max(16px,calc((100svh - min(38svh,350px))/2));
-      height:min(38svh,350px);
-      min-height:255px;
-      padding:24px 0 20px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between
+      position:sticky;top:0;height:100svh;
+      display:flex;flex-direction:column;justify-content:flex-start;
+      padding-block:clamp(64px,9svh,108px) clamp(34px,5svh,60px)
     }
-    html.has-approach-scroll .about-principles{position:relative;flex:1;min-height:0;display:block;padding:0}
-    html.has-approach-scroll .about-principle{position:absolute;inset:0;width:100%;padding:8px 0;border:0;opacity:0;transform:translate3d(0,14px,0);pointer-events:none;will-change:opacity,transform}
+    html.has-approach-scroll .about-heading{flex:none}
+    html.has-approach-scroll .about-principles{position:relative;display:block;flex:1;min-height:0;padding:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    html.has-approach-scroll .about-principle{position:absolute;inset:0;width:100%;padding:12px 0;border:0;opacity:0;transform:translate3d(0,12px,0);pointer-events:none;will-change:opacity,transform}
     html.has-approach-scroll .about-principle:first-child{opacity:1;transform:none}
     html.has-approach-scroll .about-scroll-status{display:flex}
     /* Keep the single example subordinate to the broader working principles. */
@@ -165,17 +161,17 @@
     .about-case-toggle-action-text{color:var(--muted)}
     .about-case-toggle-icon{border-color:#a7aba5;color:var(--ink)}
     /* The optional case is deliberately subordinate to the working principles. */
-    .about-case-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:clamp(26px,3vw,42px);padding:24px 0;background:transparent;color:#f5f3ee;border:0;border-bottom:1px solid #4a514a;text-align:left;cursor:pointer;transition:border-color .25s}
+    .about-case-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:clamp(26px,3vw,42px);padding:24px 0;background:transparent;color:var(--ink);border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:left;cursor:pointer;transition:border-color .25s}
     .about-case-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
-    .about-case-toggle:hover{border-color:#b3b8b0}
+    .about-case-toggle:hover{border-color:#777e75}
     .about-case-toggle-main{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:7px}
-    .about-case-toggle-kicker{font-size:10px;letter-spacing:.12em;font-weight:800;color:#d18a75}
-    .about-case-toggle-kicker span{color:#989e97;font-weight:600}
+    .about-case-toggle-kicker{font-size:10px;letter-spacing:.12em;font-weight:800;color:var(--accent)}
+    .about-case-toggle-kicker span{color:var(--muted);font-weight:600}
     .about-case-toggle-text{font-size:clamp(17px,1.55vw,21px);font-weight:650;letter-spacing:-.045em;line-height:1.4}
-    .about-case-toggle-sub{color:#979f96;font-size:12px;line-height:1.6}
+    .about-case-toggle-sub{color:var(--muted);font-size:12px;line-height:1.6}
     .about-case-toggle-action{display:flex;align-items:center;flex:none;gap:15px}
-    .about-case-toggle-action-text{font-size:10px;font-weight:800;letter-spacing:.1em;color:#b1b8b0}
-    .about-case-toggle-icon{display:grid;flex:none;place-items:center;width:42px;height:42px;border:1px solid #838b82;border-radius:50%;font-size:25px;line-height:1;font-weight:400;transition:background .25s,border-color .25s,color .25s,transform .3s var(--ease)}
+    .about-case-toggle-action-text{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--muted)}
+    .about-case-toggle-icon{display:grid;flex:none;place-items:center;width:42px;height:42px;border:1px solid #9da39b;border-radius:50%;font-size:25px;line-height:1;font-weight:400;transition:background .25s,border-color .25s,color .25s,transform .3s var(--ease)}
     .about-case-toggle:hover .about-case-toggle-icon,.about-case-toggle[aria-expanded="true"] .about-case-toggle-icon{background:var(--accent);border-color:var(--accent);color:#fff}
     .about-case-toggle:hover .about-case-toggle-icon{transform:rotate(90deg)}
     .about-case-panel{height:0;overflow:hidden;opacity:0;transition:height .36s cubic-bezier(.22,1,.36,1),opacity .3s ease}
@@ -235,22 +231,24 @@
       .about-principle-copy{font-size:clamp(17px,1.9vw,21px)}
     }
     @media(max-width:900px){
-      .about-heading{grid-template-columns:1fr;gap:26px;margin-bottom:42px}
+      .about-heading{grid-template-columns:1fr;gap:26px;margin-bottom:clamp(24px,3.5svh,38px)}
       .about-statement{max-width:675px}
       .about-steps{gap:14px}
       .about-step-type{font-size:9px}
+      html.has-approach-scroll .about-scroll-frame{padding-block:clamp(46px,7svh,75px) clamp(25px,4svh,40px)}
     }
     @media(max-width:760px){
-      .section.about{padding-block:78px}
-      .about-heading{gap:25px;margin-bottom:32px}
+      .section.about{padding-block:0 78px}
+      .about-heading{gap:23px;margin-bottom:27px}
       .about-statement-lead{font-size:clamp(25px,5vw,32px);margin-bottom:14px}
       .about-statement-detail{font-size:14px;line-height:1.8}
       .about-principle{grid-template-columns:1fr;gap:14px}
       .about-principle-word{font-size:clamp(40px,9.2vw,66px)}
       .about-principle-copy{font-size:clamp(17px,3.8vw,21px);line-height:1.62}
-      html.has-approach-scroll .about-scroll-track{height:clamp(510px,83svh,680px)}
-      html.has-approach-scroll .about-scroll-frame{height:clamp(250px,36svh,305px);min-height:0;top:max(14px,calc((100svh - clamp(250px,36svh,305px))/2));padding:18px 0}
+      html.has-approach-scroll .about-scroll-track{height:170svh}
+      html.has-approach-scroll .about-scroll-frame{height:100svh;top:0;padding-block:clamp(35px,6svh,55px) clamp(25px,4svh,40px)}
       html.has-approach-scroll .about-principle{gap:13px;padding:6px 0}
+      .about-scroll-status{margin-top:8px}
       .about-case-toggle{margin-top:23px;padding:20px 0;gap:14px}
       .about-case-toggle-text{font-size:18px}
       .about-case-toggle-action-text{display:none}
@@ -691,15 +689,15 @@
 
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="wrap">
-        <div class="section-head about-heading reveal">
-          <div><h2 class="section-title about-title" id="about-title">Approach<span>.</span></h2></div>
-          <div class="about-statement">
-            <p class="about-statement-lead">필요한 것을 먼저 판단하고,<br>더 나은 방법을 찾아 만듭니다.</p>
-            <p class="about-statement-detail">정해진 순서를 따르기보다 목적과 상황에 맞춰 질문하고, 구조를 정리하고, 직접 구현하며 개선합니다.</p>
-          </div>
-        </div>
         <div class="about-scroll-track" id="approach-scroll">
           <div class="about-scroll-frame">
+            <div class="section-head about-heading reveal">
+              <div><h2 class="section-title about-title" id="about-title">Approach<span>.</span></h2></div>
+              <div class="about-statement">
+                <p class="about-statement-lead">필요한 것을 먼저 판단하고,<br>더 나은 방법을 찾아 만듭니다.</p>
+                <p class="about-statement-detail">정해진 순서를 따르기보다 목적과 상황에 맞춰 질문하고, 구조를 정리하고, 직접 구현하며 개선합니다.</p>
+              </div>
+            </div>
             <ol class="about-principles" aria-label="일할 때 중요하게 생각하는 세 가지 기준">
               <li class="about-principle about-principle--question">
                 <h3 class="about-principle-word">QUESTION<span>.</span></h3>
@@ -864,8 +862,8 @@
           var targetTop=parseFloat(window.getComputedStyle(approachFrame).top)||0;
           var travel=Math.max(1,approachTrack.offsetHeight-approachFrame.offsetHeight);
           var p=Math.max(0,Math.min(1,(targetTop-approachTrack.getBoundingClientRect().top)/travel));
-          var second=approachSmooth(.16,.36,p);
-          var third=approachSmooth(.54,.74,p);
+          var second=approachSmooth(.17,.36,p);
+          var third=approachSmooth(.55,.74,p);
           var fade=[1-second,second*(1-third),third];
           var slide=[-14*second,14*(1-second)-14*third,14*(1-third)];
           approachItems.forEach(function(item,i){
