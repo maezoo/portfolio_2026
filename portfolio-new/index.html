@@ -118,17 +118,21 @@
     .bnj-illustration{position:absolute;right:-8%;bottom:9%;width:88%;max-width:620px;opacity:.68;filter:drop-shadow(0 13px 20px #141e2366);transition:transform .8s var(--ease)}
     .visual-bnj:hover .bnj-illustration{transform:translate(-2%,-3%)}
     .bnj-bottom{font-size:10px;letter-spacing:.09em;color:#c6d0d0;position:relative;z-index:3}
-    .about{background:#e9e9e2}
-    .about .wrap{display:grid;grid-template-columns:minmax(200px,.47fr) minmax(0,1fr);gap:clamp(40px,9vw,140px)}
-    .about-title{font-size:clamp(37px,4.8vw,78px);line-height:1.23;letter-spacing:-.072em;margin:42px 0 32px;font-weight:700}
+    /* About — clear editorial headline, then two calm content columns. */
+    .about{background:#e9e9e2;padding-block:clamp(90px,9vw,140px)}
+    .about .wrap{display:block}
+    .about-heading{margin-bottom:clamp(46px,5.5vw,78px)}
+    .about-heading .eyebrow{margin-bottom:clamp(24px,3vw,42px)}
+    .about-title{max-width:1250px;font-size:clamp(46px,6.1vw,94px);line-height:1.2;letter-spacing:-.075em;margin:0;font-weight:700}
     .about-title em{font-style:normal;color:var(--accent)}
-    .about-copy{font-size:clamp(17px,1.8vw,24px);font-weight:600;letter-spacing:-.04em;line-height:1.78;max-width:700px;margin:0}
-    .about-copy-secondary{font-size:14px;line-height:2;max-width:620px;color:var(--muted);margin:24px 0 45px}
-    .values{border-top:1px solid #bfc2bb}
-    .value{display:grid;grid-template-columns:55px minmax(115px,190px) 1fr;align-items:center;gap:15px;padding:21px 0;border-bottom:1px solid #bfc2bb}
-    .value .n{font-size:11px;color:var(--accent);font-weight:800}
-    .value strong{font-size:clamp(17px,2vw,28px);letter-spacing:-.055em}
-    .value p{font-size:12px;line-height:1.7;color:var(--muted);margin:0}
+    .about-body{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);align-items:start;gap:clamp(48px,8vw,132px)}
+    .about-narrative{min-width:0}
+    .about-copy{font-size:clamp(19px,2vw,27px);font-weight:600;letter-spacing:-.04em;line-height:1.72;max-width:640px;margin:0}
+    .about-copy-secondary{font-size:14px;line-height:1.9;max-width:600px;color:var(--muted);margin:clamp(18px,2.2vw,30px) 0 0}
+    .values{min-width:0;border-top:1px solid #bfc2bb}
+    .value{display:grid;grid-template-columns:minmax(118px,.55fr) minmax(0,1fr);align-items:baseline;gap:18px;padding:21px 0;border-bottom:1px solid #bfc2bb}
+    .value strong{font-size:clamp(17px,1.7vw,24px);letter-spacing:-.055em}
+    .value p{font-size:12px;line-height:1.75;color:var(--muted);margin:0}
     .experience .section-head{margin-bottom:60px}
     .experience-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:clamp(40px,8vw,120px)}
     .small-title{font-size:11px;letter-spacing:.11em;font-weight:800;color:var(--muted);margin:0 0 27px}
@@ -208,11 +212,14 @@
       .visual-creafit,.visual-donggam,.visual-bnj{min-height:clamp(365px,70vw,560px)}
       .project--reverse .visual{grid-row:2}
       .visual-caption{font-size:8px}
-      .about .wrap{grid-template-columns:1fr;gap:35px}
-      .about-title{margin:15px 0 0}
+      .about{padding-block:76px}
+      .about-heading{margin-bottom:35px}
+      .about-heading .eyebrow{margin-bottom:24px}
+      .about-title{font-size:clamp(39px,8vw,60px);line-height:1.21}
+      .about-body{grid-template-columns:1fr;gap:33px}
       .about-copy{font-size:19px}
-      .about-copy-secondary{font-size:13px;margin-bottom:34px}
-      .value{grid-template-columns:40px minmax(90px,155px) 1fr;gap:8px}
+      .about-copy-secondary{font-size:13px;margin-top:19px}
+      .value{grid-template-columns:minmax(105px,.42fr) minmax(0,1fr);gap:14px;padding:18px 0}
       .value p{font-size:11px}
       .experience-grid{grid-template-columns:1fr;gap:43px}
       .footer-title{font-size:clamp(60px,12vw,95px)}
@@ -441,7 +448,7 @@
 
         <div class="projects">
           <article class="project work-project" aria-labelledby="project1-title">
-            <div class="project-overline"><span>01</span></div>
+            <div class="project-overline"><span>PROJECT 01</span></div>
             <div class="work-layout">
               <div class="work-info">
                 <div class="work-head"><div class="work-name reveal"><h3 id="project1-title">기업 홈페이지<br>전면 리뉴얼<span class="work-period">.</span></h3><p class="work-company">크레아핏마케팅</p></div></div>
@@ -471,7 +478,7 @@
           </article>
 
           <article class="project work-project" aria-labelledby="project2-title">
-            <div class="project-overline"><span>02</span></div>
+            <div class="project-overline"><span>PROJECT 02</span></div>
             <div class="work-layout">
               <div class="work-info">
                 <div class="work-head"><div class="work-name reveal"><h3 id="project2-title">행정 서비스<br>UX 리디자인<span class="work-period">.</span></h3><p class="work-company">동감 행정사사무소<span class="work-company-note">/ 개인 프로젝트</span></p></div></div>
@@ -511,7 +518,7 @@
           </article>
 
           <article class="project work-project" aria-labelledby="project3-title">
-            <div class="project-overline"><span>03</span></div>
+            <div class="project-overline"><span>PROJECT 03</span></div>
             <div class="work-layout">
               <div class="work-info">
                 <div class="work-head"><div class="work-name reveal"><h3 id="project3-title">제조업 기업<br>홈페이지 리뉴얼<span class="work-period">.</span></h3><p class="work-company">비앤제이플러스</p></div></div>
@@ -547,14 +554,19 @@
 
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="wrap">
-        <div class="reveal"><span class="eyebrow"><i class="bullet" aria-hidden="true"></i> 02 / ABOUT & APPROACH</span><h2 class="about-title" id="about-title">좋은 디자인은<br><em>좋은 질문</em>에서<br>시작됩니다.</h2></div>
-        <div class="reveal delay-1">
-          <p class="about-copy">무엇을 더할지보다 왜 필요한지 먼저 생각합니다. 화면의 완성도와 실제 사용 경험을 함께 고려하며, 복잡한 정보를 명확한 구조로 바꾸는 과정에 집중합니다.</p>
-          <p class="about-copy-secondary">웹사이트의 기획부터 정보구조, UI 디자인, 반응형 구현과 운영까지 폭넓게 경험했습니다. 문제를 발견하는 시선과 직접 구현하는 능력을 연결해 더 나은 사용자 경험을 만드는 일을 지향합니다.</p>
-          <div class="values">
-            <div class="value"><span class="n">01</span><strong>Question.</strong><p>당연하게 여기는 흐름에도 이유를 묻습니다.</p></div>
-            <div class="value"><span class="n">02</span><strong>Structure.</strong><p>정보를 정돈하고 사용자의 경로를 설계합니다.</p></div>
-            <div class="value"><span class="n">03</span><strong>Clarity.</strong><p>중요한 정보가 선명하게 드러나도록 만듭니다.</p></div>
+        <div class="about-heading reveal">
+          <span class="eyebrow"><i class="bullet" aria-hidden="true"></i> ABOUT / APPROACH</span>
+          <h2 class="about-title" id="about-title">좋은 디자인은<br><em>좋은 질문</em>에서 시작됩니다.</h2>
+        </div>
+        <div class="about-body">
+          <div class="about-narrative reveal delay-1">
+            <p class="about-copy">무엇을 더할지보다 왜 필요한지 먼저 생각합니다. 화면의 완성도와 실제 사용 경험을 함께 고려하며, 복잡한 정보를 명확한 구조로 바꾸는 과정에 집중합니다.</p>
+            <p class="about-copy-secondary">웹사이트의 기획부터 정보구조, UI 디자인, 반응형 구현과 운영까지 폭넓게 경험했습니다. 문제를 발견하는 시선과 직접 구현하는 능력을 연결해 더 나은 사용자 경험을 만드는 일을 지향합니다.</p>
+          </div>
+          <div class="values reveal delay-2" aria-label="일하는 방식">
+            <div class="value"><strong>Question.</strong><p>당연하게 여기는 흐름에도 이유를 묻습니다.</p></div>
+            <div class="value"><strong>Structure.</strong><p>정보를 정돈하고 사용자의 경로를 설계합니다.</p></div>
+            <div class="value"><strong>Clarity.</strong><p>중요한 정보가 선명하게 드러나도록 만듭니다.</p></div>
           </div>
         </div>
       </div>
@@ -563,7 +575,7 @@
     <section class="section experience" id="experience" aria-labelledby="experience-title">
       <div class="wrap">
         <div class="section-head reveal">
-          <div><span class="eyebrow"><i class="bullet" aria-hidden="true"></i> 03 / CAREER & CAPABILITIES</span><h2 class="section-title" id="experience-title">Experience<span style="color:var(--accent)">.</span></h2></div>
+          <div><span class="eyebrow"><i class="bullet" aria-hidden="true"></i> CAREER / CAPABILITIES</span><h2 class="section-title" id="experience-title">Experience<span style="color:var(--accent)">.</span></h2></div>
           <p class="section-caption">생각을 구체적인 결과로 만드는<br>실무 경험과 도구들.</p>
         </div>
         <div class="experience-grid">
@@ -587,7 +599,7 @@
 
   <footer class="footer" id="contact">
     <div class="wrap">
-      <div class="footer-top reveal"><span class="eyebrow"><i class="bullet" aria-hidden="true"></i> 04 / CONTACT</span><p class="footer-note">더 나은 화면과 경험을 만드는 이야기라면 언제든 환영합니다. 작업물과 코드는 GitHub에서 확인하실 수 있습니다.</p></div>
+      <div class="footer-top reveal"><span class="eyebrow"><i class="bullet" aria-hidden="true"></i> CONTACT</span><p class="footer-note">더 나은 화면과 경험을 만드는 이야기라면 언제든 환영합니다. 작업물과 코드는 GitHub에서 확인하실 수 있습니다.</p></div>
       <h2 class="footer-title reveal">Let's make<br><span class="line">it clear<i>.</i></span></h2>
       <div class="footer-actions reveal">
         <a class="footer-button" href="https://github.com/maezoo" target="_blank" rel="noopener noreferrer">EXPLORE GITHUB <span aria-hidden="true">↗</span></a>
