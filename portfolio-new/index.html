@@ -126,19 +126,15 @@
     .about-title em{font-style:normal;color:var(--accent)}
     /* About is led by editorial typography. The case study is supporting, opt-in evidence. */
     .about-principles{list-style:none;margin:0 0 clamp(43px,5.3vw,72px);padding:0;border-bottom:1px solid #aab1a9}
-    .about-principle{display:grid;grid-template-columns:54px minmax(0,1fr) minmax(235px,.34fr);gap:clamp(18px,2.5vw,34px);align-items:end;min-width:0;padding:clamp(26px,3.1vw,43px) 0 clamp(28px,3vw,40px);border-top:1px solid #aab1a9}
+    .about-principle{display:grid;grid-template-columns:54px minmax(0,1.2fr) minmax(0,1fr);gap:clamp(18px,2.5vw,34px);align-items:end;min-width:0;padding:clamp(26px,3.1vw,43px) 0 clamp(28px,3vw,40px);border-top:1px solid #aab1a9}
     .about-principle-no{align-self:start;padding-top:clamp(7px,1.2vw,14px);font-size:12px;letter-spacing:.07em;font-weight:700;color:#7b837c}
     .about-principle-word{min-width:0;margin:0;font-size:clamp(54px,7.8vw,110px);font-weight:700;line-height:.95;letter-spacing:-.075em;color:var(--ink)}
     .about-principle:last-child .about-principle-word{color:var(--accent)}
-    .about-principle p{max-width:275px;margin:0 0 4px;font-size:clamp(13px,1.03vw,15px);line-height:1.75;color:#515a52}
-    .about-case-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;gap:28px;padding:23px 2px;text-align:left;background:transparent;border:0;border-top:1px solid #939d92;border-bottom:1px solid #939d92;color:var(--ink);cursor:pointer}
+    .about-principle p{margin:0 0 4px;font-size:clamp(13px,1.03vw,15px);line-height:1.75;color:#515a52}
+    .about-case-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;gap:22px;padding:clamp(22px,2.5vw,32px) 2px;text-align:left;background:transparent;border:0;border-top:1px solid #939d92;border-bottom:1px solid #939d92;color:var(--ink);cursor:pointer}
     .about-case-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
-    .about-case-toggle-meta{display:flex;align-items:baseline;gap:clamp(20px,4vw,60px);min-width:0}
-    .about-case-toggle-label{white-space:nowrap;font-size:11px;letter-spacing:.13em;font-weight:800}
-    .about-case-toggle-description{font-size:clamp(13px,1.15vw,16px);color:#4e594f;letter-spacing:-.028em}
-    .about-case-toggle-action{display:flex;align-items:center;gap:16px;flex:none;font-size:13px;font-weight:700}
-    .about-case-toggle-text{transition:color .2s}
-    .about-case-toggle-icon{display:grid;place-items:center;width:38px;height:38px;border:1px solid #858f85;border-radius:50%;font-size:23px;line-height:1;font-weight:400;transition:background .2s,border-color .2s,color .2s}
+    .about-case-toggle-text{font-size:clamp(20px,2vw,24px);font-weight:700;letter-spacing:-.045em;line-height:1.35;transition:color .2s}
+    .about-case-toggle-icon{flex:none;display:grid;place-items:center;width:46px;height:46px;border:1px solid #858f85;border-radius:50%;font-size:27px;line-height:1;font-weight:400;transition:background .2s,border-color .2s,color .2s}
     .about-case-toggle:hover .about-case-toggle-text,.about-case-toggle:focus-visible .about-case-toggle-text{color:var(--accent)}
     .about-case-toggle:hover .about-case-toggle-icon,.about-case-toggle[aria-expanded="true"] .about-case-toggle-icon{background:var(--accent);border-color:var(--accent);color:#fff}
     .about-case-panel{height:0;overflow:hidden;opacity:0;transition:height .36s cubic-bezier(.22,1,.36,1),opacity .3s ease}
@@ -194,7 +190,7 @@
       .about-principle{grid-template-columns:42px minmax(0,1fr);gap:9px 22px;align-items:start}
       .about-principle-no{padding-top:11px}
       .about-principle-word{font-size:clamp(54px,7.7vw,89px)}
-      .about-principle p{grid-column:2;max-width:none;margin:0;font-size:14px}
+      .about-principle p{grid-column:2;margin:0;font-size:14px}
     }
     @media(max-width:1060px){
       .about-steps{gap:14px}
@@ -210,10 +206,9 @@
       .about-principle-no{font-size:11px;padding-top:7px}
       .about-principle-word{font-size:clamp(42px,8.8vw,68px)}
       .about-principle p{grid-column:2;margin:0;font-size:13px;line-height:1.7}
-      .about-case-toggle{align-items:flex-start;padding:18px 0;gap:15px}
-      .about-case-toggle-meta{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
-      .about-case-toggle-action{gap:10px;font-size:12px}
-      .about-case-toggle-icon{width:34px;height:34px;font-size:21px}
+      .about-case-toggle{padding:20px 0;gap:15px}
+      .about-case-toggle-text{font-size:clamp(19px,4.5vw,22px)}
+      .about-case-toggle-icon{width:40px;height:40px;font-size:24px}
       .about-case-head{padding-bottom:24px}
       .about-steps{grid-template-columns:1fr;max-width:570px;gap:30px}
       .about-step-type{font-size:10px}
@@ -230,8 +225,7 @@
     @media(max-width:450px){
       .about-title{font-size:clamp(38px,9vw,48px)}
       .about-principle-word{font-size:clamp(40px,9.7vw,46px)}
-      .about-case-toggle-action{align-self:center}
-      .about-case-toggle-text{max-width:82px;line-height:1.45;text-align:right}
+      .about-case-toggle-text{line-height:1.4}
       .about-steps{gap:28px}
       .about-step-copy{padding-top:12px}
     }
@@ -659,29 +653,23 @@
           <li class="about-principle">
             <span class="about-principle-no" aria-hidden="true">01 /</span>
             <h3 class="about-principle-word">QUESTION.</h3>
-            <p>익숙한 방식에서도 불편한 지점을 발견합니다.</p>
+            <p>익숙한 방식이라도 불편함이 반복된다면, 그 원인부터 살핍니다.</p>
           </li>
           <li class="about-principle">
             <span class="about-principle-no" aria-hidden="true">02 /</span>
             <h3 class="about-principle-word">STRUCTURE.</h3>
-            <p>목적에 맞게 정보를 정리하고 흐름을 설계합니다.</p>
+            <p>필요한 정보를 선별하고, 사용자가 따라갈 순서로 재구성합니다.</p>
           </li>
           <li class="about-principle">
             <span class="about-principle-no" aria-hidden="true">03 /</span>
             <h3 class="about-principle-word">EXECUTION.</h3>
-            <p>설계한 내용을 실제 사용할 수 있는 형태로 구현합니다.</p>
+            <p>설계에 머무르지 않고, 실제 화면으로 구현하고 다듬습니다.</p>
           </li>
         </ol>
 
         <button type="button" class="about-case-toggle" id="about-case-toggle" aria-controls="about-case-panel" aria-expanded="false">
-          <span class="about-case-toggle-meta">
-            <span class="about-case-toggle-label">IN PRACTICE</span>
-            <span class="about-case-toggle-description">생각이 실제 업무에 적용된 과정</span>
-          </span>
-          <span class="about-case-toggle-action">
-            <span class="about-case-toggle-text">실무 적용 사례 보기</span>
-            <span class="about-case-toggle-icon" aria-hidden="true">+</span>
-          </span>
+          <span class="about-case-toggle-text">실무 적용 사례 보기</span>
+          <span class="about-case-toggle-icon" aria-hidden="true">+</span>
         </button>
         <div class="about-case-panel" id="about-case-panel" hidden>
         <div class="about-case" aria-label="블로그 스킨 제작자료 요청 프로세스 개선 사례">
