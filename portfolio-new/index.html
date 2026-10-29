@@ -126,9 +126,9 @@
     .about-title em{font-style:normal;color:var(--accent)}
     .about-intro{max-width:325px;font-size:clamp(12px,1vw,14px);line-height:1.9;color:#5f655f;margin:0 0 5px}
     .about-case{border-top:1px solid #aab0a8}
-    .about-case-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 0 32px}
-    .about-case-head span{font-size:10px;font-weight:700;letter-spacing:.12em}
-    .about-case-head span:last-child{color:#6d736e;font-weight:500}
+    .about-case-head{display:flex;flex-direction:column;align-items:flex-start;gap:9px;padding:24px 0 35px}
+    .about-case-kicker{font-size:11px;font-weight:700;letter-spacing:.12em;line-height:1.5;color:#626961}
+    .about-case-title{font-size:clamp(24px,2.5vw,28px);font-weight:700;letter-spacing:-.052em;line-height:1.4;margin:0;color:var(--ink)}
     .about-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,36px)}
     .about-step{min-width:0;display:flex;flex-direction:column}
     .about-step-top{display:flex;align-items:center;gap:10px;margin-bottom:15px;min-height:31px}
@@ -150,11 +150,11 @@
     .about-zoom-icon{position:absolute;right:12px;bottom:12px;z-index:2;width:34px;height:34px;display:grid;place-items:center;background:#222725;color:#fff;border-radius:50%;font-size:16px;line-height:1;transition:background .2s,transform .2s}
     .about-step-preview:hover .about-zoom-icon{background:var(--accent);transform:translateY(-2px)}
     .about-step-copy{padding-top:17px}
-    .about-step-copy h3{font-size:clamp(16px,1.35vw,19px);font-weight:700;line-height:1.35;letter-spacing:-.045em;margin:0 0 8px}
-    .about-step-copy p{font-size:12px;color:#666c66;line-height:1.8;max-width:370px;margin:0}
-    .about-case-foot{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-top:26px;margin-top:30px;border-top:1px solid #bec3bc}
-    .about-case-foot p{font-size:12px;line-height:1.8;margin:0;color:#5e665e}
-    .about-case-foot span{font-size:10px;letter-spacing:.04em;color:#7b817b;text-align:right}
+    .about-step-copy h3{font-size:clamp(18px,1.45vw,21px);font-weight:700;line-height:1.4;letter-spacing:-.045em;margin:0 0 11px}
+    .about-step-copy p{font-size:clamp(13px,1vw,14px);color:#545c55;line-height:1.8;max-width:390px;margin:0}
+    .about-case-foot{display:flex;align-items:center;gap:clamp(24px,5vw,68px);padding-top:24px;margin-top:30px;border-top:1px solid #bec3bc}
+    .about-case-foot-label{flex:none;font-size:11px;font-weight:800;letter-spacing:.1em;color:#4b534c}
+    .about-case-foot p{font-size:clamp(13px,1vw,14px);line-height:1.7;margin:0;color:#4d554e}
     /* Native modal retains full-length image and supports previous / next keyboard navigation. */
     body.about-lightbox-open{overflow:hidden}
     .about-lightbox{position:fixed;inset:0;margin:auto;width:min(1160px,calc(100vw - 40px));height:min(92dvh,960px);max-width:none;max-height:none;padding:0;border:1px solid #c9cdc5;background:var(--paper);color:var(--ink);box-shadow:0 25px 85px #0c120d90;overflow:hidden}
@@ -184,12 +184,10 @@
       .about-heading .eyebrow{margin-bottom:24px}
       .about-title{font-size:clamp(40px,8vw,61px)}
       .about-case-head{padding-bottom:24px}
-      .about-case-head span:last-child{display:none}
       .about-steps{grid-template-columns:1fr;max-width:570px;gap:30px}
       .about-step-type{font-size:10px}
       .about-image--kakao img{top:-43%}
       .about-case-foot{align-items:flex-start;flex-direction:column;gap:9px}
-      .about-case-foot span{text-align:left}
       .about-lightbox{width:calc(100vw - 16px);height:calc(100dvh - 16px)}
       .about-lightbox-head{padding:12px}
       .about-lightbox-actions{gap:5px}
@@ -624,8 +622,8 @@
 
         <div class="about-case reveal delay-1" aria-label="블로그 스킨 제작자료 요청 프로세스 개선 사례">
           <div class="about-case-head">
-            <span>WORKFLOW REDESIGN&nbsp; / &nbsp;BLOG SKIN REQUEST</span>
-            <span>EMAIL &amp; DOCX &nbsp;→&nbsp; MESSAGE &nbsp;→&nbsp; WEB FORM</span>
+            <span class="about-case-kicker">WORKFLOW IMPROVEMENT / 2026</span>
+            <h3 class="about-case-title">블로그 스킨 제작자료 요청 방식 개선</h3>
           </div>
           <div class="about-steps">
             <article class="about-step">
@@ -635,8 +633,8 @@
                 <span class="about-zoom-icon" aria-hidden="true">↗</span>
               </button>
               <div class="about-step-copy">
-                <h3>서비스와 맞지 않는 양식</h3>
-                <p>블로그 스킨 제작에도 홈페이지용 워드 요청서를 사용하던 방식.</p>
+                <h3>블로그 스킨 전용 양식의 부재</h3>
+                <p>블로그 스킨 전용 요청서가 없어 홈페이지 제작용 워드파일과 이메일 안내를 통해 자료를 수집했습니다.</p>
               </div>
             </article>
 
@@ -647,8 +645,8 @@
                 <span class="about-zoom-icon" aria-hidden="true">↗</span>
               </button>
               <div class="about-step-copy">
-                <h3>필요한 정보 다시 정의</h3>
-                <p>이미지에 번호를 표시하고, 블로그 스킨에 필요한 항목만 따로 정리.</p>
+                <h3>제작에 필요한 정보 재구성</h3>
+                <p>블로그 스킨에 필요한 항목을 정리하고, 이미지와 번호를 활용해 작성 내용을 안내했습니다.</p>
               </div>
             </article>
 
@@ -659,14 +657,14 @@
                 <span class="about-zoom-icon" aria-hidden="true">↗</span>
               </button>
               <div class="about-step-copy">
-                <h3>안내에서 입력 경험으로</h3>
-                <p>디자인 선택, 정보 작성, 메뉴별 URL 입력과 제작 안내를 하나의 온라인 폼에 통합.</p>
+                <h3>온라인 입력폼으로 전환</h3>
+                <p>디자인 선택부터 정보 입력, 메뉴 구성, 제작 안내까지 하나의 온라인 폼으로 통합했습니다.</p>
               </div>
             </article>
           </div>
           <div class="about-case-foot">
-            <p>고객이 메시지를 읽고 답변을 구성하는 방식에서, <strong>안내에 따라 필요한 정보를 입력하는 구조</strong>로.</p>
-            <span>기존 CMS 활용 · 입력 항목 및 화면 구성 직접 설계</span>
+            <span class="about-case-foot-label">MY CONTRIBUTION</span>
+            <p>정보구조 설계 · 입력 항목 구성 · UI 디자인 · CMS 적용</p>
           </div>
         </div>
       </div>
