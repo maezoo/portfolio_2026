@@ -249,26 +249,24 @@
     }
 
     /* Selected Work only: top typography/overview 60:40, lower details/mockup 35:65. */
-    .work .projects{gap:clamp(110px,12.5vw,188px)}
-    .work .work-top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(38px,5.4vw,90px);align-items:end;padding:clamp(48px,5.6vw,86px) 0 clamp(54px,6vw,98px)}
+    .work .projects{gap:clamp(95px,10vw,150px)}
+    .work .work-top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(38px,5.4vw,90px);align-items:center;padding:clamp(42px,4.8vw,72px) 0 clamp(42px,5vw,76px)}
     .work .work-head,.work .work-intro{min-width:0}
     .work .work-name h3{margin:0 0 clamp(18px,2.4vw,32px);font-size:clamp(53px,6.1vw,100px);line-height:1.075;letter-spacing:-.083em;font-weight:700}
     .work .work-period{color:var(--accent)}
     .work .work-company{display:flex;align-items:baseline;gap:12px 20px;flex-wrap:wrap;margin:0;font-size:clamp(18px,1.7vw,24px);font-weight:700;line-height:1.5;letter-spacing:-.035em}
     .work .work-company-note{font-size:11px;letter-spacing:.02em;color:var(--muted);font-weight:700}
-    .work .work-intro{border-top:1px solid var(--ink);padding-top:clamp(22px,2.5vw,34px)}
-    .work .work-label{display:block;font-size:10px;font-weight:800;letter-spacing:.12em;color:var(--muted);margin-bottom:20px}
-    .work .work-desc{margin:0;font-size:clamp(15px,1.27vw,18px);line-height:1.92;letter-spacing:-.03em;color:#505951}
+    .work .work-label{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:14px}
+    .work .work-desc{margin:0;font-size:clamp(15px,1.25vw,17px);line-height:1.85;letter-spacing:-.025em;color:#505951}
     .work .work-tagline{margin:24px 0 0;padding-top:20px;border-top:1px solid var(--line);font-size:14px;font-weight:700;line-height:1.8;letter-spacing:-.025em}
     .work .work-main{display:grid;grid-template-columns:minmax(0,.54fr) minmax(0,1fr);gap:clamp(38px,5.2vw,90px);align-items:start}
-    .work .work-details{display:flex;flex-direction:column;gap:clamp(26px,3vw,50px);min-width:0;padding-top:7px}
+    .work .work-details{display:flex;flex-direction:column;gap:clamp(22px,2.4vw,34px);min-width:0;padding-top:0}
     .work .work-facts{margin:0;display:flex;flex-direction:column;gap:0}
-    .work .work-facts>div{min-width:0;border-top:1px solid var(--line);padding:17px 0 clamp(19px,2vw,29px)}
-    .work .work-facts>div:first-child{border-top-color:var(--ink)}
-    .work .work-facts dt{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin:0 0 12px}
-    .work .work-facts dd{font-size:13px;line-height:1.9;letter-spacing:-.025em;margin:0}
-    .work .work-links{border-top:1px solid var(--ink);min-width:0}
-    .work .work-item-link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 4px;border-bottom:1px solid var(--line);transition:color .25s,padding-left .25s}
+    .work .work-facts>div{min-width:0;padding:0 0 clamp(18px,1.9vw,28px)}
+    .work .work-facts dt{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--muted);margin:0 0 8px}
+    .work .work-facts dd{font-size:14px;line-height:1.75;letter-spacing:-.025em;margin:0}
+    .work .work-links{border-top:1px solid var(--line);min-width:0}
+    .work .work-item-link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 4px;border-bottom:1px solid var(--line);transition:color .25s,padding-left .25s}
     .work .work-item-link small{display:block;color:var(--muted);font-size:9px;letter-spacing:.11em;font-weight:700;margin-bottom:6px}
     .work .work-item-link strong{display:block;font-size:13px;font-weight:700;letter-spacing:-.025em}
     .work .work-item-link b{font-size:21px;font-weight:400;transition:transform .25s}
@@ -298,18 +296,17 @@
       .work .work-image .visual-bnj{min-height:440px}
     }
     @media(max-width:760px){
-      .work .projects{gap:110px}
+      .work .projects{gap:90px}
       .work .work-top{grid-template-columns:1fr;gap:34px;padding:41px 0 36px}
       .work .work-name h3{font-size:clamp(40px,9.3vw,68px);margin-bottom:18px;line-height:1.13}
       .work .work-company{font-size:17px;gap:6px 12px}
       .work .work-company-note{font-size:10px}
-      .work .work-intro{padding-top:23px}
       .work .work-label{margin-bottom:13px}
       .work .work-desc{font-size:14px}
       .work .work-tagline{font-size:13px;margin-top:20px;padding-top:17px}
       .work .work-main{grid-template-columns:1fr;gap:28px}
       .work .work-image{grid-row:1}
-      .work .work-details{grid-row:2;gap:27px;padding-top:0}
+      .work .work-details{grid-row:2;gap:25px;padding-top:0}
       .work .work-facts{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
       .work .work-facts>div:last-child:nth-child(3){grid-column:1 / -1}
       .work .work-image .visual-creafit,.work .work-image .visual-donggam{min-height:clamp(345px,74vw,560px);padding:clamp(20px,5vw,40px)}
