@@ -118,21 +118,25 @@
     .bnj-illustration{position:absolute;right:-8%;bottom:9%;width:88%;max-width:620px;opacity:.68;filter:drop-shadow(0 13px 20px #141e2366);transition:transform .8s var(--ease)}
     .visual-bnj:hover .bnj-illustration{transform:translate(-2%,-3%)}
     .bnj-bottom{font-size:10px;letter-spacing:.09em;color:#c6d0d0;position:relative;z-index:3}
-    /* About — clear editorial headline, then two calm content columns. */
-    .about{background:#e9e9e2;padding-block:clamp(90px,9vw,140px)}
+    /* About — editorial statement, concise introduction and five visible principles. */
+    .about{background:#e9e9e2;padding-block:clamp(84px,8vw,124px)}
     .about .wrap{display:block}
-    .about-heading{margin-bottom:clamp(46px,5.5vw,78px)}
+    .about-heading{margin-bottom:clamp(36px,4vw,58px)}
     .about-heading .eyebrow{margin-bottom:clamp(24px,3vw,42px)}
     .about-title{max-width:1250px;font-size:clamp(46px,6.1vw,94px);line-height:1.2;letter-spacing:-.075em;margin:0;font-weight:700}
     .about-title em{font-style:normal;color:var(--accent)}
-    .about-body{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);align-items:start;gap:clamp(48px,8vw,132px)}
-    .about-narrative{min-width:0}
-    .about-copy{font-size:clamp(19px,2vw,27px);font-weight:600;letter-spacing:-.04em;line-height:1.72;max-width:640px;margin:0}
-    .about-copy-secondary{font-size:14px;line-height:1.9;max-width:600px;color:var(--muted);margin:clamp(18px,2.2vw,30px) 0 0}
-    .values{min-width:0;border-top:1px solid #bfc2bb}
-    .value{display:grid;grid-template-columns:minmax(118px,.55fr) minmax(0,1fr);align-items:baseline;gap:18px;padding:21px 0;border-bottom:1px solid #bfc2bb}
-    .value strong{font-size:clamp(17px,1.7vw,24px);letter-spacing:-.055em}
+    .about-body{display:block}
+    .about-narrative{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);align-items:start;gap:clamp(40px,6vw,95px)}
+    .about-copy{font-size:clamp(19px,1.9vw,26px);font-weight:600;letter-spacing:-.04em;line-height:1.7;max-width:640px;margin:0}
+    .about-copy-secondary{font-size:14px;line-height:1.9;max-width:600px;color:var(--muted);margin:0}
+    .about-values-label{margin:clamp(45px,5vw,72px) 0 16px;font-size:12px;letter-spacing:-.025em;font-weight:700;color:var(--muted)}
+    .values{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(18px,2.6vw,40px);min-width:0}
+    .value{min-width:0;display:flex;flex-direction:column;gap:12px;padding:21px 0 0;border-top:1px solid #bfc2bb}
+    .value strong{font-size:clamp(17px,1.65vw,23px);line-height:1.3;letter-spacing:-.055em}
     .value p{font-size:12px;line-height:1.75;color:var(--muted);margin:0}
+    @media(max-width:1100px){
+      .values{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:25px}
+    }
     .experience .section-head{margin-bottom:60px}
     .experience-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:clamp(40px,8vw,120px)}
     .small-title{font-size:11px;letter-spacing:.11em;font-weight:800;color:var(--muted);margin:0 0 27px}
@@ -213,13 +217,16 @@
       .project--reverse .visual{grid-row:2}
       .visual-caption{font-size:8px}
       .about{padding-block:76px}
-      .about-heading{margin-bottom:35px}
+      .about-heading{margin-bottom:32px}
       .about-heading .eyebrow{margin-bottom:24px}
       .about-title{font-size:clamp(39px,8vw,60px);line-height:1.21}
-      .about-body{grid-template-columns:1fr;gap:33px}
+      .about-narrative{grid-template-columns:1fr;gap:17px}
       .about-copy{font-size:19px}
-      .about-copy-secondary{font-size:13px;margin-top:19px}
-      .value{grid-template-columns:minmax(105px,.42fr) minmax(0,1fr);gap:14px;padding:18px 0}
+      .about-copy-secondary{font-size:13px}
+      .about-values-label{margin:38px 0 16px}
+      .values{grid-template-columns:repeat(2,minmax(0,1fr));gap:23px 17px}
+      .value{gap:10px;padding-top:15px}
+      .value strong{font-size:18px}
       .value p{font-size:11px}
       .experience-grid{grid-template-columns:1fr;gap:43px}
       .footer-title{font-size:clamp(60px,12vw,95px)}
@@ -563,10 +570,13 @@
             <p class="about-copy">무엇을 더할지보다 왜 필요한지 먼저 생각합니다. 화면의 완성도와 실제 사용 경험을 함께 고려하며, 복잡한 정보를 명확한 구조로 바꾸는 과정에 집중합니다.</p>
             <p class="about-copy-secondary">웹사이트의 기획부터 정보구조, UI 디자인, 반응형 구현과 운영까지 폭넓게 경험했습니다. 문제를 발견하는 시선과 직접 구현하는 능력을 연결해 더 나은 사용자 경험을 만드는 일을 지향합니다.</p>
           </div>
-          <div class="values reveal delay-2" aria-label="일하는 방식">
-            <div class="value"><strong>Question.</strong><p>당연하게 여기는 흐름에도 이유를 묻습니다.</p></div>
-            <div class="value"><strong>Structure.</strong><p>정보를 정돈하고 사용자의 경로를 설계합니다.</p></div>
-            <div class="value"><strong>Clarity.</strong><p>중요한 정보가 선명하게 드러나도록 만듭니다.</p></div>
+          <h3 class="about-values-label reveal delay-2">생각의 기준</h3>
+          <div class="values reveal delay-2" aria-label="디자인을 바라보는 다섯 가지 기준">
+            <div class="value"><strong>Question.</strong><p>익숙한 방식에도 이유를 묻습니다.</p></div>
+            <div class="value"><strong>Structure.</strong><p>현상보다 문제를 만드는 구조를 살핍니다.</p></div>
+            <div class="value"><strong>Usability.</strong><p>불필요한 과정 없이 목적에 도달하도록 설계합니다.</p></div>
+            <div class="value"><strong>Essential.</strong><p>무엇을 더할지보다 무엇이 필요한지 먼저 판단합니다.</p></div>
+            <div class="value"><strong>Execution.</strong><p>생각에 머무르지 않고 실행으로 구체화합니다.</p></div>
           </div>
         </div>
       </div>
