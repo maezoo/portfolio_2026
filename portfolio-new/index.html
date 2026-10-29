@@ -119,43 +119,35 @@
     .visual-bnj:hover .bnj-illustration{transform:translate(-2%,-3%)}
     .bnj-bottom{font-size:10px;letter-spacing:.09em;color:#c6d0d0;position:relative;z-index:3}
 
-    /* Approach: restrained editorial layout, original soft gray-green background. */
-    .about{background:#e9e9e2;color:var(--ink);border-top:1px solid var(--line);padding-block:0 clamp(74px,8vw,112px)}
-    .about-heading{grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:clamp(34px,5vw,90px);align-items:end;margin-bottom:clamp(30px,3.8vw,47px)}
+    /* Approach: one editorial language across Work, Approach and Experience. */
+    .about{background:#e9e9e2;color:var(--ink);border-top:1px solid var(--line);padding-block:clamp(90px,9vw,140px)}
+    .about-heading{grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:clamp(34px,5vw,90px);align-items:end;margin-bottom:clamp(60px,7vw,105px)}
     .about-title{color:var(--ink)}
     .about-title span{color:var(--accent)}
-    .about-statement{min-width:0;max-width:585px;padding-bottom:4px}
-    .about-statement-lead{margin:0 0 18px;font-size:clamp(24px,2.5vw,37px);line-height:1.45;font-weight:650;letter-spacing:-.06em;word-break:keep-all}
-    .about-statement-detail{margin:0;max-width:475px;color:var(--muted);font-size:clamp(13px,1.08vw,15px);line-height:1.85;letter-spacing:-.02em;word-break:keep-all}
-    .about-scroll-track{position:relative}
-    .about-scroll-frame{min-width:0}
-    .about-principles-nav{display:none;align-items:center;justify-content:space-between;gap:12px;padding:15px 0;border-top:1px solid #b1b5ac}
-    .about-principles-nav span{color:#939991;font-size:clamp(10px,.95vw,12px);font-weight:750;letter-spacing:.055em;transition:color .25s}
-    .about-principles-nav span.is-active{color:var(--accent)}
-    /* Static list remains readable when motion is disabled or scripting unavailable. */
-    .about-principles{display:grid;gap:25px;list-style:none;margin:0;padding:23px 0;border-top:1px solid #b1b5ac;border-bottom:1px solid #b1b5ac}
-    .about-principle{min-width:0;display:grid;grid-template-columns:minmax(0,1.03fr) minmax(0,.97fr);align-items:center;gap:clamp(24px,4.5vw,80px);padding:18px 0}
-    .about-principle:not(:last-child){border-bottom:1px solid #c5c9bf}
-    .about-principle-word{margin:0;color:var(--ink);font-size:clamp(49px,5.9vw,87px);font-weight:700;letter-spacing:-.084em;line-height:1.06;white-space:nowrap}
+    .about-statement{min-width:0;max-width:600px;padding-bottom:4px}
+    .about-statement-lead{margin:0 0 16px;font-size:clamp(24px,2.5vw,37px);line-height:1.45;font-weight:650;letter-spacing:-.06em;word-break:keep-all}
+    .about-statement-detail{margin:0;max-width:480px;color:var(--muted);font-size:clamp(13px,1.08vw,15px);line-height:1.85;letter-spacing:-.02em;word-break:keep-all}
+    /* Three distinct principles, presented like the portfolio's project and career rows. */
+    .about-principles{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+    .about-principle{display:grid;grid-template-columns:clamp(50px,5vw,84px) minmax(0,1.02fr) minmax(0,.98fr);align-items:center;column-gap:clamp(22px,3.2vw,52px);row-gap:13px;min-width:0;padding:clamp(28px,3.2vw,46px) 0;border-bottom:1px solid #bbc0b7}
+    .about-principle-index{align-self:start;padding-top:clamp(7px,.8vw,13px);color:var(--accent);font-size:12px;letter-spacing:.07em;font-weight:700;line-height:1.6}
+    .about-principle-word{margin:0;color:var(--ink);font-size:clamp(44px,5.2vw,76px);line-height:1.05;letter-spacing:-.083em;font-weight:700;white-space:nowrap;transition:color .32s ease,transform .45s var(--ease)}
     .about-principle-word span{color:var(--accent)}
-    .about-principle-copy{margin:0;max-width:475px;color:var(--muted);font-size:clamp(17px,1.53vw,22px);font-weight:500;letter-spacing:-.043em;line-height:1.75;word-break:keep-all}
+    .about-principle-copy{max-width:440px;margin:0;color:var(--muted);font-size:clamp(16px,1.4vw,20px);line-height:1.75;font-weight:500;letter-spacing:-.042em;word-break:keep-all}
     .about-principle-copy em{color:var(--ink);font-style:normal;font-weight:700}
-    /* Compact pinned composition; the keyword and explanation share one fixed grid. */
-    html.has-approach-scroll .about-scroll-track{height:clamp(680px,106svh,950px)}
-    html.has-approach-scroll .about-scroll-frame{position:sticky;top:clamp(52px,7svh,82px)}
-    html.has-approach-scroll .about-principles-nav{display:flex}
-    html.has-approach-scroll .about-principles{position:relative;display:block;height:clamp(190px,24svh,240px);margin:0;padding:0;border-top:0;border-bottom:1px solid #b1b5ac}
-    html.has-approach-scroll .about-principle{position:absolute;inset:0;width:100%;padding:12px 0;border:0;opacity:0;transform:translate3d(0,14px,0);pointer-events:none;will-change:opacity,transform}
-    html.has-approach-scroll .about-principle:first-child{opacity:1;transform:none}
-    /* One optional case, identified only by a small label and the case title. */
-    .about-case-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:25px;margin-top:clamp(17px,2.4vw,29px);padding:22px 2px;background:transparent;color:var(--ink);border:0;border-top:1px solid #b1b5ac;border-bottom:1px solid #b1b5ac;text-align:left;cursor:pointer;transition:border-color .25s}
+    @media(hover:hover) and (pointer:fine){
+      .about-principle:hover .about-principle-word{color:var(--accent);transform:translateX(6px)}
+      .about-principle:hover .about-principle-word span{color:var(--ink)}
+    }
+    /* A quiet evidence link; the approach remains the focus. */
+    .about-case-toggle{display:grid;grid-template-columns:clamp(50px,5vw,84px) minmax(0,1fr) auto;column-gap:clamp(22px,3.2vw,52px);align-items:center;width:100%;margin-top:clamp(47px,5vw,78px);padding:24px 0;background:none;color:var(--ink);border:0;border-top:1px solid var(--ink);border-bottom:1px solid #bbc0b7;text-align:left;cursor:pointer;transition:border-color .25s}
+    .about-case-toggle:hover{border-bottom-color:var(--ink)}
     .about-case-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
-    .about-case-toggle:hover{border-color:var(--ink)}
-    .about-case-toggle-main{display:flex;min-width:0;align-items:baseline;flex-wrap:wrap;column-gap:clamp(20px,3vw,48px);row-gap:7px}
-    .about-case-toggle-kicker{flex:none;color:#666f66;font-size:12px;font-weight:700;letter-spacing:-.02em}
-    .about-case-toggle-text{font-size:clamp(18px,1.75vw,24px);font-weight:700;line-height:1.45;letter-spacing:-.052em}
-    .about-case-toggle-icon{display:grid;flex:none;place-items:center;width:40px;height:40px;border:1px solid #9da39b;border-radius:50%;font-size:25px;line-height:1;font-weight:400;transition:background .25s,border-color .25s,color .25s}
-    .about-case-toggle:hover .about-case-toggle-icon,.about-case-toggle[aria-expanded="true"] .about-case-toggle-icon{background:var(--accent);border-color:var(--accent);color:#fff}
+    .about-case-toggle-kicker{color:var(--muted);font-size:12px;letter-spacing:-.02em;line-height:1.7;font-weight:700;white-space:nowrap}
+    .about-case-toggle-text{min-width:0;font-size:clamp(18px,1.8vw,25px);font-weight:700;letter-spacing:-.052em;line-height:1.45;word-break:keep-all}
+    .about-case-toggle-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;border:1px solid #9da39b;border-radius:50%;font-size:26px;line-height:1;font-weight:400;transition:background .25s,border-color .25s,color .25s,transform .3s var(--ease)}
+    .about-case-toggle:hover .about-case-toggle-icon,.about-case-toggle[aria-expanded="true"] .about-case-toggle-icon{background:var(--ink);border-color:var(--ink);color:#fff}
+    .about-case-toggle:hover .about-case-toggle-icon{transform:rotate(90deg)}
     .about-case-panel{height:0;overflow:hidden;opacity:0;transition:height .36s cubic-bezier(.22,1,.36,1),opacity .3s ease}
     .about-case-panel.is-open{opacity:1}
     .about-case{margin-top:20px;padding:clamp(20px,3.7vw,50px);background:#f0efea;color:var(--ink)}
@@ -207,37 +199,37 @@
     .about-lightbox-guide{flex:none;margin:0;padding:10px 15px;text-align:center;font-size:10px;color:#666f66;border-top:1px solid var(--line)}
 
     @media(max-width:1100px){
-      .about-heading{gap:34px}
+      .about-heading{gap:38px}
       .about-statement-lead{font-size:clamp(23px,2.7vw,31px)}
-      .about-principle-word{font-size:clamp(45px,5.5vw,74px)}
-      .about-principle-copy{font-size:clamp(17px,1.9vw,21px)}
+      .about-principle{column-gap:clamp(20px,2.6vw,40px)}
+      .about-principle-word{font-size:clamp(41px,5vw,60px)}
+      .about-principle-copy{font-size:clamp(16px,1.65vw,19px)}
+      .about-case-toggle{column-gap:clamp(20px,2.6vw,40px)}
     }
     @media(max-width:900px){
-      .about-heading{grid-template-columns:1fr;gap:25px;margin-bottom:clamp(24px,3.5svh,38px)}
-      .about-statement{max-width:675px}
-      html.has-approach-scroll .about-scroll-frame{top:clamp(40px,5svh,65px)}
+      .about-heading{grid-template-columns:1fr;gap:27px;margin-bottom:58px}
+      .about-statement{max-width:670px}
+      .about-principle{grid-template-columns:48px minmax(0,1fr);column-gap:22px;row-gap:9px;padding:30px 0}
+      .about-principle-index{grid-row:1 / 3}
+      .about-principle-word{font-size:clamp(42px,7.2vw,64px)}
+      .about-principle-copy{grid-column:2;max-width:630px;font-size:17px}
+      .about-case-toggle{grid-template-columns:48px minmax(0,1fr) 42px;column-gap:22px}
       .about-steps{gap:14px}
       .about-step-type{font-size:9px}
     }
     @media(max-width:760px){
-      .section.about{padding-block:0 78px}
-      .about-heading{gap:23px;margin-bottom:25px}
+      .section.about{padding-block:78px}
+      .about-heading{gap:24px;margin-bottom:44px}
       .about-statement-lead{font-size:clamp(25px,5vw,32px);margin-bottom:14px}
       .about-statement-detail{font-size:14px;line-height:1.8}
-      .about-principles-nav{padding:14px 0}
-      .about-principles-nav span{font-size:clamp(9px,2.3vw,11px)}
-      .about-principle{grid-template-columns:1fr;gap:14px}
-      .about-principle-word{font-size:clamp(39px,9.2vw,66px)}
-      .about-principle-copy{font-size:clamp(17px,3.8vw,21px);line-height:1.62}
-      html.has-approach-scroll .about-scroll-track{height:clamp(690px,120svh,990px)}
-      html.has-approach-scroll .about-scroll-frame{top:clamp(30px,4svh,52px)}
-      html.has-approach-scroll .about-principles{height:clamp(185px,26svh,235px)}
-      html.has-approach-scroll .about-principle{gap:13px;padding:6px 0}
-      .about-case-toggle{margin-top:20px;padding:19px 0;gap:13px}
-      .about-case-toggle-main{align-items:flex-start;flex-direction:column;gap:6px}
-      .about-case-toggle-kicker{font-size:11px}
-      .about-case-toggle-text{font-size:18px}
-      .about-case-toggle-icon{width:39px;height:39px;font-size:24px}
+      .about-principle{grid-template-columns:34px minmax(0,1fr);column-gap:12px;row-gap:10px;padding:27px 0}
+      .about-principle-index{font-size:11px;padding-top:6px}
+      .about-principle-word{font-size:clamp(37px,8.8vw,58px)}
+      .about-principle-copy{font-size:clamp(16px,3.6vw,19px);line-height:1.65}
+      .about-case-toggle{grid-template-columns:34px minmax(0,1fr) 40px;column-gap:12px;margin-top:50px;padding:23px 0}
+      .about-case-toggle-kicker{font-size:11px;align-self:start;padding-top:4px;white-space:normal}
+      .about-case-toggle-text{font-size:clamp(18px,4.2vw,22px)}
+      .about-case-toggle-icon{width:40px;height:40px;font-size:24px}
       .about-steps{grid-template-columns:1fr;max-width:570px;gap:30px}
       .about-step-type{font-size:10px}
       .about-image--kakao img{top:-43%}
@@ -251,14 +243,16 @@
       .about-lightbox-guide{font-size:9px}
     }
     @media(max-width:450px){
-      .about-principle-word{font-size:clamp(37px,9.2vw,44px)}
-      .about-principle-copy{font-size:18px}
+      .about-principle-word{font-size:clamp(34px,8.6vw,43px)}
+      .about-principle-copy{font-size:16px}
       .about-case-toggle-text{font-size:17px}
+      .about-case-toggle-kicker{font-size:10px}
       .about-steps{gap:28px}
       .about-step-copy{padding-top:12px}
     }
     @media(prefers-reduced-motion:reduce){
       .about-case-panel{transition:none}
+      .about-principle-word,.about-case-toggle-icon{transition:none}
     }
     .experience .section-head{margin-bottom:60px}
     .experience-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:clamp(40px,8vw,120px)}
@@ -672,39 +666,33 @@
 
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="wrap">
-        <div class="about-scroll-track" id="approach-scroll">
-          <div class="about-scroll-frame">
-            <div class="section-head about-heading reveal">
-              <div><h2 class="section-title about-title" id="about-title">Approach<span>.</span></h2></div>
-              <div class="about-statement">
-                <p class="about-statement-lead">필요한 것을 먼저 판단하고,<br>더 나은 방법을 찾아 만듭니다.</p>
-                <p class="about-statement-detail">정해진 순서를 따르기보다 목적과 상황에 맞춰 질문하고, 구조를 정리하고, 직접 구현하며 개선합니다.</p>
-              </div>
-            </div>
-            <div class="about-principles-nav" aria-hidden="true">
-              <span class="is-active">QUESTION</span><span>STRUCTURE</span><span>EXECUTION</span>
-            </div>
-            <ol class="about-principles" aria-label="일할 때 중요하게 생각하는 세 가지 기준">
-              <li class="about-principle about-principle--question">
-                <h3 class="about-principle-word">QUESTION<span>.</span></h3>
-                <p class="about-principle-copy">주어진 요청의 <em>이유를 살피고,</em><br>필요한 것을 먼저 판단합니다.</p>
-              </li>
-              <li class="about-principle about-principle--structure">
-                <h3 class="about-principle-word">STRUCTURE<span>.</span></h3>
-                <p class="about-principle-copy">복잡한 정보와 요구사항을 <em>정리해,</em><br>목적에 맞는 흐름을 설계합니다.</p>
-              </li>
-              <li class="about-principle about-principle--execution">
-                <h3 class="about-principle-word">EXECUTION<span>.</span></h3>
-                <p class="about-principle-copy">생각에 머무르지 않고 <em>직접 만들며,</em><br>실제 사용 속에서 다듬습니다.</p>
-              </li>
-            </ol>
+        <div class="section-head about-heading reveal">
+          <div><h2 class="section-title about-title" id="about-title">Approach<span>.</span></h2></div>
+          <div class="about-statement">
+            <p class="about-statement-lead">필요한 것을 먼저 판단하고,<br>더 나은 방법을 찾아 만듭니다.</p>
+            <p class="about-statement-detail">정해진 순서를 따르기보다 목적과 상황에 맞춰 질문하고, 구조를 정리하고, 직접 구현하며 개선합니다.</p>
           </div>
         </div>
-        <button type="button" class="about-case-toggle" id="about-case-toggle" aria-controls="about-case-panel" aria-expanded="false">
-          <span class="about-case-toggle-main">
-            <span class="about-case-toggle-kicker">실무 사례</span>
-            <span class="about-case-toggle-text">블로그 스킨 제작자료 요청 방식 개선</span>
-          </span>
+        <ol class="about-principles" aria-label="일할 때 중요하게 생각하는 세 가지 기준">
+          <li class="about-principle reveal">
+            <span class="about-principle-index" aria-hidden="true">01</span>
+            <h3 class="about-principle-word">QUESTION<span>.</span></h3>
+            <p class="about-principle-copy">요청의 <em>이유를 살피고,</em><br>무엇이 필요한지 먼저 판단합니다.</p>
+          </li>
+          <li class="about-principle reveal delay-1">
+            <span class="about-principle-index" aria-hidden="true">02</span>
+            <h3 class="about-principle-word">STRUCTURE<span>.</span></h3>
+            <p class="about-principle-copy">흩어진 정보와 요구사항을 <em>정리해,</em><br>이해하기 쉬운 흐름을 만듭니다.</p>
+          </li>
+          <li class="about-principle reveal delay-1">
+            <span class="about-principle-index" aria-hidden="true">03</span>
+            <h3 class="about-principle-word">EXECUTION<span>.</span></h3>
+            <p class="about-principle-copy">생각을 실제 화면으로 <em>구현하고,</em><br>사용 과정에서 계속 다듬습니다.</p>
+          </li>
+        </ol>
+        <button type="button" class="about-case-toggle reveal" id="about-case-toggle" aria-controls="about-case-panel" aria-expanded="false">
+          <span class="about-case-toggle-kicker">실무 사례</span>
+          <span class="about-case-toggle-text">블로그 스킨 제작자료 요청 방식 개선</span>
           <span class="about-case-toggle-icon" aria-hidden="true">+</span>
         </button>
         <div class="about-case-panel" id="about-case-panel" hidden>
@@ -822,45 +810,6 @@
       var topButton=document.getElementById("back-to-top");
       if(topButton){topButton.addEventListener("click",function(){window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})})}
 
-      // APPROACH: reversible crossfades tied to normal document scrolling.
-      var approachTrack=document.getElementById("approach-scroll");
-      var approachFrame=approachTrack&&approachTrack.querySelector(".about-scroll-frame");
-      var approachItems=approachTrack?Array.prototype.slice.call(approachTrack.querySelectorAll(".about-principle")):[];
-      if(approachTrack&&approachFrame&&approachItems.length===3&&!window.matchMedia("(prefers-reduced-motion: reduce), (max-height: 599px)").matches){
-        var approachTabs=Array.prototype.slice.call(approachTrack.querySelectorAll(".about-principles-nav span"));
-
-        var approachQueued=false;
-        document.documentElement.classList.add("has-approach-scroll");
-        function approachSmooth(a,b,x){
-          var t=Math.max(0,Math.min(1,(x-a)/(b-a)));
-          return t*t*(3-2*t);
-        }
-        function approachDraw(){
-          approachQueued=false;
-          var targetTop=parseFloat(window.getComputedStyle(approachFrame).top)||0;
-          var travel=Math.max(1,approachTrack.offsetHeight-approachFrame.offsetHeight);
-          var p=Math.max(0,Math.min(1,(targetTop-approachTrack.getBoundingClientRect().top)/travel));
-          var second=approachSmooth(.17,.36,p);
-          var third=approachSmooth(.55,.74,p);
-          var fade=[1-second,second*(1-third),third];
-          var slide=[-14*second,14*(1-second)-14*third,14*(1-third)];
-          approachItems.forEach(function(item,i){
-            item.style.opacity=fade[i].toFixed(3);
-            item.style.transform="translate3d(0,"+slide[i].toFixed(1)+"px,0)";
-            item.style.visibility=fade[i]<.005?"hidden":"visible";
-          });
-          var active=p<.26?0:p<.64?1:2;
-          approachTabs.forEach(function(tab,i){tab.classList.toggle("is-active",i===active)});
-        }
-        function approachOnScroll(){
-          if(approachQueued)return;
-          approachQueued=true;
-          window.requestAnimationFrame(approachDraw);
-        }
-        window.addEventListener("scroll",approachOnScroll,{passive:true});
-        window.addEventListener("resize",approachOnScroll);
-        approachDraw();
-      }
       // ABOUT / APPROACH: optional real-work example; only opened on request.
       var aboutCaseToggle=document.getElementById("about-case-toggle");
       var aboutCasePanel=document.getElementById("about-case-panel");
