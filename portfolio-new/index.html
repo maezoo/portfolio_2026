@@ -248,33 +248,24 @@
       .js .reveal{opacity:1;transform:none}
     }
 
-    /* Selected Work only: left project heading, company and overview; right project mockup. */
-    .work .projects{gap:clamp(105px,12vw,185px)}
-    .work .work-head{display:block;padding:0 0 clamp(30px,3.4vw,49px)}
-    .work .work-copy{min-width:0;max-width:570px}
-    .work .work-name h3{margin:0 0 clamp(20px,2.7vw,36px);font-size:clamp(39px,4.5vw,70px);line-height:1.14;letter-spacing:-.078em}
+    /* Selected Work only: top typography/overview 60:40, lower details/mockup 35:65. */
+    .work .projects{gap:clamp(110px,12.5vw,188px)}
+    .work .work-top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(38px,5.4vw,90px);align-items:end;padding:clamp(48px,5.6vw,86px) 0 clamp(54px,6vw,98px)}
+    .work .work-head,.work .work-intro{min-width:0}
+    .work .work-name h3{margin:0 0 clamp(18px,2.4vw,32px);font-size:clamp(53px,6.1vw,100px);line-height:1.075;letter-spacing:-.083em;font-weight:700}
     .work .work-period{color:var(--accent)}
-    .work .work-company{display:flex;align-items:baseline;gap:12px 20px;flex-wrap:wrap;margin:0;font-size:clamp(18px,1.8vw,24px);font-weight:700;line-height:1.5;letter-spacing:-.035em}
+    .work .work-company{display:flex;align-items:baseline;gap:12px 20px;flex-wrap:wrap;margin:0;font-size:clamp(18px,1.7vw,24px);font-weight:700;line-height:1.5;letter-spacing:-.035em}
     .work .work-company-note{font-size:11px;letter-spacing:.02em;color:var(--muted);font-weight:700}
-    .work .work-showcase{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:clamp(35px,5.2vw,88px);align-items:center}
-    .work .work-intro{border-top:1px solid var(--ink);padding-top:clamp(22px,2.5vw,36px);min-width:0}
+    .work .work-intro{border-top:1px solid var(--ink);padding-top:clamp(22px,2.5vw,34px)}
     .work .work-label{display:block;font-size:10px;font-weight:800;letter-spacing:.12em;color:var(--muted);margin-bottom:20px}
-    .work .work-desc{margin:0;font-size:clamp(15px,1.3vw,18px);line-height:1.92;letter-spacing:-.03em;color:#505951}
-    .work .work-tagline{margin:30px 0 0;padding-top:22px;border-top:1px solid var(--line);font-size:14px;font-weight:700;line-height:1.8;letter-spacing:-.025em}
-    .work .work-image{min-width:0;width:100%;overflow:hidden}
-    .work .work-image>.visual{width:100%}
-    .work .work-image .visual-creafit{min-height:clamp(410px,43vw,690px);padding:clamp(25px,4vw,65px)}
-    .work .work-image .visual-donggam{min-height:clamp(410px,43vw,660px);padding:clamp(25px,4vw,60px)}
-    .work .work-image .visual-bnj{min-height:clamp(410px,43vw,670px)}
-    .work .work-image .browser{max-width:810px}
-    .work .work-image .phone{right:5%;width:23%;max-width:190px}
-    .work .work-image .concept-window{max-width:820px}
-    .work .work-image .bnj-main{font-size:clamp(62px,7.2vw,115px)}
-    .work .work-image .bnj-illustration{max-width:590px;width:87%;right:-4%}
-    .work .work-bottom{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(245px,.65fr);gap:clamp(35px,6vw,90px);padding-top:clamp(30px,4.5vw,62px)}
-    .work .work-facts{margin:0;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(60px,.45fr);gap:clamp(18px,3vw,45px)}
-    .work .work-facts>div{min-width:0}
-    .work .work-facts dt{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:15px}
+    .work .work-desc{margin:0;font-size:clamp(15px,1.27vw,18px);line-height:1.92;letter-spacing:-.03em;color:#505951}
+    .work .work-tagline{margin:24px 0 0;padding-top:20px;border-top:1px solid var(--line);font-size:14px;font-weight:700;line-height:1.8;letter-spacing:-.025em}
+    .work .work-main{display:grid;grid-template-columns:minmax(0,.54fr) minmax(0,1fr);gap:clamp(38px,5.2vw,90px);align-items:start}
+    .work .work-details{display:flex;flex-direction:column;gap:clamp(26px,3vw,50px);min-width:0;padding-top:7px}
+    .work .work-facts{margin:0;display:flex;flex-direction:column;gap:0}
+    .work .work-facts>div{min-width:0;border-top:1px solid var(--line);padding:17px 0 clamp(19px,2vw,29px)}
+    .work .work-facts>div:first-child{border-top-color:var(--ink)}
+    .work .work-facts dt{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin:0 0 12px}
     .work .work-facts dd{font-size:13px;line-height:1.9;letter-spacing:-.025em;margin:0}
     .work .work-links{border-top:1px solid var(--ink);min-width:0}
     .work .work-item-link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 4px;border-bottom:1px solid var(--line);transition:color .25s,padding-left .25s}
@@ -286,39 +277,50 @@
     .work .work-item-link.emphasis strong{color:var(--accent)}
     .work .work-item-link.disabled{opacity:.4;cursor:default}
     .work .work-categories{padding-top:3px}
+    .work .work-categories .work-label{margin-bottom:20px}
     .work .work-tags{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
     .work .work-tags span{border:1px solid #c5c7c0;padding:10px 15px;border-radius:99px;font-size:12px;color:#535b55}
-    @media(max-width:1020px){
-      .work .work-name h3{font-size:clamp(37px,4.5vw,54px)}
-      .work .work-showcase{grid-template-columns:minmax(0,1fr) minmax(0,1.36fr);gap:30px}
-      .work .work-bottom{grid-template-columns:1fr minmax(220px,.55fr);gap:30px}
-      .work .work-facts{grid-template-columns:1fr 1fr;gap:20px}
-      .work .work-facts>div:last-child{grid-column:1/-1}
+    .work .work-image{min-width:0;width:100%;overflow:hidden}
+    .work .work-image>.visual{width:100%}
+    .work .work-image .visual-creafit{min-height:clamp(420px,42vw,700px);padding:clamp(27px,4.3vw,68px)}
+    .work .work-image .visual-donggam{min-height:clamp(420px,42vw,680px);padding:clamp(27px,4.2vw,65px)}
+    .work .work-image .visual-bnj{min-height:clamp(420px,42vw,680px)}
+    .work .work-image .browser{max-width:850px}
+    .work .work-image .phone{right:5%;width:23%;max-width:190px}
+    .work .work-image .concept-window{max-width:840px}
+    .work .work-image .bnj-main{font-size:clamp(68px,7.8vw,122px)}
+    .work .work-image .bnj-illustration{max-width:620px;width:88%;right:-4%}
+    @media(max-width:1050px){
+      .work .work-top{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px}
+      .work .work-name h3{font-size:clamp(40px,5.7vw,66px)}
+      .work .work-main{grid-template-columns:minmax(0,.54fr) minmax(0,1fr);gap:34px}
+      .work .work-image .visual-creafit,.work .work-image .visual-donggam{min-height:440px}
+      .work .work-image .visual-bnj{min-height:440px}
     }
     @media(max-width:760px){
-      .work .projects{gap:100px}
-      .work .work-head{padding:0 0 26px}
-      .work .work-name h3{font-size:clamp(39px,7.9vw,62px);line-height:1.13;margin-bottom:18px}
-      .work .work-company{font-size:17px;gap:5px 12px}
+      .work .projects{gap:110px}
+      .work .work-top{grid-template-columns:1fr;gap:34px;padding:41px 0 36px}
+      .work .work-name h3{font-size:clamp(40px,9.3vw,68px);margin-bottom:18px;line-height:1.13}
+      .work .work-company{font-size:17px;gap:6px 12px}
       .work .work-company-note{font-size:10px}
-      .work .work-showcase{grid-template-columns:1fr;gap:29px;align-items:start}
       .work .work-intro{padding-top:23px}
       .work .work-label{margin-bottom:13px}
       .work .work-desc{font-size:14px}
       .work .work-tagline{font-size:13px;margin-top:20px;padding-top:17px}
+      .work .work-main{grid-template-columns:1fr;gap:28px}
+      .work .work-image{grid-row:1}
+      .work .work-details{grid-row:2;gap:27px;padding-top:0}
+      .work .work-facts{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+      .work .work-facts>div:last-child:nth-child(3){grid-column:1 / -1}
       .work .work-image .visual-creafit,.work .work-image .visual-donggam{min-height:clamp(345px,74vw,560px);padding:clamp(20px,5vw,40px)}
       .work .work-image .visual-bnj{min-height:clamp(380px,78vw,560px)}
       .work .work-image .bnj-main{font-size:clamp(60px,11vw,95px)}
-      .work .work-bottom{grid-template-columns:1fr;gap:31px;padding-top:30px}
-      .work .work-facts{grid-template-columns:1fr 1fr;gap:25px 20px}
-      .work .work-links{width:100%}
     }
     @media(max-width:450px){
       .work .project-overline span{font-size:9px}
       .work .work-name h3{font-size:clamp(35px,9vw,43px)}
-      .work .work-facts{grid-template-columns:1fr;gap:18px}
-      .work .work-facts>div:last-child{grid-column:auto}
-      .work .work-facts dt{margin-bottom:6px}
+      .work .work-facts{grid-template-columns:1fr;gap:0}
+      .work .work-facts>div:last-child:nth-child(3){grid-column:auto}
       .work .work-image .visual-creafit,.work .work-image .visual-donggam{min-height:330px}
       .work .work-image .visual-bnj{min-height:370px}
       .work .work-image .bnj-main{font-size:58px}
@@ -369,13 +371,22 @@
         <div class="projects">
           <article class="project work-project" aria-labelledby="project1-title">
             <div class="project-overline"><span>01 / 03 — DIGITAL AGENCY</span><span>WEBSITE RENEWAL / 2026</span></div>
-            <div class="work-showcase">
-              <div class="work-copy">
-                <div class="work-head"><div class="work-name reveal"><h3 id="project1-title">기업 홈페이지<br>전면 리뉴얼<span class="work-period">.</span></h3><p class="work-company">크레아핏마케팅</p></div></div>
-                <div class="work-intro reveal delay-1">
+            <div class="work-top">
+              <div class="work-head"><div class="work-name reveal"><h3 id="project1-title">기업 홈페이지<br>전면 리뉴얼<span class="work-period">.</span></h3><p class="work-company">크레아핏마케팅</p></div></div>
+              <div class="work-intro reveal delay-1">
                 <span class="work-label">OVERVIEW / 프로젝트 소개</span>
                 <p class="work-desc">노후화된 홈페이지의 디자인과 콘텐츠를 전면 재정비했습니다. 주요 고객이 서비스를 쉽게 이해하고 탐색할 수 있도록 정보 전달 방식을 개선하고, 웹에이전시의 제작 역량을 보여주기 위해 다양한 스크롤 인터랙션과 화면 전환을 구현했습니다.</p>
               </div>
+            </div>
+            <div class="work-main">
+              <div class="work-details">
+                <dl class="work-facts">
+                <div><dt>담당 업무</dt><dd>정보구조·콘텐츠 기획 · UI 디자인 · 반응형 퍼블리싱 · 인터랙션 구현</dd></div>
+                <div><dt>사용 기술</dt><dd>HTML · CSS · JavaScript · jQuery · Swiper · GSAP · AOS</dd></div>
+                <div><dt>기여도</dt><dd>100%</dd></div>
+              </dl>
+                <nav class="work-links" aria-label="프로젝트 1 링크"><a class="work-item-link" href="https://creafitmarketing.co.kr/" target="_blank" rel="noopener noreferrer"><span><small>BEFORE</small><strong>리뉴얼 전 보기</strong></span><b aria-hidden="true">↗</b></a>
+<a class="work-item-link emphasis" href="http://www.creafitmarketing.com/" target="_blank" rel="noopener noreferrer"><span><small>AFTER</small><strong>리뉴얼 후 보기</strong></span><b aria-hidden="true">↗</b></a></nav>
               </div>
               <div class="work-image"><div class="visual visual-creafit reveal delay-1">
                 <div class="browser" aria-label="크레아핏마케팅 리뉴얼 홈페이지 PC 화면">
@@ -386,26 +397,27 @@
                 <span class="visual-caption">ACTUAL WEBSITE / PC & MOBILE</span>
               </div></div>
             </div>
-            <div class="work-bottom">
-              <dl class="work-facts">
-                <div><dt>담당 업무</dt><dd>정보구조·콘텐츠 기획 · UI 디자인 · 반응형 퍼블리싱 · 인터랙션 구현</dd></div>
-                <div><dt>사용 기술</dt><dd>HTML · CSS · JavaScript · jQuery · Swiper · GSAP · AOS</dd></div>
-                <div><dt>기여도</dt><dd>100%</dd></div>
-              </dl>
-              <nav class="work-links" aria-label="프로젝트 1 링크"><a class="work-item-link" href="https://creafitmarketing.co.kr/" target="_blank" rel="noopener noreferrer"><span><small>BEFORE</small><strong>리뉴얼 전 보기</strong></span><b aria-hidden="true">↗</b></a>
-<a class="work-item-link emphasis" href="http://www.creafitmarketing.com/" target="_blank" rel="noopener noreferrer"><span><small>AFTER</small><strong>리뉴얼 후 보기</strong></span><b aria-hidden="true">↗</b></a></nav>
-            </div>
           </article>
 
           <article class="project work-project" aria-labelledby="project2-title">
             <div class="project-overline"><span>02 / 03 — SERVICE EXPERIENCE</span><span>UX/UI REDESIGN / PERSONAL PROJECT</span></div>
-            <div class="work-showcase">
-              <div class="work-copy">
-                <div class="work-head"><div class="work-name reveal"><h3 id="project2-title">행정 서비스<br>UX 리디자인<span class="work-period">.</span></h3><p class="work-company">동감 행정사사무소<span class="work-company-note">/ 개인 프로젝트</span></p></div></div>
-                <div class="work-intro reveal delay-1">
+            <div class="work-top">
+              <div class="work-head"><div class="work-name reveal"><h3 id="project2-title">행정 서비스<br>UX 리디자인<span class="work-period">.</span></h3><p class="work-company">동감 행정사사무소<span class="work-company-note">/ 개인 프로젝트</span></p></div></div>
+              <div class="work-intro reveal delay-1">
                 <span class="work-label">OVERVIEW / 프로젝트 소개</span>
                 <p class="work-desc">실제 운영 중인 행정사사무소 홈페이지를 분석하고, 사용자가 자신의 상황에 맞는 서비스를 쉽게 탐색할 수 있도록 정보구조와 사용자 흐름을 재설계했습니다. 분산된 업무사례를 통합하고, 단계별 질문을 통해 상담에 필요한 정보를 정리할 수 있는 맞춤 상담 프로토타입을 구현했습니다.</p>
               </div>
+            </div>
+            <div class="work-main">
+              <div class="work-details">
+                <dl class="work-facts">
+                <div><dt>담당 업무</dt><dd>기존 사이트 분석 · 정보구조 설계 · 사용자 흐름 설계 · <span class="donggam-duty-nowrap">UX/UI 디자인 · 프로토타입 구현</span></dd></div>
+                <div><dt>사용 기술</dt><dd>HTML · CSS · JavaScript</dd></div>
+                <div><dt>기여도</dt><dd>100%</dd></div>
+              </dl>
+                <nav class="work-links" aria-label="프로젝트 2 링크"><a class="work-item-link" href="http://www.동감.kr/" target="_blank" rel="noopener noreferrer"><span><small>BEFORE</small><strong>기존 홈페이지 보기</strong></span><b aria-hidden="true">↗</b></a>
+<span class="work-item-link disabled" aria-label="배포 전 비활성화"><span><small>REDESIGN</small><strong>리디자인 후 보기</strong></span><b aria-hidden="true">—</b></span>
+<a class="work-item-link emphasis" href="../case-study/index.html"><span><small>CASE STUDY</small><strong>UX 설계 과정 자세히 보기</strong></span><b aria-hidden="true">↗</b></a></nav>
               </div>
               <div class="work-image"><div class="visual visual-donggam reveal delay-1">
                 <div class="concept-window" aria-label="동감 행정사사무소 리디자인 콘셉트의 축약 시각화">
@@ -425,27 +437,21 @@
                 <span class="concept-note">SIMPLIFIED CONCEPT PREVIEW ↗</span>
               </div></div>
             </div>
-            <div class="work-bottom">
-              <dl class="work-facts">
-                <div><dt>담당 업무</dt><dd>기존 사이트 분석 · 정보구조 설계 · 사용자 흐름 설계 · <span class="donggam-duty-nowrap">UX/UI 디자인 · 프로토타입 구현</span></dd></div>
-                <div><dt>사용 기술</dt><dd>HTML · CSS · JavaScript</dd></div>
-                <div><dt>기여도</dt><dd>100%</dd></div>
-              </dl>
-              <nav class="work-links" aria-label="프로젝트 2 링크"><a class="work-item-link" href="http://www.동감.kr/" target="_blank" rel="noopener noreferrer"><span><small>BEFORE</small><strong>기존 홈페이지 보기</strong></span><b aria-hidden="true">↗</b></a>
-<span class="work-item-link disabled" aria-label="배포 전 비활성화"><span><small>REDESIGN</small><strong>리디자인 후 보기</strong></span><b aria-hidden="true">—</b></span>
-<a class="work-item-link emphasis" href="../case-study/index.html"><span><small>CASE STUDY</small><strong>UX 설계 과정 자세히 보기</strong></span><b aria-hidden="true">↗</b></a></nav>
-            </div>
           </article>
 
           <article class="project work-project" aria-labelledby="project3-title">
             <div class="project-overline"><span>03 / 03 — INDUSTRIAL & PRODUCT</span><span>CORPORATE WEB / RENEWAL</span></div>
-            <div class="work-showcase">
-              <div class="work-copy">
-                <div class="work-head"><div class="work-name reveal"><h3 id="project3-title">제조업 기업<br>홈페이지 리뉴얼<span class="work-period">.</span></h3><p class="work-company">비앤제이플러스</p></div></div>
-                <div class="work-intro reveal delay-1">
+            <div class="work-top">
+              <div class="work-head"><div class="work-name reveal"><h3 id="project3-title">제조업 기업<br>홈페이지 리뉴얼<span class="work-period">.</span></h3><p class="work-company">비앤제이플러스</p></div></div>
+              <div class="work-intro reveal delay-1">
                 <span class="work-label">OVERVIEW / 프로젝트 소개</span>
                 <p class="work-desc">음수기, 차양, 자전거 보관대 등 다양한 금속 구조물과 시공사례를 소개하는 제조업 기업 홈페이지입니다.</p>
               <p class="work-tagline">기술과 제품의 가치를,<br>명확하게 보여주는 기업 웹.</p></div>
+            </div>
+            <div class="work-main">
+              <div class="work-details">
+                <div class="work-categories"><span class="work-label">PRODUCT CATEGORIES / 주요 제품</span><div class="work-tags"><span>음수기</span><span>구조용 차양</span><span>자전거 보관대</span><span>금속 구조물</span></div></div>
+                <nav class="work-links" aria-label="프로젝트 3 링크"><a class="work-item-link emphasis" href="https://www.bnjplus.com/" target="_blank" rel="noopener noreferrer"><span><small>LIVE WEBSITE</small><strong>홈페이지 보기</strong></span><b aria-hidden="true">↗</b></a></nav>
               </div>
               <div class="work-image"><div class="visual visual-bnj reveal delay-1">
                 <div class="bnj-top"><span>BNJ PLUS / INDUSTRIAL</span><span>03—26</span></div>
@@ -462,10 +468,6 @@
                 </svg>
                 <div class="bnj-bottom">PRODUCT CATEGORY / STRUCTURAL VISUALIZATION</div>
               </div></div>
-            </div>
-            <div class="work-bottom">
-              <div class="work-categories"><span class="work-label">PRODUCT CATEGORIES / 주요 제품</span><div class="work-tags"><span>음수기</span><span>구조용 차양</span><span>자전거 보관대</span><span>금속 구조물</span></div></div>
-              <nav class="work-links" aria-label="프로젝트 3 링크"><a class="work-item-link emphasis" href="https://www.bnjplus.com/" target="_blank" rel="noopener noreferrer"><span><small>LIVE WEBSITE</small><strong>홈페이지 보기</strong></span><b aria-hidden="true">↗</b></a></nav>
             </div>
           </article>
         </div>
