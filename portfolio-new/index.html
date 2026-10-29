@@ -248,14 +248,15 @@
       .js .reveal{opacity:1;transform:none}
     }
 
-    /* Selected Work only: oversized work-type headline, company below, overview left of mockup. */
+    /* Selected Work only: left project heading, company and overview; right project mockup. */
     .work .projects{gap:clamp(105px,12vw,185px)}
-    .work .work-head{display:block;padding:clamp(42px,6vw,88px) 0 clamp(38px,5vw,72px)}
-    .work .work-name h3{margin:0 0 clamp(18px,2.8vw,35px);font-size:clamp(62px,7.7vw,125px);line-height:1.07;letter-spacing:-.083em}
+    .work .work-head{display:block;padding:0 0 clamp(30px,3.4vw,49px)}
+    .work .work-copy{min-width:0;max-width:570px}
+    .work .work-name h3{margin:0 0 clamp(20px,2.7vw,36px);font-size:clamp(39px,4.5vw,70px);line-height:1.14;letter-spacing:-.078em}
     .work .work-period{color:var(--accent)}
     .work .work-company{display:flex;align-items:baseline;gap:12px 20px;flex-wrap:wrap;margin:0;font-size:clamp(18px,1.8vw,24px);font-weight:700;line-height:1.5;letter-spacing:-.035em}
     .work .work-company-note{font-size:11px;letter-spacing:.02em;color:var(--muted);font-weight:700}
-    .work .work-showcase{display:grid;grid-template-columns:minmax(205px,.73fr) minmax(0,1.85fr);gap:clamp(30px,5vw,85px);align-items:start}
+    .work .work-showcase{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:clamp(35px,5.2vw,88px);align-items:center}
     .work .work-intro{border-top:1px solid var(--ink);padding-top:clamp(22px,2.5vw,36px);min-width:0}
     .work .work-label{display:block;font-size:10px;font-weight:800;letter-spacing:.12em;color:var(--muted);margin-bottom:20px}
     .work .work-desc{margin:0;font-size:clamp(15px,1.3vw,18px);line-height:1.92;letter-spacing:-.03em;color:#505951}
@@ -288,19 +289,19 @@
     .work .work-tags{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
     .work .work-tags span{border:1px solid #c5c7c0;padding:10px 15px;border-radius:99px;font-size:12px;color:#535b55}
     @media(max-width:1020px){
-      .work .work-name h3{font-size:clamp(51px,7.35vw,90px)}
-      .work .work-showcase{grid-template-columns:minmax(190px,.73fr) minmax(0,1.65fr);gap:30px}
+      .work .work-name h3{font-size:clamp(37px,4.5vw,54px)}
+      .work .work-showcase{grid-template-columns:minmax(0,1fr) minmax(0,1.36fr);gap:30px}
       .work .work-bottom{grid-template-columns:1fr minmax(220px,.55fr);gap:30px}
       .work .work-facts{grid-template-columns:1fr 1fr;gap:20px}
       .work .work-facts>div:last-child{grid-column:1/-1}
     }
     @media(max-width:760px){
       .work .projects{gap:100px}
-      .work .work-head{padding:40px 0 30px}
+      .work .work-head{padding:0 0 26px}
       .work .work-name h3{font-size:clamp(39px,7.9vw,62px);line-height:1.13;margin-bottom:18px}
       .work .work-company{font-size:17px;gap:5px 12px}
       .work .work-company-note{font-size:10px}
-      .work .work-showcase{grid-template-columns:1fr;gap:29px}
+      .work .work-showcase{grid-template-columns:1fr;gap:29px;align-items:start}
       .work .work-intro{padding-top:23px}
       .work .work-label{margin-bottom:13px}
       .work .work-desc{font-size:14px}
@@ -368,17 +369,23 @@
         <div class="projects">
           <article class="project work-project" aria-labelledby="project1-title">
             <div class="project-overline"><span>01 / 03 — DIGITAL AGENCY</span><span>WEBSITE RENEWAL / 2026</span></div>
-            <div class="work-head"><div class="work-name reveal"><h3 id="project1-title">기업 홈페이지<br>전면 리뉴얼<span class="work-period">.</span></h3><p class="work-company">크레아핏마케팅</p></div></div><div class="work-showcase"><div class="work-intro reveal delay-1">
+            <div class="work-showcase">
+              <div class="work-copy">
+                <div class="work-head"><div class="work-name reveal"><h3 id="project1-title">기업 홈페이지<br>전면 리뉴얼<span class="work-period">.</span></h3><p class="work-company">크레아핏마케팅</p></div></div>
+                <div class="work-intro reveal delay-1">
                 <span class="work-label">OVERVIEW / 프로젝트 소개</span>
                 <p class="work-desc">노후화된 홈페이지의 디자인과 콘텐츠를 전면 재정비했습니다. 주요 고객이 서비스를 쉽게 이해하고 탐색할 수 있도록 정보 전달 방식을 개선하고, 웹에이전시의 제작 역량을 보여주기 위해 다양한 스크롤 인터랙션과 화면 전환을 구현했습니다.</p>
-              </div><div class="work-image"><div class="visual visual-creafit reveal delay-1">
+              </div>
+              </div>
+              <div class="work-image"><div class="visual visual-creafit reveal delay-1">
                 <div class="browser" aria-label="크레아핏마케팅 리뉴얼 홈페이지 PC 화면">
                   <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><small>creafitmarketing.com</small></div>
                   <img src="../selected01_pc.png" alt="크레아핏마케팅 홈페이지 리뉴얼 PC 화면" loading="lazy" decoding="async">
                 </div>
                 <div class="phone" aria-hidden="true"><img src="../selected01_mobile.png" alt="" loading="lazy" decoding="async"></div>
                 <span class="visual-caption">ACTUAL WEBSITE / PC & MOBILE</span>
-              </div></div></div>
+              </div></div>
+            </div>
             <div class="work-bottom">
               <dl class="work-facts">
                 <div><dt>담당 업무</dt><dd>정보구조·콘텐츠 기획 · UI 디자인 · 반응형 퍼블리싱 · 인터랙션 구현</dd></div>
@@ -392,10 +399,15 @@
 
           <article class="project work-project" aria-labelledby="project2-title">
             <div class="project-overline"><span>02 / 03 — SERVICE EXPERIENCE</span><span>UX/UI REDESIGN / PERSONAL PROJECT</span></div>
-            <div class="work-head"><div class="work-name reveal"><h3 id="project2-title">행정 서비스<br>UX 리디자인<span class="work-period">.</span></h3><p class="work-company">동감 행정사사무소<span class="work-company-note">/ 개인 프로젝트</span></p></div></div><div class="work-showcase"><div class="work-intro reveal delay-1">
+            <div class="work-showcase">
+              <div class="work-copy">
+                <div class="work-head"><div class="work-name reveal"><h3 id="project2-title">행정 서비스<br>UX 리디자인<span class="work-period">.</span></h3><p class="work-company">동감 행정사사무소<span class="work-company-note">/ 개인 프로젝트</span></p></div></div>
+                <div class="work-intro reveal delay-1">
                 <span class="work-label">OVERVIEW / 프로젝트 소개</span>
                 <p class="work-desc">실제 운영 중인 행정사사무소 홈페이지를 분석하고, 사용자가 자신의 상황에 맞는 서비스를 쉽게 탐색할 수 있도록 정보구조와 사용자 흐름을 재설계했습니다. 분산된 업무사례를 통합하고, 단계별 질문을 통해 상담에 필요한 정보를 정리할 수 있는 맞춤 상담 프로토타입을 구현했습니다.</p>
-              </div><div class="work-image"><div class="visual visual-donggam reveal delay-1">
+              </div>
+              </div>
+              <div class="work-image"><div class="visual visual-donggam reveal delay-1">
                 <div class="concept-window" aria-label="동감 행정사사무소 리디자인 콘셉트의 축약 시각화">
                   <div class="concept-nav"><strong class="concept-logo">동감<span style="font-size:.52em;font-weight:500"> 행정사사무소</span></strong><span>서비스 안내 &nbsp; · &nbsp; 해결사례 &nbsp; · &nbsp; 상담</span></div>
                   <div class="concept-hero">
@@ -411,7 +423,8 @@
                   <div class="concept-bottom"><span>STRUCTURE / CLARITY / GUIDANCE</span><span>01 — 03</span></div>
                 </div>
                 <span class="concept-note">SIMPLIFIED CONCEPT PREVIEW ↗</span>
-              </div></div></div>
+              </div></div>
+            </div>
             <div class="work-bottom">
               <dl class="work-facts">
                 <div><dt>담당 업무</dt><dd>기존 사이트 분석 · 정보구조 설계 · 사용자 흐름 설계 · <span class="donggam-duty-nowrap">UX/UI 디자인 · 프로토타입 구현</span></dd></div>
@@ -426,10 +439,15 @@
 
           <article class="project work-project" aria-labelledby="project3-title">
             <div class="project-overline"><span>03 / 03 — INDUSTRIAL & PRODUCT</span><span>CORPORATE WEB / RENEWAL</span></div>
-            <div class="work-head"><div class="work-name reveal"><h3 id="project3-title">제조업 기업<br>홈페이지 리뉴얼<span class="work-period">.</span></h3><p class="work-company">비앤제이플러스</p></div></div><div class="work-showcase"><div class="work-intro reveal delay-1">
+            <div class="work-showcase">
+              <div class="work-copy">
+                <div class="work-head"><div class="work-name reveal"><h3 id="project3-title">제조업 기업<br>홈페이지 리뉴얼<span class="work-period">.</span></h3><p class="work-company">비앤제이플러스</p></div></div>
+                <div class="work-intro reveal delay-1">
                 <span class="work-label">OVERVIEW / 프로젝트 소개</span>
                 <p class="work-desc">음수기, 차양, 자전거 보관대 등 다양한 금속 구조물과 시공사례를 소개하는 제조업 기업 홈페이지입니다.</p>
-              <p class="work-tagline">기술과 제품의 가치를,<br>명확하게 보여주는 기업 웹.</p></div><div class="work-image"><div class="visual visual-bnj reveal delay-1">
+              <p class="work-tagline">기술과 제품의 가치를,<br>명확하게 보여주는 기업 웹.</p></div>
+              </div>
+              <div class="work-image"><div class="visual visual-bnj reveal delay-1">
                 <div class="bnj-top"><span>BNJ PLUS / INDUSTRIAL</span><span>03—26</span></div>
                 <div class="bnj-main">BUILD<br>BETTER<br>SPACE<i>.</i></div>
                 <svg class="bnj-illustration" viewBox="0 0 650 520" aria-hidden="true" focusable="false">
@@ -443,7 +461,8 @@
                   <path d="M311 401v-73c0-24 41-24 41 0v73m16 0v-73c0-24 41-24 41 0v73m16 0v-73c0-24 41-24 41 0v73" fill="none" stroke="#d1dddd" stroke-width="7" opacity=".8"/>
                 </svg>
                 <div class="bnj-bottom">PRODUCT CATEGORY / STRUCTURAL VISUALIZATION</div>
-              </div></div></div>
+              </div></div>
+            </div>
             <div class="work-bottom">
               <div class="work-categories"><span class="work-label">PRODUCT CATEGORIES / 주요 제품</span><div class="work-tags"><span>음수기</span><span>구조용 차양</span><span>자전거 보관대</span><span>금속 구조물</span></div></div>
               <nav class="work-links" aria-label="프로젝트 3 링크"><a class="work-item-link emphasis" href="https://www.bnjplus.com/" target="_blank" rel="noopener noreferrer"><span><small>LIVE WEBSITE</small><strong>홈페이지 보기</strong></span><b aria-hidden="true">↗</b></a></nav>
