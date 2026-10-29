@@ -118,20 +118,105 @@
     .bnj-illustration{position:absolute;right:-8%;bottom:9%;width:88%;max-width:620px;opacity:.68;filter:drop-shadow(0 13px 20px #141e2366);transition:transform .8s var(--ease)}
     .visual-bnj:hover .bnj-illustration{transform:translate(-2%,-3%)}
     .bnj-bottom{font-size:10px;letter-spacing:.09em;color:#c6d0d0;position:relative;z-index:3}
-    /* About — concise two-line statement and five visible editorial principles. */
-    .about{background:#e9e9e2;padding-block:clamp(84px,8vw,124px)}
-    .about .wrap{display:block}
-    .about-heading{margin-bottom:clamp(49px,6.2vw,88px)}
-    .about-heading .eyebrow{margin-bottom:clamp(24px,3vw,42px)}
-    .about-title{max-width:1250px;font-size:clamp(46px,6.1vw,94px);line-height:1.2;letter-spacing:-.075em;margin:0;font-weight:700}
+    /* About / Approach — a real workflow redesign, shown rather than declared. */
+    .about{background:#e9e9e2;padding-block:clamp(76px,7vw,112px)}
+    .about-heading{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.42fr);align-items:end;gap:clamp(30px,5vw,78px);margin-bottom:clamp(45px,5.8vw,80px)}
+    .about-heading .eyebrow{margin-bottom:clamp(23px,3vw,36px)}
+    .about-title{max-width:960px;font-size:clamp(43px,5.8vw,82px);line-height:1.18;letter-spacing:-.072em;margin:0;font-weight:700}
     .about-title em{font-style:normal;color:var(--accent)}
-    .about-body{display:block}
-    .values{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(18px,2.6vw,40px);min-width:0}
-    .value{min-width:0;display:flex;flex-direction:column;gap:12px;padding:21px 0 0;border-top:1px solid #bfc2bb}
-    .value strong{font-size:clamp(17px,1.65vw,23px);line-height:1.3;letter-spacing:-.055em}
-    .value p{font-size:12px;line-height:1.75;color:var(--muted);margin:0}
-    @media(max-width:1100px){
-      .values{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:25px}
+    .about-intro{max-width:325px;font-size:clamp(12px,1vw,14px);line-height:1.9;color:#5f655f;margin:0 0 5px}
+    .about-case{border-top:1px solid #aab0a8}
+    .about-case-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 0 32px}
+    .about-case-head span{font-size:10px;font-weight:700;letter-spacing:.12em}
+    .about-case-head span:last-child{color:#6d736e;font-weight:500}
+    .about-steps{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,.92fr) minmax(0,1.37fr);gap:clamp(16px,2.4vw,36px)}
+    .about-step{min-width:0;display:flex;flex-direction:column}
+    .about-step-top{display:flex;align-items:center;gap:12px;margin-bottom:15px}
+    .about-step-no{display:inline-grid;place-items:center;width:31px;height:31px;border:1px solid #aeb4ae;border-radius:50%;font-size:11px;font-weight:700}
+    .about-step:last-child .about-step-no{background:var(--accent);border-color:var(--accent);color:#fff}
+    .about-step-label{font-size:10px;letter-spacing:.12em;font-weight:800}
+    .about-step-preview{height:clamp(194px,17.5vw,248px);border:1px solid #cdd0c9;overflow:hidden;background:#f9f9f6;position:relative}
+    .about-step:nth-child(3) .about-step-preview{border-color:#c7c9c2;background:#fff}
+    .about-step-copy{padding-top:17px}
+    .about-step-copy h3{font-size:clamp(16px,1.35vw,19px);font-weight:700;line-height:1.35;letter-spacing:-.045em;margin:0 0 8px}
+    .about-step-copy p{font-size:12px;color:#666c66;line-height:1.8;max-width:370px;margin:0}
+    .about-step-copy a{display:inline-flex;align-items:center;gap:8px;border-bottom:1px solid #777e77;padding-bottom:4px;margin-top:12px;font-size:11px;font-weight:700;transition:color .2s,border-color .2s}
+    .about-step-copy a:hover,.about-step-copy a:focus-visible{color:var(--accent);border-color:var(--accent)}
+    /* Preview 01: the legacy mail/document exchange. */
+    .about-mail-bar{height:34px;background:#eef0ee;border-bottom:1px solid #d8ddd7;display:flex;align-items:center;gap:6px;padding:0 13px}
+    .about-mail-bar i{height:6px;width:6px;border-radius:50%;background:#c4c9c2}
+    .about-mail-bar small{font-size:8px;letter-spacing:.08em;color:#858b85;margin-left:auto}
+    .about-mail-content{padding:16px 15px}
+    .about-mail-subject{font-size:11px;font-weight:700;line-height:1.45;margin-bottom:12px}
+    .about-mail-meta{font-size:9px;color:#7b817b;padding-bottom:12px;border-bottom:1px solid #e4e7e2}
+    .about-mail-lines{display:grid;gap:6px;margin:13px 0}
+    .about-mail-lines i{height:4px;background:#dfe3dc;display:block;width:91%}
+    .about-mail-lines i:nth-child(2){width:76%}
+    .about-mail-lines i:nth-child(3){width:85%}
+    .about-mail-file{display:flex;align-items:center;gap:9px;padding:10px;background:#f0f2ee;border:1px solid #e0e4dd}
+    .about-mail-file b{display:grid;place-items:center;background:#5876a7;color:#fff;font-size:9px;width:26px;height:29px;flex:none}
+    .about-mail-file span{font-size:9px;font-weight:700;line-height:1.45}
+    .about-mail-file small{display:block;color:#848b83;font-weight:400}
+    /* Preview 02: numbered image plus free-form message. */
+    .about-chat{background:#ced6df}
+    .about-chat-head{height:34px;display:flex;align-items:center;gap:9px;background:#d9e0e8;padding:0 13px;font-size:9px;font-weight:700}
+    .about-chat-avatar{display:grid;place-items:center;background:#909aa5;border-radius:50%;width:19px;height:19px;font-size:9px;color:#fff}
+    .about-chat-body{padding:14px;display:flex;flex-direction:column;align-items:flex-end;gap:9px}
+    .about-chat-thumb{width:75%;height:62px;background:#fefdfb;border-radius:6px;padding:5px;overflow:hidden}
+    .about-chat-thumb-header{height:27px;background:#2d707b;display:flex;align-items:center;justify-content:center;color:#fff;font-size:8px;font-weight:700;letter-spacing:.04em}
+    .about-chat-thumb-icons{display:flex;gap:5px;justify-content:center;margin-top:5px}
+    .about-chat-thumb-icons i{width:14px;height:14px;border-radius:50%;background:#88cfca}
+    .about-chat-thumb-icons i:nth-child(2){background:#fac29c}
+    .about-chat-thumb-icons i:nth-child(3){background:#a5a5d7}
+    .about-chat-thumb-icons i:nth-child(4){background:#f5d387}
+    .about-chat-bubble{width:90%;background:#fee05a;padding:10px;border-radius:6px 0 6px 6px}
+    .about-chat-bubble strong{display:block;font-size:9px;line-height:1.6}
+    .about-chat-bubble p{font-size:9px;line-height:1.65;margin:5px 0 0;color:#50431f}
+    /* Preview 03: reconstructed selection and structured form from the actual implementation. */
+    .about-form{padding:12px 17px 16px;background:#fff;height:100%;overflow:hidden}
+    .about-form-kicker{font-size:7px;font-weight:800;letter-spacing:.1em;color:#d87543}
+    .about-form-title{font-size:15px;letter-spacing:-.06em;margin:4px 0 12px}
+    .about-form-guide{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px;background:#fff9f4;border:1px solid #f2ddd0;border-radius:4px}
+    .about-form-guide label{font-size:9px;font-weight:800;line-height:1.5}
+    .about-form-guide label span{display:block;margin-top:5px;width:85%;height:7px;border-radius:2px;background:#ff9337}
+    .about-form-guide p{font-size:8px;line-height:1.5;color:#676c65;margin:0}
+    .about-form-subtitle{font-size:10px;font-weight:800;margin:13px 0 7px}
+    .about-form-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+    .about-form-field{min-width:0}
+    .about-form-field b{font-size:8px;display:block;margin-bottom:4px}
+    .about-form-field i{display:block;height:18px;border:1px solid #e4e6e3;border-radius:3px;background:#fff}
+    .about-form-menu{margin-top:9px;background:#f5f6f3;border-radius:3px;padding:7px}
+    .about-form-menu span{display:block;font-size:8px;font-weight:700;margin-bottom:5px}
+    .about-form-menu div{display:grid;grid-template-columns:1fr 1.4fr;gap:5px;margin-bottom:4px}
+    .about-form-menu div i{height:12px;border:1px solid #e1e4df;background:#fff;border-radius:2px}
+    .about-case-foot{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-top:26px;margin-top:30px;border-top:1px solid #bec3bc}
+    .about-case-foot p{font-size:12px;line-height:1.8;margin:0;color:#5e665e}
+    .about-case-foot span{font-size:10px;letter-spacing:.04em;color:#7b817b;text-align:right}
+    @media(max-width:1060px){
+      .about-heading{grid-template-columns:1fr;gap:22px}
+      .about-intro{max-width:590px}
+      .about-steps{gap:14px}
+    }
+    @media(max-width:760px){
+      .about{padding-block:74px}
+      .about-heading{margin-bottom:41px}
+      .about-heading .eyebrow{margin-bottom:24px}
+      .about-title{font-size:clamp(40px,8vw,61px)}
+      .about-case-head{padding-bottom:24px}
+      .about-case-head span:last-child{display:none}
+      .about-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:27px 14px}
+      .about-step:last-child{grid-column:1 / -1}
+      .about-step-preview{height:218px}
+      .about-step:last-child .about-step-preview{height:255px}
+      .about-case-foot{align-items:flex-start;flex-direction:column;gap:9px}
+      .about-case-foot span{text-align:left}
+    }
+    @media(max-width:450px){
+      .about-steps{grid-template-columns:1fr;gap:28px}
+      .about-step:last-child{grid-column:auto}
+      .about-step-preview{height:212px}
+      .about-step:last-child .about-step-preview{height:245px}
+      .about-step-copy{padding-top:12px}
     }
     .experience .section-head{margin-bottom:60px}
     .experience-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:clamp(40px,8vw,120px)}
@@ -212,14 +297,6 @@
       .visual-creafit,.visual-donggam,.visual-bnj{min-height:clamp(365px,70vw,560px)}
       .project--reverse .visual{grid-row:2}
       .visual-caption{font-size:8px}
-      .about{padding-block:76px}
-      .about-heading{margin-bottom:38px}
-      .about-heading .eyebrow{margin-bottom:24px}
-      .about-title{font-size:clamp(39px,8vw,60px);line-height:1.21}
-      .values{grid-template-columns:repeat(2,minmax(0,1fr));gap:23px 17px}
-      .value{gap:10px;padding-top:15px}
-      .value strong{font-size:18px}
-      .value p{font-size:11px}
       .experience-grid{grid-template-columns:1fr;gap:43px}
       .footer-title{font-size:clamp(60px,12vw,95px)}
       .footer-title .line:nth-child(2){padding-left:0}
@@ -554,16 +631,81 @@
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="wrap">
         <div class="about-heading reveal">
-          <span class="eyebrow"><i class="bullet" aria-hidden="true"></i> ABOUT / APPROACH</span>
-          <h2 class="about-title" id="about-title">좋은 디자인은,<br><em>좋은 질문</em>에서 시작됩니다.</h2>
+          <div>
+            <span class="eyebrow"><i class="bullet" aria-hidden="true"></i> ABOUT / APPROACH</span>
+            <h2 class="about-title" id="about-title">불편함을 발견하고,<br><em>더 나은 흐름</em>을 만듭니다.</h2>
+          </div>
+          <p class="about-intro">반복되는 업무의 불편함을 그냥 지나치지 않습니다. 블로그 스킨 제작자료를 요청하는 방식을 서비스에 맞게 다시 설계했습니다.</p>
         </div>
-        <div class="about-body">
-          <div class="values reveal delay-2" aria-label="디자인을 바라보는 다섯 가지 기준">
-            <div class="value"><strong>Question.</strong><p>익숙한 방식에도 이유를 묻습니다.</p></div>
-            <div class="value"><strong>Structure.</strong><p>현상보다 문제를 만드는 구조를 살핍니다.</p></div>
-            <div class="value"><strong>Usability.</strong><p>불필요한 과정 없이 목적에 도달하도록 설계합니다.</p></div>
-            <div class="value"><strong>Essential.</strong><p>무엇을 더할지보다 무엇이 필요한지 먼저 판단합니다.</p></div>
-            <div class="value"><strong>Execution.</strong><p>생각에 머무르지 않고 실행으로 구체화합니다.</p></div>
+
+        <div class="about-case reveal delay-1" aria-label="블로그 스킨 제작자료 요청 프로세스 개선 사례">
+          <div class="about-case-head">
+            <span>WORKFLOW REDESIGN&nbsp; / &nbsp;BLOG SKIN REQUEST</span>
+            <span>EMAIL &amp; DOCX &nbsp;→&nbsp; MESSAGE &nbsp;→&nbsp; WEB FORM</span>
+          </div>
+          <div class="about-steps">
+            <article class="about-step">
+              <div class="about-step-top"><span class="about-step-no">01</span><span class="about-step-label">BEFORE</span></div>
+              <div class="about-step-preview" role="img" aria-label="기존 이메일과 홈페이지 제작자료 요청서 첨부 방식의 축약된 화면">
+                <div class="about-mail-bar"><i></i><i></i><i></i><small>EMAIL / DOCX</small></div>
+                <div class="about-mail-content">
+                  <div class="about-mail-subject">홈페이지 제작 요청서 및<br>블로그 스킨 템플릿 안내</div>
+                  <div class="about-mail-meta">웹디자인팀 · 제작자료 요청</div>
+                  <div class="about-mail-lines"><i></i><i></i><i></i></div>
+                  <div class="about-mail-file"><b>W</b><span>홈페이지 제작자료 요청서.docx<small>문서 작성 후 이메일 회신</small></span></div>
+                </div>
+              </div>
+              <div class="about-step-copy">
+                <h3>서비스와 맞지 않는 양식</h3>
+                <p>블로그 스킨 제작에도 홈페이지용 워드 요청서를 사용하던 방식.</p>
+              </div>
+            </article>
+
+            <article class="about-step">
+              <div class="about-step-top"><span class="about-step-no">02</span><span class="about-step-label">RESTRUCTURE</span></div>
+              <div class="about-step-preview about-chat" role="img" aria-label="번호를 붙인 블로그 스킨 예시와 항목별 답변을 요청하는 카카오톡 안내 방식의 축약된 화면">
+                <div class="about-chat-head"><span class="about-chat-avatar">C</span>디자인팀</div>
+                <div class="about-chat-body">
+                  <div class="about-chat-thumb"><div class="about-chat-thumb-header">BLOG SKIN GUIDE ① — ④</div><div class="about-chat-thumb-icons"><i></i><i></i><i></i><i></i></div></div>
+                  <div class="about-chat-bubble">
+                    <strong>블로그 스킨 제작 필수 정보</strong>
+                    <p>① 상호명 &nbsp; ② 주소·연락처<br>③ 삽입 문구 &nbsp; ④ 메뉴 구성<br>⑤ 디자인 번호 &nbsp; ⑥ 기타 안내</p>
+                  </div>
+                </div>
+              </div>
+              <div class="about-step-copy">
+                <h3>필요한 정보 다시 정의</h3>
+                <p>이미지에 번호를 표시하고, 블로그 스킨에 필요한 항목만 따로 정리.</p>
+              </div>
+            </article>
+
+            <article class="about-step">
+              <div class="about-step-top"><span class="about-step-no">03</span><span class="about-step-label">IMPLEMENT</span></div>
+              <div class="about-step-preview" role="img" aria-label="실제 제작한 블로그 스킨 입력폼의 주요 구조를 축약해 재구성한 미리보기">
+                <div class="about-form">
+                  <div class="about-form-kicker">NAVER BLOG SKIN</div>
+                  <h3 class="about-form-title">블로그 스킨 제작 요청서</h3>
+                  <div class="about-form-guide"><label>원하는 디자인 번호<span></span></label><p>제작 예시를 확인하고<br>디자인 번호를 입력합니다.</p></div>
+                  <div class="about-form-subtitle">블로그 스킨 정보 입력</div>
+                  <div class="about-form-fields">
+                    <div class="about-form-field"><b>01 &nbsp;상호명 *</b><i></i></div>
+                    <div class="about-form-field"><b>02 &nbsp;주소 *</b><i></i></div>
+                    <div class="about-form-field"><b>03 &nbsp;연락처 *</b><i></i></div>
+                    <div class="about-form-field"><b>04 &nbsp;삽입 문구 *</b><i></i></div>
+                  </div>
+                  <div class="about-form-menu"><span>05 &nbsp;PC용 메뉴 구성</span><div><i></i><i></i></div><div><i></i><i></i></div></div>
+                </div>
+              </div>
+              <div class="about-step-copy">
+                <h3>안내에서 입력 경험으로</h3>
+                <p>디자인 선택, 정보 작성, 메뉴별 URL 입력과 제작 안내를 하나의 온라인 폼에 통합.</p>
+                <a href="http://www.ewebstory.com/myreg/blog_form" target="_blank" rel="noopener noreferrer" aria-label="실제 블로그 스킨 제작 요청 입력폼 새 창에서 보기">실제 입력폼 보기 <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+          </div>
+          <div class="about-case-foot">
+            <p>고객이 메시지를 읽고 답변을 구성하는 방식에서, <strong>안내에 따라 필요한 정보를 입력하는 구조</strong>로.</p>
+            <span>기존 CMS 활용 · 입력 항목 및 화면 구성 직접 설계</span>
           </div>
         </div>
       </div>
