@@ -119,61 +119,43 @@
     .visual-bnj:hover .bnj-illustration{transform:translate(-2%,-3%)}
     .bnj-bottom{font-size:10px;letter-spacing:.09em;color:#c6d0d0;position:relative;z-index:3}
 
-    /* Approach: original warm paper palette, consistent with Selected Work. */
+    /* Approach: restrained editorial layout, original soft gray-green background. */
     .about{background:#e9e9e2;color:var(--ink);border-top:1px solid var(--line);padding-block:0 clamp(74px,8vw,112px)}
-    .about-heading{grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:clamp(34px,5vw,90px);align-items:end;margin-bottom:clamp(32px,4vw,52px)}
+    .about-heading{grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:clamp(34px,5vw,90px);align-items:end;margin-bottom:clamp(30px,3.8vw,47px)}
     .about-title{color:var(--ink)}
     .about-title span{color:var(--accent)}
     .about-statement{min-width:0;max-width:585px;padding-bottom:4px}
     .about-statement-lead{margin:0 0 18px;font-size:clamp(24px,2.5vw,37px);line-height:1.45;font-weight:650;letter-spacing:-.06em;word-break:keep-all}
     .about-statement-detail{margin:0;max-width:475px;color:var(--muted);font-size:clamp(13px,1.08vw,15px);line-height:1.85;letter-spacing:-.02em;word-break:keep-all}
-    /* Readable without JS: principles remain in ordinary document flow. */
     .about-scroll-track{position:relative}
     .about-scroll-frame{min-width:0}
-    .about-principles{display:grid;gap:26px;list-style:none;margin:0;padding:27px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .about-principle{min-width:0;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center;gap:clamp(20px,4.5vw,84px);padding:18px 0}
-    .about-principle:not(:last-child){border-bottom:1px solid var(--line)}
-    .about-principle-word{margin:0;color:var(--ink);font-size:clamp(48px,5.8vw,84px);font-weight:700;letter-spacing:-.082em;line-height:1.05;white-space:nowrap}
+    .about-principles-nav{display:none;align-items:center;justify-content:space-between;gap:12px;padding:15px 0;border-top:1px solid #b1b5ac}
+    .about-principles-nav span{color:#939991;font-size:clamp(10px,.95vw,12px);font-weight:750;letter-spacing:.055em;transition:color .25s}
+    .about-principles-nav span.is-active{color:var(--accent)}
+    /* Static list remains readable when motion is disabled or scripting unavailable. */
+    .about-principles{display:grid;gap:25px;list-style:none;margin:0;padding:23px 0;border-top:1px solid #b1b5ac;border-bottom:1px solid #b1b5ac}
+    .about-principle{min-width:0;display:grid;grid-template-columns:minmax(0,1.03fr) minmax(0,.97fr);align-items:center;gap:clamp(24px,4.5vw,80px);padding:18px 0}
+    .about-principle:not(:last-child){border-bottom:1px solid #c5c9bf}
+    .about-principle-word{margin:0;color:var(--ink);font-size:clamp(49px,5.9vw,87px);font-weight:700;letter-spacing:-.084em;line-height:1.06;white-space:nowrap}
     .about-principle-word span{color:var(--accent)}
-    .about-principle-copy{margin:0;max-width:425px;color:var(--muted);font-size:clamp(17px,1.53vw,22px);font-weight:500;letter-spacing:-.043em;line-height:1.75;word-break:keep-all}
+    .about-principle-copy{margin:0;max-width:475px;color:var(--muted);font-size:clamp(17px,1.53vw,22px);font-weight:500;letter-spacing:-.043em;line-height:1.75;word-break:keep-all}
     .about-principle-copy em{color:var(--ink);font-style:normal;font-weight:700}
-    .about-scroll-status{display:none;align-items:center;justify-content:flex-end;margin-top:10px}
-    .about-scroll-count{font-size:11px;font-weight:700;letter-spacing:.09em;color:#959995}
-    .about-scroll-count strong{font-weight:700;color:var(--ink)}
-    /* Entire title + principle stay pinned together; nothing drifts down between slides. */
-    html.has-approach-scroll .about-scroll-track{height:175svh}
-    html.has-approach-scroll .about-scroll-frame{
-      position:sticky;top:0;height:100svh;
-      display:flex;flex-direction:column;justify-content:flex-start;
-      padding-block:clamp(64px,9svh,108px) clamp(34px,5svh,60px)
-    }
-    html.has-approach-scroll .about-heading{flex:none}
-    html.has-approach-scroll .about-principles{position:relative;display:block;flex:1;min-height:0;padding:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    html.has-approach-scroll .about-principle{position:absolute;inset:0;width:100%;padding:12px 0;border:0;opacity:0;transform:translate3d(0,12px,0);pointer-events:none;will-change:opacity,transform}
+    /* Compact pinned composition; the keyword and explanation share one fixed grid. */
+    html.has-approach-scroll .about-scroll-track{height:clamp(680px,106svh,950px)}
+    html.has-approach-scroll .about-scroll-frame{position:sticky;top:clamp(52px,7svh,82px)}
+    html.has-approach-scroll .about-principles-nav{display:flex}
+    html.has-approach-scroll .about-principles{position:relative;display:block;height:clamp(190px,24svh,240px);margin:0;padding:0;border-top:0;border-bottom:1px solid #b1b5ac}
+    html.has-approach-scroll .about-principle{position:absolute;inset:0;width:100%;padding:12px 0;border:0;opacity:0;transform:translate3d(0,14px,0);pointer-events:none;will-change:opacity,transform}
     html.has-approach-scroll .about-principle:first-child{opacity:1;transform:none}
-    html.has-approach-scroll .about-scroll-status{display:flex}
-    /* Keep the single example subordinate to the broader working principles. */
-    .about-case-toggle{margin-top:clamp(25px,3vw,38px);padding:21px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--ink)}
-    .about-case-toggle:hover{border-color:var(--ink)}
-    .about-case-toggle-kicker{color:var(--accent)}
-    .about-case-toggle-kicker span{color:var(--muted)}
-    .about-case-toggle-sub{color:var(--muted)}
-    .about-case-toggle-action-text{color:var(--muted)}
-    .about-case-toggle-icon{border-color:#a7aba5;color:var(--ink)}
-    /* The optional case is deliberately subordinate to the working principles. */
-    .about-case-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:clamp(26px,3vw,42px);padding:24px 0;background:transparent;color:var(--ink);border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:left;cursor:pointer;transition:border-color .25s}
+    /* One optional case, identified only by a small label and the case title. */
+    .about-case-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:25px;margin-top:clamp(17px,2.4vw,29px);padding:22px 2px;background:transparent;color:var(--ink);border:0;border-top:1px solid #b1b5ac;border-bottom:1px solid #b1b5ac;text-align:left;cursor:pointer;transition:border-color .25s}
     .about-case-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
-    .about-case-toggle:hover{border-color:#777e75}
-    .about-case-toggle-main{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:7px}
-    .about-case-toggle-kicker{font-size:10px;letter-spacing:.12em;font-weight:800;color:var(--accent)}
-    .about-case-toggle-kicker span{color:var(--muted);font-weight:600}
-    .about-case-toggle-text{font-size:clamp(17px,1.55vw,21px);font-weight:650;letter-spacing:-.045em;line-height:1.4}
-    .about-case-toggle-sub{color:var(--muted);font-size:12px;line-height:1.6}
-    .about-case-toggle-action{display:flex;align-items:center;flex:none;gap:15px}
-    .about-case-toggle-action-text{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--muted)}
-    .about-case-toggle-icon{display:grid;flex:none;place-items:center;width:42px;height:42px;border:1px solid #9da39b;border-radius:50%;font-size:25px;line-height:1;font-weight:400;transition:background .25s,border-color .25s,color .25s,transform .3s var(--ease)}
+    .about-case-toggle:hover{border-color:var(--ink)}
+    .about-case-toggle-main{display:flex;min-width:0;align-items:baseline;flex-wrap:wrap;column-gap:clamp(20px,3vw,48px);row-gap:7px}
+    .about-case-toggle-kicker{flex:none;color:#666f66;font-size:12px;font-weight:700;letter-spacing:-.02em}
+    .about-case-toggle-text{font-size:clamp(18px,1.75vw,24px);font-weight:700;line-height:1.45;letter-spacing:-.052em}
+    .about-case-toggle-icon{display:grid;flex:none;place-items:center;width:40px;height:40px;border:1px solid #9da39b;border-radius:50%;font-size:25px;line-height:1;font-weight:400;transition:background .25s,border-color .25s,color .25s}
     .about-case-toggle:hover .about-case-toggle-icon,.about-case-toggle[aria-expanded="true"] .about-case-toggle-icon{background:var(--accent);border-color:var(--accent);color:#fff}
-    .about-case-toggle:hover .about-case-toggle-icon{transform:rotate(90deg)}
     .about-case-panel{height:0;overflow:hidden;opacity:0;transition:height .36s cubic-bezier(.22,1,.36,1),opacity .3s ease}
     .about-case-panel.is-open{opacity:1}
     .about-case{margin-top:20px;padding:clamp(20px,3.7vw,50px);background:#f0efea;color:var(--ink)}
@@ -227,33 +209,35 @@
     @media(max-width:1100px){
       .about-heading{gap:34px}
       .about-statement-lead{font-size:clamp(23px,2.7vw,31px)}
-      .about-principle-word{font-size:clamp(45px,5.4vw,73px)}
+      .about-principle-word{font-size:clamp(45px,5.5vw,74px)}
       .about-principle-copy{font-size:clamp(17px,1.9vw,21px)}
     }
     @media(max-width:900px){
-      .about-heading{grid-template-columns:1fr;gap:26px;margin-bottom:clamp(24px,3.5svh,38px)}
+      .about-heading{grid-template-columns:1fr;gap:25px;margin-bottom:clamp(24px,3.5svh,38px)}
       .about-statement{max-width:675px}
+      html.has-approach-scroll .about-scroll-frame{top:clamp(40px,5svh,65px)}
       .about-steps{gap:14px}
       .about-step-type{font-size:9px}
-      html.has-approach-scroll .about-scroll-frame{padding-block:clamp(46px,7svh,75px) clamp(25px,4svh,40px)}
     }
     @media(max-width:760px){
       .section.about{padding-block:0 78px}
-      .about-heading{gap:23px;margin-bottom:27px}
+      .about-heading{gap:23px;margin-bottom:25px}
       .about-statement-lead{font-size:clamp(25px,5vw,32px);margin-bottom:14px}
       .about-statement-detail{font-size:14px;line-height:1.8}
+      .about-principles-nav{padding:14px 0}
+      .about-principles-nav span{font-size:clamp(9px,2.3vw,11px)}
       .about-principle{grid-template-columns:1fr;gap:14px}
-      .about-principle-word{font-size:clamp(40px,9.2vw,66px)}
+      .about-principle-word{font-size:clamp(39px,9.2vw,66px)}
       .about-principle-copy{font-size:clamp(17px,3.8vw,21px);line-height:1.62}
-      html.has-approach-scroll .about-scroll-track{height:170svh}
-      html.has-approach-scroll .about-scroll-frame{height:100svh;top:0;padding-block:clamp(35px,6svh,55px) clamp(25px,4svh,40px)}
+      html.has-approach-scroll .about-scroll-track{height:clamp(690px,120svh,990px)}
+      html.has-approach-scroll .about-scroll-frame{top:clamp(30px,4svh,52px)}
+      html.has-approach-scroll .about-principles{height:clamp(185px,26svh,235px)}
       html.has-approach-scroll .about-principle{gap:13px;padding:6px 0}
-      .about-scroll-status{margin-top:8px}
-      .about-case-toggle{margin-top:23px;padding:20px 0;gap:14px}
+      .about-case-toggle{margin-top:20px;padding:19px 0;gap:13px}
+      .about-case-toggle-main{align-items:flex-start;flex-direction:column;gap:6px}
+      .about-case-toggle-kicker{font-size:11px}
       .about-case-toggle-text{font-size:18px}
-      .about-case-toggle-action-text{display:none}
       .about-case-toggle-icon{width:39px;height:39px;font-size:24px}
-      .about-case-head{padding-bottom:24px}
       .about-steps{grid-template-columns:1fr;max-width:570px;gap:30px}
       .about-step-type{font-size:10px}
       .about-image--kakao img{top:-43%}
@@ -270,7 +254,6 @@
       .about-principle-word{font-size:clamp(37px,9.2vw,44px)}
       .about-principle-copy{font-size:18px}
       .about-case-toggle-text{font-size:17px}
-      .about-case-toggle-sub{font-size:11px}
       .about-steps{gap:28px}
       .about-step-copy{padding-top:12px}
     }
@@ -698,6 +681,9 @@
                 <p class="about-statement-detail">정해진 순서를 따르기보다 목적과 상황에 맞춰 질문하고, 구조를 정리하고, 직접 구현하며 개선합니다.</p>
               </div>
             </div>
+            <div class="about-principles-nav" aria-hidden="true">
+              <span class="is-active">QUESTION</span><span>STRUCTURE</span><span>EXECUTION</span>
+            </div>
             <ol class="about-principles" aria-label="일할 때 중요하게 생각하는 세 가지 기준">
               <li class="about-principle about-principle--question">
                 <h3 class="about-principle-word">QUESTION<span>.</span></h3>
@@ -712,25 +698,17 @@
                 <p class="about-principle-copy">생각에 머무르지 않고 <em>직접 만들며,</em><br>실제 사용 속에서 다듬습니다.</p>
               </li>
             </ol>
-            <div class="about-scroll-status" aria-hidden="true">
-              <span class="about-scroll-count"><strong id="approach-current">01</strong> / 03</span>
-            </div>
           </div>
         </div>
         <button type="button" class="about-case-toggle" id="about-case-toggle" aria-controls="about-case-panel" aria-expanded="false">
           <span class="about-case-toggle-main">
-            <span class="about-case-toggle-kicker">IN PRACTICE <span>/ ONE EXAMPLE</span></span>
-            <span class="about-case-toggle-text">일하는 방식을 실제 업무에 적용한 사례</span>
-            <span class="about-case-toggle-sub">블로그 스킨 제작자료 요청 방식 개선</span>
+            <span class="about-case-toggle-kicker">실무 사례</span>
+            <span class="about-case-toggle-text">블로그 스킨 제작자료 요청 방식 개선</span>
           </span>
-          <span class="about-case-toggle-action"><span class="about-case-toggle-action-text">VIEW CASE</span><span class="about-case-toggle-icon" aria-hidden="true">+</span></span>
+          <span class="about-case-toggle-icon" aria-hidden="true">+</span>
         </button>
         <div class="about-case-panel" id="about-case-panel" hidden>
         <div class="about-case" aria-label="블로그 스킨 제작자료 요청 프로세스 개선 사례">
-          <div class="about-case-head">
-            <span class="about-case-kicker">WORKFLOW IMPROVEMENT / 2026</span>
-            <h3 class="about-case-title">블로그 스킨 제작자료 요청 방식 개선</h3>
-          </div>
           <div class="about-steps">
             <article class="about-step">
               <div class="about-step-top"><span class="about-step-no">01</span><span class="about-step-label">BEFORE</span><span class="about-step-type">EMAIL + DOCX</span></div>
@@ -849,7 +827,7 @@
       var approachFrame=approachTrack&&approachTrack.querySelector(".about-scroll-frame");
       var approachItems=approachTrack?Array.prototype.slice.call(approachTrack.querySelectorAll(".about-principle")):[];
       if(approachTrack&&approachFrame&&approachItems.length===3&&!window.matchMedia("(prefers-reduced-motion: reduce), (max-height: 599px)").matches){
-        var approachNumber=document.getElementById("approach-current");
+        var approachTabs=Array.prototype.slice.call(approachTrack.querySelectorAll(".about-principles-nav span"));
 
         var approachQueued=false;
         document.documentElement.classList.add("has-approach-scroll");
@@ -871,7 +849,8 @@
             item.style.transform="translate3d(0,"+slide[i].toFixed(1)+"px,0)";
             item.style.visibility=fade[i]<.005?"hidden":"visible";
           });
-          approachNumber.textContent=String(p<.26?1:p<.64?2:3).padStart(2,"0");
+          var active=p<.26?0:p<.64?1:2;
+          approachTabs.forEach(function(tab,i){tab.classList.toggle("is-active",i===active)});
         }
         function approachOnScroll(){
           if(approachQueued)return;
@@ -886,13 +865,11 @@
       var aboutCaseToggle=document.getElementById("about-case-toggle");
       var aboutCasePanel=document.getElementById("about-case-panel");
       if(aboutCaseToggle&&aboutCasePanel){
-        var aboutToggleActionText=aboutCaseToggle.querySelector(".about-case-toggle-action-text");
         var aboutToggleIcon=aboutCaseToggle.querySelector(".about-case-toggle-icon");
         var aboutReduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)");
         aboutCaseToggle.addEventListener("click",function(){
           var open=aboutCaseToggle.getAttribute("aria-expanded")!=="true";
           aboutCaseToggle.setAttribute("aria-expanded",String(open));
-          aboutToggleActionText.textContent=open?"CLOSE":"VIEW CASE";
           aboutToggleIcon.textContent=open?"−":"+";
           if(aboutReduceMotion.matches){
             aboutCasePanel.hidden=!open;
