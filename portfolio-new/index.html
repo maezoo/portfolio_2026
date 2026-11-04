@@ -131,19 +131,20 @@
       .about-principle:hover .about-principle-word span{color:var(--ink)}
     }
     /* Approach example toggle: restrained hover motion, with a clear resting state. */
-    .about-case-toggle{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:clamp(78px,7vw,106px) minmax(0,1fr) auto;column-gap:clamp(22px,3.2vw,52px);align-items:center;width:100%;margin-top:clamp(47px,5vw,78px);padding:24px 16px;background:#eeede8;color:var(--ink);border:0;border-top:1px solid var(--ink);border-bottom:1px solid #bbc0b7;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s}
+    .about-case-toggle{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:clamp(18px,3vw,40px);align-items:center;width:100%;margin-top:clamp(47px,5vw,78px);padding:24px clamp(18px,2.8vw,32px);background:#eeede8;color:var(--ink);border:0;border-top:1px solid var(--ink);border-bottom:1px solid #bbc0b7;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s}
     .about-case-toggle::before{content:"";position:absolute;z-index:-1;inset:0;background:#e4e6df;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
     .about-case-toggle:hover{border-bottom-color:var(--accent)}
     .about-case-toggle[aria-expanded="true"]{border-bottom-color:var(--accent);background:#e8e9e2}
     .about-case-toggle[aria-expanded="true"]::before{transform:scaleX(1)}
     .about-case-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
-    .about-case-toggle-kicker{color:var(--muted);font-size:12px;letter-spacing:-.02em;line-height:1.55;font-weight:700;white-space:nowrap}
+    .about-case-toggle-copy{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:6px;transition:transform .32s var(--ease)}
+    .about-case-toggle-kicker{color:var(--muted);font-size:11px;letter-spacing:.02em;line-height:1.55;font-weight:700;white-space:normal}
     .about-case-toggle-text{min-width:0;font-size:clamp(18px,1.8vw,25px);font-weight:700;letter-spacing:-.052em;line-height:1.45;word-break:keep-all;transition:transform .32s var(--ease)}
     .about-case-toggle-icon{display:grid;place-items:center;flex:none;width:46px;height:46px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:50%;font-size:26px;line-height:1;font-weight:400;transition:background .25s,border-color .25s,color .25s,transform .3s var(--ease)}
     .about-case-toggle:hover .about-case-toggle-icon,.about-case-toggle[aria-expanded="true"] .about-case-toggle-icon{background:var(--ink);border-color:var(--ink);color:#fff}
     @media(hover:hover) and (pointer:fine){
       .about-case-toggle:hover::before{transform:scaleX(1)}
-      .about-case-toggle:hover .about-case-toggle-text{transform:translateX(8px)}
+      .about-case-toggle:hover .about-case-toggle-copy{transform:translateX(8px)}
       .about-case-toggle:hover .about-case-toggle-icon{transform:scale(1.09) rotate(90deg)}
     }
     .about-case-toggle:active .about-case-toggle-icon{transform:scale(.94)}
@@ -212,7 +213,7 @@
       .about-principle-index{grid-row:1 / 3}
       .about-principle-word{font-size:clamp(42px,7.2vw,64px)}
       .about-principle-copy{grid-column:2;max-width:630px;font-size:17px}
-      .about-case-toggle{grid-template-columns:48px minmax(0,1fr) 42px;column-gap:22px}
+      .about-case-toggle{grid-template-columns:minmax(0,1fr) 46px;column-gap:22px}
       .about-steps{gap:14px}
       .about-step-type{font-size:9px}
     }
@@ -225,8 +226,8 @@
       .about-principle-index{font-size:11px;padding-top:6px}
       .about-principle-word{font-size:clamp(37px,8.8vw,58px)}
       .about-principle-copy{font-size:clamp(16px,3.6vw,19px);line-height:1.65}
-      .about-case-toggle{grid-template-columns:78px minmax(0,1fr) 46px;column-gap:12px;margin-top:50px;padding:23px 0}
-      .about-case-toggle-kicker{font-size:11px;align-self:start;padding-top:4px;white-space:normal}
+      .about-case-toggle{grid-template-columns:minmax(0,1fr) 46px;column-gap:12px;margin-top:50px;padding:23px 16px}
+      .about-case-toggle-kicker{font-size:11px;align-self:start;padding-top:0;white-space:normal}
       .about-case-toggle-text{font-size:clamp(18px,4.2vw,22px)}
       .about-case-toggle-icon{width:46px;height:46px;font-size:24px}
       .about-steps{grid-template-columns:1fr;max-width:570px;gap:30px}
@@ -251,7 +252,7 @@
     }
     @media(prefers-reduced-motion:reduce){
       .about-case-panel{transition:none}
-      .about-principle-word,.about-case-toggle-icon,.about-case-toggle,.about-case-toggle::before,.about-case-toggle-text{transition:none}
+      .about-principle-word,.about-case-toggle-icon,.about-case-toggle,.about-case-toggle::before,.about-case-toggle-text,.about-case-toggle-copy{transition:none}
     }
     .experience .section-head{margin-bottom:60px}
     .experience-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:clamp(40px,8vw,120px)}
@@ -781,8 +782,7 @@
           </li>
         </ol>
         <button type="button" class="about-case-toggle reveal" id="about-case-toggle" aria-controls="about-case-panel" aria-expanded="false">
-          <span class="about-case-toggle-kicker">실제 업무<br>개선 사례</span>
-          <span class="about-case-toggle-text">블로그 스킨 제작자료 요청 방식 개선</span>
+          <span class="about-case-toggle-copy"><span class="about-case-toggle-kicker">실무 개선 사례</span><span class="about-case-toggle-text">블로그 스킨 자료 수집 방식 개선</span></span>
           <span class="about-case-toggle-icon" aria-hidden="true">+</span>
         </button>
         <div class="about-case-panel" id="about-case-panel" hidden>
