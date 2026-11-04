@@ -130,15 +130,23 @@
       .about-principle:hover .about-principle-word{color:var(--accent);transform:translateX(6px)}
       .about-principle:hover .about-principle-word span{color:var(--ink)}
     }
-    /* A quiet evidence link; the approach remains the focus. */
-    .about-case-toggle{display:grid;grid-template-columns:clamp(78px,7vw,106px) minmax(0,1fr) auto;column-gap:clamp(22px,3.2vw,52px);align-items:center;width:100%;margin-top:clamp(47px,5vw,78px);padding:24px 0;background:none;color:var(--ink);border:0;border-top:1px solid var(--ink);border-bottom:1px solid #bbc0b7;text-align:left;cursor:pointer;transition:border-color .25s}
-    .about-case-toggle:hover{border-bottom-color:var(--ink)}
+    /* Approach example toggle: restrained hover motion, with a clear resting state. */
+    .about-case-toggle{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:clamp(78px,7vw,106px) minmax(0,1fr) auto;column-gap:clamp(22px,3.2vw,52px);align-items:center;width:100%;margin-top:clamp(47px,5vw,78px);padding:24px 16px;background:#eeede8;color:var(--ink);border:0;border-top:1px solid var(--ink);border-bottom:1px solid #bbc0b7;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s}
+    .about-case-toggle::before{content:"";position:absolute;z-index:-1;inset:0;background:#e4e6df;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+    .about-case-toggle:hover{border-bottom-color:var(--accent)}
+    .about-case-toggle[aria-expanded="true"]{border-bottom-color:var(--accent);background:#e8e9e2}
+    .about-case-toggle[aria-expanded="true"]::before{transform:scaleX(1)}
     .about-case-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
     .about-case-toggle-kicker{color:var(--muted);font-size:12px;letter-spacing:-.02em;line-height:1.55;font-weight:700;white-space:nowrap}
-    .about-case-toggle-text{min-width:0;font-size:clamp(18px,1.8vw,25px);font-weight:700;letter-spacing:-.052em;line-height:1.45;word-break:keep-all}
+    .about-case-toggle-text{min-width:0;font-size:clamp(18px,1.8vw,25px);font-weight:700;letter-spacing:-.052em;line-height:1.45;word-break:keep-all;transition:transform .32s var(--ease)}
     .about-case-toggle-icon{display:grid;place-items:center;flex:none;width:46px;height:46px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:50%;font-size:26px;line-height:1;font-weight:400;transition:background .25s,border-color .25s,color .25s,transform .3s var(--ease)}
     .about-case-toggle:hover .about-case-toggle-icon,.about-case-toggle[aria-expanded="true"] .about-case-toggle-icon{background:var(--ink);border-color:var(--ink);color:#fff}
-    .about-case-toggle:hover .about-case-toggle-icon{transform:rotate(90deg)}
+    @media(hover:hover) and (pointer:fine){
+      .about-case-toggle:hover::before{transform:scaleX(1)}
+      .about-case-toggle:hover .about-case-toggle-text{transform:translateX(8px)}
+      .about-case-toggle:hover .about-case-toggle-icon{transform:scale(1.09) rotate(90deg)}
+    }
+    .about-case-toggle:active .about-case-toggle-icon{transform:scale(.94)}
     .about-case-panel{height:0;overflow:hidden;opacity:0;transition:height .36s cubic-bezier(.22,1,.36,1),opacity .3s ease}
     .about-case-panel.is-open{opacity:1}
     .about-case{margin-top:20px;padding:clamp(20px,3.7vw,50px);background:#f0efea;color:var(--ink)}
@@ -243,7 +251,7 @@
     }
     @media(prefers-reduced-motion:reduce){
       .about-case-panel{transition:none}
-      .about-principle-word,.about-case-toggle-icon{transition:none}
+      .about-principle-word,.about-case-toggle-icon,.about-case-toggle,.about-case-toggle::before,.about-case-toggle-text{transition:none}
     }
     .experience .section-head{margin-bottom:60px}
     .experience-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:clamp(40px,8vw,120px)}
