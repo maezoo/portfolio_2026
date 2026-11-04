@@ -269,31 +269,34 @@
     .experience .career-row .role{margin:0;color:#ad4833;font-size:11px;letter-spacing:.035em;font-weight:800}
     .experience .career-content>p{margin:0;max-width:1040px;color:#323d35;font-size:13px;line-height:1.8}
     @media(hover:hover) and (pointer:fine){.experience .career-row:hover{background:#ebece5;padding-left:14px;padding-right:14px}}
-    .experience-skills-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(30px,6vw,94px)}
-    .experience .skill-block{display:grid;grid-template-columns:minmax(130px,.75fr) minmax(0,1.25fr);gap:clamp(12px,2vw,30px);min-width:0;padding:20px 0;margin:0;border-top:1px solid #c8cec6}
-    .experience .skill-block:nth-last-child(-n+2){border-bottom:1px solid #c8cec6}
-    .experience .skill-block h3{margin:3px 0 0;color:#27312a;font-size:12px;font-weight:800;line-height:1.5;letter-spacing:-.01em}
-    .experience .skill-list{display:flex;align-content:start;flex-wrap:wrap;gap:7px}
-    .experience .skill-list span{border:1px solid #9fa9a0;padding:7px 11px;border-radius:100px;background:#f9f8f4;color:#323c34;font-size:11px;line-height:1.4}
+    .experience-skills-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,6vw,94px);align-items:start}
+    .experience-skill-group{min-width:0}
+    .experience-skill-heading{margin:0;padding:0 0 15px;border-bottom:1px solid #353e36;color:#27312a;font-size:13px;font-weight:800;letter-spacing:.045em}
+    .experience-skill-heading span{color:#566058;font-size:11px;font-weight:600;letter-spacing:0}
+    .experience-core-list>div,.experience-tool-row{padding:17px 0;border-bottom:1px solid #c8cec6}
+    .experience-core-list strong,.experience-tool-row strong{display:block;color:#27312a;font-size:13px;font-weight:800;line-height:1.5}
+    .experience-core-list p,.experience-tool-row p{margin:6px 0 0;color:#414b43;font-size:12px;line-height:1.75}
+    .experience-tool-row{display:grid;grid-template-columns:clamp(100px,26%,150px) minmax(0,1fr);gap:14px}
+    .experience-tool-row p{margin:0}
     .experience-bottom-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(30px,6vw,94px);align-items:start}
     .experience-detail{display:grid;grid-template-columns:clamp(85px,22%,112px) minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid #c8cec6}
     .experience-detail:last-child{border-bottom:1px solid #c8cec6}
     .experience-detail-date{font-size:11px;line-height:1.7;color:#535e56;font-weight:700}
     .experience-detail strong{display:block;color:#263129;font-size:13px;line-height:1.65;letter-spacing:-.02em;font-weight:700}
     .experience-detail p{margin:4px 0 0;color:#48554a;font-size:12px;line-height:1.65}
-    @media(max-width:1100px){.experience .skill-block{grid-template-columns:1fr;gap:11px}}
+    @media(max-width:1100px){.experience-skill-group .experience-tool-row{grid-template-columns:1fr;gap:5px}}
     @media(max-width:760px){
       .experience .section-head{grid-template-columns:1fr auto;gap:12px;align-items:end}
       .experience-resume{min-height:44px;padding:9px 12px;gap:10px;font-size:11px}
       .experience-resume b{font-size:18px}
-      .experience-skills-grid,.experience-bottom-grid{grid-template-columns:1fr;gap:0}
-      .experience .skill-block{grid-template-columns:minmax(0,1fr);gap:10px}
-      .experience .skill-block:nth-last-child(2){border-bottom:0}
-      .experience .skill-block:last-child{border-bottom:1px solid #c8cec6}
+      .experience-skills-layout,.experience-bottom-grid{grid-template-columns:1fr;gap:0}
+      .experience-skills-layout{gap:34px}
+      .experience-skill-group .experience-tool-row{grid-template-columns:clamp(100px,28%,140px) minmax(0,1fr);gap:12px}
       .experience-bottom-grid{gap:35px}
       .experience .career-row{grid-template-columns:90px minmax(0,1fr);gap:14px}
     }
     @media(max-width:430px){
+      .experience-skill-group .experience-tool-row{grid-template-columns:1fr;gap:4px}
       .experience .section-title{font-size:clamp(42px,10vw,55px)}
       .experience .career-row{grid-template-columns:72px minmax(0,1fr);gap:11px}
       .experience-detail{grid-template-columns:76px minmax(0,1fr);gap:12px}
@@ -896,11 +899,22 @@
         </div>
         <div class="experience-skills reveal">
           <h3 class="small-title">SKILLS / TOOLS</h3>
-          <div class="experience-skills-grid">
-            <div class="skill-block"><h3>Design &amp; Planning</h3><div class="skill-list"><span>Figma</span><span>UI Design</span><span>Information Architecture</span><span>Responsive Design</span><span>Photoshop</span><span>Illustrator</span></div></div>
-            <div class="skill-block"><h3>Publishing &amp; Interaction</h3><div class="skill-list"><span>HTML</span><span>CSS / SCSS</span><span>JavaScript</span><span>jQuery</span><span>GSAP</span><span>Swiper</span><span>AOS</span><span>Web Accessibility</span><span>Cross-browser</span></div></div>
-            <div class="skill-block"><h3>Web Operations</h3><div class="skill-list"><span>WordPress</span><span>CMS</span><span>Git / GitHub</span><span>Hosting</span><span>DNS / SSL</span></div></div>
-            <div class="skill-block"><h3>AI Tools</h3><div class="skill-list"><span>ChatGPT</span><span>Gemini</span></div></div>
+          <div class="experience-skills-layout">
+            <div class="experience-skill-group">
+              <h4 class="experience-skill-heading">CORE SKILLS <span>/ 핵심 역량</span></h4>
+              <div class="experience-core-list">
+                <div><strong>UI Design</strong><p>화면 구성 · 시각적 위계 · 반응형 UI 설계</p></div>
+                <div><strong>Information Architecture</strong><p>메뉴 및 콘텐츠 구조 정리 · 정보 탐색 흐름 개선</p></div>
+                <div><strong>Publishing &amp; Interaction</strong><p>HTML·CSS·JavaScript 기반 UI 구현 · 인터랙션 및 사용성 개선</p></div>
+              </div>
+            </div>
+            <div class="experience-skill-group">
+              <h4 class="experience-skill-heading">TOOLS &amp; TECHNOLOGIES <span>/ 사용 도구</span></h4>
+              <div class="experience-tool-row"><strong>Design</strong><p>Figma · Photoshop · Illustrator</p></div>
+              <div class="experience-tool-row"><strong>Development</strong><p>HTML · CSS / SCSS · JavaScript · jQuery · GSAP · Swiper · AOS · Git / GitHub</p></div>
+              <div class="experience-tool-row"><strong>Web Operations</strong><p>WordPress · CMS · Hosting · DNS / SSL</p></div>
+              <div class="experience-tool-row"><strong>AI</strong><p>ChatGPT · Gemini</p></div>
+            </div>
           </div>
         </div>
         <div class="experience-bottom-grid">
