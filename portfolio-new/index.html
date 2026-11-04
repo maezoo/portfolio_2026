@@ -131,12 +131,12 @@
       .about-principle:hover .about-principle-word span{color:var(--ink)}
     }
     /* A quiet evidence link; the approach remains the focus. */
-    .about-case-toggle{display:grid;grid-template-columns:clamp(50px,5vw,84px) minmax(0,1fr) auto;column-gap:clamp(22px,3.2vw,52px);align-items:center;width:100%;margin-top:clamp(47px,5vw,78px);padding:24px 0;background:none;color:var(--ink);border:0;border-top:1px solid var(--ink);border-bottom:1px solid #bbc0b7;text-align:left;cursor:pointer;transition:border-color .25s}
+    .about-case-toggle{display:grid;grid-template-columns:clamp(78px,7vw,106px) minmax(0,1fr) auto;column-gap:clamp(22px,3.2vw,52px);align-items:center;width:100%;margin-top:clamp(47px,5vw,78px);padding:24px 0;background:none;color:var(--ink);border:0;border-top:1px solid var(--ink);border-bottom:1px solid #bbc0b7;text-align:left;cursor:pointer;transition:border-color .25s}
     .about-case-toggle:hover{border-bottom-color:var(--ink)}
     .about-case-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
-    .about-case-toggle-kicker{color:var(--muted);font-size:12px;letter-spacing:-.02em;line-height:1.7;font-weight:700;white-space:nowrap}
+    .about-case-toggle-kicker{color:var(--muted);font-size:12px;letter-spacing:-.02em;line-height:1.55;font-weight:700;white-space:nowrap}
     .about-case-toggle-text{min-width:0;font-size:clamp(18px,1.8vw,25px);font-weight:700;letter-spacing:-.052em;line-height:1.45;word-break:keep-all}
-    .about-case-toggle-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;border:1px solid #9da39b;border-radius:50%;font-size:26px;line-height:1;font-weight:400;transition:background .25s,border-color .25s,color .25s,transform .3s var(--ease)}
+    .about-case-toggle-icon{display:grid;place-items:center;flex:none;width:46px;height:46px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:50%;font-size:26px;line-height:1;font-weight:400;transition:background .25s,border-color .25s,color .25s,transform .3s var(--ease)}
     .about-case-toggle:hover .about-case-toggle-icon,.about-case-toggle[aria-expanded="true"] .about-case-toggle-icon{background:var(--ink);border-color:var(--ink);color:#fff}
     .about-case-toggle:hover .about-case-toggle-icon{transform:rotate(90deg)}
     .about-case-panel{height:0;overflow:hidden;opacity:0;transition:height .36s cubic-bezier(.22,1,.36,1),opacity .3s ease}
@@ -217,10 +217,10 @@
       .about-principle-index{font-size:11px;padding-top:6px}
       .about-principle-word{font-size:clamp(37px,8.8vw,58px)}
       .about-principle-copy{font-size:clamp(16px,3.6vw,19px);line-height:1.65}
-      .about-case-toggle{grid-template-columns:34px minmax(0,1fr) 40px;column-gap:12px;margin-top:50px;padding:23px 0}
+      .about-case-toggle{grid-template-columns:78px minmax(0,1fr) 46px;column-gap:12px;margin-top:50px;padding:23px 0}
       .about-case-toggle-kicker{font-size:11px;align-self:start;padding-top:4px;white-space:normal}
       .about-case-toggle-text{font-size:clamp(18px,4.2vw,22px)}
-      .about-case-toggle-icon{width:40px;height:40px;font-size:24px}
+      .about-case-toggle-icon{width:46px;height:46px;font-size:24px}
       .about-steps{grid-template-columns:1fr;max-width:570px;gap:30px}
       .about-step-type{font-size:10px}
       .about-image--kakao img{top:-43%}
@@ -773,7 +773,7 @@
           </li>
         </ol>
         <button type="button" class="about-case-toggle reveal" id="about-case-toggle" aria-controls="about-case-panel" aria-expanded="false">
-          <span class="about-case-toggle-kicker">실무 사례</span>
+          <span class="about-case-toggle-kicker">실제 업무<br>개선 사례</span>
           <span class="about-case-toggle-text">블로그 스킨 제작자료 요청 방식 개선</span>
           <span class="about-case-toggle-icon" aria-hidden="true">+</span>
         </button>
