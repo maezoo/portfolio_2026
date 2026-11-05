@@ -311,31 +311,40 @@
       .experience .career-row{grid-template-columns:90px minmax(0,1fr);gap:12px}
       .experience-detail{grid-template-columns:90px minmax(0,1fr);gap:12px}
     }
-    .footer{background:#222725;color:#f4f3ec;padding-top:clamp(105px,12vw,180px)}
-    .footer-top{display:flex;align-items:start;justify-content:space-between;gap:30px;margin-bottom:50px}
+    .footer{background:#222725;color:#f4f3ec;padding-top:clamp(100px,10vw,150px)}
+    .footer-editorial{display:grid;grid-template-columns:minmax(0,1.13fr) minmax(0,.87fr);gap:clamp(42px,5vw,90px);align-items:end;padding-bottom:clamp(85px,10vw,145px)}
+    .footer-identity,.footer-connect{min-width:0}
     .footer .eyebrow{color:#c1c6bf}
     .footer .eyebrow .bullet{background:var(--accent)}
-    .footer-note{max-width:280px;margin:0;font-size:14px;color:#aeb5ac;line-height:1.85}
-    .footer-title{font-size:clamp(65px,10.6vw,172px);line-height:.96;letter-spacing:-.092em;margin:0 0 65px;font-weight:700}
+    .footer-title{margin:clamp(46px,5.5vw,84px) 0 0;font-size:clamp(60px,6.9vw,116px);line-height:1.04;letter-spacing:-.083em;font-weight:700}
     .footer-title .line{display:block}
-    .footer-title .line:nth-child(2){padding-left:clamp(15px,11vw,185px);color:#f4f3ec}
-    .footer-title i{font-style:normal;color:var(--accent)}
-    .footer-actions{display:flex;flex-direction:column;align-items:stretch;padding-bottom:clamp(54px,6vw,90px)}
-    .footer-contact-label{display:block;margin-bottom:20px;color:#b7c0b6;font-size:12px;font-weight:800;letter-spacing:.12em}
-    .footer-email-link{display:flex;justify-content:space-between;align-items:center;gap:20px;min-width:0;padding:0 0 24px;border-bottom:1px solid #8b988e;color:#f4f3ec;transition:border-color .25s,color .25s}
-    .footer-email-link strong{min-width:0;overflow-wrap:anywhere;font-size:clamp(25px,4.4vw,60px);font-weight:650;letter-spacing:-.055em;line-height:1.2}
-    .footer-email-link .footer-contact-arrow{flex:none;font-size:clamp(26px,3vw,43px);font-weight:400;line-height:1;transition:transform .3s var(--ease)}
-    .footer-email-link:hover{border-bottom-color:var(--accent);color:#f4f3ec}
+    .footer-title .line:nth-child(2){padding-left:0;color:#f4f3ec}
+    .footer-title i{display:inline-block;font-style:normal;color:var(--accent)}
+    .footer-connect{padding-bottom:clamp(2px,.7vw,12px)}
+    .footer-note{max-width:480px;margin:0 0 clamp(33px,4vw,57px);font-size:clamp(14px,1.08vw,16px);color:#c7cfc7;line-height:1.8;word-break:keep-all}
+    .footer-actions{display:flex;flex-direction:column;align-items:stretch;padding:0}
+    .footer-email-link{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0;padding:5px 0 21px;color:#f4f3ec;isolation:isolate;transition:color .3s}
+    .footer-email-link::before,.footer-email-link::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:#7d8980}
+    .footer-email-link::after{height:2px;right:auto;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .42s var(--ease)}
+    .footer-email-link strong{display:block;min-width:0;overflow-wrap:anywhere;font-size:clamp(19px,2.15vw,33px);font-weight:650;letter-spacing:-.055em;line-height:1.35;transition:transform .3s var(--ease)}
+    .footer-email-link .footer-contact-arrow{flex:none;font-size:clamp(26px,2.7vw,39px);font-weight:400;line-height:1;transition:transform .3s var(--ease),color .3s}
+    .footer-email-link:hover{color:var(--accent)}
+    .footer-email-link:hover::after,.footer-email-link:focus-visible::after{transform:scaleX(1)}
+    .footer-email-link:hover strong{transform:translateX(5px)}
     .footer-email-link:hover .footer-contact-arrow{transform:translate(5px,-5px);color:var(--accent)}
-    .footer-contact-help{margin:12px 0 0;color:#aeb8ae;font-size:13px;line-height:1.65}
-    .footer-elsewhere{display:flex;justify-content:space-between;align-items:center;gap:22px;padding-top:clamp(32px,4vw,52px)}
-    .footer-elsewhere-label{color:#b7c0b6;font-size:12px;font-weight:800;letter-spacing:.12em}
-    .footer-github-link{display:inline-flex;align-items:center;gap:14px;padding:8px 0;color:#f4f3ec;font-size:14px;font-weight:700;letter-spacing:.045em;transition:color .25s}
-    .footer-github-link span{font-size:21px;font-weight:400;transition:transform .25s}
+    .footer-github-link{display:inline-flex;align-items:center;align-self:flex-start;gap:13px;margin-top:22px;padding:6px 0;color:#c7cfc7;font-size:13px;font-weight:700;letter-spacing:.06em;transition:color .25s}
+    .footer-github-link span{font-size:20px;font-weight:400;transition:transform .25s}
     .footer-github-link:hover{color:var(--accent)}
     .footer-github-link:hover span{transform:translate(4px,-4px)}
-    @media(max-width:760px){.footer-email-link{padding-bottom:19px}.footer-email-link strong{font-size:clamp(23px,6vw,38px)}.footer-elsewhere{padding-top:30px}}
-    @media(prefers-reduced-motion:reduce){.footer-email-link,.footer-email-link .footer-contact-arrow,.footer-github-link,.footer-github-link span{transition:none}}
+    .js .footer-editorial.reveal{transition-duration:.58s}
+    @keyframes footer-type-rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    .js .footer-editorial.in .footer-title .line:first-child{animation:footer-type-rise .55s .07s both}
+    .js .footer-editorial.in .footer-title .line:nth-child(2){animation:footer-type-rise .62s .19s both}
+    .js .footer-editorial.in .footer-title i{animation:footer-type-rise .4s .56s both}
+    .js .footer-editorial.in .footer-connect{animation:footer-type-rise .65s .24s both}
+    @media(max-width:900px){.footer-editorial{grid-template-columns:1fr;gap:clamp(28px,5vw,48px)}.footer-title{margin-top:42px;font-size:clamp(60px,11vw,110px)}.footer-note{margin-bottom:25px}.footer-connect{max-width:670px}}
+    @media(max-width:760px){.footer-editorial{padding-bottom:70px}.footer-title{font-size:clamp(58px,12vw,88px)}.footer-email-link strong{font-size:clamp(22px,5.4vw,33px)}}
+    @media(prefers-reduced-motion:reduce){.footer-editorial,.footer-title .line,.footer-title i,.footer-connect{animation:none!important}.footer-email-link,.footer-email-link::after,.footer-email-link strong,.footer-email-link .footer-contact-arrow,.footer-github-link,.footer-github-link span{transition:none}}
     .page-top{position:fixed;right:clamp(18px,3vw,42px);bottom:clamp(18px,3vw,38px);z-index:60;display:grid;place-items:center;width:50px;height:50px;padding:0;border:1px solid #303630;border-radius:50%;background:#f5f4f0;color:#303630;font-size:23px;cursor:pointer;box-shadow:0 6px 22px rgba(32,35,33,.12);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(12px);transition:opacity .25s,visibility .25s,transform .25s,background .25s,color .25s}
     .page-top.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
     @media(hover:hover) and (pointer:fine){.page-top:hover{background:#303630;color:#fff;transform:translateY(-3px)}}
@@ -394,9 +403,6 @@
       .project--reverse .visual{grid-row:2}
       .visual-caption{font-size:8px}
       .experience-grid{grid-template-columns:1fr;gap:43px}
-      .footer-title{font-size:clamp(60px,12vw,95px)}
-      .footer-title .line:nth-child(2){padding-left:0}
-      .footer-actions{padding-bottom:42px}
       .footer-note{font-size:14px}
     }
     @media(max-width:430px){
@@ -417,8 +423,7 @@
       .concept-bottom{padding:15px}
       .concept-note{right:12px;font-size:8px}
       .career-row{grid-template-columns:75px 1fr;gap:18px}
-      .footer-top{flex-direction:column;gap:22px}
-      .footer-title{margin-bottom:48px}
+
     }
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
@@ -961,17 +966,17 @@
 
   <footer class="footer" id="contact">
     <div class="wrap">
-      <div class="footer-top reveal"><span class="eyebrow"><i class="bullet" aria-hidden="true"></i> CONTACT</span><p class="footer-note">새로운 기회와 협업을 기다립니다.<br>함께할 이야기가 있다면 연락해 주세요.</p></div>
-      <h2 class="footer-title reveal">Let's make<br><span class="line">it clear<i>.</i></span></h2>
-      <div class="footer-actions reveal">
-        <div class="footer-contact-main">
-          <span class="footer-contact-label">GET IN TOUCH</span>
-          <a class="footer-email-link" href="mailto:aa00456@naver.com" aria-label="이메일 보내기: aa00456@naver.com"><strong>aa00456@naver.com</strong><span class="footer-contact-arrow" aria-hidden="true">↗</span></a>
-          <p class="footer-contact-help">이메일로 연락하기</p>
+      <div class="footer-editorial reveal">
+        <div class="footer-identity">
+          <span class="eyebrow"><i class="bullet" aria-hidden="true"></i> CONTACT</span>
+          <h2 class="footer-title"><span class="line">Let's make</span><span class="line">it clear<i>.</i></span></h2>
         </div>
-        <div class="footer-elsewhere">
-          <span class="footer-elsewhere-label">ELSEWHERE</span>
-          <a class="footer-github-link" href="https://github.com/maezoo" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+        <div class="footer-connect">
+          <p class="footer-note">새로운 기회와 협업에 열려 있습니다.<br>함께할 이야기가 있다면 연락해 주세요.</p>
+          <div class="footer-actions">
+            <a class="footer-email-link" href="mailto:aa00456@naver.com" aria-label="이메일 보내기: aa00456@naver.com"><strong>aa00456@naver.com</strong><span class="footer-contact-arrow" aria-hidden="true">↗</span></a>
+            <a class="footer-github-link" href="https://github.com/maezoo" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </div>
       <div class="footer-bottom"><span>© 2026 YEONHEE JIN · PORTFOLIO</span><span>DESIGNED WITH INTENTION. BUILT WITH CARE.</span></div>
