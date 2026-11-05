@@ -320,22 +320,28 @@
     .footer-title .line{display:block}
     .footer-title .line:nth-child(2){padding-left:clamp(15px,11vw,185px);color:#f4f3ec}
     .footer-title i{font-style:normal;color:var(--accent)}
-    .footer-actions{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(20px,4vw,52px);padding-bottom:60px}
-    .footer-button{display:inline-flex;align-items:center;gap:clamp(16px,3vw,45px);padding:18px 0;border-bottom:1px solid #ecece4;font-size:15px;font-weight:700;transition:border-color .25s,color .25s}
-    .footer-button>span:last-child{font-size:27px;font-weight:400;line-height:1;transition:transform .25s}
-    .footer-button:hover>span:last-child{transform:translate(4px,-4px)}
-    .footer-button--email{border-bottom-color:var(--accent);color:#f4f3ec}
-    .footer-button--email:hover{color:#f5a38f}
-    .footer-button--github{gap:16px;border-bottom-color:#68756d;color:#b9c2b9;font-size:13px}
-    .footer-button--github:hover{color:#f4f3ec;border-bottom-color:#f4f3ec}
-    .footer-email-text{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
-    .footer-email-address{font-size:13px;font-weight:500;color:#c7cec5;letter-spacing:0}
+    .footer-actions{display:flex;flex-direction:column;align-items:stretch;padding-bottom:clamp(54px,6vw,90px)}
+    .footer-contact-label{display:block;margin-bottom:20px;color:#b7c0b6;font-size:12px;font-weight:800;letter-spacing:.12em}
+    .footer-email-link{display:flex;justify-content:space-between;align-items:center;gap:20px;min-width:0;padding:0 0 24px;border-bottom:1px solid #8b988e;color:#f4f3ec;transition:border-color .25s,color .25s}
+    .footer-email-link strong{min-width:0;overflow-wrap:anywhere;font-size:clamp(25px,4.4vw,60px);font-weight:650;letter-spacing:-.055em;line-height:1.2}
+    .footer-email-link .footer-contact-arrow{flex:none;font-size:clamp(26px,3vw,43px);font-weight:400;line-height:1;transition:transform .3s var(--ease)}
+    .footer-email-link:hover{border-bottom-color:var(--accent);color:#f4f3ec}
+    .footer-email-link:hover .footer-contact-arrow{transform:translate(5px,-5px);color:var(--accent)}
+    .footer-contact-help{margin:12px 0 0;color:#aeb8ae;font-size:13px;line-height:1.65}
+    .footer-elsewhere{display:flex;justify-content:space-between;align-items:center;gap:22px;padding-top:clamp(32px,4vw,52px)}
+    .footer-elsewhere-label{color:#b7c0b6;font-size:12px;font-weight:800;letter-spacing:.12em}
+    .footer-github-link{display:inline-flex;align-items:center;gap:14px;padding:8px 0;color:#f4f3ec;font-size:14px;font-weight:700;letter-spacing:.045em;transition:color .25s}
+    .footer-github-link span{font-size:21px;font-weight:400;transition:transform .25s}
+    .footer-github-link:hover{color:var(--accent)}
+    .footer-github-link:hover span{transform:translate(4px,-4px)}
+    @media(max-width:760px){.footer-email-link{padding-bottom:19px}.footer-email-link strong{font-size:clamp(23px,6vw,38px)}.footer-elsewhere{padding-top:30px}}
+    @media(prefers-reduced-motion:reduce){.footer-email-link,.footer-email-link .footer-contact-arrow,.footer-github-link,.footer-github-link span{transition:none}}
     .page-top{position:fixed;right:clamp(18px,3vw,42px);bottom:clamp(18px,3vw,38px);z-index:60;display:grid;place-items:center;width:50px;height:50px;padding:0;border:1px solid #303630;border-radius:50%;background:#f5f4f0;color:#303630;font-size:23px;cursor:pointer;box-shadow:0 6px 22px rgba(32,35,33,.12);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(12px);transition:opacity .25s,visibility .25s,transform .25s,background .25s,color .25s}
     .page-top.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
     @media(hover:hover) and (pointer:fine){.page-top:hover{background:#303630;color:#fff;transform:translateY(-3px)}}
     .page-top:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
     @media(max-width:760px){.page-top{right:16px;bottom:16px;width:44px;height:44px;font-size:20px}}
-    @media(prefers-reduced-motion:reduce){.page-top,.footer-button,.footer-button>span:last-child{transition:none}}
+    @media(prefers-reduced-motion:reduce){.page-top{transition:none}}
     .footer-bottom{border-top:1px solid #53605a;display:flex;justify-content:space-between;gap:20px;padding-block:23px;font-size:10px;letter-spacing:.06em;color:#b2b9b1}
     .js .reveal{opacity:0;transform:translateY(35px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
     .js .reveal.in{opacity:1;transform:translateY(0)}
@@ -413,7 +419,6 @@
       .career-row{grid-template-columns:75px 1fr;gap:18px}
       .footer-top{flex-direction:column;gap:22px}
       .footer-title{margin-bottom:48px}
-      .footer-button{gap:24px;font-size:14px}
     }
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
@@ -956,11 +961,18 @@
 
   <footer class="footer" id="contact">
     <div class="wrap">
-      <div class="footer-top reveal"><span class="eyebrow"><i class="bullet" aria-hidden="true"></i> CONTACT</span><p class="footer-note">새로운 기회와 협업에 열려 있습니다.<br>함께할 이야기가 있다면 편하게 연락해 주세요.</p></div>
+      <div class="footer-top reveal"><span class="eyebrow"><i class="bullet" aria-hidden="true"></i> CONTACT</span><p class="footer-note">새로운 기회와 협업을 기다립니다.<br>함께할 이야기가 있다면 연락해 주세요.</p></div>
       <h2 class="footer-title reveal">Let's make<br><span class="line">it clear<i>.</i></span></h2>
       <div class="footer-actions reveal">
-        <a class="footer-button footer-button--email" href="mailto:aa00456@naver.com"><span class="footer-email-text"><strong>EMAIL ME</strong><span class="footer-email-address">aa00456@naver.com</span></span><span aria-hidden="true">↗</span></a>
-        <a class="footer-button footer-button--github" href="https://github.com/maezoo" target="_blank" rel="noopener noreferrer"><span>EXPLORE GITHUB</span><span aria-hidden="true">↗</span></a>
+        <div class="footer-contact-main">
+          <span class="footer-contact-label">GET IN TOUCH</span>
+          <a class="footer-email-link" href="mailto:aa00456@naver.com" aria-label="이메일 보내기: aa00456@naver.com"><strong>aa00456@naver.com</strong><span class="footer-contact-arrow" aria-hidden="true">↗</span></a>
+          <p class="footer-contact-help">이메일로 연락하기</p>
+        </div>
+        <div class="footer-elsewhere">
+          <span class="footer-elsewhere-label">ELSEWHERE</span>
+          <a class="footer-github-link" href="https://github.com/maezoo" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
       <div class="footer-bottom"><span>© 2026 YEONHEE JIN · PORTFOLIO</span><span>DESIGNED WITH INTENTION. BUILT WITH CARE.</span></div>
     </div>
