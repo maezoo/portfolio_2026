@@ -131,17 +131,19 @@
       .about-principle:hover .about-principle-word span{color:var(--ink)}
     }
     /* Approach example toggle: restrained hover motion, with a clear resting state. */
-    .about-case-toggle{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:clamp(18px,3vw,40px);align-items:center;width:100%;margin-top:clamp(47px,5vw,78px);padding:24px clamp(18px,2.8vw,32px);background:#eeede8;color:var(--ink);border:0;border-top:1px solid var(--ink);border-bottom:1px solid #bbc0b7;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s}
-    .about-case-toggle::before{content:"";position:absolute;z-index:-1;inset:0;background:#f4ddd5;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+    .about-case-toggle{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:clamp(18px,3vw,40px);align-items:center;width:100%;margin-top:clamp(47px,5vw,78px);padding:24px clamp(18px,2.8vw,32px);background:#eeede8;color:var(--ink);border:0;border-top:1px solid var(--ink);border-bottom:1px solid #bbc0b7;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s,color .3s}
+    .about-case-toggle::before{content:"";position:absolute;z-index:-1;inset:0;background:#303630;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
     .about-case-toggle:hover{border-bottom-color:var(--accent)}
     .about-case-toggle[aria-expanded="true"]{border-bottom-color:var(--accent);background:#eeede8}
     .about-case-toggle[aria-expanded="true"]::before{transform:scaleX(1)}
     .about-case-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
     .about-case-toggle-copy{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:6px;transition:transform .32s var(--ease)}
-    .about-case-toggle-kicker{color:var(--muted);font-size:11px;letter-spacing:.02em;line-height:1.55;font-weight:700;white-space:normal}
+    .about-case-toggle-kicker{color:var(--muted);font-size:11px;letter-spacing:.02em;line-height:1.55;font-weight:700;white-space:normal;transition:color .3s}
     .about-case-toggle-text{min-width:0;font-size:clamp(18px,1.8vw,25px);font-weight:700;letter-spacing:-.052em;line-height:1.45;word-break:keep-all;transition:transform .32s var(--ease)}
     .about-case-toggle-icon{display:grid;place-items:center;flex:none;width:46px;height:46px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:50%;font-size:26px;line-height:1;font-weight:400;transition:background .25s,border-color .25s,color .25s,transform .3s var(--ease)}
-    .about-case-toggle:hover .about-case-toggle-icon,.about-case-toggle[aria-expanded="true"] .about-case-toggle-icon{background:var(--ink);border-color:var(--ink);color:#fff}
+    .about-case-toggle:hover,.about-case-toggle[aria-expanded="true"]{color:#fff}
+    .about-case-toggle:hover .about-case-toggle-kicker,.about-case-toggle[aria-expanded="true"] .about-case-toggle-kicker{color:#e1e5df}
+    .about-case-toggle:hover .about-case-toggle-icon,.about-case-toggle[aria-expanded="true"] .about-case-toggle-icon{background:var(--accent);border-color:var(--accent);color:#fff}
     @media(hover:hover) and (pointer:fine){
       .about-case-toggle:hover::before{transform:scaleX(1)}
       .about-case-toggle:hover .about-case-toggle-copy{transform:translateX(8px)}
