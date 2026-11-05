@@ -46,8 +46,11 @@
     .hero h1 .line:nth-child(2){padding-left:clamp(25px,11vw,190px)}
     .hero h1 em{font-style:normal;position:relative;z-index:1}
     .hero h1 em::after{content:"";position:absolute;height:clamp(7px,1.1vw,15px);background:var(--accent);opacity:.86;left:3%;right:-2%;bottom:.045em;z-index:-1;transform:rotate(-1.5deg)}
-    .hero-stamp{position:absolute;right:0;top:12%;width:clamp(85px,10vw,165px);height:clamp(85px,10vw,165px);display:grid;place-items:center;border:1px solid #a9aaa4;border-radius:50%;color:var(--accent);font-size:clamp(36px,5.2vw,70px);font-weight:400;transform:rotate(-35deg)}
-    .hero-stamp::after{content:"";width:calc(100% + 16px);height:calc(100% + 16px);border:1px solid var(--line);position:absolute;border-radius:50%}
+    .js .hero h1.reveal .line{opacity:0;transform:translateY(24px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+    .js .hero h1.reveal.in .line{opacity:1;transform:translateY(0)}
+    .js .hero h1.reveal .line:nth-child(2){transition-delay:.16s}
+    .js .hero h1 em::after{transform:scaleX(0) rotate(-1.5deg);transform-origin:left center;transition:transform .75s var(--ease) .42s}
+    .js .hero h1.in em::after{transform:scaleX(1) rotate(-1.5deg)}
     .hero-bottom{border-top:1px solid var(--ink);padding:25px 0 28px;display:grid;grid-template-columns:1.05fr 1fr auto;align-items:end;gap:30px}
     .hero-intro{font-size:clamp(15px,1.5vw,20px);line-height:1.7;font-weight:600;letter-spacing:-.045em;margin:0}
     .hero-desc{font-size:14px;line-height:1.9;color:var(--muted);margin:0;max-width:420px}
@@ -355,7 +358,6 @@
       :root{--head-h:75px}
       .header-end{display:none}
       .hero h1{font-size:clamp(59px,9vw,110px)}
-      .hero-stamp{right:3%;top:6%}
       .project-grid,.project--bnj .project-grid{grid-template-columns:minmax(250px,.82fr) minmax(0,1.18fr)}
       .project--reverse .project-grid{grid-template-columns:minmax(0,1.18fr) minmax(250px,.82fr)}
       .project h3{font-size:clamp(39px,5vw,60px)}
@@ -373,7 +375,6 @@
       .hero-main{min-height:65vh;padding:90px 0 90px}
       .hero h1{font-size:clamp(53px,11.4vw,82px);line-height:1.24}
       .hero h1 .line:nth-child(2){padding-left:0}
-      .hero-stamp{width:75px;height:75px;right:10px;top:13px;font-size:35px}
       .hero-bottom{grid-template-columns:1fr auto;row-gap:17px;align-items:start}
       .hero-intro{font-size:16px;grid-column:1}
       .hero-desc{font-size:14px;grid-column:1;grid-row:2}
@@ -658,16 +659,15 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap">
         <div class="hero-top">
-          <span class="eyebrow"><i class="bullet" aria-hidden="true"></i> UX / UI / WEB PUBLISHING</span>
+          <span class="eyebrow"><i class="bullet" aria-hidden="true"></i> UI DESIGN / IA / INTERACTION</span>
           <span>PORTFOLIO — 2026</span>
         </div>
         <div class="hero-main">
-          <div class="hero-stamp" aria-hidden="true">↗</div>
           <h1 id="hero-title" class="reveal"><span class="line">복잡함을 덜고,</span><span class="line"><em>경험을 선명하게.</em></span></h1>
         </div>
         <div class="hero-bottom">
-          <p class="hero-intro">웹사이트 제작과 리뉴얼을 통해<br>UI 설계부터 반응형 구현까지 경험해 왔습니다.</p>
-          <p class="hero-desc">화면의 구조와 사용성을 고민하며, 더 나은 사용자 경험을 만드는 프로덕트 디자이너로 성장하고자 합니다.</p>
+          <p class="hero-intro reveal">요청사항을 그대로 구현하기보다,<br>무엇이 필요한지 먼저 판단합니다.</p>
+          <p class="hero-desc reveal delay-1">웹사이트 제작과 리뉴얼 과정에서 정보구조 설계부터 UI 디자인, 반응형 구현까지 직접 담당해 왔습니다.</p>
           <a class="arrow-link" href="#work"><span>EXPLORE WORK</span><span class="round-arrow" aria-hidden="true">↓</span></a>
         </div>
       </div>
