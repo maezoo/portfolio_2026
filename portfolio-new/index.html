@@ -132,9 +132,9 @@
     }
     /* Approach example toggle: restrained hover motion, with a clear resting state. */
     .about-case-toggle{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:clamp(18px,3vw,40px);align-items:center;width:100%;margin-top:clamp(47px,5vw,78px);padding:24px clamp(18px,2.8vw,32px);background:#eeede8;color:var(--ink);border:0;border-top:1px solid var(--ink);border-bottom:1px solid #bbc0b7;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s}
-    .about-case-toggle::before{content:"";position:absolute;z-index:-1;inset:0;background:#e4e6df;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+    .about-case-toggle::before{content:"";position:absolute;z-index:-1;inset:0;background:#f4ddd5;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
     .about-case-toggle:hover{border-bottom-color:var(--accent)}
-    .about-case-toggle[aria-expanded="true"]{border-bottom-color:var(--accent);background:#e8e9e2}
+    .about-case-toggle[aria-expanded="true"]{border-bottom-color:var(--accent);background:#eeede8}
     .about-case-toggle[aria-expanded="true"]::before{transform:scaleX(1)}
     .about-case-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
     .about-case-toggle-copy{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:6px;transition:transform .32s var(--ease)}
@@ -258,8 +258,13 @@
     .experience .section-head{align-items:end;margin-bottom:clamp(40px,5vw,70px)}
     .experience .small-title{margin:0 0 15px;color:#2c352f;font-size:12px;font-weight:800;letter-spacing:.07em}
     .experience .small-title span{font-weight:600;letter-spacing:0;color:#566058}
-    .experience-resume{position:relative;display:flex;align-items:center;gap:26px;min-height:50px;padding:12px 19px;border:1px solid #343d36;background:transparent;color:#2b342d;font-size:13px;font-weight:800;letter-spacing:.06em;cursor:not-allowed}
-    .experience-resume b{font-size:22px;font-weight:400;line-height:1}
+    .experience-resume{position:relative;display:flex;align-items:center;gap:26px;min-height:50px;padding:12px 19px;border:1px solid #343d36;background:transparent;color:#2b342d;font-size:13px;font-weight:800;letter-spacing:.06em;cursor:pointer;box-shadow:0 0 0 rgba(32,35,33,0);transition:transform .3s var(--ease),box-shadow .3s var(--ease),background-color .3s,border-color .3s}
+    .experience-resume b{display:inline-block;font-size:22px;font-weight:400;line-height:1;transition:transform .3s var(--ease)}
+    @media(hover:hover) and (pointer:fine){.experience-resume:hover{transform:translateY(-4px);background:#fffefa;border-color:var(--accent);box-shadow:0 9px 0 #d8d5cc,0 17px 24px rgba(32,35,33,.1)}.experience-resume:hover b{transform:translate(3px,-3px)}}
+    .experience-resume:active{transform:translateY(0);box-shadow:0 2px 0 #d8d5cc}
+    .experience-resume:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+    .resume-status{position:absolute;z-index:5;top:calc(100% + 14px);right:0;width:max-content;max-width:min(300px,80vw);padding:10px 14px;background:#27312a;color:#fff;font-size:12px;font-weight:500;letter-spacing:0;line-height:1.5;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-5px);transition:opacity .2s,transform .2s,visibility .2s}
+    .experience-resume.is-notice-visible .resume-status{opacity:1;visibility:visible;transform:translateY(0)}
     .experience-work,.experience-skills{margin-bottom:clamp(44px,5vw,68px)}
     .experience .career{border-top:1px solid #353e36}
     .experience .career-row{display:grid;grid-template-columns:clamp(90px,12%,155px) minmax(0,1fr);align-items:start;gap:clamp(18px,2.8vw,40px);padding:23px 0;border-bottom:1px solid #c8cec6;transition:background-color .25s,padding .25s}
@@ -888,7 +893,7 @@
       <div class="wrap">
         <div class="section-head reveal">
           <div><span class="eyebrow"><i class="bullet" aria-hidden="true"></i> CAREER / SKILLS</span><h2 class="section-title" id="experience-title">Experience<span style="color:var(--accent)">.</span></h2></div>
-          <button class="experience-resume" type="button" disabled aria-label="RESUME, 현재 이력서 파일 미연결"><span>RESUME</span><b aria-hidden="true">↗</b></button>
+          <button class="experience-resume" type="button" aria-label="RESUME, 이력서 파일 연결 예정"><span>RESUME</span><b aria-hidden="true">↗</b><span class="resume-status" role="status">이력서 파일은 추후 연결됩니다.</span></button>
         </div>
         <div class="experience-work reveal">
           <h3 class="small-title">WORK HISTORY <span>/ 경력</span></h3>
@@ -960,6 +965,8 @@
       if(topButton){topButton.addEventListener("click",function(){window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})})}
 
       // ABOUT / APPROACH: optional real-work example; only opened on request.
+      var resumeButton=document.querySelector(".experience-resume");
+      if(resumeButton){var resumeNoticeTimer;resumeButton.addEventListener("click",function(){resumeButton.classList.add("is-notice-visible");clearTimeout(resumeNoticeTimer);resumeNoticeTimer=setTimeout(function(){resumeButton.classList.remove("is-notice-visible")},3000)})}
       var aboutCaseToggle=document.getElementById("about-case-toggle");
       var aboutCasePanel=document.getElementById("about-case-panel");
       if(aboutCaseToggle&&aboutCasePanel){
