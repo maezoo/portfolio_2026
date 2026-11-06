@@ -36,31 +36,27 @@
     .main-nav{display:flex;align-items:center;gap:clamp(22px,3vw,52px)}
     .main-nav a{font-size:12px;font-weight:700;transition:color .2s}
     .main-nav a:hover,.main-nav a:focus-visible{color:var(--accent)}
-    /* Hero: free-form editorial typography, not a two-column template. */
-    .hero{overflow:hidden}
-    .hero-top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(25px,3.4vw,46px) 0 19px;border-bottom:1px solid var(--line)}
-    .hero-top span:last-child{font-size:11px;color:var(--muted);white-space:nowrap}
-    .hero-main{padding:clamp(60px,6.8vw,104px) 0 clamp(45px,5.6vw,85px)}
-    .hero h1{margin:0;font-size:clamp(72px,9.85vw,151px);line-height:1.035;font-weight:700;letter-spacing:-.097em}
-    .hero-line{display:block;white-space:nowrap}
-    .hero-line--one{text-align:left}
-    .hero-line--two{text-align:right;padding-right:clamp(12px,8vw,125px);margin-top:-.015em}
-    .hero-line--three{padding-left:clamp(25px,10.5vw,165px);margin-top:-.015em}
-    .hero h1 em{font-style:normal;color:var(--accent)}
-    .hero-note{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:start;gap:clamp(16px,2vw,28px);width:min(100%,475px);margin:clamp(42px,5.5vw,80px) 0 0 auto;padding-top:19px;border-top:1px solid var(--ink)}
-    .hero-note-label{font-size:10px;line-height:1.6;font-weight:800;letter-spacing:.065em;white-space:nowrap;color:var(--accent)}
-    .hero-note p{margin:0;color:var(--ink);font-size:clamp(14px,1.2vw,17px);line-height:1.75;letter-spacing:-.028em;word-break:keep-all}
-    .hero-bottom{border-top:1px solid var(--ink);display:flex;justify-content:space-between;align-items:center;gap:25px;padding:23px 0 clamp(36px,4vw,58px)}
-    .hero-bottom-label{display:flex;align-items:center;gap:23px;font-size:11px;letter-spacing:.08em;font-weight:700;color:var(--muted)}
-    .hero-bottom-label strong{color:var(--ink);font-weight:800}
-    .hero .arrow-link{display:inline-flex;align-items:center;gap:18px;font-size:12px;font-weight:800;letter-spacing:.03em;white-space:nowrap}
-    .hero .round-arrow{width:51px;height:51px;display:grid;place-items:center;border:1px solid var(--ink);border-radius:50%;font-size:23px;line-height:1;font-weight:400;transition:background .3s,color .3s,transform .3s var(--ease)}
-    .hero .arrow-link:hover .round-arrow{background:var(--ink);color:#fff;transform:translate(3px,3px)}
-    .js .hero h1.reveal{opacity:1;transform:none;transition:none}
-    .js .hero h1.reveal .hero-line{opacity:0;transform:translateY(25px);transition:opacity .82s var(--ease),transform .82s var(--ease)}
-    .js .hero h1.reveal.in .hero-line{opacity:1;transform:translateY(0)}
-    .js .hero h1.reveal .hero-line--two{transition-delay:.12s}
-    .js .hero h1.reveal .hero-line--three{transition-delay:.24s}
+    /* Hero: two typographic states — the concept and the working screen. */
+    .hero{overflow:hidden;background:var(--paper)}
+    .hero-heading{margin:0;font-size:clamp(64px,9.35vw,145px);font-weight:700;line-height:1.06;letter-spacing:-.09em}
+    .hero-heading .wrap{display:block}
+    .hero-first{display:block;padding:clamp(86px,9vw,142px) 0 clamp(43px,5.3vw,83px)}
+    .hero-first .wrap{white-space:nowrap}
+    .hero-second{display:block;background:var(--ink);color:#f5f4f0;padding:clamp(52px,6.5vw,104px) 0 clamp(39px,4.7vw,73px);font-size:.88em}
+    .hero-second .wrap{padding-left:calc(var(--pad) + clamp(12px,5vw,82px));white-space:nowrap}
+    .hero-second em{font-style:normal;color:var(--accent)}
+    .hero-dark-footer{background:var(--ink);color:#f5f4f0;padding-bottom:clamp(62px,7vw,105px)}
+    .hero-dark-footer-inner{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(30px,5vw,85px);padding-top:clamp(25px,3vw,45px);border-top:1px solid #69716b}
+    .hero-dark-footer p{max-width:570px;margin:0;font-size:clamp(15px,1.18vw,18px);line-height:1.85;letter-spacing:-.025em;color:#d8ded8;word-break:keep-all}
+    .hero-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:clamp(25px,3vw,55px);flex:none;padding:17px 19px 17px 22px;border:1px solid #69716b;color:#f5f4f0;font-size:13px;font-weight:700;line-height:1.5;white-space:nowrap;transition:background .3s,border-color .3s,color .3s}
+    .hero-cta span{font-size:23px;font-weight:400;line-height:1;transition:transform .3s var(--ease)}
+    .hero-cta:hover{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+    .hero-cta:hover span{transform:translate(4px,-4px)}
+    .hero-cta:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+    .js .hero-heading.reveal{opacity:1;transform:none;transition:none}
+    .js .hero-heading.reveal .hero-first .wrap,.js .hero-heading.reveal .hero-second .wrap{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+    .js .hero-heading.reveal.in .hero-first .wrap,.js .hero-heading.reveal.in .hero-second .wrap{opacity:1;transform:translateY(0)}
+    .js .hero-heading.reveal .hero-second .wrap{transition-delay:.16s}
     .section{padding-block:clamp(105px,12vw,190px)}
     .section-head{display:grid;grid-template-columns:1fr auto;gap:25px;align-items:end;margin-bottom:clamp(48px,7vw,100px)}
     .section-head .eyebrow{margin-bottom:22px}
@@ -360,7 +356,7 @@
     a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
     @media(max-width:1100px){
       :root{--head-h:75px}
-      .hero h1{font-size:clamp(65px,9.7vw,112px)}
+      .hero-heading{font-size:clamp(62px,9.1vw,108px)}
       .project-grid,.project--bnj .project-grid{grid-template-columns:minmax(250px,.82fr) minmax(0,1.18fr)}
       .project--reverse .project-grid{grid-template-columns:minmax(0,1.18fr) minmax(250px,.82fr)}
       .project h3{font-size:clamp(39px,5vw,60px)}
@@ -373,19 +369,14 @@
       .main-nav{gap:20px}
       .main-nav a{font-size:11px}
       .main-nav a:nth-child(2),.main-nav a:nth-child(3){display:none}
-      .hero-top{padding:21px 0 15px}
-      .hero-top .eyebrow{font-size:9px;letter-spacing:.045em}
-      .hero-top span:last-child{font-size:9px}
-      .hero-main{padding:clamp(62px,13vw,96px) 0 52px}
-      .hero h1{font-size:clamp(38px,9.5vw,72px);line-height:1.12;letter-spacing:-.09em}
-      .hero-line--two{padding-right:4%;margin-top:.09em}
-      .hero-line--three{padding-left:8%;margin-top:.09em}
-      .hero-note{margin-top:59px;grid-template-columns:1fr;gap:11px;max-width:470px;padding-top:15px}
-      .hero-note p{font-size:14px;line-height:1.8}
-      .hero-bottom{padding:18px 0 42px;gap:15px}
-      .hero-bottom-label{font-size:9px;gap:9px;letter-spacing:.035em}
-      .hero .arrow-link{font-size:11px;gap:10px}
-      .hero .round-arrow{height:44px;width:44px}
+      .hero-heading{font-size:clamp(39px,9vw,70px);line-height:1.15;letter-spacing:-.09em}
+      .hero-first{padding:clamp(70px,13vw,106px) 0 clamp(42px,8vw,66px)}
+      .hero-second{padding:clamp(49px,10vw,72px) 0 clamp(40px,8vw,60px);font-size:.94em}
+      .hero-second .wrap{padding-left:var(--pad)}
+      .hero-dark-footer{padding-bottom:50px}
+      .hero-dark-footer-inner{align-items:stretch;flex-direction:column;gap:26px;padding-top:25px}
+      .hero-dark-footer p{font-size:14px;line-height:1.8}
+      .hero-cta{align-self:flex-start;gap:32px;padding:14px 16px 14px 19px;font-size:12px}
       .section{padding-block:90px}
       .section-head{margin-bottom:46px}
       .section-title{font-size:clamp(50px,10vw,70px)}
@@ -409,9 +400,8 @@
       .logo small{font-size:8px}
       .header-inner{padding-inline:20px}
       .main-nav{gap:17px}
-      .hero h1{font-size:clamp(38px,9.5vw,41px)}
-      .hero-main{padding-top:65px}
-      .hero-bottom-label span{display:none}
+      .hero-heading{font-size:clamp(36px,9vw,39px)}
+      .hero-second{font-size:.93em}
       .visual-creafit{padding:21px}
       .browser{transform:rotate(-1deg)}
       .concept-hero{padding:25px 20px}
@@ -661,25 +651,14 @@
 
   <main>
     <section class="hero" aria-labelledby="hero-title">
-      <div class="wrap">
-        <div class="hero-top">
-          <span class="eyebrow"><i class="bullet" aria-hidden="true"></i> UI DESIGN / IA / INTERACTION</span>
-          <span>PORTFOLIO — 2026</span>
-        </div>
-        <div class="hero-main">
-          <h1 id="hero-title" class="reveal">
-            <span class="hero-line hero-line--one">생각한 경험을,</span>
-            <span class="hero-line hero-line--two">실제로</span>
-            <span class="hero-line hero-line--three"><em>작동하게.</em></span>
-          </h1>
-          <div class="hero-note reveal delay-1">
-            <span class="hero-note-label">DESIGN × BUILD</span>
-            <p>웹퍼블리셔로서 UI를 설계하고 직접 구현해 온 경험을 바탕으로, 사용자의 흐름과 실제 사용 환경을 함께 고려합니다.</p>
-          </div>
-        </div>
-        <div class="hero-bottom">
-          <div class="hero-bottom-label"><strong>01 / INTRO</strong><span>DESIGN WITH IMPLEMENTATION EXPERIENCE</span></div>
-          <a class="arrow-link" href="#work"><span>프로젝트 살펴보기</span><span class="round-arrow" aria-hidden="true">↘</span></a>
+      <h1 id="hero-title" class="hero-heading reveal">
+        <span class="hero-first"><span class="wrap">설계한 경험을,</span></span>
+        <span class="hero-second"><span class="wrap">작동하는 <em>화면으로.</em></span></span>
+      </h1>
+      <div class="hero-dark-footer">
+        <div class="wrap hero-dark-footer-inner">
+          <p class="reveal">웹퍼블리셔로 쌓은 구현 경험을 바탕으로, 화면을 설계할 때부터 사용자 흐름과 실제 구현 환경을 함께 고려합니다.</p>
+          <a class="hero-cta" href="#work">프로젝트 살펴보기 <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
