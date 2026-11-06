@@ -36,27 +36,64 @@
     .main-nav{display:flex;align-items:center;gap:clamp(22px,3vw,52px)}
     .main-nav a{font-size:12px;font-weight:700;transition:color .2s}
     .main-nav a:hover,.main-nav a:focus-visible{color:var(--accent)}
-    /* Hero: two typographic states — the concept and the working screen. */
-    .hero{overflow:hidden;background:var(--paper)}
-    .hero-heading{margin:0;font-size:clamp(64px,9.35vw,145px);font-weight:700;line-height:1.06;letter-spacing:-.09em}
-    .hero-heading .wrap{display:block}
-    .hero-first{display:block;padding:clamp(86px,9vw,142px) 0 clamp(43px,5.3vw,83px)}
-    .hero-first .wrap{white-space:nowrap}
-    .hero-second{display:block;background:var(--ink);color:#f5f4f0;padding:clamp(52px,6.5vw,104px) 0 clamp(39px,4.7vw,73px);font-size:.88em}
-    .hero-second .wrap{padding-left:calc(var(--pad) + clamp(12px,5vw,82px));white-space:nowrap}
-    .hero-second em{font-style:normal;color:var(--accent)}
-    .hero-dark-footer{background:var(--ink);color:#f5f4f0;padding-bottom:clamp(62px,7vw,105px)}
-    .hero-dark-footer-inner{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(30px,5vw,85px);padding-top:clamp(25px,3vw,45px);border-top:1px solid #69716b}
-    .hero-dark-footer p{max-width:570px;margin:0;font-size:clamp(15px,1.18vw,18px);line-height:1.85;letter-spacing:-.025em;color:#d8ded8;word-break:keep-all}
-    .hero-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:clamp(25px,3vw,55px);flex:none;padding:17px 19px 17px 22px;border:1px solid #69716b;color:#f5f4f0;font-size:13px;font-weight:700;line-height:1.5;white-space:nowrap;transition:background .3s,border-color .3s,color .3s}
+    /* Hero: an independent, working composition rather than a split-column cover. */
+    .hero{position:relative;isolation:isolate;overflow:hidden;background:#171c1a;color:#f5f4ef}
+    .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 72% 46%,#32413999,transparent 80%);z-index:-1;pointer-events:none}
+    .hero-canvas{position:relative;padding-block:clamp(34px,4vw,58px) clamp(34px,4vw,60px)}
+    .hero-stage{position:relative;min-height:clamp(590px,58vw,710px)}
+    .hero-title{position:relative;z-index:2;margin:0;font-weight:700;font-size:clamp(66px,8vw,122px);line-height:1.14;letter-spacing:-.095em;pointer-events:none}
+    .hero-title span{display:block;white-space:nowrap}
+    .hero-title .hero-title-first{position:absolute;top:0;left:0}
+    .hero-title .hero-title-second{position:absolute;bottom:clamp(8px,1.8vw,27px);right:0;text-align:right}
+    .hero-title em{font-style:normal;color:#f47758}
+    .hero-interface{position:absolute;z-index:1;top:24%;right:clamp(12px,8vw,120px);width:clamp(310px,30vw,410px);background:#f9f8f4;color:#202321;box-shadow:24px 31px 0 #f4775821,0 36px 100px #050a0770;transform:rotate(-5deg);transform-origin:center;transition:transform .5s var(--ease);animation:hero-interface-enter .9s .25s both}
+    .hero-interface:hover,.hero-interface:focus-within{transform:rotate(-2deg)}
+    .hero-interface-chrome{height:34px;display:flex;align-items:center;gap:6px;padding:0 15px;border-bottom:1px solid #d4d9d3}
+    .hero-interface-chrome i{width:6px;height:6px;border-radius:50%;background:#b9c1b8}
+    .hero-interface-chrome span{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.04em;color:#6c756c}
+    .hero-ui-stage{position:relative;--reveal:56%;height:clamp(265px,24vw,320px);overflow:hidden;background:#e7eae4}
+    .hero-ui-wire,.hero-ui-finished{position:absolute;inset:0;padding:clamp(23px,2.6vw,36px);overflow:hidden}
+    .hero-ui-wire{background:#e8ece7}
+    .hero-ui-wire i{display:block;background:#c1c9c1}
+    .hero-wire-label{width:29%;height:12px;margin-bottom:29px}
+    .hero-wire-title{width:76%;height:27px;margin-bottom:9px}
+    .hero-wire-title.short{width:57%;margin-bottom:20px}
+    .hero-wire-copy{width:79%;height:9px;margin-bottom:25px}
+    .hero-wire-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .hero-wire-row i{height:73px;background:#d0d7cf;border:1px solid #b5c0b6}
+    .hero-ui-finished{background:#f6f2ed;clip-path:inset(0 0 0 calc(100% - var(--reveal)));border:0}
+    .hero-ui-mark{display:inline-flex;align-items:center;gap:7px;margin-bottom:21px;font-size:11px;font-weight:800;color:#c6533d}
+    .hero-ui-mark::before{content:"";height:7px;width:7px;background:#e46a4e;border-radius:50%}
+    .hero-ui-finished strong{display:block;font-size:clamp(24px,2.6vw,35px);line-height:1.23;letter-spacing:-.07em}
+    .hero-ui-finished p{margin:13px 0 19px;font-size:11px;color:#647065}
+    .hero-ui-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+    .hero-ui-actions span{display:flex;justify-content:space-between;align-items:center;min-height:62px;gap:5px;padding:10px 8px;background:#fff;border:1px solid #dedfd9;font-size:11px;line-height:1.4;font-weight:700;letter-spacing:-.035em}
+    .hero-ui-actions b{font-size:15px;font-weight:400;color:#d36047}
+    .hero-ui-divider{position:absolute;z-index:2;top:0;bottom:0;left:calc(100% - var(--reveal));width:2px;background:#e46a4e;transform:translateX(-1px);pointer-events:none}
+    .hero-ui-divider::after{content:"";position:absolute;top:48%;left:50%;transform:translate(-50%,-50%);width:19px;height:30px;border-radius:20px;border:2px solid #e46a4e;background:#f9f8f4}
+    .hero-ui-control{display:flex;align-items:center;gap:14px;padding:14px 17px;background:#f9f8f4}
+    .hero-ui-control label{font-size:11px;font-weight:800;color:#535b54;white-space:nowrap}
+    .hero-ui-control input{width:100%;height:26px;margin:0;appearance:none;background:transparent;cursor:ew-resize;touch-action:pan-x}
+    .hero-ui-control input::-webkit-slider-runnable-track{height:2px;background:#b0b9ae}
+    .hero-ui-control input::-moz-range-track{height:2px;background:#b0b9ae}
+    .hero-ui-control input::-webkit-slider-thumb{appearance:none;width:18px;height:18px;margin-top:-8px;background:#e46a4e;border:3px solid #f9f8f4;border-radius:50%;box-shadow:0 0 0 1px #bb5b45}
+    .hero-ui-control input::-moz-range-thumb{width:12px;height:12px;background:#e46a4e;border:3px solid #f9f8f4;border-radius:50%;box-shadow:0 0 0 1px #bb5b45}
+    .hero-ui-control input:focus-visible{outline:2px solid #e46a4e;outline-offset:3px}
+    .hero-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(24px,5vw,80px);padding-top:clamp(27px,3.2vw,44px);border-top:1px solid #6c756e}
+    .hero-foot-copy{max-width:680px}
+    .hero-foot-copy strong{display:block;margin-bottom:13px;font-size:clamp(23px,2vw,30px);font-weight:700;line-height:1.45;letter-spacing:-.057em}
+    .hero-foot-copy p{max-width:600px;margin:0;font-size:clamp(14px,1.12vw,16px);line-height:1.9;letter-spacing:-.025em;color:#bbc8bf}
+    .hero-cta{display:inline-flex;justify-content:space-between;align-items:center;gap:35px;flex:none;min-width:218px;padding:20px 19px 20px 21px;background:#f47758;color:#171c1a;font-size:13px;font-weight:800;line-height:1.3;transition:background .25s,transform .3s var(--ease)}
     .hero-cta span{font-size:23px;font-weight:400;line-height:1;transition:transform .3s var(--ease)}
-    .hero-cta:hover{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+    .hero-cta:hover{background:#f5f4ef;transform:translateY(-4px)}
     .hero-cta:hover span{transform:translate(4px,-4px)}
-    .hero-cta:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
-    .js .hero-heading.reveal{opacity:1;transform:none;transition:none}
-    .js .hero-heading.reveal .hero-first .wrap,.js .hero-heading.reveal .hero-second .wrap{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
-    .js .hero-heading.reveal.in .hero-first .wrap,.js .hero-heading.reveal.in .hero-second .wrap{opacity:1;transform:translateY(0)}
-    .js .hero-heading.reveal .hero-second .wrap{transition-delay:.16s}
+    .hero-cta:focus-visible{outline:2px solid #f47758;outline-offset:5px}
+    .js .hero-title.reveal{opacity:1;transform:none;transition:none}
+    .js .hero-title.reveal span{opacity:0;transform:translateY(25px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+    .js .hero-title.reveal.in span{opacity:1;transform:translateY(0)}
+    .js .hero-title.reveal .hero-title-second{transition-delay:.2s}
+    @keyframes hero-interface-enter{from{opacity:0;transform:translateY(35px) rotate(-9deg)}to{opacity:1;transform:translateY(0) rotate(-5deg)}}
+    @media(prefers-reduced-motion:reduce){.hero-interface{animation:none;transition:none}.hero-title span,.hero-cta,.hero-cta span{transition:none!important}}
     .section{padding-block:clamp(105px,12vw,190px)}
     .section-head{display:grid;grid-template-columns:1fr auto;gap:25px;align-items:end;margin-bottom:clamp(48px,7vw,100px)}
     .section-head .eyebrow{margin-bottom:22px}
@@ -356,7 +393,9 @@
     a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
     @media(max-width:1100px){
       :root{--head-h:75px}
-      .hero-heading{font-size:clamp(62px,9.1vw,108px)}
+      .hero-title{font-size:clamp(62px,8.1vw,95px)}
+      .hero-interface{right:3%;width:clamp(300px,34vw,380px)}
+      .hero-stage{min-height:620px}
       .project-grid,.project--bnj .project-grid{grid-template-columns:minmax(250px,.82fr) minmax(0,1.18fr)}
       .project--reverse .project-grid{grid-template-columns:minmax(0,1.18fr) minmax(250px,.82fr)}
       .project h3{font-size:clamp(39px,5vw,60px)}
@@ -369,14 +408,19 @@
       .main-nav{gap:20px}
       .main-nav a{font-size:11px}
       .main-nav a:nth-child(2),.main-nav a:nth-child(3){display:none}
-      .hero-heading{font-size:clamp(39px,9vw,70px);line-height:1.15;letter-spacing:-.09em}
-      .hero-first{padding:clamp(70px,13vw,106px) 0 clamp(42px,8vw,66px)}
-      .hero-second{padding:clamp(49px,10vw,72px) 0 clamp(40px,8vw,60px);font-size:.94em}
-      .hero-second .wrap{padding-left:var(--pad)}
-      .hero-dark-footer{padding-bottom:50px}
-      .hero-dark-footer-inner{align-items:stretch;flex-direction:column;gap:26px;padding-top:25px}
-      .hero-dark-footer p{font-size:14px;line-height:1.8}
-      .hero-cta{align-self:flex-start;gap:32px;padding:14px 16px 14px 19px;font-size:12px}
+      .hero-canvas{padding-block:46px 48px}
+      .hero-stage{min-height:0;display:flex;flex-direction:column}
+      .hero-title{font-size:clamp(36px,8.35vw,64px);line-height:1.18}
+      .hero-title .hero-title-first,.hero-title .hero-title-second{position:static;text-align:left;white-space:nowrap}
+      .hero-title .hero-title-second{margin-top:13px}
+      .hero-interface{position:relative;top:auto;right:auto;width:min(86%,390px);align-self:center;margin:clamp(48px,10vw,72px) 0 48px;transform:rotate(-3deg);animation:none}
+      .hero-interface:hover,.hero-interface:focus-within{transform:rotate(0deg)}
+      .hero-ui-stage{height:280px}
+      .hero-ui-wire,.hero-ui-finished{padding:26px}
+      .hero-foot{flex-direction:column;align-items:stretch;gap:26px;padding-top:26px}
+      .hero-foot-copy strong{font-size:clamp(21px,4.4vw,26px)}
+      .hero-foot-copy p{font-size:14px}
+      .hero-cta{align-self:flex-start;min-width:212px;padding:16px 17px}
       .section{padding-block:90px}
       .section-head{margin-bottom:46px}
       .section-title{font-size:clamp(50px,10vw,70px)}
@@ -400,8 +444,11 @@
       .logo small{font-size:8px}
       .header-inner{padding-inline:20px}
       .main-nav{gap:17px}
-      .hero-heading{font-size:clamp(36px,9vw,39px)}
-      .hero-second{font-size:.93em}
+      .hero-title{font-size:clamp(33px,8.2vw,37px)}
+      .hero-interface{width:min(91%,340px)}
+      .hero-ui-stage{height:260px}
+      .hero-ui-finished strong{font-size:25px}
+      .hero-ui-actions span{min-height:57px;font-size:10px}
       .visual-creafit{padding:21px}
       .browser{transform:rotate(-1deg)}
       .concept-hero{padding:25px 20px}
@@ -651,13 +698,39 @@
 
   <main>
     <section class="hero" aria-labelledby="hero-title">
-      <h1 id="hero-title" class="hero-heading reveal">
-        <span class="hero-first"><span class="wrap">설계한 경험을,</span></span>
-        <span class="hero-second"><span class="wrap">작동하는 <em>화면으로.</em></span></span>
-      </h1>
-      <div class="hero-dark-footer">
-        <div class="wrap hero-dark-footer-inner">
-          <p class="reveal">웹퍼블리셔로 쌓은 구현 경험을 바탕으로, 화면을 설계할 때부터 사용자 흐름과 실제 구현 환경을 함께 고려합니다.</p>
+      <div class="wrap hero-canvas">
+        <div class="hero-stage">
+          <h1 id="hero-title" class="hero-title reveal">
+            <span class="hero-title-first">설계한 경험을,</span>
+            <span class="hero-title-second">작동하는 <em>화면으로.</em></span>
+          </h1>
+          <div class="hero-interface" aria-label="설계 구조에서 완성된 UI로 전환하는 인터랙션 예시">
+            <div class="hero-interface-chrome" aria-hidden="true"><i></i><i></i><i></i><span>INTERACTIVE UI</span></div>
+            <div class="hero-ui-stage" id="hero-ui-stage" aria-hidden="true">
+              <div class="hero-ui-wire">
+                <i class="hero-wire-label"></i><i class="hero-wire-title"></i><i class="hero-wire-title short"></i><i class="hero-wire-copy"></i>
+                <div class="hero-wire-row"><i></i><i></i><i></i></div>
+              </div>
+              <div class="hero-ui-finished">
+                <span class="hero-ui-mark">사용자를 위한 구조</span>
+                <strong>필요한 정보를<br>쉽게 찾도록.</strong>
+                <p>명확한 탐색 흐름으로 이어지는 UI</p>
+                <div class="hero-ui-actions"><span>정보 찾기 <b>↗</b></span><span>서비스 안내 <b>↗</b></span><span>문의하기 <b>↗</b></span></div>
+              </div>
+              <span class="hero-ui-divider"></span>
+            </div>
+            <div class="hero-ui-control">
+              <label for="hero-ui-range">설계</label>
+              <input id="hero-ui-range" type="range" min="0" max="100" value="56" step="1" aria-label="화면 전환 비율 조절: 설계 구조에서 완성된 UI로">
+              <label for="hero-ui-range">구현</label>
+            </div>
+          </div>
+        </div>
+        <div class="hero-foot">
+          <div class="hero-foot-copy reveal">
+            <strong>화면을 직접 만들어 본 경험은,<br>설계의 기준이 됩니다.</strong>
+            <p>웹퍼블리셔로 UI를 구현하며 반응형 환경과 실제 운영에서의 제약을 경험했습니다. 그 이해를 바탕으로 사용자 흐름과 구현 가능성을 함께 고려합니다.</p>
+          </div>
           <a class="hero-cta" href="#work">프로젝트 살펴보기 <span aria-hidden="true">↗</span></a>
         </div>
       </div>
@@ -974,6 +1047,18 @@
           entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add("in");observer.unobserve(entry.target)}});
         },{threshold:.06,rootMargin:"0px 0px -22px 0px"});
         nodes.forEach(function(node){observer.observe(node)});
+      }
+      // Hero-only: a functional, keyboard-accessible design-to-UI comparison.
+      var heroRange=document.getElementById("hero-ui-range");
+      var heroStage=document.getElementById("hero-ui-stage");
+      if(heroRange&&heroStage){
+        var updateHeroPreview=function(){
+          var value=Math.max(0,Math.min(100,Number(heroRange.value)||0));
+          heroStage.style.setProperty("--reveal",value+"%");
+          heroRange.setAttribute("aria-valuetext","구현 화면 "+value+"%");
+        };
+        heroRange.addEventListener("input",updateHeroPreview);
+        updateHeroPreview();
       }
       var topButton=document.getElementById("page-top");
       if(topButton){
