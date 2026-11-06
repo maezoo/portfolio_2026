@@ -38,33 +38,42 @@
     .main-nav{display:flex;align-items:center;gap:clamp(22px,3vw,52px)}
     .main-nav a{font-size:12px;font-weight:700;transition:color .2s}
     .main-nav a:hover,.main-nav a:focus-visible{color:var(--accent)}
-    /* Hero: a full-viewport editorial cover, visually independent from the portfolio below. */
-    .hero{position:relative;isolation:isolate;overflow:hidden;min-height:100svh;background:#151a18;color:#f7f4ec}
-    .hero::before{content:"";position:absolute;z-index:-1;top:-10%;right:-14%;width:min(58vw,800px);height:120%;background:#f47758;transform:skewX(-13deg);pointer-events:none}
-    .hero::after{content:"";position:absolute;z-index:-1;top:-6%;right:-1%;width:62%;height:85%;background-image:linear-gradient(#151a181f 1px,transparent 1px),linear-gradient(90deg,#151a181f 1px,transparent 1px);background-size:65px 65px;mask-image:linear-gradient(90deg,transparent,black);opacity:.33;pointer-events:none}
-    .hero-inner{display:flex;flex-direction:column;min-height:100svh;width:min(100%,1550px);margin:auto;padding:32px var(--pad) 35px}
-    .hero-identity{display:flex;align-items:baseline;gap:17px}
-    .hero-identity strong{font-size:13px;font-weight:800;letter-spacing:-.02em}
-    .hero-identity small{font-size:10px;font-weight:700;letter-spacing:.13em;color:#d0d4cb}
-    .hero-main{display:flex;align-items:center;flex:1;padding:clamp(40px,6vw,100px) 0}
-    .hero-title{width:100%;margin:0;font-size:clamp(60px,8vw,132px);font-weight:700;letter-spacing:-.087em;line-height:1.11}
-    .hero-title>span,.hero-title .hero-title-last{display:block;white-space:nowrap}
-    .hero-title-middle{display:block;margin-top:clamp(13px,2vw,26px);padding-left:clamp(15px,11vw,164px)}
-    .hero-title .hero-title-last{margin-top:clamp(5px,1vw,22px);text-align:right;letter-spacing:-.088em;color:#171b19}
-    .hero-foot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;align-items:end;gap:32px;padding-top:26px;border-top:1px solid #f7f4ec6b}
-    .hero-foot strong{font-size:clamp(17px,1.6vw,25px);font-weight:700;line-height:1.5;letter-spacing:-.05em}
-    .hero-foot p{max-width:450px;margin:0;color:#c5cbc4;font-size:13px;line-height:1.75}
-    .hero-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:25px;flex:none;padding:17px 19px;background:#f7f4ec;color:#151a18;font-size:12px;font-weight:800;white-space:nowrap;transition:background .25s,transform .3s var(--ease)}
-    .hero-cta b{font-size:18px;font-weight:400;transition:transform .25s}
-    .hero-cta:hover{background:#f47758;transform:translateY(-4px)}
-    .hero-cta:hover b{transform:translate(4px,-4px)}
-    .hero-cta:focus-visible{outline:2px solid #f47758;outline-offset:5px}
+    /* Hero / Experimental Editorial: oversized type layered through real work fragments. */
+    .hero{position:relative;isolation:isolate;overflow:hidden;background:#eae9e3;color:#202321}
+    .hero-editorial{position:relative;min-height:max(750px,100svh);max-width:1700px;margin-inline:auto;overflow:hidden}
+    .hero-editorial::before{content:"";position:absolute;right:-13%;top:-18%;width:57%;height:75%;background:#f47758;transform:rotate(17deg);pointer-events:none}
+    .hero-editorial::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:#2023211c;pointer-events:none}
+    .hero-signature{position:absolute;z-index:8;top:clamp(24px,3.3vw,53px);left:var(--pad);display:flex;align-items:baseline;gap:15px}
+    .hero-signature strong{font-size:13px;font-weight:800;letter-spacing:-.035em}
+    .hero-signature small{font-size:10px;font-weight:650;letter-spacing:.095em}
+    .hero-title{position:absolute;inset:0;z-index:6;margin:0;font-size:clamp(68px,8.65vw,151px);font-weight:800;letter-spacing:-.105em;line-height:1;pointer-events:none}
+    .hero-title span{display:block;position:absolute;white-space:nowrap}
+    .hero-title .hero-line-one{top:15%;left:3.8%;font-size:1.07em}
+    .hero-title .hero-line-two{top:43%;left:9%;font-size:.97em}
+    .hero-title .hero-line-three{top:65%;right:4.5%;font-size:1.33em;letter-spacing:-.11em;color:#e86449}
+    .hero-photo{position:absolute;z-index:2;margin:0;padding:10px;background:#fdfcf7;box-shadow:0 32px 65px #24252134;transition:transform .8s var(--ease),box-shadow .6s var(--ease)}
+    .hero-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;background:#e2e3dd}
+    .hero-photo figcaption{position:absolute;bottom:-26px;left:2px;font-size:10px;font-weight:750;letter-spacing:-.025em;white-space:nowrap;color:#202321}
+    .hero-photo--website{top:16%;right:7%;width:clamp(300px,30vw,470px);height:clamp(245px,26vw,390px);transform:rotate(8deg)}
+    .hero-photo--mobile{top:47%;left:35%;width:clamp(115px,12vw,182px);height:clamp(225px,25vw,360px);transform:rotate(-13deg);z-index:3}
+    .hero-photo--detail{top:56%;right:11%;width:clamp(210px,19vw,300px);height:clamp(135px,13vw,210px);transform:rotate(10deg);z-index:3}
+    .hero-photo--website:hover{transform:translateY(-12px) rotate(5deg);box-shadow:0 43px 90px #24252147}
+    .hero-photo--mobile:hover{transform:translateY(-12px) rotate(-9deg);box-shadow:0 43px 90px #24252147}
+    .hero-photo--detail:hover{transform:translateY(-12px) rotate(7deg);box-shadow:0 43px 90px #24252147}
+    .hero-note{position:absolute;z-index:7;left:var(--pad);bottom:clamp(41px,6vw,96px);max-width:clamp(300px,29vw,420px)}
+    .hero-note strong{display:block;margin:0 0 15px;font-size:clamp(18px,1.7vw,27px);font-weight:800;line-height:1.4;letter-spacing:-.06em}
+    .hero-note p{max-width:380px;margin:0;font-size:clamp(12px,.98vw,14px);line-height:1.8;color:#414944}
+    .hero-cta{position:absolute;z-index:8;right:var(--pad);bottom:clamp(38px,5.4vw,86px);display:inline-flex;align-items:center;gap:28px;padding:15px 18px 15px 22px;background:#202321;color:#fdfcf7;font-size:12px;font-weight:800;white-space:nowrap;transition:background .25s,transform .35s var(--ease)}
+    .hero-cta span{font-size:25px;line-height:1;font-weight:400;transition:transform .3s var(--ease)}
+    .hero-cta:hover{background:#e86449;transform:translateY(-5px)}
+    .hero-cta:hover span{transform:translate(4px,-4px)}
+    .hero-cta:focus-visible{outline:2px solid #202321;outline-offset:6px}
     .js .hero-title.reveal{opacity:1;transform:none;transition:none}
-    .js .hero-title.reveal>span{opacity:0;transform:translateY(26px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+    .js .hero-title.reveal>span{opacity:0;transform:translateY(29px);transition:opacity .82s var(--ease),transform .82s var(--ease)}
     .js .hero-title.reveal.in>span{opacity:1;transform:translateY(0)}
-    .js .hero-title.reveal>span:nth-child(2){transition-delay:.14s}
-    .js .hero-title.reveal>span:nth-child(3){transition-delay:.28s}
-    @media(prefers-reduced-motion:reduce){.hero-cta,.hero-cta b{transition:none}}
+    .js .hero-title.reveal>span:nth-child(2){transition-delay:.12s}
+    .js .hero-title.reveal>span:nth-child(3){transition-delay:.25s}
+    @media(prefers-reduced-motion:reduce){.hero-photo,.hero-cta,.hero-cta span{transition:none}}
     .section{padding-block:clamp(105px,12vw,190px)}
     .section-head{display:grid;grid-template-columns:1fr auto;gap:25px;align-items:end;margin-bottom:clamp(48px,7vw,100px)}
     .section-head .eyebrow{margin-bottom:22px}
@@ -364,7 +373,10 @@
     a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
     @media(max-width:1100px){
       :root{--head-h:75px}
-      .hero-title{font-size:clamp(58px,8vw,96px)}
+      .hero-title{font-size:clamp(62px,8.4vw,100px)}
+      .hero-photo--website{right:2%;width:32vw}
+      .hero-photo--mobile{left:35%}
+      .hero-photo--detail{right:9%}
       .project-grid,.project--bnj .project-grid{grid-template-columns:minmax(250px,.82fr) minmax(0,1.18fr)}
       .project--reverse .project-grid{grid-template-columns:minmax(0,1.18fr) minmax(250px,.82fr)}
       .project h3{font-size:clamp(39px,5vw,60px)}
@@ -377,16 +389,24 @@
       .main-nav{gap:20px}
       .main-nav a{font-size:11px}
       .main-nav a:nth-child(2),.main-nav a:nth-child(3){display:none}
-      .hero::before{top:22%;right:-30%;width:77%;height:65%}
-      .hero-inner{padding:22px var(--pad) 35px}
-      .hero-main{padding:35px 0}
-      .hero-title{font-size:clamp(38px,9.2vw,65px);line-height:1.2}
-      .hero-title-middle{margin-top:15px;padding-left:5%}
-      .hero-title .hero-title-last{margin-top:13px}
-      .hero-foot{grid-template-columns:1fr;gap:15px;padding-top:22px}
-      .hero-foot strong{font-size:18px}
-      .hero-cta{justify-self:start}
-      .hero-identity small{font-size:9px}
+      .hero-editorial{min-height:max(900px,100svh)}
+      .hero-editorial::before{top:23%;right:-34%;width:78%;height:46%;transform:rotate(21deg)}
+      .hero-signature{top:26px}
+      .hero-signature strong{font-size:12px}
+      .hero-signature small{font-size:9px}
+      .hero-title{font-size:clamp(36px,9.7vw,70px)}
+      .hero-title .hero-line-one{top:16%;left:var(--pad);font-size:.99em}
+      .hero-title .hero-line-two{top:27%;left:9%;font-size:1.01em}
+      .hero-title .hero-line-three{top:66%;right:var(--pad);font-size:1.21em;letter-spacing:-.11em}
+      .hero-photo{padding:7px}
+      .hero-photo--website{top:40%;right:7%;width:57%;height:25%;transform:rotate(9deg)}
+      .hero-photo--mobile{top:47%;left:7%;width:27%;height:26%;transform:rotate(-12deg)}
+      .hero-photo--detail{display:none}
+      .hero-photo figcaption{bottom:-19px;font-size:8px}
+      .hero-note{bottom:90px;left:var(--pad);max-width:calc(100% - 2 * var(--pad))}
+      .hero-note strong{font-size:18px;margin-bottom:9px}
+      .hero-note p{font-size:12px;line-height:1.65;max-width:340px}
+      .hero-cta{right:var(--pad);bottom:25px;padding:13px 15px 13px 17px;font-size:11px}
       .section{padding-block:90px}
       .section-head{margin-bottom:46px}
       .section-title{font-size:clamp(50px,10vw,70px)}
@@ -410,7 +430,11 @@
       .logo small{font-size:8px}
       .header-inner{padding-inline:20px}
       .main-nav{gap:17px}
-      .hero-title{font-size:clamp(35px,9.2vw,42px)}
+      .hero-title{font-size:clamp(34px,9vw,40px)}
+      .hero-title .hero-line-three{font-size:1.16em}
+      .hero-editorial{min-height:max(870px,100svh)}
+      .hero-note{bottom:88px}
+      .hero-note strong{font-size:17px}
       .visual-creafit{padding:21px}
       .browser{transform:rotate(-1deg)}
       .concept-hero{padding:25px 20px}
@@ -660,20 +684,30 @@
 
   <main>
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero-inner">
-        <div class="hero-identity"><strong>YEONHEE JIN</strong><small>PORTFOLIO / 2026</small></div>
-        <div class="hero-main">
-          <h1 id="hero-title" class="hero-title reveal">
-            <span>설계한 경험을,</span>
-            <span class="hero-title-middle">작동하는</span>
-            <span class="hero-title-last">화면으로.</span>
-          </h1>
-        </div>
-        <div class="hero-foot">
+      <div class="hero-editorial">
+        <div class="hero-signature"><strong>YEONHEE JIN</strong><small>PORTFOLIO / 2026</small></div>
+        <h1 id="hero-title" class="hero-title reveal">
+          <span class="hero-line-one">설계한 경험을,</span>
+          <span class="hero-line-two">작동하는</span>
+          <span class="hero-line-three">화면으로.</span>
+        </h1>
+        <figure class="hero-photo hero-photo--website">
+          <img src="../selected01_pc.png" alt="크레아핏마케팅 리뉴얼 실제 PC 화면 일부" loading="eager" decoding="async">
+          <figcaption>크레아핏마케팅 · 홈페이지 리뉴얼</figcaption>
+        </figure>
+        <figure class="hero-photo hero-photo--mobile">
+          <img src="../selected01_mobile.png" alt="실제 구현한 반응형 모바일 홈페이지 화면 일부" loading="eager" decoding="async">
+          <figcaption>실제 반응형 UI</figcaption>
+        </figure>
+        <figure class="hero-photo hero-photo--detail">
+          <img src="../pr3_after_exp1.png" alt="비앤제이플러스 홈페이지 리뉴얼 실제 작업물 일부" loading="eager" decoding="async">
+          <figcaption>비앤제이플러스 · 홈페이지 리뉴얼</figcaption>
+        </figure>
+        <div class="hero-note reveal">
           <strong>화면을 직접 만들어 본 경험은,<br>설계의 기준이 됩니다.</strong>
-          <p>웹퍼블리셔로 UI를 구현하며 반응형 환경과 실제 운영에서의 제약을 경험했습니다. 그 이해를 바탕으로 사용자 흐름과 구현 가능성을 함께 고려합니다.</p>
-          <a class="hero-cta" href="#work">프로젝트 살펴보기 <b aria-hidden="true">↗</b></a>
+          <p>웹퍼블리셔로 UI를 구현하며 실제 사용 환경과 운영상의 제약을 경험했습니다. 그 이해를 바탕으로 사용자의 흐름과 구현 가능성을 함께 고려합니다.</p>
         </div>
+        <a class="hero-cta" href="#work">프로젝트 살펴보기 <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
