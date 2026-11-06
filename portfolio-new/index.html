@@ -40,17 +40,18 @@
     .main-nav a:hover,.main-nav a:focus-visible{color:var(--accent)}
 
     /* Hero: sculptural abstract ribbon with legible foreground typography. */
-    .hero{position:relative;height:150svh;overflow:clip;isolation:isolate;background:#171b19;color:#f4f2eb;--hero-orbit-x:0px;--hero-orbit-y:0px;--hero-orbit-scale:1;--hero-orbit-angle:0deg;--hero-type-y:0px;--hero-type-opacity:1;--hero-veil-y:100%}
+    .hero{position:relative;height:150svh;overflow:clip;isolation:isolate;background:#171b19;color:#f4f2eb;--hero-orbit-x:0px;--hero-orbit-y:0px;--hero-orbit-scale:1;--hero-orbit-angle:0deg;--hero-veil-y:100%}
     .hero-pin{position:sticky;top:0;height:100svh;overflow:hidden;isolation:isolate;background:#171b19}
-    .hero-pin::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 76% 43%,#34443b8c,transparent 54%);pointer-events:none}
+    .hero-pin::before{content:"";position:absolute;inset:-12%;z-index:0;background:radial-gradient(ellipse at 76% 43%,#34443b8c,transparent 54%);pointer-events:none;animation:hero-atmosphere-drift 22s ease-in-out infinite;will-change:transform}
     .hero-artboard{position:relative;height:100%;max-width:1800px;margin-inline:auto}
     .hero-artboard::before{content:"";position:absolute;z-index:4;inset:0;background:linear-gradient(90deg,#171b19 0%,#171b19f2 22%,#171b19ce 43%,#171b1985 61%,#171b1918 82%,transparent 100%);pointer-events:none}
     .hero-identity{position:absolute;z-index:10;top:clamp(31px,3.7vw,56px);left:var(--pad);font-size:13px;font-weight:800;letter-spacing:-.02em}
     .hero-graphic{position:absolute;z-index:2;right:-17%;top:-5%;width:min(74vw,1080px);height:108%;margin:0;pointer-events:none;transform:translate3d(var(--hero-orbit-x),var(--hero-orbit-y),0) scale(var(--hero-orbit-scale)) rotate(var(--hero-orbit-angle));transform-origin:56% 49%;will-change:transform}
-    .hero-graphic svg{display:block;width:100%;height:100%;overflow:visible}
+    .hero-graphic svg{display:block;width:100%;height:100%;overflow:visible;transform-origin:50% 50%;animation:hero-ribbon-drift 14s ease-in-out infinite;will-change:transform}
+    .hero-flow-lines{stroke-dasharray:14 13;animation:hero-current-flow 13.5s linear infinite}
     .hero-graphic-front{z-index:3}
-    .hero-copy{position:absolute;inset:0;z-index:6;margin:0;font-weight:800;letter-spacing:-.096em;line-height:1.05;pointer-events:none;opacity:var(--hero-type-opacity)}
-    .hero-copy>span{position:absolute;display:block;white-space:nowrap;transform:translate3d(0,var(--hero-type-y),0);will-change:transform}
+    .hero-copy{position:absolute;inset:0;z-index:6;margin:0;font-weight:800;letter-spacing:-.096em;line-height:1.05;pointer-events:none}
+    .hero-copy>span{position:absolute;display:block;white-space:nowrap}
     .hero-copy .hero-copy-first{top:20%;left:5.2%;font-size:clamp(69px,8.2vw,146px);color:#fffdf7}
     .hero-copy .hero-copy-second{top:56%;left:4.2%;font-size:clamp(64px,7.45vw,130px);color:#fffdf7}
     .hero-copy em{font-style:normal;color:#ffa085}
@@ -65,6 +66,9 @@
     .hero-cta:focus-visible{outline:2px solid #f47758;outline-offset:5px}
     .hero-curtain{position:absolute;z-index:12;inset:0;background:var(--paper);transform:translate3d(0,var(--hero-veil-y),0);pointer-events:none;will-change:transform}
     @keyframes hero-words-in{from{opacity:0;transform:translateY(104%)}to{opacity:1;transform:translateY(0)}}
+    @keyframes hero-ribbon-drift{0%,100%{transform:translate3d(0,0,0) rotate(-1.5deg) scale(1)}50%{transform:translate3d(-2.3%,1.9%,0) rotate(1.7deg) scale(1.035)}}
+    @keyframes hero-atmosphere-drift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-3%,2%,0) scale(1.06)}}
+    @keyframes hero-current-flow{from{stroke-dashoffset:0}to{stroke-dashoffset:-378}}
     @media(max-width:900px){
       .hero{height:145svh}
       .hero-graphic{right:-25%;top:15%;width:95vw;height:68%}
@@ -89,8 +93,7 @@
       .hero{height:100svh}
       .hero-pin{position:relative}
       .hero-graphic{transform:none}
-      .hero-copy{opacity:1}
-      .hero-copy>span{transform:none}
+      .hero-graphic svg,.hero-pin::before,.hero-flow-lines{animation:none}
       .hero-copy .hero-words{animation:none}
       .hero-curtain{display:none}
       .hero-cta{transition:none}
@@ -694,7 +697,7 @@
               <path d="M650 104 C453 -13 207 109 149 332 C77 594 304 762 510 723 C713 685 822 497 735 281" fill="none" stroke="#ffa38b" stroke-opacity=".55" stroke-width="3" transform="translate(-37 -31)"/>
               <g clip-path="url(#hero-screen-clip)">
                 <rect x="195" y="180" width="580" height="480" fill="url(#hero-core)"/>
-                <g fill="none" stroke="#b6c2b2" stroke-width="1.5" opacity=".24">
+                <g class="hero-flow-lines" fill="none" stroke="#b6c2b2" stroke-width="1.5" opacity=".34">
                   <path d="M180 335 C318 233 505 265 734 356"/>
                   <path d="M174 365 C320 263 517 295 741 386"/>
                   <path d="M169 395 C322 293 526 325 744 415"/>
@@ -1055,8 +1058,6 @@
           kineticHero.style.setProperty("--hero-orbit-y",(-p*window.innerHeight*.055).toFixed(1)+"px");
           kineticHero.style.setProperty("--hero-orbit-scale",(1+p*.27).toFixed(4));
           kineticHero.style.setProperty("--hero-orbit-angle",(p*12).toFixed(2)+"deg");
-          kineticHero.style.setProperty("--hero-type-y",(-p*window.innerHeight*.08).toFixed(1)+"px");
-          kineticHero.style.setProperty("--hero-type-opacity",(1-p*.53).toFixed(3));
           kineticHero.style.setProperty("--hero-veil-y",((1-reveal)*100).toFixed(2)+"%");
         };
         var requestHeroPaint=function(){if(!heroFrame)heroFrame=requestAnimationFrame(paintHero)};
