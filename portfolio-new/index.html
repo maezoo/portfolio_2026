@@ -38,112 +38,54 @@
     .main-nav{display:flex;align-items:center;gap:clamp(22px,3vw,52px)}
     .main-nav a{font-size:12px;font-weight:700;transition:color .2s}
     .main-nav a:hover,.main-nav a:focus-visible{color:var(--accent)}
-    /* Hero 02: deconstructed interface; independent from the restrained work sections. */
-    .hero{position:relative;overflow:hidden;isolation:isolate;background:#161b19;color:#f5f4ed}
-    .hero-cover{position:relative;max-width:1720px;min-height:max(870px,100svh);margin:auto;padding:clamp(28px,3.3vw,48px) var(--pad) clamp(34px,4vw,60px)}
-    .hero-signature{position:relative;z-index:7;display:flex;align-items:baseline;gap:15px;font-size:13px;font-weight:800}
-    .hero-signature small{font-size:10px;font-weight:600;letter-spacing:.09em;color:#aab3a9}
-    .hero-title{position:absolute;inset:0;z-index:5;margin:0;font-weight:750;letter-spacing:-.092em;line-height:1.07;pointer-events:none}
-    .hero-title>span{position:absolute;display:block;white-space:nowrap}
-    .hero-title .hero-line-one{top:13%;left:var(--pad);font-size:clamp(66px,8.3vw,134px)}
-    .hero-title .hero-line-two{top:69%;left:var(--pad);font-size:clamp(56px,7.4vw,121px)}
-    .hero-title em{font-style:normal;color:#f47758}
-    .hero-lab{position:absolute;z-index:4;top:30%;right:clamp(25px,6vw,105px);width:clamp(570px,57vw,830px);height:385px}
-    .hero-lab::before{content:"";position:absolute;inset:-18px -14px;background:repeating-linear-gradient(0deg,transparent 0 37px,#d6e1d30b 37px 38px),repeating-linear-gradient(90deg,transparent 0 37px,#d6e1d30b 37px 38px);pointer-events:none}
-    .hero-lab::after{content:"";position:absolute;z-index:-1;inset:3% 4% 4%;border:1px solid #f5f4ed42;background:#f5f4ed05;opacity:0;transition:opacity .55s;pointer-events:none}
-    .hero-lab.is-assembled::after{opacity:1}
-    .hero-part{position:absolute;box-sizing:border-box;min-width:0;background:#f5f4ee;color:#1e2520;box-shadow:0 15px 35px #00000030;transition:top .75s var(--ease),left .75s var(--ease),right .75s var(--ease),width .75s var(--ease),height .75s var(--ease),box-shadow .75s var(--ease)}
-    .hero-lab.is-assembled .hero-part{box-shadow:none}
-    .hero-part--nav{top:1%;left:31%;width:63%;height:55px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 17px;background:#e3e7dd}
-    .hero-nav-mark{width:14px;height:14px;flex:none;background:#f47758}
-    .hero-nav-text{margin-right:auto;font-size:11px;font-weight:800;letter-spacing:-.035em;white-space:nowrap}
-    .hero-nav-links{display:flex;gap:14px;font-size:9px;font-weight:700;white-space:nowrap;color:#626b63}
-    .hero-part--feature{top:23%;left:0;width:56%;height:206px;padding:clamp(17px,2.1vw,29px);background:#f4f2ed;overflow:hidden}
-    .hero-feature-kicker{display:block;margin-bottom:18px;font-size:10px;letter-spacing:.03em;color:#b95e49;font-weight:800}
-    .hero-feature-title{display:block;max-width:100%;font-size:clamp(21px,2.2vw,33px);line-height:1.26;font-weight:800;letter-spacing:-.067em;word-break:keep-all}
-    .hero-feature-detail{margin:11px 0 0;max-width:290px;font-size:11px;line-height:1.65;color:#5b655b;word-break:keep-all}
-    .hero-part--choices{top:37%;right:0;width:39%;height:196px;padding:15px 16px;background:#e3e9e1}
-    .hero-choices-caption{display:block;margin-bottom:12px;font-size:10px;font-weight:800;letter-spacing:-.02em}
-    .hero-choice{width:100%;display:flex;justify-content:space-between;align-items:center;gap:6px;padding:9px 2px;border:0;border-bottom:1px solid #b4c0b2;background:transparent;color:#48584c;font-size:11px;font-weight:750;text-align:left;cursor:pointer;transition:color .25s,padding .25s}
-    .hero-choice:last-child{border-bottom:0}
-    .hero-choice:hover,.hero-choice[aria-pressed="true"]{color:#bb573f;padding-left:7px}
-    .hero-choice:focus-visible{outline:2px solid #c85d46;outline-offset:-1px}
-    .hero-choice b{font-size:14px;font-weight:400}
-    .hero-part--action{left:32%;bottom:7%;width:45%;height:58px;background:#f47758;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:0 23px;font-size:13px;font-weight:800;letter-spacing:-.035em}
-    .hero-part--action span{font-size:24px;font-weight:400}
-    .hero-lab.is-assembled .hero-part--nav{top:5%;left:7%;width:86%}
-    .hero-lab.is-assembled .hero-part--feature{top:23%;left:7%;width:49%;height:204px}
-    .hero-lab.is-assembled .hero-part--choices{top:23%;right:7%;width:36%;height:204px}
-    .hero-lab.is-assembled .hero-part--action{left:7%;width:86%;bottom:6%}
-    .hero-toggle{position:absolute;z-index:7;right:1%;top:-50px;display:inline-flex;align-items:center;gap:14px;padding:7px 0;background:transparent;color:#f5f4ed;border:0;border-bottom:1px solid #a6afa6;font-size:12px;font-weight:750;cursor:pointer;transition:color .25s}
-    .hero-toggle:hover{color:#f47758}
-    .hero-toggle:focus-visible{outline:2px solid #f47758;outline-offset:5px}
-    .hero-toggle span:last-child{color:#f47758;font-size:19px;font-weight:400}
-    .hero-note{position:absolute;top:45%;left:var(--pad);max-width:280px;z-index:3}
-    .hero-note strong{display:block;margin-bottom:14px;font-size:clamp(19px,1.7vw,25px);font-weight:750;line-height:1.45;letter-spacing:-.055em}
-    .hero-note p{margin:0;font-size:13px;color:#b7c1b7;line-height:1.8}
-    .hero-cta{position:absolute;z-index:7;right:var(--pad);bottom:7%;display:inline-flex;align-items:center;gap:29px;padding:14px 0;border-bottom:1px solid #f5f4ed;color:#f5f4ed;font-size:13px;font-weight:800;white-space:nowrap;transition:gap .3s var(--ease),color .25s}
-    .hero-cta span{font-size:24px;font-weight:400}
-    .hero-cta:hover{gap:44px;color:#f47758}
+    /* Kinetic editorial hero: the composition itself changes with scroll. */
+    .hero{position:relative;height:148svh;background:#171c19;color:#f6f4ed;--hero-one-x:0px;--hero-one-y:0px;--hero-two-x:0px;--hero-two-y:0px;--hero-scale:1;--hero-fill:0%;--hero-one-opacity:1;--hero-veil-translate:100%}
+    .hero-sticky{position:sticky;top:0;isolation:isolate;height:100svh;overflow:hidden;background:#171c19}
+    .hero-stage{position:relative;width:100%;height:100%;max-width:1920px;margin-inline:auto}
+    .hero-grain{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 74% 65%,#34403880 0,transparent 47%);pointer-events:none}
+    .hero-signature{position:absolute;z-index:2;top:clamp(28px,3.6vw,57px);left:var(--pad);font-size:13px;font-weight:800;letter-spacing:-.045em}
+    .hero-title{position:absolute;inset:0;z-index:2;margin:0;font-weight:800;letter-spacing:-.103em;line-height:1.04;pointer-events:none}
+    .hero-line{position:absolute;display:block;white-space:nowrap;will-change:transform}
+    .hero-line--one{top:23%;left:4%;font-size:clamp(72px,10.25vw,182px);transform:translate3d(var(--hero-one-x),var(--hero-one-y),0);opacity:var(--hero-one-opacity)}
+    .hero-line--two{top:49%;right:4%;font-size:clamp(60px,8.3vw,144px);transform:translate3d(var(--hero-two-x),var(--hero-two-y),0) scale(var(--hero-scale));transform-origin:right center}
+    .hero-mask{display:block;overflow:hidden;padding:0 .06em .11em 0}
+    .hero-phrase{display:block;animation:hero-phrase-in 1.12s var(--ease) both}
+    .hero-line--two .hero-phrase{animation-delay:.16s}
+    .hero-highlight{display:inline-block;position:relative}
+    .hero-highlight-color{position:absolute;inset:0;color:#f47758;white-space:nowrap;clip-path:inset(0 calc(100% - var(--hero-fill)) 0 0);pointer-events:none}
+    .hero-context{position:absolute;z-index:3;left:clamp(22px,8vw,155px);top:74%;max-width:630px;margin:0;font-size:clamp(14px,1.25vw,18px);font-weight:500;line-height:1.85;letter-spacing:-.028em;color:#bbc7bc;word-break:keep-all;animation:hero-caption-in 1s .63s both}
+    .hero-context strong{color:#f6f4ed;font-weight:700}
+    .hero-cta{position:absolute;z-index:4;right:var(--pad);bottom:clamp(32px,5vw,74px);display:inline-flex;align-items:center;gap:35px;padding:15px 0;border-bottom:1px solid #f6f4ed;color:#f6f4ed;font-size:13px;font-weight:800;line-height:1.4;white-space:nowrap;transition:gap .3s var(--ease),color .25s}
+    .hero-cta span{font-size:23px;font-weight:400;line-height:1}
+    .hero-cta:hover{gap:47px;color:#f47758}
     .hero-cta:focus-visible{outline:2px solid #f47758;outline-offset:5px}
-    .js .hero-title.reveal{opacity:1;transform:none;transition:none}
-    .js .hero-title.reveal>span{opacity:0;transform:translateY(25px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-    .js .hero-title.reveal.in>span{opacity:1;transform:translateY(0)}
-    .js .hero-title.reveal>span:nth-child(2){transition-delay:.17s}
-    @media(max-width:1280px) and (min-width:901px){
-      .hero-cover{min-height:max(830px,100svh)}
-      .hero-lab{right:3%;width:58vw}
-      .hero-note{max-width:230px}
-      .hero-note strong{font-size:20px}
-      .hero-title .hero-line-one{font-size:8.1vw}
-      .hero-title .hero-line-two{font-size:7.2vw}
-    }
+    .hero-curtain{position:absolute;z-index:8;inset:0;background:var(--paper);transform:translate3d(0,var(--hero-veil-translate),0);will-change:transform;pointer-events:none}
+    @keyframes hero-phrase-in{from{opacity:0;transform:translateY(105%)}to{opacity:1;transform:translateY(0)}}
+    @keyframes hero-caption-in{from{opacity:0;translate:0 18px}to{opacity:1;translate:0 0}}
     @media(max-width:900px){
-      .hero-cover{min-height:0;padding:26px var(--pad) 62px}
-      .hero-signature{margin-bottom:85px}
-      .hero-title{position:relative;inset:auto;margin-bottom:79px;line-height:1.13}
-      .hero-title>span{position:static;white-space:nowrap}
-      .hero-title .hero-line-one{font-size:clamp(39px,8.8vw,78px)}
-      .hero-title .hero-line-two{margin-top:12px;font-size:clamp(34px,8vw,70px)}
-      .hero-lab{position:relative;top:auto;right:auto;width:min(100%,660px);height:clamp(332px,51vw,390px);margin:0 auto 30px}
-      .hero-toggle{top:-47px;right:0}
-      .hero-note{position:relative;top:auto;left:auto;max-width:560px;margin:25px 0 0}
-      .hero-note strong{font-size:clamp(21px,3.7vw,26px)}
-      .hero-note p{font-size:13px}
-      .hero-cta{position:relative;right:auto;bottom:auto;display:flex;width:max-content;margin:35px 0 0 auto}
+      .hero{height:143svh}
+      .hero-line--one{top:26%;left:var(--pad);font-size:clamp(52px,10.1vw,89px)}
+      .hero-line--two{top:46%;right:var(--pad);font-size:clamp(46px,8.3vw,73px)}
+      .hero-context{top:69%;left:var(--pad);max-width:580px;font-size:clamp(14px,1.7vw,17px)}
+      .hero-cta{bottom:clamp(25px,5vw,44px);font-size:12px}
     }
     @media(max-width:560px){
-      .hero-cover{padding-bottom:43px}
-      .hero-signature{margin-bottom:72px}
-      .hero-signature small{font-size:9px}
-      .hero-title{margin-bottom:73px}
-      .hero-title .hero-line-one{font-size:clamp(33px,9.15vw,49px)}
-      .hero-title .hero-line-two{font-size:clamp(29px,8.2vw,45px)}
-      .hero-lab{height:330px;margin-bottom:15px}
-      .hero-lab::before{inset:-8px}
-      .hero-part--nav{top:2%;left:17%;width:79%;height:44px;padding:0 11px}
-      .hero-nav-text{font-size:9px}
-      .hero-nav-links{gap:6px;font-size:8px}
-      .hero-nav-mark{width:10px;height:10px}
-      .hero-part--feature{top:22%;left:0;width:60%;height:172px;padding:17px}
-      .hero-feature-kicker{margin-bottom:12px;font-size:9px}
-      .hero-feature-title{font-size:clamp(17px,4.4vw,23px)}
-      .hero-feature-detail{margin-top:10px;font-size:10px;line-height:1.5}
-      .hero-part--choices{top:39%;right:0;width:43%;height:174px;padding:12px 10px}
-      .hero-choices-caption{margin-bottom:8px;font-size:9px}
-      .hero-choice{padding:8px 0;font-size:10px}
-      .hero-part--action{bottom:5%;left:19%;width:67%;height:49px;padding:0 15px;font-size:11px}
-      .hero-lab.is-assembled .hero-part--nav{top:6%;left:5%;width:90%}
-      .hero-lab.is-assembled .hero-part--feature{top:23%;left:5%;width:53%;height:175px}
-      .hero-lab.is-assembled .hero-part--choices{top:23%;right:5%;width:35%;height:175px}
-      .hero-lab.is-assembled .hero-part--action{left:5%;width:90%;bottom:5%}
-      .hero-note{margin-top:33px}
-      .hero-note strong{font-size:19px}
-      .hero-note p{font-size:12px}
-      .hero-cta{margin-top:25px;font-size:12px}
+      .hero{height:137svh}
+      .hero-signature{top:26px;font-size:12px}
+      .hero-grain{background:radial-gradient(ellipse at 63% 47%,#3440387a,transparent 65%)}
+      .hero-line--one{top:27%;left:var(--pad);font-size:clamp(31px,9.65vw,54px);letter-spacing:-.1em}
+      .hero-line--two{top:43%;right:var(--pad);font-size:clamp(27px,8.1vw,46px);letter-spacing:-.102em}
+      .hero-context{top:64%;right:var(--pad);font-size:13px;line-height:1.8}
+      .hero-cta{right:var(--pad);bottom:32px;gap:23px;font-size:12px}
     }
     @media(prefers-reduced-motion:reduce){
-      .hero-part,.hero-lab::after,.hero-cta,.hero-choice,.hero-toggle{transition:none}
+      .hero{height:100svh}
+      .hero-sticky{position:relative}
+      .hero-phrase,.hero-context{animation:none}
+      .hero-line--one,.hero-line--two{transform:none;opacity:1}
+      .hero-highlight-color{clip-path:inset(0 0 0 0)}
+      .hero-curtain{display:none}
+      .hero-cta{transition:none}
     }
     .section{padding-block:clamp(105px,12vw,190px)}
     .section-head{display:grid;grid-template-columns:1fr auto;gap:25px;align-items:end;margin-bottom:clamp(48px,7vw,100px)}
@@ -728,36 +670,18 @@
 
   <main>
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero-cover">
-        <div class="hero-signature"><strong>YEONHEE JIN</strong><small>PORTFOLIO / 2026</small></div>
-        <h1 class="hero-title reveal" id="hero-title">
-          <span class="hero-line-one">설계한 경험을,</span>
-          <span class="hero-line-two">작동하는 <em>화면으로.</em></span>
-        </h1>
-        <div class="hero-lab" id="hero-lab" aria-label="화면 구성 요소를 정렬해 볼 수 있는 인터랙티브 UI 예시">
-          <button class="hero-toggle" id="hero-assemble" type="button" aria-controls="hero-lab" aria-pressed="false"><span class="hero-toggle-text">화면으로 조립하기</span><span aria-hidden="true">↗</span></button>
-          <div class="hero-part hero-part--nav">
-            <span class="hero-nav-mark" aria-hidden="true"></span><span class="hero-nav-text">서비스 탐색</span>
-            <span class="hero-nav-links" aria-hidden="true"><span>서비스</span><span>사례</span><span>상담</span></span>
-          </div>
-          <div class="hero-part hero-part--feature" aria-live="polite" aria-atomic="true">
-            <span class="hero-feature-kicker">필요한 정보부터,</span>
-            <strong class="hero-feature-title" id="hero-feature-title">정보를 더 쉽게<br>찾을 수 있도록.</strong>
-            <p class="hero-feature-detail" id="hero-feature-detail">이해하기 쉬운 구조로 경험을 만듭니다.</p>
-          </div>
-          <div class="hero-part hero-part--choices" role="group" aria-label="인터랙션 예시 화면 선택">
-            <span class="hero-choices-caption">어떤 도움이 필요하세요?</span>
-            <button class="hero-choice" type="button" aria-pressed="true" data-title="정보를 더 쉽게 찾을 수 있도록." data-detail="이해하기 쉬운 구조로 경험을 만듭니다."><span>서비스 알아보기</span><b aria-hidden="true">↗</b></button>
-            <button class="hero-choice" type="button" aria-pressed="false" data-title="경험을 확인하고 선택하도록." data-detail="필요한 사례를 발견하는 흐름을 만듭니다."><span>사례 살펴보기</span><b aria-hidden="true">↗</b></button>
-            <button class="hero-choice" type="button" aria-pressed="false" data-title="다음 행동까지 자연스럽게." data-detail="명확한 안내로 상담까지 이어줍니다."><span>상담 연결하기</span><b aria-hidden="true">↗</b></button>
-          </div>
-          <div class="hero-part hero-part--action" aria-hidden="true">필요한 경험을 실제 화면으로 <span>↗</span></div>
+      <div class="hero-sticky">
+        <div class="hero-stage">
+          <div class="hero-grain" aria-hidden="true"></div>
+          <div class="hero-signature">YEONHEE JIN</div>
+          <h1 class="hero-title" id="hero-title">
+            <span class="hero-line hero-line--one"><span class="hero-mask"><span class="hero-phrase">설계한 경험을,</span></span></span>
+            <span class="hero-line hero-line--two"><span class="hero-mask"><span class="hero-phrase">작동하는 <span class="hero-highlight">화면으로.<span class="hero-highlight-color" aria-hidden="true">화면으로.</span></span></span></span></span>
+          </h1>
+          <p class="hero-context"><strong>웹퍼블리셔로 직접 구현하고 운영해 온 경험.</strong><br>사용자의 흐름뿐 아니라 실제 작동하는 환경까지 고려해 설계합니다.</p>
+          <a class="hero-cta" href="#work">프로젝트 살펴보기 <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="hero-note reveal">
-          <strong>화면을 직접 만들어 본 경험은,<br>설계의 기준이 됩니다.</strong>
-          <p>웹퍼블리셔로 UI를 구현하고 운영하며, 사용자의 흐름부터 실제 작동하는 환경까지 경험했습니다.</p>
-        </div>
-        <a class="hero-cta" href="#work">프로젝트 살펴보기 <span aria-hidden="true">↗</span></a>
+        <div class="hero-curtain" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -1073,26 +997,32 @@
         },{threshold:.06,rootMargin:"0px 0px -22px 0px"});
         nodes.forEach(function(node){observer.observe(node)});
       }
-      // Hero-only: assemble separated UI elements and switch an example content state.
-      var heroLab=document.getElementById("hero-lab");
-      var heroAssembly=document.getElementById("hero-assemble");
-      if(heroLab&&heroAssembly){
-        var heroAssemblyLabel=heroAssembly.querySelector(".hero-toggle-text");
-        heroAssembly.addEventListener("click",function(){
-          var assembled=heroLab.classList.toggle("is-assembled");
-          heroAssembly.setAttribute("aria-pressed",String(assembled));
-          heroAssemblyLabel.textContent=assembled?"구조 펼쳐보기":"화면으로 조립하기";
-        });
-        var heroChoices=heroLab.querySelectorAll(".hero-choice");
-        var heroPreviewTitle=document.getElementById("hero-feature-title");
-        var heroPreviewDetail=document.getElementById("hero-feature-detail");
-        heroChoices.forEach(function(choice){
-          choice.addEventListener("click",function(){
-            heroChoices.forEach(function(item){item.setAttribute("aria-pressed",String(item===choice))});
-            heroPreviewTitle.textContent=choice.dataset.title;
-            heroPreviewDetail.textContent=choice.dataset.detail;
-          });
-        });
+      // Hero-only motion: typography responds to scroll, then the next section is revealed.
+      var kineticHero=document.querySelector(".hero");
+      if(kineticHero&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+        var heroFrame=0;
+        var paintHero=function(){
+          heroFrame=0;
+          var rect=kineticHero.getBoundingClientRect();
+          var travel=Math.max(1,kineticHero.offsetHeight-window.innerHeight);
+          var p=Math.max(0,Math.min(1,-rect.top/travel));
+          var fill=Math.max(0,Math.min(100,(p-.08)/.54*100));
+          var wipe=Math.max(0,Math.min(1,(p-.7)/.3));
+          var vmin=Math.min(window.innerWidth,window.innerHeight);
+          kineticHero.style.setProperty("--hero-one-x",(-p*window.innerWidth*.07).toFixed(1)+"px");
+          kineticHero.style.setProperty("--hero-one-y",(-p*window.innerHeight*.09).toFixed(1)+"px");
+          kineticHero.style.setProperty("--hero-two-x",(-p*window.innerWidth*.05).toFixed(1)+"px");
+          kineticHero.style.setProperty("--hero-two-y",(-p*window.innerHeight*.11).toFixed(1)+"px");
+          kineticHero.style.setProperty("--hero-scale",(1+p*.11).toFixed(4));
+          kineticHero.style.setProperty("--hero-one-opacity",(1-p*.76).toFixed(3));
+          kineticHero.style.setProperty("--hero-fill",fill.toFixed(2)+"%");
+          kineticHero.style.setProperty("--hero-veil-translate",((1-wipe)*100).toFixed(2)+"%");
+        };
+        var requestHeroPaint=function(){if(!heroFrame)heroFrame=requestAnimationFrame(paintHero)};
+        window.addEventListener("scroll",requestHeroPaint,{passive:true});
+        window.addEventListener("resize",requestHeroPaint);
+        window.addEventListener("pageshow",requestHeroPaint);
+        requestHeroPaint();
       }
       // Keep the opening Hero immersive; reveal the existing header as the Work section begins.
       var siteHeader=document.getElementById("site-header");
