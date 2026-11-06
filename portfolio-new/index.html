@@ -28,7 +28,9 @@
     .eyebrow{display:inline-flex;align-items:center;gap:13px;font-size:11px;font-weight:700;letter-spacing:.12em;line-height:1.5;text-transform:uppercase}
     .eyebrow .bullet{width:6px;height:6px;flex:none;border-radius:50%;background:var(--accent)}
     .rule{height:1px;background:var(--line)}
-    .site-header{position:relative;z-index:50;border-bottom:1px solid var(--line)}
+    .site-header{position:fixed;inset:0 0 auto;z-index:100;border-bottom:1px solid var(--line);background:var(--paper);box-shadow:0 10px 30px #2023210c;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-105%);transition:transform .62s var(--ease),opacity .35s ease,visibility .62s}
+    .site-header.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+    @media(prefers-reduced-motion:reduce){.site-header{transition:none}}
     .header-inner{height:var(--head-h);display:flex;align-items:center;justify-content:space-between;gap:32px}
     .logo{display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:-.03em;font-weight:800;white-space:nowrap}
     .logo-mark{height:29px;width:29px;border:1.5px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-size:16px;font-weight:500;transform:rotate(-35deg)}
@@ -684,7 +686,7 @@
 </head>
 <body>
   <a class="skip" href="#work">프로젝트로 바로가기</a>
-  <header class="site-header" id="top">
+  <header class="site-header" id="site-header">
     <div class="wrap header-inner">
       <a class="logo" href="#top" aria-label="포트폴리오 홈">
         <span class="logo-mark" aria-hidden="true">↗</span>
@@ -697,7 +699,7 @@
   </header>
 
   <main>
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="wrap hero-canvas">
         <div class="hero-stage">
           <h1 id="hero-title" class="hero-title reveal">
@@ -1059,6 +1061,19 @@
         };
         heroRange.addEventListener("input",updateHeroPreview);
         updateHeroPreview();
+      }
+      // Keep the opening Hero immersive; reveal the existing header as the Work section begins.
+      var siteHeader=document.getElementById("site-header");
+      var workSection=document.getElementById("work");
+      if(siteHeader&&workSection){
+        var updateSiteHeader=function(){
+          var show=workSection.getBoundingClientRect().top<=Math.min(120,window.innerHeight*.14);
+          siteHeader.classList.toggle("is-visible",show);
+        };
+        window.addEventListener("scroll",updateSiteHeader,{passive:true});
+        window.addEventListener("resize",updateSiteHeader);
+        window.addEventListener("pageshow",updateSiteHeader);
+        updateSiteHeader();
       }
       var topButton=document.getElementById("page-top");
       if(topButton){
