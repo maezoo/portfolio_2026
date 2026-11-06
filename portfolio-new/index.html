@@ -1008,7 +1008,6 @@
           var p=Math.max(0,Math.min(1,-rect.top/travel));
           var fill=Math.max(0,Math.min(100,(p-.08)/.54*100));
           var wipe=Math.max(0,Math.min(1,(p-.7)/.3));
-          var vmin=Math.min(window.innerWidth,window.innerHeight);
           kineticHero.style.setProperty("--hero-one-x",(-p*window.innerWidth*.07).toFixed(1)+"px");
           kineticHero.style.setProperty("--hero-one-y",(-p*window.innerHeight*.09).toFixed(1)+"px");
           kineticHero.style.setProperty("--hero-two-x",(-p*window.innerWidth*.05).toFixed(1)+"px");
